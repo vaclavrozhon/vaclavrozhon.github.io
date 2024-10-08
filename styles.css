@@ -1,0 +1,17 @@
+/* styles.css */
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  margin-top: 40px;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-weight: bold;
+}
