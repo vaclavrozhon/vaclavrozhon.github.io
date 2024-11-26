@@ -1,5 +1,11 @@
 main:
   - title: "About me"
     url: "/"
-  - title: "Teaching"
-    url: "/teaching/" 
+  - title: "Polylog"
+    url: "/polylog/" 
+  - title: "Research"
+    url: "/research/" 
+  - title: "Other"
+    url: "/other/" 
+  # - title: "Teaching"
+  #   url: "/teaching/" 

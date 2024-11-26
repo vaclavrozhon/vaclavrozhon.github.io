@@ -21,10 +21,7 @@
 title: Václav Rozhoň's page
 email: vaclavrozhon@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-  vaclav rozhon (at) gmail.com
+  Personal webpage of Václav Rozhoň
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  vaclavrozhon
@@ -46,16 +43,19 @@ site.locale: en-GB
 
 author:
   name: Václav Rozhoň
-  avatar: "/assets/images/photo_small.jpg"
-  bio: "I am a student of computer science at the Faculty of Mathematics and Physics, Charles University in Prague. I am interested in machine learning, computer vision, and software development."
+  avatar: "/assets/images/photos/photo_small.jpg"
+  bio: "I'm a theoretical computer scientist. "
   location: Prague, Czech Republic
   links:
-    - label: "Blog"
-      icon: "fas fa-fw fa-rss"
-      url: "https://vasekrozhon.wordpress.com/"
+    - label: "[name][surname]@gmail.com"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:"
     - label: "YouTube – Polylog"
       icon: "fab fa-fw fa-youtube"
       url: "https://www.youtube.com/@polylogcs"
+    - label: "Polyblog"
+      icon: "fas fa-fw fa-pen-nib"
+      url: "https://vasekrozhon.wordpress.com/"
 
 date_format: "%B %Y"
 
@@ -83,6 +83,8 @@ defaults:
       layout: single
       author_profile: true
 
+atom_feed:
+  hide: true
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -102,3 +104,6 @@ defaults:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+footer:
+  content: " Powered by Jekyll & Minimal Mistakes. Photo © Tomáš Princ, MFF UK"
