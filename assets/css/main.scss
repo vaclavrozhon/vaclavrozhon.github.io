@@ -1,0 +1,16 @@
+---
+# The front matter must be present.
+---
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.embedded_video {
+    max-width: 100%;
+    height: auto;
+}
