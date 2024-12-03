@@ -1,7 +1,7 @@
 ---
 layout: single # splash, single
 title: Papers
-permalink: "/papers/"
+permalink: "/research/papers/"
 katex: true
 header:
     teaser: /assets/images/vv_alps.jpg

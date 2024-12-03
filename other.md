@@ -25,13 +25,15 @@ I keep a list [here](https://www.goodreads.com/review/list/134745216?ref=nav_myb
 
 ## Blogs / Websites
 - [Astral codex ten](https://www.astralcodexten.com/) / [Slate star codex](https://slatestarcodex.com/)
+- [Asterisk](https://asteriskmag.com/)
 - [Don't worry about the vase](https://thezvi.substack.com/)
-- [Terry Tao's blog](https://terrytao.wordpress.com/)
 - [Quanta Magazine](https://www.quantamagazine.org/)
+- [Marginal revolution](https://marginalrevolution.com/)
+- [Terry Tao's blog](https://terrytao.wordpress.com/)
+- [Scott Aaronson's blog](https://scottaaronson.blog/)
 
 ## Podcasts / Videos
 - [Dwarkesh](https://www.youtube.com/c/DwarkeshPatel)
-- [MRU](https://mru.org/courses/principles-economics-microeconomics/)
 
 ## Apps / Games
 - [Anki cards](https://ankiweb.net/about)
