@@ -35,10 +35,11 @@ I keep a list [here](https://www.goodreads.com/review/list/134745216?ref=nav_myb
 ## Podcasts / Videos
 - [Dwarkesh](https://www.youtube.com/c/DwarkeshPatel)
 
-## Apps / Games
+## Apps / Games / Other
 - [Anki cards](https://ankiweb.net/about)
 - [Forfeit](https://www.forfeit.app/)
 - [Manifold](https://manifold.markets/home)
+- [Hanabi](https://www.hanab.cards/)
 - [Baba is you](https://en.wikipedia.org/wiki/Baba_Is_You)
 - [Braid](https://en.wikipedia.org/wiki/Braid_(video_game))
 - [Antichamber](https://en.wikipedia.org/wiki/Antichamber)

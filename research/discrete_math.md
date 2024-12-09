@@ -11,7 +11,9 @@ I did some discrete math research in undergrad. Most of it is related to extreme
 
 ## Alternative characterization of graph norms
 
-Extremal graph theory is largely about studying parameters of graphs like the density of triangles, four-cycles or, more generaly, the density of some small graph $$H$$ in a larger graph. However, not all graphs $$H$$ are created equal, only some of them are useful in that their density has nice mathematical properties. One of the most basic properties is that the density behaves as a norm, these graphs $$H$$ are called *weakly norming*. A related nice property, called *step Sidorenko property*, roughly speaking says that if you make some graph look more random, the density should go down. In a paper with [Martin Doležal](https://www.math.cas.cz/index.php/members/researcher/204), [Jan Grebík](https://www.math.ucla.edu/~grebikj/), [Jan Hladký](https://www.cs.cas.cz/~hladky/), and Israel Rocha, we proved that these two properties are equivalent. 
+Extremal graph theory is largely about studying parameters of graphs and how they relate to each other. For example, given a large graph, we might be interested in its density of triangles, four-cycles or, more generaly, the density of some small graph $$H$$ in it. However, not all graphs $$H$$ are created equal, only the density of some of them has nice mathematical properties. 
+
+One of the most basic properties is that the density behaves as a norm -- these graphs $$H$$ are called *weakly norming*. A related property, called *step Sidorenko property*, roughly speaking says that if you make a large graph look more random, the density of $$H$$ in it goes down. In a paper with [Martin Doležal](https://www.math.cas.cz/index.php/members/researcher/204), [Jan Grebík](https://www.math.ucla.edu/~grebikj/), [Jan Hladký](https://www.cs.cas.cz/~hladky/), and Israel Rocha, we proved that these two properties are actually equivalent!
 
 ![Norming graphs](/assets/images/norming.png "Norming graphs")
 

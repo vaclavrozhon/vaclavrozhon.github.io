@@ -3,13 +3,12 @@ layout: single # splash, single
 title: Instance optimality
 permalink: "/research/instance_optimality/"
 katex: true
-header:
-    teaser: /assets/images/vv_alps.jpg
 ---
 
-What does it mean that an algorithm is the best one for a given task? The usual approach is to compute the time complexity of the algorithm as the function of $$n$$, always considering *the worst possible* $$n$$-bit input. Instance optimality is about getting an algorithm that is single-handedly the best for *all* inputs. 
+What does it mean that an algorithm is the best one for a given task? The usual approach is to compute the time complexity of the algorithm as the function of $$n$$, always considering *the worst possible* $$n$$-bit input. Instance optimality is about getting an algorithm that is single-handedly the best for *all* inputs at once. 
 
 
+<!--
 ## Formally 
 
 Very formally speaking, it means that our algorithm $$A$$ satisfies this:
@@ -37,6 +36,7 @@ else
 ```
 
 In most cases, this algorithm indeed kills any hope for instance optimality, but it turns out that in many interesting scenario, checking whether *input == my_favorite_input* is too costly and we can thus keep the hope for achieving instance optimality or some variant of it. Here are some examples:
+-->
 
 ## Universally-optimal Dijkstra
 
@@ -44,7 +44,7 @@ Dijkstra's algorithm is one of the most basic algorithms that we have. We use it
 
 [In a paper](https://arxiv.org/abs/2311.11793) with [Bernhard Haeupler](https://people.inf.ethz.ch/haeuplb/), [Richard Hladík](https://rihl.uralyx.cz/), [Robert Tarjan](https://www.cs.princeton.edu/people/profile/ret), and [Jakub Tětek](https://sites.google.com/view/jakub-tetek/), we showed that if the heap is even more efficent (has the so-called working-set property), Dijkstra's algorithm is even universally-optimal for this problem. 
 
-Universal optimality is a property interpolating between instance optimality and worst-case; we want to be instace-optimal with regard to how the graph looks like, but worst-case for the input weights.  
+Universal optimality is a property interpolating between instance optimality and worst-case; it basically says that however the input graph looks like, our algorithm adapts to it ideally.  
 
 [
 ![quanta picture](/assets/images/quanta.png "A picture from Quanta magazine")
