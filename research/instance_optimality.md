@@ -40,9 +40,9 @@ In most cases, this algorithm indeed kills any hope for instance optimality, but
 
 ## Universally-optimal Dijkstra
 
-Dijkstra's algorithm is one of the oldest and most important algorithms. We use it to solve the shortest path problem for which it is [not necessarily the best algorithm](https://arxiv.org/abs/2307.04139) but we know that it is the best possible algorithm for the problem of ordering the nodes by their distance from the root, if it uses a [sufficiently efficient heap](https://en.wikipedia.org/wiki/Fibonacci_heap).  
+Dijkstra's algorithm is one of the oldest and most important algorithms. We use it to solve the shortest path problem for which it is [not necessarily the best algorithm](https://arxiv.org/abs/2307.04139), but we know that it is the best possible algorithm for the problem of ordering the nodes by their distance from the root, if it uses a [sufficiently efficient heap](https://en.wikipedia.org/wiki/Fibonacci_heap).  
 
-[In a paper](https://arxiv.org/abs/2311.11793) with [Bernhard Haeupler](https://people.inf.ethz.ch/haeuplb/), [Richard Hladík](https://rihl.uralyx.cz/), [Robert Tarjan](https://www.cs.princeton.edu/people/profile/ret), and [Jakub Tětek](https://sites.google.com/view/jakub-tetek/), we showed that if the heap is even more efficent (has the so-called working-set property), Dijkstra's algorithm is even universally-optimal for this problem. 
+[In a paper](https://arxiv.org/abs/2311.11793) with [Bernhard Haeupler](https://people.inf.ethz.ch/haeuplb/), [Richard Hladík](https://rihl.uralyx.cz/), [Robert Tarjan](https://www.cs.princeton.edu/people/profile/ret), and [Jakub Tětek](https://sites.google.com/view/jakub-tetek/), we showed that if the heap is even more efficient (has the so-called working-set property), Dijkstra's algorithm is even universally-optimal for this problem. 
 
 Universal optimality is a property interpolating between instance optimality and worst-case; it basically says that however the input graph looks like, our algorithm adapts to it ideally (but we are worst-case with respect to the weights on it).  
 

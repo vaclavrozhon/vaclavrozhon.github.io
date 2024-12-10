@@ -7,7 +7,7 @@ katex: true
 
 Think of a huge network like the Internet. Each node in this network is a tiny computer that can only see its immediate neighborhood. For simplicity, let's say that in one round, any node can send any message to its neighbors, receive their messages, and run some algorithm on them. This is the model of local algorithms. 
 
-What kind of problems can and cannot be solved in this model? This is a question that many people have worked on since early 80's and we now have a pretty good understanding of it! It also seems that local algorithms are tightly related not only to distributed computing, but more generally to all kinds of parallel, sublinear, or dynamic algorithms and even fundamental questions in graph theory, probability, and measure theory. 
+What kind of problems can and cannot be solved in this model? This is a question that many people have worked on since early 80's, and we now have a pretty good understanding of it! It also seems that local algorithms are tightly related not only to distributed computing, but more generally to all kinds of parallel, sublinear, or dynamic algorithms and even fundamental questions in graph theory, probability, and measure theory. 
 
 I worked on a few aspects of local algorithms and also wrote an introductory text about them. 
 
@@ -42,7 +42,7 @@ With [Christoph Grunau](https://people.inf.ethz.ch/cgrunau/), [Sebastian Brandt]
 
 ## Connections to other fields
 
-[An amazing paper](https://arxiv.org/abs/2004.04905) of [Anton Bernshteyn](https://bahtoh-math.github.io/) showed that local algorithms can directly imply results in the field of descriptive combinatorics that tries to understand uncountable objects equipped with measure. Together with [Jan Grebík](https://www.math.ucla.edu/~grebikj/), we set out to connect the two fields, together with the model of finitary factors coming from probability theory. We used an abstract, complexity-theoretical approach that extends the classification theorems from the area of local algorithms ([here's](https://arxiv.org/abs/2103.14112) [some](https://arxiv.org/abs/2103.08394) [papers](https://arxiv.org/abs/2106.02066)). It really seems that there is some kind of underlying theory and we are in the process of revealing its facets. 
+[An amazing paper](https://arxiv.org/abs/2004.04905) of [Anton Bernshteyn](https://bahtoh-math.github.io/) showed that local algorithms can directly imply results in the field of descriptive combinatorics that tries to understand uncountable objects equipped with measure. Together with [Jan Grebík](https://www.math.ucla.edu/~grebikj/), we set out to connect the two fields, together with the model of finitary factors coming from probability theory. We used an abstract, complexity-theoretical approach that extends the classification theorems from the area of local algorithms ([here's](https://arxiv.org/abs/2103.14112) [some](https://arxiv.org/abs/2103.08394) [papers](https://arxiv.org/abs/2106.02066)). It really seems that there is some kind of underlying theory, and we are in the process of revealing its facets. 
 
 ![Complexity theory of locality?](/assets/images/comp1.png "Complexity theory of locality?")
 
