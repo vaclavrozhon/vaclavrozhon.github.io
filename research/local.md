@@ -5,7 +5,7 @@ permalink: "/research/local/"
 katex: true
 ---
 
-Think of a huge network like the Internet. Each node in this network is a tiny computer that can only see its immediate neighborhood. For simplicity, let's say that in one round, any node can send any message to its neighbors, receive their messages, and run some algorithm on them. This is the model of local algorithms. 
+Think of a huge network like the Internet. Each node in this network is a tiny computer that can only see its immediate neighborhood. Let's say that in one round, each node can send any message to its neighbors, receive their messages, and run some algorithm on them. This is the model of local algorithms. 
 
 What kind of problems can and cannot be solved in this model? This is a question that many people have worked on since early 80's, and we now have a pretty good understanding of it! It also seems that local algorithms are tightly related not only to distributed computing, but more generally to all kinds of parallel, sublinear, or dynamic algorithms and even fundamental questions in graph theory, probability, and measure theory. 
 

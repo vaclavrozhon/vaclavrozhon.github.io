@@ -9,7 +9,9 @@ header:
 
 <h3>Videos on polylog</h3>
 
-Check out the algorithm videos of the Polylog team! We are doing videos about algorithmic topics. We are trying to do videos about ideas that are not as well-known as they should be, or we try to introduce well-known ideas at least a bit differently than how it's usually done. Ideally, our videos could be of interest to a very broad range of people interested in algorithms and computer science. 
+Check out the algorithm videos of the Polylog team! 
+We create videos about algorithmic topics, focusing on ideas that are not as well-known as they should be, or presenting well-known ideas in at least a slightly different way.
+Ideally, our videos could be of interest to a very broad range of people interested in algorithms and computer science. 
 
 Here are a few examples. 
 
@@ -21,13 +23,13 @@ How do you create an algorithm for solving a scrambled Rubik's cube? This is har
 
 ## A* algorithm
 
-A* algorithm is an important heuristic variant of Dijkstra's algorithm used in practice. In this video, we develop the algorithm from the first principles, hopefully showcasing that it's actually deeper and more beautiful than how it looks on the first glance. 
+A* algorithm is an important heuristic variant of Dijkstra's algorithm used in practice. In this video, we develop the algorithm from the first principles, hopefully showcasing that it's actually deeper and more beautiful than how it looks at first glance. 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wL3uWO-KLUE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## A different way of understanding P vs NP
 
-We usually frame P vs NP as the question "If I can check the solution quickly, can I also solve the problem quickly?" In this video, we explained how you can equivalently view as the question "If I can quickly compute some function, can I quickly invert it?"
+We usually frame P vs NP as the question "If I can check the solution quickly, can I also solve the problem quickly?" In this video, we explain how you can equivalently view as the question "If I can quickly compute some function, can I quickly invert it?"
 
 The video won the unofficial fourth [Summer of Math Exposition competition](https://www.linkedin.com/in/gaborhollbeck/?locale=de_DE). 
 
@@ -47,7 +49,7 @@ Check out the pages of the other team members, they all do amazing stuff!
 
 I work mostly on writing scripts for the videos. There's always so much I want to say and can't, and there are always details we have to sweep under the rug. I always write about those [here](https://vasekrozhon.wordpress.com/), mostly just to be able to sleep well at night. But I am also humbled that a fraction of viewers reads it!
 
-I also wrote [one blog post](https://vasekrozhon.wordpress.com/2023/09/24/heuristic-arguments/) there about heuristic arguments, a topic I was thinking a lot around that time. There's a lot more I would love to write about, but I don't expect myself to manage that much of it in the coming years. 
+I also wrote [one blog post](https://vasekrozhon.wordpress.com/2023/09/24/heuristic-arguments/) there about heuristic arguments, a topic I was thinking about a lot at the time. There's a lot more I would love to write about, but I don't expect myself to manage that much of it in the coming years. 
 
 ## Why the name Polylog
 

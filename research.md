@@ -46,7 +46,7 @@ One of our instance-optimality results on Dijkstra's algorithm won the FOCS best
 
 Clustering is one of the most basic tasks in statistics or machine learning. And the most basic way of doing it is $$k$$-means. There is an enormous theoretical literature on the $$k$$-means problem, but the algorithms are mostly not practical. In a series of papers with [Christoph Grunau](https://people.inf.ethz.ch/cgrunau/) and others, we analyzed the algorithms that *are* used in practice, and developed some new ones that seem to be practical. 
 
-For example, we proved that if you use the $$k$$-means algorithm implemented in Sci-kit learn library, it always works! By that I mean that the solution returned by the algorithm can never be too far from optimal. 
+For example, we proved that the $$k$$-means algorithm implemented in the Scikit-learn library always works! By that I mean that the solution returned by the algorithm can never be too far from optimal. 
 
 [
 ![outliers](/assets/images/outliers.png "Algorithms for k-means with outliers")
@@ -63,7 +63,7 @@ I enjoy working on all kinds of algorithmic topics. This often means clustering 
 
 ## [Discrete math](/research/discrete_math/)
 
-I did some discrete math research as undergrad. Most of it is related to extremal graph theory -- an area studying various parameters of graphs by asking questions like "If a graph has $$n$$ vertices and $$m$$ edges, what's the minimum and maximum number of triangles it can have?" More concretely, I did some research on graph homomorphisms and tree embedding. 
+I did some discrete math research as an undergraduate. Most of it is related to extremal graph theory -- an area studying various parameters of graphs by asking questions like "If a graph has $$n$$ vertices and $$m$$ edges, what's the minimum and maximum number of triangles it can have?" More concretely, I did some research on graph homomorphisms and tree embedding. 
 
 [
 ![Trees](/assets/images/trees.png "Finding trees in graphs")

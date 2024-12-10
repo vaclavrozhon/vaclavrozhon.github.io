@@ -21,7 +21,7 @@ I'm a big fan!
 
 ## Books
 
-I keep a list [here](https://www.goodreads.com/review/list/134745216?ref=nav_mybooks)
+I keep a list on [Goodreads](https://www.goodreads.com/review/list/134745216?ref=nav_mybooks)
 
 ## Blogs / Websites
 - [Astral codex ten](https://www.astralcodexten.com/) / [Slate star codex](https://slatestarcodex.com/)
