@@ -108,10 +108,5 @@ atom_feed:
 footer:
   content: " Powered by Jekyll & Minimal Mistakes. Photo © Tomáš Princ, MFF UK"
 
-analytics:
-  provider: "google"
-  google:
-    tracking_id: "G-XY9KEHRCY5"
-
 
 zoom: true
