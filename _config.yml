@@ -109,3 +109,5 @@ footer:
   content: " Powered by Jekyll & Minimal Mistakes. Photo © Tomáš Princ, MFF UK"
 
 google_analytics: G-XY9KEHRCY5
+
+zoom: true
