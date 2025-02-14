@@ -1,6 +1,6 @@
 ---
 layout: single # splash, single
-title: About me
+title: Teaching
 permalink: "/teaching/"
 katex: true
 header:
@@ -11,4 +11,5 @@ header:
 # Spring 2025
 
 [Probabilistic lenses](teaching/2025/lenses.md)
+
 [Creating math videos](teaching/2025/videos.md)

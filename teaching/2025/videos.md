@@ -1,6 +1,6 @@
 ---
 layout: single # splash, single
-title: Creating math videos
+title: Creating math videos (Spring 2025)
 permalink: "/teaching/2025/videos"
 katex: true
 ---

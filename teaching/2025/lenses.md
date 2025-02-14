@@ -1,6 +1,6 @@
 ---
 layout: single # splash, single
-title: Probabilistic lenses
+title: Probabilistic lenses (Spring 2025)
 permalink: "/teaching/2025/lenses"
 katex: true
 ---

@@ -3,6 +3,8 @@ main:
     url: "/"
   - title: "Polylog"
     url: "/polylog/" 
+  - title: "Teaching"
+    url: "/teaching/" 
   - title: "Research"
     url: "/research/" 
   - title: "Other"
