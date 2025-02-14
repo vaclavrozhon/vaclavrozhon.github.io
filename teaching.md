@@ -7,4 +7,8 @@ header:
     teaser: /assets/images/vv_alps.jpg
 ---
 
-I guess I will have to do some teaching at some point. 
+
+# Spring 2025
+
+[Probabilistic lenses](teaching/2025/lenses.md)
+[Creating math videos](teaching/2025/videos.md)
