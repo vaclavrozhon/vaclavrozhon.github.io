@@ -19,6 +19,6 @@ The seminar takes place on Monday, 14:00 in SW2.
 
 # Links
 
-Manim: https://slama.dev/manim/introduction/
+[Manim tutorial by Tom Sláma](https://slama.dev/manim/introduction/)
 
-Motion canvas: https://slama.dev/motion-canvas/introduction/
+[Motion canvas tutorial by Tom Sláma](https://slama.dev/motion-canvas/introduction/)
