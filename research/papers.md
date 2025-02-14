@@ -27,7 +27,7 @@ This page lists my papers. It is less updated than <a href="https://scholar.goog
 		Shyam Narayanan, Václav Rozhoň, Jakub Tětek, Mikkel Thorup:
 		<b>Instance-Optimality in I/O-Efficient Sampling and Sequential Estimation</b><br>
 		2024 IEEE 65th Annual Symposium on Foundations of Computer Science (FOCS)
-
+		<a href="https://arxiv.org/abs/2410.14643">[arXiv]</a>
 	</li>
 	<li>
 		Bernhard Haeupler, Richar Hladík, Václav Rozhoň, Robert Tarjan, Jakub Tětek:

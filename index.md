@@ -6,7 +6,7 @@ permalink: "/"
 
 I am an assistant professor at [Charles University in Prague](https://www.mff.cuni.cz/cs/iuuk). My [research](/research/) is in theoretical computer science. I also create algorithmic videos at [Polylog](https://www.youtube.com/@polylogcs). Here's my [resume](/assets/documents/CV.pdf). 
 
-Before coming to Charles University, I was a postdoc at the amazing [INSAIT](https://insait.ai/) in Sofia, advised by <a href="http://www.cs.cmu.edu/~haeupler/">Bernhard Haeupler</a> and even before that I did my PhD at [ETH Zurich](https://ethz.ch/en.html), advised by <a href="https://people.csail.mit.edu/ghaffari/">Mohsen Ghaffari</a>. 
+Before coming to Charles University, I was a postdoc at the amazing [INSAIT](https://insait.ai/) in Sofia, advised by <a href="http://www.cs.cmu.edu/~haeupler/">Bernhard Haeupler</a> and even before that I did my PhD at [ETH Zurich](https://ethz.ch/en.html), spending also a year as a visitor at [MIT](https://www.csail.mit.edu/people/). I was fortunate to be advised by <a href="https://people.csail.mit.edu/ghaffari/">Mohsen Ghaffari</a>. 
 
 ## Research
 
@@ -21,7 +21,7 @@ I do research in algorithms and theoretical computer science. I had lot of fun w
 I greatly enjoy creating algorithmic videos together with the [amazing Polylog team](/polylog/). Check out some of our videos! 
 [
 ![survey](/assets/images/astar.webp "Thumbnail of one of our videos")
-](/research/)
+](/polylog/)
 
 
 ## News
