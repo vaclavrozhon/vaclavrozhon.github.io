@@ -33,9 +33,7 @@ I greatly enjoy creating algorithmic videos together with the [amazing Polylog t
 *November 2024:* Our paper about Dijkstra's algorithm has won the best paper award at FOCS 2024 and was featured by the excellent [Quanta Magazine](https://www.quantamagazine.org/computer-scientists-establish-the-best-way-to-traverse-a-graph-20241025/) and [Wired](https://www.wired.com/story/scientists-establish-the-best-algorithm-for-traversing-a-map/)!
 
 
-Credits: photo by Tomáš Princ, MFF UK
-
-<!-- counts visits to the website -->
+<small>Credits: photo by Tomáš Princ, MFF UK</small>
 <a href='https://clustrmaps.com/site/1bmo6'  title='Visit tracker'>
 	<img width="3px" src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=n&d=9aXYg_RgDaFX-gpCSUfu2XgbYVYCPqAAv6pkRFMlbTU'/>
 </a>
