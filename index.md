@@ -10,7 +10,7 @@ Before coming to Charles University, I was a postdoc at the amazing [INSAIT](htt
 
 ## Research
 
-I do research in algorithms and theoretical computer science. I had lot of fun writing about some of my research [here](/research/). 
+I do research in algorithms and theoretical computer science. I had a lot of fun writing about some of my research [here](/research/). 
 
 [
 ![survey](/assets/images/collage.png "Bunch of images from the survey")
@@ -26,9 +26,14 @@ I greatly enjoy creating algorithmic videos together with the [amazing Polylog t
 
 ## News
 
-*January 2025:* I started working at Charles University. 
+*March 2025:* Check out our [latest Polylog video](https://www.youtube.com/watch?v=Otvcbw6k4eo&t=1s) about interactive proofs!
+
+*January 2025:* I started working at Charles University. [A short interview in Czech](https://www.matfyz.cz/clanky/vaclav-rozhon-veda-je-socialni-proces).
 
 *November 2024:* Our paper about Dijkstra's algorithm has won the best paper award at FOCS 2024 and was featured by the excellent [Quanta Magazine](https://www.quantamagazine.org/computer-scientists-establish-the-best-way-to-traverse-a-graph-20241025/) and [Wired](https://www.wired.com/story/scientists-establish-the-best-algorithm-for-traversing-a-map/)!
+
+
+Credits: photo by Tomáš Princ, MFF UK
 
 <!-- counts visits to the website -->
 <a href='https://clustrmaps.com/site/1bmo6'  title='Visit tracker'>

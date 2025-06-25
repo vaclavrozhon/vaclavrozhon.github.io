@@ -7,14 +7,8 @@ header:
     teaser: /assets/images/vv_alps.jpg
 ---
 
-I have the full list of publications [here](/research/papers/) or at [Google Scholar](https://scholar.google.com/citations?user=ykSKgcMAAAAJ). But I think that I can convey more information by briefly describing some selected projects I worked on. [^honesty] In the following sections, each header/picture links to a separate page discussing the topic at greater length. 
+I have the full list of publications [here](/research/papers/) or at [Google Scholar](https://scholar.google.com/citations?user=ykSKgcMAAAAJ). But I think that I can convey more information by briefly describing some selected projects I worked on. [^honesty]
 
-
-- [Local algorithms](#local-algorithms)
-- [Instance optimality](#instance-optimality)
-- [Practical k-means algorithms](#practical-k-means-algorithms)
-- [Various algorithms](#various-algorithms)
-- [Discrete math](#earlier-work)
 
 ## [Local algorithms](/research/local/)
 

@@ -11,16 +11,23 @@ This page lists my papers. It is less updated than <a href="https://scholar.goog
 
 <ul>
 	<li>
-		Bernhard Haeupler, Richar Hladík, John Iacono, Václav Rozhoň, Robert Tarjan, Jakub Tětek:
+		Bernhard Haeupler, Richard Hladík, John Iacono, Václav Rozhoň, Robert Tarjan, Jakub Tětek:
+		<b>Bidirectional Dijkstra’s Algorithm is Instance-Optimal</b><br>
+		ACM-SIAM Symposium on Simplicity in Algorithms (SOSA) 2025; <br>
+		<a href="https://arxiv.org/abs/2410.14638">[arXiv]</a>
+	</li>
+	
+	<li>
+		Bernhard Haeupler, Richard Hladík, John Iacono, Václav Rozhoň, Robert Tarjan, Jakub Tětek:
 		<b>Fast and Simple Sorting Using Partial Information</b><br>
-		
+		ACM-SIAM Symposium on Discrete Algorithms (SODA) 2025; <br>
 		<a href="https://arxiv.org/pdf/2404.04552">[arXiv]</a>
 	</li>
 	
 	<li> 
 		Amirreza Akbari, Xavier Coiteux-Roy, Francesco d'Amore, François Le Gall, Henrik Lievonen, Darya Melnyk, Augusto Modanese, Shreyas Pai, Marc-Olivier Renou, Václav Rozhoň, Jukka Suomela
 		<b>Online Locality Meets Distributed Quantum Computing</b><br>
-
+		ACM Symposium on Theory of Computing (STOC) 2025;<br>
 		<a href="https://arxiv.org/abs/2403.01903">[arXiv]</a>
 	</li>
 	<li>
@@ -30,7 +37,7 @@ This page lists my papers. It is less updated than <a href="https://scholar.goog
 		<a href="https://arxiv.org/abs/2410.14643">[arXiv]</a>
 	</li>
 	<li>
-		Bernhard Haeupler, Richar Hladík, Václav Rozhoň, Robert Tarjan, Jakub Tětek:
+		Bernhard Haeupler, Richard Hladík, Václav Rozhoň, Robert Tarjan, Jakub Tětek:
 		<b>Universal Optimality of Dijkstra via Beyond-Worst-Case Heaps</b><br>
 		2024 IEEE 65th Annual Symposium on Foundations of Computer Science (FOCS)
 		<a href="https://arxiv.org/abs/2311.11793">[arXiv]</a>
@@ -229,7 +236,7 @@ This page lists my papers. It is less updated than <a href="https://scholar.goog
 		<b>A local approach to the Erdős-Sós conjecture</b><br>
 		SIAM Journal on Discrete Mathematics; <br>
 		<a href="https://arxiv.org/abs/1804.06791">[arXiv]</a>, 
-		<a href="/assets/documets/M118195.pdf">[pdf]</a>, 
+		<a href="/assets/documents/M118195.pdf">[pdf]</a>, 
 		<a href="/assets/presentations/mittagseminar.pdf">[slides]</a> <!--for 
 		<a href="https://www.ti.inf.ethz.ch/ew/mise/mittagssem.html">ETH Mittagsseminar</a>-->
 	</li>
@@ -239,7 +246,7 @@ This page lists my papers. It is less updated than <a href="https://scholar.goog
 		<b>A version of the Loebl-Komlós-Sós conjecture for skewed trees</b><br>
 		EUROCOMB 2017, European Journal on Combinatorics for EUROCOMB 2017;<br>
 		<a href="https://arxiv.org/abs/1802.00679">[arXiv]</a>, 
-		<a href="/assets/documets/Skew_LKS_abstract.pdf">[extended abstract]</a> <br>		
+		<a href="/assets/documents/Skew_LKS_abstract.pdf">[extended abstract]</a> <br>		
 	</li>
 </ul>
 <!-- publications-->
@@ -252,13 +259,13 @@ This page lists my papers. It is less updated than <a href="https://scholar.goog
         [<a href="/assets/presentations/thesis.pdf">slides</a>]
     </li>
 	<li>
-		Master thesis. <br> <a href="/assets/documets/master_thesis.pdf">[pdf]</a>
+		Master thesis. <br> <a href="/assets/documents/master_thesis.pdf">[pdf]</a>
 	</li>
 	<li>
-		Study text about probability for high school students (in Czech) <br> [<a href = "/assets/documets/uvod1s.pdf">1</a>,<a href = "/assets/documets/uvod2s.pdf">2</a>,<a href = "/assets/documets/uvod3s.pdf">3</a>]
+		Study text about probability for high school students (in Czech) <br> [<a href = "/assets/documents/uvod1s.pdf">1</a>,<a href = "/assets/documents/uvod2s.pdf">2</a>,<a href = "/assets/documents/uvod3s.pdf">3</a>]
 	</li>
 	<li>
-		Bachelor thesis. <br> <a href="/assets/documets/bachelor_thesis.pdf">[pdf]</a>
+		Bachelor thesis. <br> <a href="/assets/documents/bachelor_thesis.pdf">[pdf]</a>
 		<!--Won first place at <a href="https://svoc2018.science.upjs.sk/vysledky.html">SVOČ competition</a>, -->[<a href="/assets/presentations/svoc-2018.pdf">slides</a>]
 	</li>
 
