@@ -26,7 +26,7 @@ I greatly enjoy creating algorithmic videos together with the [amazing Polylog t
 
 ## News
 
-*March 2025:* Check out our [latest Polylog video](https://www.youtube.com/watch?v=Otvcbw6k4eo&t=1s) about interactive proofs!
+*March 2025:* Check out our [latest Polylog video](https://www.youtube.com/watch?v=Otvcbw6k4eo&t=1s) about zero-knowledge proofs!
 
 *January 2025:* I started working at Charles University. [A short interview in Czech](https://www.matfyz.cz/clanky/vaclav-rozhon-veda-je-socialni-proces).
 
