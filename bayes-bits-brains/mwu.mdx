@@ -1,0 +1,141 @@
+# Multiplicative weights update <a id="multiplicative-weights"></a>
+
+In the [chapter about machine learning](07-machine_learning), we've seen how KL divergence guides us all the way from having a rough guess about our data to a well-defined optimization problem with a concrete loss function. This is where KL divergence really shines and shows us the way.
+
+But there's one more step missing -- how do we actually solve that final optimization problem? This is where understanding KL isn't necessarily the most important thing. In a few lucky cases (like estimating mean/variance or linear regression), we have explicit formulas for the solution and can just plug numbers into those formulas.
+
+Most machine learning problems, however, are NP hard ($k$-means, neural net optimization) and we try to solve them using some kind of locally-improving algorithm, typically gradient descent. This chapter is about a variant of this algorithm called _multiplicative weights update_.
+
+In this chapter, we'll understand how the algorithm connects to KL divergence and discuss a few applications.
+
+<KeyTakeaway>
+Multiplicative weights update is a useful algorithmic trick based on treating probabilities multiplicatively. 
+</KeyTakeaway>
+
+
+## Basic algorithm
+
+Let's return to one of our riddles:
+
+Say we want to get rich by investing in the stock market. Fortunately, there are $n$ investors willing to share their advice with us: Each day $t$, they give us some advice, and at the end of the day, we learn how good that advice was—for the $i$-th expert, we'll have gain $g_i^{(t)}$.  
+
+Our general investing strategy is this: We start with a uniform distribution $p_1^{(0)}, \dots, p_n^{(0)}, p_i^{(0)} = 1/n$ over the experts. At the beginning of each day, we sample an expert from this distribution and follow their advice. At the end of the day, we look at the gains $g_i^{(t)}$ and update $p^{(t)}$ to $p^{(t+1)}$.
+
+The question is: how should we update? Let's discuss three possible algorithms from the riddle statement. 
+
+### Gradient descent / proportional sampling
+One way is using gradient descent:
+
+<Math id="gradient" displayMode={true} math = "p_i^{(t+1)} = p_i^{(t)} + \eps \cdot g_i^{(t)}"/>
+
+where $\eps$ is the [learning rate](https://en.wikipedia.org/wiki/Learning_rate) of the algorithm. After this update, we would of course normalize the probabilities so that they sum to one. 
+
+If we define $G_i^{(t)}$ as the total accumulated gain, i.e., $G_i^{(t)} = g_i^{(1)} + \dots + g_i^{(t)}$, then we can rewrite <EqRef id = "gradient"/> simply as
+
+<Math displayMode={true} math = "p_i^{(t+1)} \propto \eps \cdot G_i^{(t)}" />
+Notice that the learning rate doesn't matter due to the normalization, so we end up with the proportional sampling rule from the riddle statement:
+
+<Math displayMode={true} math = "p_i^{(t+1)} \propto G_i^{(t)}" />
+
+This proportional rule has some problems. In the widget, you can notice that if the first expert has gained $67 and the other expert gained $33, the proportional rule goes with the top expert only with 2/3 probability, although it should ideally go for her with close to 100% probability. 
+
+### Follow the leader 
+Maybe sampling the next expert is not the right approach and we should simply pick the best expert so far? This algorithm—called follow the leader—is very natural and works mostly very well. There are some edge cases, though, when it behaves poorly (see the widget). 
+
+### Multiplicative weights update
+Multiplicative weights update algorithm is like the gradient descent rule <EqRef id = "gradient"/>, but uses multiplicative instead of additive updates:
+
+<Math displayMode={true} math = "p_i^{(t+1)} \propto p_i^{(t)} \cdot e^{- \eps \cdot g_i^{(t)}}" />
+
+This algorithm interpolates between gradient descent (the limit of this algorithm for $\eps \rightarrow 0$) and follow the leader (the limit for $\eps \rightarrow \infty$). 
+
+If we set $\eps$ in the right way, this turns out to be an amazing algorithm combining the strengths of both approaches. 
+The remarkable property is that if you run multiplicative weights algorithm for $t$ steps and set $\eps$ to be about $1/\sqrt{t}$, the algorithm is _always almost as good as the best expert_! In particular, it gains at most $O(\sqrt{t})$ dollars less than the best expert in expectation. <Footnote>Assuming all gains are between $0$ and $1$. If there are $n$ experts, the algorithm lacks at most <Math math = "O(\sqrt{t\log n})" /> dollars in expectation. Check out [this excellent survey](https://www.cs.princeton.edu/~arora/pubs/MWsurvey.pdf) for more math behind the algorithm and its uses in computer science. </Footnote> In other words, whatever sequence of expert gains we could come up with in our widget, MWU would always end up on top. 
+
+## Intuitions
+
+Let me give you three intuitions for why multiplicative weights update algorithm makes sense.
+
+### Bayes updating
+
+You can think of our problem as "trying to find the best expert". In this sense, the algorithm's probability distribution over experts is its "guess about who the best expert is". Whenever we learn how well each expert performed, this corresponds to learning "the likelihood of each expert being the best". Bayes' rule says our guess should be updated multiplicatively by multiplying by the likelihood—which is exactly what the algorithm does.
+
+Notice that a more precise name for the MWU algorithm might be _multiplicative probability update_ since the weights are typically thought of as probabilities. And frankly, that name sounds like a description of Bayes' rule.
+
+### Softmax intuition
+
+Let's think about all the information we learn in the first $t$ steps of our investing game. Each expert $i$ accumulated a total gain $G_i^{(t)} = g_i^{(1)} + \dots + g_i^{(t)}$. How should this total gain translate to the probability that we sample them in the $t+1$-th round?
+
+We understand this! In the chapter on [max entropy distributions](04-max_entropy), we've seen how the softmax function is the right generic way of converting numbers to probabilities. So we should have <Math math = "p_i^{(t+1)} \propto e^{\lambda \cdot G_i^{(t)}}" />. The constant $\lambda$ is a proportionality constant we have to decide on by some other means.
+
+But look -- this is exactly what the multiplicative weights algorithm is doing. It updates $p_i$ by multiplying it by <Math math = "e^{\varepsilon \cdot g_i^{(t)}}"/> in each step, so $p_i^{(t)}$ is proportional to <Math math = "e^{\varepsilon \cdot g_i^{(1)}} \cdot \dots \cdot e^{\varepsilon \cdot g_i^{(t)}} = e^{\varepsilon \cdot G_i^{(t)}}"/>. So what we call $\lambda$ in softmax is called the learning rate $\varepsilon$ in multiplicative weights.
+
+### Geometric intuition
+
+As we've seen in the [preceding chapter](07-machine_learning), it's really nice to think in terms of optimization problems that optimize loss functions. In fact, one step of gradient descent or multiplicative weights can be seen as optimizing a certain loss function. Let's see how.
+
+In our optimization problem, we start with this data: the current distribution $p^{(t)}$ and loss function $-g^{(t)}$ (loss functions are to be minimized, hence the negative sign). Notice how we try to balance two things:
+
+1. We want the new probability distribution $p^{(t+1)}$ to be close to the original one $p^{(t)}$, whatever "close" means.
+
+2. If we sample a random expert from $p^{(t+1)}$, we want them to be as good as possible for the current loss function. That is, we want to minimize $\sum_{i = 1}^n p^{(t+1)}_i \cdot (-g_i)$.
+
+With this in mind, here's an equivalent formulation of gradient descent and multiplicative weights:
+
+<Math displayMode={true} math = "p^{(t+1)}_{\text{gradient descent}} = \argmin_{p} \left(\sum_{i = 1}^n (-g_i) p_i + \eps \cdot \frac12 \sum_{i = 1}^n (p_i - p_i^{(t)})^2\right)."/>
+
+<Math displayMode={true} math = "p^{(t+1)}_{\text{multiplicative weights}} = \argmin_{p, \sum_{i=1}^n p_i = 1} \left(\sum_{i = 1}^n (-g_i) p_i + \eps \cdot \frac12 \sum_{i = 1}^n p_i \cdot \log \frac{p_i}{p_i^{(t)}} \right)."/>
+
+I'll leave it to you to check that the solution of the first optimization problem is $p_{i}^{(t+1)} = p_i^{(t)} + \eps \cdot g_i^{(t)}$<Footnote>Hint: If you differentiate the loss function with respect to $p_i$, you get <Math math = "\frac{\partial \mathcal{L}}{\partial p_i} = (-g_i) + \eps \cdot (p_i - p_i^{(t)})" />.</Footnote>, while the solution to the second optimization problem is <Math math = "p_{i}^{(t+1)} \propto p_i^{(t)} \cdot e^{-\eps \cdot (-g_i^{(t)})}" />.<Footnote>Hint: You can use Lagrange multipliers to replace the hard constraint of $\sum_{i = 1}^n p_i = 1$ with the soft constraint of $\lambda (\sum_{i = 1}^n p_i - 1)$ that goes into the loss function. After differentiating with respect to $p_i$, you get <Math math = "\frac{\partial \mathcal{L}}{\partial p_i} = (-g_i) + \eps \cdot ( \log \frac{p_i}{p_i^{(t)}} + 1) + \lambda" />.</Footnote>
+
+What I want to focus on is how both algorithms try to balance the same two constraints (stay close to original solution, make new one good on current loss), and their difference is pretty much only in how they measure distance in the space of all probability distributions.
+
+Gradient descent corresponds to assuming we should use the standard Euclidean distance (or $\ell_2$ distance) to measure distance between distributions. This is an amazing distance, and if you're optimizing in a complicated multidimensional space, it's a natural choice!
+
+But in the context of our getting-rich riddle, we're optimizing probabilities -- after all, even gradient descent has to be altered to keep projecting its solutions to the probability simplex to make any sense. In this space, the most meaningful way of measuring distances isn't Euclidean distance, but KL divergence. Hence, multiplicative weights.
+
+But wait! KL divergence can't measure distance. We've emphasized how it's important that $D(p,q) \not= D(q,p)$, which seems pretty bad for measuring distance! Fortunately, we're talking about a setup where both distributions $p = p^{(t)}, q = p^{(t+1)}$ are going to end up very close to each other, and in that case, $D(p,q) \approx D(q,p)$ (more about that in the [Fisher information section](07-fisher_info)!).
+
+The general algorithm that generalizes both gradient descent and multiplicative weights is called mirror descent. The algorithm needs to be supplied with a distance-like function. For example, KL divergence works for mirror descent, even though it's asymmetric. It's beyond our scope to analyze what properties a function needs to satisfy to work inside mirror descent. The class of functions that work is called Bregman divergences. This is why _KL divergence_ is called this way -- it's a particular instance of a Bregman divergence.
+
+## Applications
+
+Let's briefly discuss some applications of the algorithm.
+
+### Machine learning applications
+
+Multiplicative weights are a super important algorithm in machine learning. Essentially, whenever you want to recommend users [the next video](https://www.youtube.com/), provide them [some kind of web search](https://www.google.com/), or aggregate several algorithms together, you're solving a variant of our experts problem. In reinforcement learning, this is called the [multi-armed bandit problem](https://en.wikipedia.org/wiki/Multi-armed_bandit) and it's a bit more complicated than our setup. In our setup, at the end of the day we learn how well each expert performs. But in the bandit setup, we only learn the performance of the chosen expert. For example, if you recommend a certain video, you get feedback whether the user liked it, but you don't get any feedback regarding whether the user likes all the other videos you considered recommending. 
+
+This lack of knowledge about other experts makes this a problem about balancing _exploration_ and _exploitation_. The follow-the-leader strategy that worked pretty well above (except for certain special cases) is based on exploiting the knowledge of who the best expert is. But the strategy can't work by itself because you also have to explore to "find" the best expert. Fortunately, variants of the multiplicative weights algorithm still work pretty well for the bandit problem - they can very nicely balance the tradeoff between exploring (we have a distribution over all experts) and exploiting (good experts are going to dominate it). 
+
+### Algorithmic applications
+
+Here's my favorite algorithmic application of multiplicative weights that also shows how multiplicative weights connect to the idea of Bayesian updating.
+
+Consider this problem: We're given a sorted array with $n$ numbers and want to find whether it contains $42$. What's the fastest algorithm?
+
+That's easy -- just do [binary search](https://en.wikipedia.org/wiki/Binary_search). It finishes in $O(\log n)$ steps. The binary search algorithm always looks up the number in the middle of the current list and examines its value. Based on that, it can either discard the left half or the right half of the array, and continue with the other half.
+
+Here's a more complicated problem: there are again $n$ numbers $a_1, \dots, a_n$ and we want to find whether they contain some $x$. But this time, whenever we compare $a_j$ with $x$, the comparison fails with $1/3$ probability. That is, if $a_j < x$ and we compare the two, with $1/3$ probability the comparison tells us that $a_j > x$. If $a_j = x$, let's assume for simplicity that we reliably learn this.
+
+This is called the noisy binary search problem and has many applications—sometimes, comparing two objects is more complicated than comparing two numbers and may involve doing some kind of experiment which could fail.
+
+How do we solve this noisy problem? Here's a simple algorithm that finishes in expected $O(\log n)$ steps (assuming $x$ is in the input sequence). Every item in the array starts with weight $1/n$ and we'll keep the weights summing to $1$. In each step, we compare $x$ with the element $i$ that is "in the middle" with respect to the weights: i.e., we choose $i$ such that $a_1 + \dots + a_{i-1} < 1/2$ and $a_{i+1} + \dots + a_n < 1/2$.
+
+If $x < a_i$, we got some evidence that $x$ lies to the left, so we multiply all the weights to the left by two (and normalize the weights afterwards to sum to 1). If $x > a_i$, we behave analogously, and if $x = a_i$ we finish.
+
+Let's see this algorithm in action! <Footnote>Of course, it's a bit silly to run it on an array with 15 elements where it may be faster to just check elements one-by-one. </Footnote>
+
+import NoisyBinarySearchWidget from '@/components/widgets/NoisyBinarySearchWidget';
+
+<NoisyBinarySearchWidget />
+
+You can see how this algorithm implements the general idea behind multiplicative weights: Each element of the array is kind of like an expert. You can also see how this ties nicely with our Bayesian intuition about the multiplicative weights algorithm: You can interpret our starting weights as the uniform prior for which element of the array is $x$ (recall we assume that $x$ is present) and each step of the algorithm is like a Bayesian update that updates these probabilities.
+
+Let's also revisit our original investment problem and see how different algorithms perform in various scenarios:
+
+<MWUWidget />
+
+## The important idea
+
+The focus of our minicourse was on how KL divergence and related techniques can be used to model the world around us. I think multiplicative weights are a good example of a different application -- KL can guide us to come up with the right algorithm to approach a problem!

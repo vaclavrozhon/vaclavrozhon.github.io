@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "n_snaps": 893
+  },
+  "models": {
+    "gpt2": {
+      "model": "gpt2",
+      "mean_bits": 0.4629368687461467,
+      "median_bits": 0.0
+    },
+    "meta-llama/Llama-4-Scout-17B-16E": {
+      "model": "meta-llama/Llama-4-Scout-17B-16E",
+      "mean_bits": 0.278860105506397,
+      "median_bits": 0.0
+    }
+  }
+}

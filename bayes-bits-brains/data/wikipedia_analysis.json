@@ -1,0 +1,495 @@
+{
+  "metadata": {
+    "total_items": 10,
+    "presidents": 5,
+    "countries": 5,
+    "analysis_types": [
+      "kl_divergence",
+      "deflate_compression"
+    ]
+  },
+  "kl_analysis": {
+    "baseline": {
+      "languages": [
+        "president_jefferson",
+        "president_kennedy",
+        "president_washington",
+        "country_germany",
+        "president_lincoln",
+        "country_japan",
+        "country_france",
+        "country_australia",
+        "country_brazil",
+        "president_roosevelt"
+      ],
+      "distance_matrix": {
+        "president_jefferson": {
+          "president_jefferson": 0.0,
+          "president_kennedy": 0.0501156675107155,
+          "president_washington": 0.04149913104640708,
+          "country_germany": 0.08633290355743542,
+          "president_lincoln": 0.05027645127691895,
+          "country_japan": 0.039777352473273284,
+          "country_france": 0.056591240923782996,
+          "country_australia": 0.05663295305620676,
+          "country_brazil": 0.05740329168345015,
+          "president_roosevelt": 0.04778685913806113
+        },
+        "president_kennedy": {
+          "president_jefferson": 0.05011566751071553,
+          "president_kennedy": 0.0,
+          "president_washington": 0.04531290954356133,
+          "country_germany": 0.07208501400900143,
+          "president_lincoln": 0.043760625052436275,
+          "country_japan": 0.05749202971778519,
+          "country_france": 0.06062231839469312,
+          "country_australia": 0.06034776858889172,
+          "country_brazil": 0.0561544146542132,
+          "president_roosevelt": 0.035308781070329746
+        },
+        "president_washington": {
+          "president_jefferson": 0.04149913104640711,
+          "president_kennedy": 0.04531290954356133,
+          "president_washington": 0.0,
+          "country_germany": 0.06594955497491924,
+          "president_lincoln": 0.041349877531438206,
+          "country_japan": 0.04742355413867227,
+          "country_france": 0.04563959682211366,
+          "country_australia": 0.05235313770926065,
+          "country_brazil": 0.05423782627612744,
+          "president_roosevelt": 0.04320240423676196
+        },
+        "country_germany": {
+          "president_jefferson": 0.08633290355743542,
+          "president_kennedy": 0.07208501400900143,
+          "president_washington": 0.06594955497491926,
+          "country_germany": 0.0,
+          "president_lincoln": 0.061493663927071535,
+          "country_japan": 0.06610230819916084,
+          "country_france": 0.047121642869366785,
+          "country_australia": 0.06517778175744227,
+          "country_brazil": 0.06493312960330715,
+          "president_roosevelt": 0.05057406142003245
+        },
+        "president_lincoln": {
+          "president_jefferson": 0.05027645127691895,
+          "president_kennedy": 0.04376062505243626,
+          "president_washington": 0.041349877531438206,
+          "country_germany": 0.061493663927071535,
+          "president_lincoln": 0.0,
+          "country_japan": 0.04933090852283431,
+          "country_france": 0.05600071185784441,
+          "country_australia": 0.04739838990303109,
+          "country_brazil": 0.0521993667489775,
+          "president_roosevelt": 0.04663655760806232
+        },
+        "country_japan": {
+          "president_jefferson": 0.03977735247327328,
+          "president_kennedy": 0.05749202971778519,
+          "president_washington": 0.04742355413867226,
+          "country_germany": 0.06610230819916083,
+          "president_lincoln": 0.0493309085228343,
+          "country_japan": 0.0,
+          "country_france": 0.03999198357634866,
+          "country_australia": 0.031661518000147396,
+          "country_brazil": 0.032574770581119086,
+          "president_roosevelt": 0.04421943902493256
+        },
+        "country_france": {
+          "president_jefferson": 0.05659124092378297,
+          "president_kennedy": 0.06062231839469312,
+          "president_washington": 0.045639596822113666,
+          "country_germany": 0.04712164286936679,
+          "president_lincoln": 0.056000711857844394,
+          "country_japan": 0.03999198357634865,
+          "country_france": 0.0,
+          "country_australia": 0.04431749580168423,
+          "country_brazil": 0.04576704071523781,
+          "president_roosevelt": 0.046132301224377864
+        },
+        "country_australia": {
+          "president_jefferson": 0.05663295305620676,
+          "president_kennedy": 0.06034776858889172,
+          "president_washington": 0.05235313770926067,
+          "country_germany": 0.06517778175744224,
+          "president_lincoln": 0.04739838990303109,
+          "country_japan": 0.03166151800014742,
+          "country_france": 0.04431749580168423,
+          "country_australia": 0.0,
+          "country_brazil": 0.031452886426821675,
+          "president_roosevelt": 0.05412181939968576
+        },
+        "country_brazil": {
+          "president_jefferson": 0.0574032916834501,
+          "president_kennedy": 0.05615441465421318,
+          "president_washington": 0.05423782627612739,
+          "country_germany": 0.06493312960330713,
+          "president_lincoln": 0.052199366748977495,
+          "country_japan": 0.032574770581119086,
+          "country_france": 0.045767040715237815,
+          "country_australia": 0.031452886426821675,
+          "country_brazil": 0.0,
+          "president_roosevelt": 0.0486028009138937
+        },
+        "president_roosevelt": {
+          "president_jefferson": 0.04778685913806112,
+          "president_kennedy": 0.035308781070329726,
+          "president_washington": 0.043202404236761915,
+          "country_germany": 0.050574061420032436,
+          "president_lincoln": 0.04663655760806233,
+          "country_japan": 0.04421943902493257,
+          "country_france": 0.04613230122437788,
+          "country_australia": 0.05412181939968576,
+          "country_brazil": 0.04860280091389371,
+          "president_roosevelt": 0.0
+        }
+      },
+      "entropy_values": {
+        "president_jefferson": 4.499239630784483,
+        "president_kennedy": 4.5781138294647175,
+        "president_washington": 4.513555536846765,
+        "country_germany": 4.569512866770317,
+        "president_lincoln": 4.521350120585332,
+        "country_japan": 4.50496190679037,
+        "country_france": 4.545131123183389,
+        "country_australia": 4.5171138515862586,
+        "country_brazil": 4.545954837153986,
+        "president_roosevelt": 4.520648617788666
+      },
+      "categories": {
+        "president_jefferson": "president",
+        "president_kennedy": "president",
+        "president_washington": "president",
+        "country_germany": "country",
+        "president_lincoln": "president",
+        "country_japan": "country",
+        "country_france": "country",
+        "country_australia": "country",
+        "country_brazil": "country",
+        "president_roosevelt": "president"
+      }
+    }
+  },
+  "deflate_analysis": {
+    "languages": [
+      "president_jefferson",
+      "president_kennedy",
+      "president_washington",
+      "country_germany",
+      "president_lincoln",
+      "country_japan",
+      "country_france",
+      "country_australia",
+      "country_brazil",
+      "president_roosevelt"
+    ],
+    "distance_matrix": {
+      "president_jefferson": {
+        "president_jefferson": 0.0,
+        "president_kennedy": 0.2338005694877483,
+        "president_washington": 0.028672717346376664,
+        "country_germany": 0.4087526015745182,
+        "president_lincoln": 0.1840181520676945,
+        "country_japan": 0.513861650116453,
+        "country_france": 0.35056380528865244,
+        "country_australia": 0.3799176024729384,
+        "country_brazil": 0.34363317545955724,
+        "president_roosevelt": 0.2366339885795139
+      },
+      "president_kennedy": {
+        "president_jefferson": 0.2338005694877483,
+        "president_kennedy": 0.0,
+        "president_washington": 0.2840217276610192,
+        "country_germany": 0.3844905413596198,
+        "president_lincoln": 0.15107429713585174,
+        "country_japan": 0.45769352111976924,
+        "country_france": 0.3980487668318357,
+        "country_australia": 0.4304646682707804,
+        "country_brazil": 0.3940606263167022,
+        "president_roosevelt": 0.1012073344706666
+      },
+      "president_washington": {
+        "president_jefferson": 0.028672717346376664,
+        "president_kennedy": 0.2840217276610192,
+        "president_washington": 0.0,
+        "country_germany": 0.4278684115008686,
+        "president_lincoln": 0.20254882900320753,
+        "country_japan": 0.4373526461436056,
+        "country_france": 0.3527131253839329,
+        "country_australia": 0.4531457824401517,
+        "country_brazil": 0.3601471351148493,
+        "president_roosevelt": 0.2183893724682609
+      },
+      "country_germany": {
+        "president_jefferson": 0.4087526015745182,
+        "president_kennedy": 0.3844905413596198,
+        "president_washington": 0.4278684115008686,
+        "country_germany": 0.0,
+        "president_lincoln": 0.5102004734538308,
+        "country_japan": 0.13095657134534155,
+        "country_france": 0,
+        "country_australia": 0.040918301068892104,
+        "country_brazil": 0.12144542942666375,
+        "president_roosevelt": 0.3877680848281424
+      },
+      "president_lincoln": {
+        "president_jefferson": 0.1840181520676945,
+        "president_kennedy": 0.15107429713585174,
+        "president_washington": 0.20254882900320753,
+        "country_germany": 0.5102004734538308,
+        "president_lincoln": 0.0,
+        "country_japan": 0.45973358656398444,
+        "country_france": 0.45484857195118766,
+        "country_australia": 0.42579706866245776,
+        "country_brazil": 0.370449598542218,
+        "president_roosevelt": 0.17628073973362196
+      },
+      "country_japan": {
+        "president_jefferson": 0.513861650116453,
+        "president_kennedy": 0.45769352111976924,
+        "president_washington": 0.4373526461436056,
+        "country_germany": 0.13095657134534155,
+        "president_lincoln": 0.45973358656398444,
+        "country_japan": 0.0,
+        "country_france": 0.13973946572365903,
+        "country_australia": 0.10543922460398042,
+        "country_brazil": 0.11525066571284526,
+        "president_roosevelt": 0.3028800531410135
+      },
+      "country_france": {
+        "president_jefferson": 0.35056380528865244,
+        "president_kennedy": 0.3980487668318357,
+        "president_washington": 0.3527131253839329,
+        "country_germany": 0,
+        "president_lincoln": 0.45484857195118766,
+        "country_japan": 0.13973946572365903,
+        "country_france": 0.0,
+        "country_australia": 0.11308067853735304,
+        "country_brazil": 0.1542555808375869,
+        "president_roosevelt": 0.38055677753763173
+      },
+      "country_australia": {
+        "president_jefferson": 0.3799176024729384,
+        "president_kennedy": 0.4304646682707804,
+        "president_washington": 0.4531457824401517,
+        "country_germany": 0.040918301068892104,
+        "president_lincoln": 0.42579706866245776,
+        "country_japan": 0.10543922460398042,
+        "country_france": 0.11308067853735304,
+        "country_australia": 0.0,
+        "country_brazil": 0,
+        "president_roosevelt": 0.43010750852562585
+      },
+      "country_brazil": {
+        "president_jefferson": 0.34363317545955724,
+        "president_kennedy": 0.3940606263167022,
+        "president_washington": 0.3601471351148493,
+        "country_germany": 0.12144542942666375,
+        "president_lincoln": 0.370449598542218,
+        "country_japan": 0.11525066571284526,
+        "country_france": 0.1542555808375869,
+        "country_australia": 0,
+        "country_brazil": 0.0,
+        "president_roosevelt": 0.36567104715850346
+      },
+      "president_roosevelt": {
+        "president_jefferson": 0.2366339885795139,
+        "president_kennedy": 0.1012073344706666,
+        "president_washington": 0.2183893724682609,
+        "country_germany": 0.3877680848281424,
+        "president_lincoln": 0.17628073973362196,
+        "country_japan": 0.3028800531410135,
+        "country_france": 0.38055677753763173,
+        "country_australia": 0.43010750852562585,
+        "country_brazil": 0.36567104715850346,
+        "president_roosevelt": 0.0
+      }
+    },
+    "compression_benefits": {
+      "president_jefferson": {
+        "president_jefferson": 0.95,
+        "president_kennedy": 0.14083219021490626,
+        "president_washington": 0.19342251950947603,
+        "country_germany": 0.11976744186046512,
+        "president_lincoln": 0.17797695262483995,
+        "country_japan": 0.09551148225469729,
+        "country_france": 0.11469387755102041,
+        "country_australia": 0.13296903460837886,
+        "country_brazil": 0.11579853637537667,
+        "president_roosevelt": 0.13636363636363635
+      },
+      "president_kennedy": {
+        "president_jefferson": 0.16564758198999444,
+        "president_kennedy": 0.95,
+        "president_washington": 0.15607580824972128,
+        "country_germany": 0.13372093023255813,
+        "president_lincoln": 0.20102432778489115,
+        "country_japan": 0.11221294363256785,
+        "country_france": 0.11183673469387755,
+        "country_australia": 0.12264723740133576,
+        "country_brazil": 0.11708996986655187,
+        "president_roosevelt": 0.17478912839737581
+      },
+      "president_washington": {
+        "president_jefferson": 0.19510839355197332,
+        "president_kennedy": 0.13031550068587106,
+        "president_washington": 0.95,
+        "country_germany": 0.11569767441860465,
+        "president_lincoln": 0.17349551856594111,
+        "country_japan": 0.10855949895615867,
+        "country_france": 0.11510204081632654,
+        "country_australia": 0.11171827565270188,
+        "country_brazil": 0.10934136891950065,
+        "president_roosevelt": 0.1415182755388941
+      },
+      "country_germany": {
+        "president_jefferson": 0.11673151750972763,
+        "president_kennedy": 0.11248285322359397,
+        "president_washington": 0.11315496098104794,
+        "country_germany": 0.95,
+        "president_lincoln": 0.10115236875800256,
+        "country_japan": 0.15866388308977036,
+        "country_france": 0.19387755102040816,
+        "country_australia": 0.2034001214329083,
+        "country_brazil": 0.1485148514851485,
+        "president_roosevelt": 0.1105904404873477
+      },
+      "president_lincoln": {
+        "president_jefferson": 0.14841578654808227,
+        "president_kennedy": 0.13854595336076816,
+        "president_washington": 0.1454849498327759,
+        "country_germany": 0.09476744186046511,
+        "president_lincoln": 0.95,
+        "country_japan": 0.09446764091858037,
+        "country_france": 0.08489795918367347,
+        "country_australia": 0.10868245294474803,
+        "country_brazil": 0.10073181231166595,
+        "president_roosevelt": 0.1387066541705717
+      },
+      "country_japan": {
+        "president_jefferson": 0.09894385769872151,
+        "president_kennedy": 0.10470964791952446,
+        "president_washington": 0.1164994425863991,
+        "country_germany": 0.18895348837209303,
+        "president_lincoln": 0.12163892445582586,
+        "country_japan": 0.95,
+        "country_france": 0.156734693877551,
+        "country_australia": 0.1955069823922283,
+        "country_brazil": 0.1644425312096427,
+        "president_roosevelt": 0.13636363636363635
+      },
+      "country_france": {
+        "president_jefferson": 0.14508060033351863,
+        "president_kennedy": 0.1289437585733882,
+        "president_washington": 0.14381270903010032,
+        "country_germany": 0.26976744186046514,
+        "president_lincoln": 0.13316261203585147,
+        "country_japan": 0.1873695198329854,
+        "country_france": 0.95,
+        "country_australia": 0.21068609593199758,
+        "country_brazil": 0.16401205337925095,
+        "president_roosevelt": 0.1330834114339269
+      },
+      "country_australia": {
+        "president_jefferson": 0.1150639244024458,
+        "president_kennedy": 0.10516689529035209,
+        "president_washington": 0.10702341137123746,
+        "country_germany": 0.18023255813953487,
+        "president_lincoln": 0.12099871959026888,
+        "country_japan": 0.16231732776617955,
+        "country_france": 0.14408163265306123,
+        "country_australia": 0.95,
+        "country_brazil": 0.17606543263021954,
+        "president_roosevelt": 0.09559512652296158
+      },
+      "country_brazil": {
+        "president_jefferson": 0.14674819344080045,
+        "president_kennedy": 0.12528577960676726,
+        "president_washington": 0.14659977703455965,
+        "country_germany": 0.20290697674418604,
+        "president_lincoln": 0.15108834827144688,
+        "country_japan": 0.18945720250521922,
+        "country_france": 0.1742857142857143,
+        "country_australia": 0.2537947783849423,
+        "country_brazil": 0.95,
+        "president_roosevelt": 0.1344892221180881
+      },
+      "president_roosevelt": {
+        "president_jefferson": 0.1689827682045581,
+        "president_kennedy": 0.18472793781435756,
+        "president_washington": 0.17112597547380157,
+        "country_germany": 0.13430232558139535,
+        "president_lincoln": 0.19078104993597952,
+        "country_japan": 0.14248434237995825,
+        "country_france": 0.11469387755102041,
+        "country_australia": 0.1323618700667881,
+        "country_brazil": 0.11924235901851055,
+        "president_roosevelt": 0.95
+      }
+    },
+    "baseline_compression": {
+      "president_jefferson": {
+        "original": 3204,
+        "compressed": 1799,
+        "ratio": 0.5614856429463171
+      },
+      "president_kennedy": {
+        "original": 3521,
+        "compressed": 2187,
+        "ratio": 0.621130360692985
+      },
+      "president_washington": {
+        "original": 3032,
+        "compressed": 1794,
+        "ratio": 0.591688654353562
+      },
+      "country_germany": {
+        "original": 2950,
+        "compressed": 1720,
+        "ratio": 0.5830508474576271
+      },
+      "president_lincoln": {
+        "original": 2436,
+        "compressed": 1562,
+        "ratio": 0.6412151067323482
+      },
+      "country_japan": {
+        "original": 3084,
+        "compressed": 1916,
+        "ratio": 0.6212710765239948
+      },
+      "country_france": {
+        "original": 4115,
+        "compressed": 2450,
+        "ratio": 0.5953827460510328
+      },
+      "country_australia": {
+        "original": 2719,
+        "compressed": 1647,
+        "ratio": 0.6057374034571533
+      },
+      "country_brazil": {
+        "original": 3835,
+        "compressed": 2323,
+        "ratio": 0.6057366362451109
+      },
+      "president_roosevelt": {
+        "original": 3612,
+        "compressed": 2134,
+        "ratio": 0.5908084163898117
+      }
+    },
+    "categories": {
+      "president_jefferson": "president",
+      "president_kennedy": "president",
+      "president_washington": "president",
+      "country_germany": "country",
+      "president_lincoln": "president",
+      "country_japan": "country",
+      "country_france": "country",
+      "country_australia": "country",
+      "country_brazil": "country",
+      "president_roosevelt": "president"
+    }
+  }
+}

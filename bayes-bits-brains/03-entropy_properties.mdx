@@ -1,0 +1,132 @@
+import LnVsXGraph from "@/components/widgets/LnVsXGraph";
+
+# Entropy properties
+
+In this chapter, we'll go over the fundamental properties of KL-divergence, entropy, and cross-entropy. We have already encountered most of the properties before, but it's good to understand them in more depth. 
+
+This chapter contains a few exercises. I encourage you to try them to check your understanding. 
+
+<KeyTakeaway>
+KL divergence $D(p,q)$ is always nonnegative. Equivalently, $H(p, q) \ge H(p)$.  
+</KeyTakeaway>
+
+
+
+## KL divergence can blow up
+
+
+Recall, KL divergence is algebraically defined like this:
+
+<Math id="kl-definition" displayMode={true} math="D(p,q) = \sum_{i = 1}^n p_i \log \frac{p_i}{q_i}" />
+
+Here's the biggest difference between KL and some more standard, geometrical ways of measuring distance like $\ell_1$ norm ($\sum |p_i - q_i|$) or $\ell_2$ norm (<Math math = "\sqrt{\sum (p_i - q_i)^2}" />). Consider these two possibilities: 
+
+1. $p_i = 0.5, q_i = 0.49$
+2. $p_i = 0.01, q_i = 0.0$
+
+Regular norms ($\ell_1, \ell_2$) treat these errors as roughly equivalent. But KL knows better: the first situation is basically fine, while the second is catastrophic! For example, the letters "God" are rarely followed by "zilla", but any model of language should understand that this _may_ sometimes happen. If $q(\textrm{'zilla'} \mid \textrm{'God'}) = 0.0$, the model will be infinitely surprised when 'Godzilla' appears! 
+
+
+Try making KL divergence infinite in the widget below. Next level: Try to make it infinite while keeping $\ell_1$ and $\ell_2$ norm close to zero (say $< 0.1$). 
+
+<DistributionComparisonWidget title="KL Divergence Explorer" />
+
+
+
+## KL divergence is asymmetrical<a id = "asymmetry"></a>
+
+The KL formula isn't symmetrical—in general, $D(p,q) \neq D(q,p)$. Some describe this as a disadvantage, especially when comparing KL to simple symmetric distance functions like $\ell_1$ or $\ell_2$. But I want to stress that the asymmetry is a feature, not a bug! KL measures how well a model $q$ fits the true distribution $p$. That's inherently asymmetrical, so we need an asymmetrical formula—and that's perfectly fine.
+
+In fact, that's why people call it a [_divergence_](https://en.wikipedia.org/wiki/Bregman_divergence) instead of a distance. Divergences are kind of wonky distance measures that are not necessarily symmetric.
+
+
+
+<Block headline = "Example">
+Imagine the true probability $p$ is 50%/50% (fair coin), but our model $q$ says 100%/0%. KL divergence is ... 
+<Math displayMode={true} math = "\frac12 \cdot \log \frac{1}{1} + \frac12 \cdot \log \frac{1}{0} = \infty"/>
+
+... infinite. That's because there's a 50% chance we gain infinitely many bits of evidence toward $p$ (our posterior jumps to 100% fair, 0% biased).
+
+Now flip it around: truth is 100%/0%, model is 50%/50%. Then 
+<Math displayMode={true} math = "1 \cdot \log \frac{1}{1/2} + 0 \cdot \log \frac{1}{1/2} = 1"/>
+Every flip gives us heads, so we gain one bit of evidence that the coin is biased. As we keep flipping, our belief in fairness drops exponentially fast, but it never hits zero. We've gotta account for the (exponentially unlikely) possibility that a fair coin just coincidentally came heads in all our past flips.
+</Block>
+
+Here's a question: The following widget contains two distributions—one peaky and one broad. Which KL is larger? <Footnote>KL divergence also works for continuous distributions; just replace sum by integral. More on that [later](04-mle#maximum-entropy-principle). </Footnote>
+
+<KLAsymmetryVisualizerWidget />
+
+
+## KL is nonnegative
+
+If you plug in the same distribution into KL twice, you get:
+
+<Math displayMode={true} math="D(p, p) = \sum_{i = 1}^n p_i \cdot \log \frac{p_i}{p_i} = 0" />
+
+because $\log 1 = 0$.
+Makes sense—you can't tell the truth apart from the truth. 🤷
+
+This is the only occasion on which KL can be equal to zero. Otherwise, KL divergence is always positive. This fact is sometimes called [Gibbs inequality](https://en.wikipedia.org/wiki/Gibbs%27_inequality). I think we built up a pretty good intuition for this in [the first chapter](01-kl_intro). Imagine sampling from $p$ while Bayes' rule increasingly convinces you that you're sampling from some other distribution $q$. That would be really messed up! 
+
+This is not a proof though, just an argument that the world with possibly negative KL is not worth living in. Check out the formal proof if you're curious.
+
+<Expand headline="Proof of nonnegativity">
+We want to prove that <Math math = "\sum_{i = 1}^n p_i \cdot \ln \frac{p_i}{q_i}  \ge 0" /> for any $p,q$. I've used the natural logarithm in the KL divergence definition to keep things short. 
+
+Let's estimate the logarithmic expression $\ln \frac{p_i}{q_i}$ inside the sum. Our estimate should be tight whenever $p_i = q_i$ since we know the inequality is tight for $p = q$. The best linear approximation of logarithm tight at 1 <Tooltip tooltip={<LnVsXGraph width={140} height={90} />}>is this one: $\ln (1+x) \le x$</Tooltip>. We use it like this:
+
+<Math displayMode={true} math="\begin{aligned}
+-D(p,q)
+&= \sum_{i = 1}^n p_i \cdot \ln \frac{q_i}{p_i}\\
+&\le \sum_{i = 1}^n p_i \cdot  \left( \frac{q_i}{p_i} - 1 \right)\\
+&= \sum_{i = 1}^n \left( q_i - p_i \right)\\
+&= 1 - 1 = 0
+\end{aligned}" />
+
+</Expand>
+
+Since KL can be written as the difference between cross-entropy and entropy, we can equivalently rewrite $D(p, q) \ge 0$ as
+<Math displayMode = {true} math = "H(p, q) \ge H(p)." />
+That is, the best model of $p$ that accumulates the surprisal at the least possible rate is ... 🥁 🥁 🥁 ... $p$ itself. 
+
+
+### Additivity <a id = "additivity"></a>
+
+Whenever we keep flipping coins, the total entropy/cross-entropy/relative entropy just keeps adding up. This property is called additivity and it's so natural that it's very simple to forget how important it is. We've used this property implicitly in earlier chapters, whenever we talked about repeating the flipping experiment and summing surprisals. 
+
+More formally: Say you've got a distribution pair $p$ and $q$ - think $q$ is a model of $p$ - and another pair $p'$ and $q'$. Let's use $p \otimes p'$ for the product distribution -- [a joint distribution](https://en.wikipedia.org/wiki/Joint_probability_distribution) with marginals $p,p'$ where they are independent. In this setup, we have this: 
+
+<Math displayMode={true} math="D(p \otimes p', q \otimes q') = D(p, q) + D(p', q')" />
+<Math displayMode={true} math="H(p \otimes p', q \otimes q') = H(p, q) + H(p', q')" />
+<Math displayMode={true} math="H(p \otimes p') = H(p) + H(p')" />
+
+Entropy has an even stronger property called _subadditivity_: Imagine any distribution $r$ with marginals $p, q$. Then, 
+<Math displayMode={true} math="H(r) \le H(p) + H(p')" />
+For example, imagine you flip a coin and record the same outcome twice. Then, the entropy of each record is 1 bit and subadditivity says that the total entropy is at most $2$ bits. In this case, it's actually still just 1 bit. 
+
+## Anthem battle
+
+I collected the national anthems of the USA, UK, and Australia, and put them into one file. The other text file contains anthems of a bunch of random-ish countries. For both text files, I compute the frequencies of 26 letters 'a' to 'z'. So there are two distributions $p_1$ (English-speaking) and $p_2$ (others). The question is: which one has larger entropy? And which of the two KL divergences $D(p_1, p_2), D(p_2, p_1)$ is larger? 
+
+Make your guess before revealing the answer. 
+
+<KLCalculatorWidget /> 
+
+
+
+
+
+
+
+
+## Next steps
+
+We now understand pretty well what KL divergence and cross-entropy stand for. 
+
+The mini-course has two more parts. We will:
+- Pondering what happens if we try to make KL divergence small. This will explain a lot about ML loss functions, and includes some fun applications of probability to several of our riddles. Continue with the [next chapter (Maximum likelihood)](04-mle) in the menu. 
+- Play with codes and see what they can tell us about neural nets. That's the [Coding theory chapter](08-coding_theory) in the menu. 
+
+The chapters are mostly independent, so I suggest you jump to whatever sounds more interesting. See you there!
+
+

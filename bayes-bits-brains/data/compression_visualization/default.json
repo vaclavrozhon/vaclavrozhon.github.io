@@ -1,0 +1,455 @@
+{
+  "original_text": "Language models can compress text by predicting the next token",
+  "tokens": [
+    "Language",
+    " models",
+    " can",
+    " compress",
+    " text",
+    " by",
+    " predicting",
+    " the",
+    " next",
+    " token"
+  ],
+  "steps": [
+    {
+      "step_number": 0,
+      "token": "Language",
+      "token_id": 32065,
+      "context_tokens": [],
+      "top_predictions": [
+        {
+          "token": "\n",
+          "token_id": 198,
+          "probability": 0.06229859218001366
+        },
+        {
+          "token": "The",
+          "token_id": 464,
+          "probability": 0.03769990801811218
+        },
+        {
+          "token": "\"",
+          "token_id": 1,
+          "probability": 0.024113081395626068
+        },
+        {
+          "token": "A",
+          "token_id": 32,
+          "probability": 0.019402919337153435
+        },
+        {
+          "token": "I",
+          "token_id": 40,
+          "probability": 0.018320836126804352
+        }
+      ],
+      "actual_probability": 0.000038499620131915435,
+      "shannon_code_length": 15,
+      "theoretical_shannon_length": 15,
+      "shannon_code": "000000000000000",
+      "total_bits_so_far": 15
+    },
+    {
+      "step_number": 1,
+      "token": " models",
+      "token_id": 4981,
+      "context_tokens": [
+        "Language"
+      ],
+      "top_predictions": [
+        {
+          "token": "\n",
+          "token_id": 198,
+          "probability": 0.059295665472745895
+        },
+        {
+          "token": ".",
+          "token_id": 13,
+          "probability": 0.04586657136678696
+        },
+        {
+          "token": ",",
+          "token_id": 11,
+          "probability": 0.04541035369038582
+        },
+        {
+          "token": " and",
+          "token_id": 290,
+          "probability": 0.031395554542541504
+        },
+        {
+          "token": " of",
+          "token_id": 286,
+          "probability": 0.025835080072283745
+        }
+      ],
+      "actual_probability": 0.00008527007594238967,
+      "shannon_code_length": 14,
+      "theoretical_shannon_length": 14,
+      "shannon_code": "00000000000000",
+      "total_bits_so_far": 29
+    },
+    {
+      "step_number": 2,
+      "token": " can",
+      "token_id": 460,
+      "context_tokens": [
+        "Language",
+        " models"
+      ],
+      "top_predictions": [
+        {
+          "token": " of",
+          "token_id": 286,
+          "probability": 0.14392690360546112
+        },
+        {
+          "token": " are",
+          "token_id": 389,
+          "probability": 0.10273757576942444
+        },
+        {
+          "token": ",",
+          "token_id": 11,
+          "probability": 0.09502977132797241
+        },
+        {
+          "token": ".",
+          "token_id": 13,
+          "probability": 0.06485215574502945
+        },
+        {
+          "token": " and",
+          "token_id": 290,
+          "probability": 0.06315778940916061
+        }
+      ],
+      "actual_probability": 0.014926397241652012,
+      "shannon_code_length": 7,
+      "theoretical_shannon_length": 7,
+      "shannon_code": "0000000",
+      "total_bits_so_far": 36
+    },
+    {
+      "step_number": 3,
+      "token": " compress",
+      "token_id": 27413,
+      "context_tokens": [
+        "Language",
+        " models",
+        " can"
+      ],
+      "top_predictions": [
+        {
+          "token": " be",
+          "token_id": 307,
+          "probability": 0.4222051203250885
+        },
+        {
+          "token": " also",
+          "token_id": 635,
+          "probability": 0.05798064172267914
+        },
+        {
+          "token": " help",
+          "token_id": 1037,
+          "probability": 0.03428536653518677
+        },
+        {
+          "token": " have",
+          "token_id": 423,
+          "probability": 0.019400199875235558
+        },
+        {
+          "token": " provide",
+          "token_id": 2148,
+          "probability": 0.017955809831619263
+        }
+      ],
+      "actual_probability": 0.00006607078830711544,
+      "shannon_code_length": 14,
+      "theoretical_shannon_length": 14,
+      "shannon_code": "00000000000000",
+      "total_bits_so_far": 50
+    },
+    {
+      "step_number": 4,
+      "token": " text",
+      "token_id": 2420,
+      "context_tokens": [
+        "Language",
+        " models",
+        " can",
+        " compress"
+      ],
+      "top_predictions": [
+        {
+          "token": " the",
+          "token_id": 262,
+          "probability": 0.15815146267414093
+        },
+        {
+          "token": " data",
+          "token_id": 1366,
+          "probability": 0.08972301334142685
+        },
+        {
+          "token": " and",
+          "token_id": 290,
+          "probability": 0.06792571395635605
+        },
+        {
+          "token": " a",
+          "token_id": 257,
+          "probability": 0.04607177898287773
+        },
+        {
+          "token": ",",
+          "token_id": 11,
+          "probability": 0.021371815353631973
+        }
+      ],
+      "actual_probability": 0.0043093422427773476,
+      "shannon_code_length": 8,
+      "theoretical_shannon_length": 8,
+      "shannon_code": "00000000",
+      "total_bits_so_far": 58
+    },
+    {
+      "step_number": 5,
+      "token": " by",
+      "token_id": 416,
+      "context_tokens": [
+        "Language",
+        " models",
+        " can",
+        " compress",
+        " text"
+      ],
+      "top_predictions": [
+        {
+          "token": " into",
+          "token_id": 656,
+          "probability": 0.11269961297512054
+        },
+        {
+          "token": " to",
+          "token_id": 284,
+          "probability": 0.10125940293073654
+        },
+        {
+          "token": ",",
+          "token_id": 11,
+          "probability": 0.09261792153120041
+        },
+        {
+          "token": " and",
+          "token_id": 290,
+          "probability": 0.0865701362490654
+        },
+        {
+          "token": " in",
+          "token_id": 287,
+          "probability": 0.0674034059047699
+        }
+      ],
+      "actual_probability": 0.041392866522073746,
+      "shannon_code_length": 5,
+      "theoretical_shannon_length": 5,
+      "shannon_code": "00000",
+      "total_bits_so_far": 63
+    },
+    {
+      "step_number": 6,
+      "token": " predicting",
+      "token_id": 25539,
+      "context_tokens": [
+        "Language",
+        " models",
+        " can",
+        " compress",
+        " text",
+        " by"
+      ],
+      "top_predictions": [
+        {
+          "token": " a",
+          "token_id": 257,
+          "probability": 0.05399142950773239
+        },
+        {
+          "token": " using",
+          "token_id": 1262,
+          "probability": 0.051510728895664215
+        },
+        {
+          "token": " the",
+          "token_id": 262,
+          "probability": 0.01988796330988407
+        },
+        {
+          "token": " reducing",
+          "token_id": 8868,
+          "probability": 0.015496798790991306
+        },
+        {
+          "token": " adding",
+          "token_id": 4375,
+          "probability": 0.015471872873604298
+        }
+      ],
+      "actual_probability": 0.00026804860681295395,
+      "shannon_code_length": 12,
+      "theoretical_shannon_length": 12,
+      "shannon_code": "000000000000",
+      "total_bits_so_far": 75
+    },
+    {
+      "step_number": 7,
+      "token": " the",
+      "token_id": 262,
+      "context_tokens": [
+        "Language",
+        " models",
+        " can",
+        " compress",
+        " text",
+        " by",
+        " predicting"
+      ],
+      "top_predictions": [
+        {
+          "token": " the",
+          "token_id": 262,
+          "probability": 0.2981046736240387
+        },
+        {
+          "token": " how",
+          "token_id": 703,
+          "probability": 0.12006809562444687
+        },
+        {
+          "token": " its",
+          "token_id": 663,
+          "probability": 0.07076232135295868
+        },
+        {
+          "token": " what",
+          "token_id": 644,
+          "probability": 0.05563528835773468
+        },
+        {
+          "token": " their",
+          "token_id": 511,
+          "probability": 0.033820800483226776
+        }
+      ],
+      "actual_probability": 0.2981046736240387,
+      "shannon_code_length": 2,
+      "theoretical_shannon_length": 2,
+      "shannon_code": "00",
+      "total_bits_so_far": 77
+    },
+    {
+      "step_number": 8,
+      "token": " next",
+      "token_id": 1306,
+      "context_tokens": [
+        "Language",
+        " models",
+        " can",
+        " compress",
+        " text",
+        " by",
+        " predicting",
+        " the"
+      ],
+      "top_predictions": [
+        {
+          "token": " size",
+          "token_id": 2546,
+          "probability": 0.052439142018556595
+        },
+        {
+          "token": " number",
+          "token_id": 1271,
+          "probability": 0.03783683478832245
+        },
+        {
+          "token": " shape",
+          "token_id": 5485,
+          "probability": 0.025731315836310387
+        },
+        {
+          "token": " amount",
+          "token_id": 2033,
+          "probability": 0.025478534400463104
+        },
+        {
+          "token": " content",
+          "token_id": 2695,
+          "probability": 0.024855496361851692
+        }
+      ],
+      "actual_probability": 0.0014514841604977846,
+      "shannon_code_length": 10,
+      "theoretical_shannon_length": 10,
+      "shannon_code": "0000000000",
+      "total_bits_so_far": 87
+    },
+    {
+      "step_number": 9,
+      "token": " token",
+      "token_id": 11241,
+      "context_tokens": [
+        "Language",
+        " models",
+        " can",
+        " compress",
+        " text",
+        " by",
+        " predicting",
+        " the",
+        " next"
+      ],
+      "top_predictions": [
+        {
+          "token": " word",
+          "token_id": 1573,
+          "probability": 0.09589143097400665
+        },
+        {
+          "token": " sentence",
+          "token_id": 6827,
+          "probability": 0.06396817415952682
+        },
+        {
+          "token": " step",
+          "token_id": 2239,
+          "probability": 0.06151571124792099
+        },
+        {
+          "token": " line",
+          "token_id": 1627,
+          "probability": 0.04121313616633415
+        },
+        {
+          "token": " words",
+          "token_id": 2456,
+          "probability": 0.024893688037991524
+        }
+      ],
+      "actual_probability": 0.00032767571974545717,
+      "shannon_code_length": 12,
+      "theoretical_shannon_length": 12,
+      "shannon_code": "000000000000",
+      "total_bits_so_far": 99
+    }
+  ],
+  "total_bits": 99,
+  "original_bits": 496,
+  "compression_ratio": 0.19959677419354838,
+  "success": true
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "filename": "kl_intro_10kb.txt",
+    "name": "Text from this site",
+    "description": "Academic English text outside of LLM's training data"
+  },
+  {
+    "filename": "pi_digits_10kb.txt", 
+    "name": "Pi Digits",
+    "description": "a sequence of numbers that are both kind-of random and very famous"
+  },
+  {
+    "filename": "declaration_full.txt",
+    "name": "Declaration of Independence", 
+    "description": "Super-famous English text"
+  },
+  {
+    "filename": "human_mitochondrial_dna.txt",
+    "name": "Human Mitochondrial DNA",
+    "description": "Part of human genome"
+  },
+  {
+    "filename": "huffman_code_10kb.txt",
+    "name": "Code Snippet",
+    "description": "JavaScript function with typical programming patterns"
+  },
+  {
+    "filename": "repeated_phrase.txt",
+    "name": "Repeated sentence",
+    "description": "Highly structured repetitive text"
+  }
+]

@@ -1,0 +1,1966 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg824"
+   version="1.1"
+   viewBox="0.00 0.00 622.00 585.00"
+   height="585pt"
+   width="622pt">
+  <metadata
+     id="metadata830">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs828" />
+  <g
+     transform="translate(4,581)"
+     class="graph"
+     id="graph0">
+    <title
+       id="title2">%3</title>
+    <path
+       id="polygon4"
+       d="M 618,-581 V 4 H -4 v -585 z"
+       style="fill:#ffffff" />
+    <!-- R -->
+    <g
+       class="node"
+       id="node1">
+      <title
+         id="title6">R</title>
+      <path
+         id="polygon8"
+         d="m 21.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text10"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="R">
+        <path
+           id="path834"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="M 10.738734,-352.79999 H 9.5627344 v -9.772 h 3.5559996 q 1.358,0 2.072,0.742 0.714,0.742 0.714,2.072 0,1.19 -0.616,1.904 -0.616,0.714 -1.792,0.826 l 2.492,4.228 h -1.316 l -2.38,-4.172 h -1.554 z m 2.352,-5.166 q 0.742,0 1.148,-0.364 0.42,-0.378 0.42,-1.064 v -0.728 q 0,-0.686 -0.42,-1.05 -0.406,-0.378 -1.148,-0.378 h -2.352 v 3.584 z" />
+      </g>
+    </g>
+    <!-- H -->
+    <g
+       class="node"
+       id="node2">
+      <title
+         id="title13">H</title>
+      <path
+         id="polygon15"
+         d="m 64.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text17"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="H">
+        <path
+           id="path838"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 57.406734,-357.23799 h -3.808 v 4.438 h -1.176 v -9.772 h 1.176 v 4.312 h 3.808 v -4.312 h 1.176 v 9.772 h -1.176 z" />
+      </g>
+    </g>
+    <!-- E -->
+    <g
+       class="node"
+       id="node3">
+      <title
+         id="title20">E</title>
+      <path
+         id="polygon22"
+         d="m 105.5,-406.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text24"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="E">
+        <path
+           id="path842"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 93.562734,-411.79999 v -9.772 h 6.02 v 1.022 h -4.844 v 3.29 h 4.676 v 1.022 h -4.676 v 3.416 h 4.844 v 1.022 z" />
+      </g>
+    </g>
+    <!-- S -->
+    <g
+       class="node"
+       id="node4">
+      <title
+         id="title27">S</title>
+      <path
+         id="polygon29"
+         d="m 107.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text31"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="S">
+        <path
+           id="path846"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 98.474734,-352.63199 q -1.316,0 -2.156,-0.476 -0.84,-0.49 -1.386,-1.246 l 0.854,-0.7 q 0.574,0.714 1.204,1.064 0.644,0.35 1.526,0.35 1.064,0 1.623996,-0.49 0.56,-0.49 0.56,-1.372 0,-0.714 -0.406,-1.106 -0.405996,-0.406 -1.413996,-0.574 l -1.092,-0.182 q -0.714,-0.126 -1.204,-0.378 -0.476,-0.252 -0.77,-0.602 -0.294,-0.364 -0.42,-0.784 -0.126,-0.434 -0.126,-0.896 0,-1.344 0.882,-2.03 0.882,-0.686 2.38,-0.686 1.176,0 1.973996,0.392 0.812,0.392 1.302,1.106 l -0.826,0.714 q -0.406,-0.532 -0.98,-0.868 -0.573996,-0.336 -1.483996,-0.336 -0.994,0 -1.526,0.42 -0.532,0.42 -0.532,1.26 0,0.658 0.392,1.078 0.406,0.406 1.442,0.588 l 1.05,0.182 q 0.713996,0.126 1.203996,0.378 0.49,0.252 0.784,0.602 0.308,0.35 0.434,0.784 0.126,0.434 0.126,0.91 0,1.358 -0.896,2.128 -0.882,0.77 -2.519996,0.77 z" />
+      </g>
+    </g>
+    <!-- C -->
+    <g
+       class="node"
+       id="node5">
+      <title
+         id="title34">C</title>
+      <path
+         id="polygon36"
+         d="m 126.5,-288.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text38"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="C">
+        <path
+           id="path850"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 117.82473,-293.63199 q -1.792,0 -2.674,-1.302 -0.868,-1.302 -0.868,-3.752 0,-2.45 0.868,-3.752 0.882,-1.302 2.674,-1.302 0.672,0 1.162,0.182 0.49,0.182 0.84,0.49 0.35,0.308 0.588,0.7 0.238,0.378 0.42,0.77 l -1.008,0.462 q -0.126,-0.322 -0.294,-0.602 -0.168,-0.294 -0.406,-0.504 -0.224,-0.224 -0.546,-0.35 -0.308,-0.126 -0.756,-0.126 -1.162,0 -1.736,0.882 -0.56,0.882 -0.56,2.352 v 1.596 q 0,1.47 0.56,2.352 0.574,0.882 1.736,0.882 0.448,0 0.756,-0.126 0.322,-0.126 0.546,-0.336 0.238,-0.224 0.406,-0.504 0.168,-0.294 0.294,-0.616 l 1.008,0.462 q -0.182,0.406 -0.42,0.784 -0.238,0.378 -0.588,0.686 -0.35,0.308 -0.84,0.49 -0.49,0.182 -1.162,0.182 z" />
+      </g>
+    </g>
+    <!-- P -->
+    <g
+       class="node"
+       id="node6">
+      <title
+         id="title41">P</title>
+      <path
+         id="polygon43"
+         d="m 143.5,-229.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text45"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="P">
+        <path
+           id="path854"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 131.56273,-234.8 v -9.772 h 3.556 q 1.358,0 2.072,0.742 0.714,0.742 0.714,2.072 0,1.33 -0.714,2.072 -0.714,0.742 -2.072,0.742 h -2.38 v 4.144 z m 1.176,-5.166 h 2.352 q 0.742,0 1.148,-0.364 0.42,-0.378 0.42,-1.064 v -0.728 q 0,-0.686 -0.42,-1.05 -0.406,-0.378 -1.148,-0.378 h -2.352 z" />
+      </g>
+    </g>
+    <!-- Y -->
+    <g
+       class="node"
+       id="node7">
+      <title
+         id="title48">Y</title>
+      <path
+         id="polygon50"
+         d="m 186.5,-229.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text52"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="Y">
+        <path
+           id="path858"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 176.91473,-234.8 v -3.836 l -3.374,-5.936 h 1.344 l 1.4,2.548 1.19,2.226 h 0.056 l 1.218,-2.226 1.4,-2.548 h 1.316 l -3.374,5.936 v 3.836 z" />
+      </g>
+    </g>
+    <!-- N -->
+    <g
+       class="node"
+       id="node8">
+      <title
+         id="title55">N</title>
+      <path
+         id="polygon57"
+         d="m 183.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text59"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="N">
+        <path
+           id="path862"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 172.58473,-361.07399 h -0.098 v 8.274 h -1.064 v -9.772 h 1.666 l 3.332,8.19 h 0.098 v -8.19 h 1.064 v 9.772 h -1.666 z" />
+      </g>
+    </g>
+    <!-- I -->
+    <g
+       class="node"
+       id="node9">
+      <title
+         id="title62">I</title>
+      <path
+         id="polygon64"
+         d="m 226.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text66"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="I">
+        <path
+           id="path866"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 214.47873,-352.79999 v -0.938 h 2.436 v -7.896 h -2.436 v -0.938 h 6.048 v 0.938 h -2.436 v 7.896 h 2.436 v 0.938 z" />
+      </g>
+    </g>
+    <!-- O -->
+    <g
+       class="node"
+       id="node10">
+      <title
+         id="title69">O</title>
+      <path
+         id="polygon71"
+         d="m 269.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text73"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="O">
+        <path
+           id="path870"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 260.50273,-352.63199 q -0.896,0 -1.54,-0.336 -0.644,-0.35 -1.064,-0.994 -0.42,-0.644 -0.616,-1.582 -0.196,-0.938 -0.196,-2.142 0,-1.19 0.196,-2.128 0.196,-0.952 0.616,-1.596 0.42,-0.644 1.064,-0.98 0.644,-0.35 1.54,-0.35 0.896,0 1.54,0.35 0.644,0.336 1.064,0.98 0.42,0.644 0.616,1.596 0.196,0.938 0.196,2.128 0,1.204 -0.196,2.142 -0.196,0.938 -0.616,1.582 -0.42,0.644 -1.064,0.994 -0.644,0.336 -1.54,0.336 z m 0,-1.022 q 0.588,0 0.994,-0.224 0.406,-0.238 0.672,-0.658 0.266,-0.42 0.378,-1.008 0.126,-0.602 0.126,-1.344 v -1.596 q 0,-0.728 -0.126,-1.33 -0.112,-0.602 -0.378,-1.022 -0.266,-0.42 -0.672,-0.644 -0.406,-0.238 -0.994,-0.238 -0.588,0 -0.994,0.238 -0.406,0.224 -0.672,0.644 -0.266,0.42 -0.392,1.022 -0.112,0.602 -0.112,1.33 v 1.596 q 0,0.742 0.112,1.344 0.126,0.588 0.392,1.008 0.266,0.42 0.672,0.658 0.406,0.224 0.994,0.224 z" />
+      </g>
+    </g>
+    <!-- V -->
+    <g
+       class="node"
+       id="node11">
+      <title
+         id="title76">V</title>
+      <path
+         id="polygon78"
+         d="m 206.5,-170.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text80"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="V">
+        <path
+           id="path874"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 196.70473,-175.8 -2.898,-9.772 h 1.246 l 1.386,4.886 1.05,3.696 h 0.07 l 1.05,-3.696 1.386,-4.886 h 1.204 l -2.898,9.772 z" />
+      </g>
+    </g>
+    <!-- _q -->
+    <g
+       class="node"
+       id="node12">
+      <title
+         id="title83">_q</title>
+      <path
+         id="polygon85"
+         d="m 249.5,-170.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text87"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="?">
+        <path
+           id="path878"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 239.64873,-178.81 v -2.198 q 1.204,-0.056 1.89,-0.518 0.686,-0.476 0.686,-1.428 v -0.196 q 0,-0.784 -0.476,-1.176 -0.462,-0.392 -1.274,-0.392 -0.84,0 -1.344,0.462 -0.504,0.462 -0.7,1.176 l -1.05,-0.392 q 0.14,-0.462 0.392,-0.868 0.252,-0.42 0.63,-0.728 0.392,-0.308 0.91,-0.49 0.532,-0.182 1.204,-0.182 0.672,0 1.204,0.196 0.546,0.182 0.924,0.532 0.378,0.336 0.588,0.826 0.21,0.49 0.21,1.092 0,0.658 -0.238,1.162 -0.238,0.49 -0.616,0.84 -0.378,0.35 -0.868,0.574 -0.476,0.21 -0.966,0.294 v 1.414 z m 0.602,3.136 q -0.574,0 -0.812,-0.238 -0.224,-0.238 -0.224,-0.602 v -0.252 q 0,-0.364 0.224,-0.602 0.238,-0.238 0.812,-0.238 0.574,0 0.798,0.238 0.238,0.238 0.238,0.602 v 0.252 q 0,0.364 -0.238,0.602 -0.224,0.238 -0.798,0.238 z" />
+      </g>
+    </g>
+    <!-- _e -->
+    <g
+       class="node"
+       id="node13">
+      <title
+         id="title90">_e</title>
+      <path
+         id="polygon92"
+         d="m 292.5,-170.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text94"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="!">
+        <path
+           id="path882"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 283.27873,-179.062 -0.392,-3.668 v -2.842 h 1.232 v 2.842 l -0.392,3.668 z m 0.224,3.388 q -0.574,0 -0.812,-0.238 -0.224,-0.238 -0.224,-0.602 v -0.252 q 0,-0.364 0.224,-0.602 0.238,-0.238 0.812,-0.238 0.574,0 0.798,0.238 0.238,0.238 0.238,0.602 v 0.252 q 0,0.364 -0.238,0.602 -0.224,0.238 -0.798,0.238 z" />
+      </g>
+    </g>
+    <!-- _a -->
+    <g
+       class="node"
+       id="node14">
+      <title
+         id="title97">_a</title>
+      <path
+         id="polygon99"
+         d="m 335.5,-170.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text101"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="&amp;">
+        <path
+           id="path886"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 325.34073,-175.632 q -0.644,0 -1.148,-0.21 -0.49,-0.21 -0.84,-0.574 -0.336,-0.378 -0.518,-0.868 -0.182,-0.49 -0.182,-1.05 0,-0.364 0.084,-0.756 0.084,-0.392 0.294,-0.756 0.21,-0.378 0.546,-0.714 0.35,-0.35 0.882,-0.616 -0.392,-0.504 -0.658,-1.036 -0.252,-0.532 -0.252,-1.162 0,-0.532 0.196,-0.966 0.21,-0.434 0.546,-0.742 0.35,-0.322 0.812,-0.49 0.462,-0.168 0.98,-0.168 0.462,0 0.84,0.14 0.392,0.126 0.686,0.336 0.294,0.21 0.49,0.476 0.21,0.266 0.308,0.532 l -0.924,0.476 q -0.182,-0.434 -0.546,-0.714 -0.364,-0.294 -0.91,-0.294 -0.63,0 -1.008,0.392 -0.364,0.378 -0.364,0.98 v 0.112 q 0,0.224 0.056,0.434 0.056,0.21 0.168,0.448 0.126,0.224 0.308,0.49 0.196,0.266 0.462,0.602 l 1.26,1.554 1.022,1.26 h 0.07 q 0.098,-0.546 0.126,-1.246 0.028,-0.7 0.056,-1.372 h 1.974 v 0.938 h -1.05 q -0.042,0.336 -0.084,0.63 -0.042,0.294 -0.098,0.574 -0.056,0.28 -0.126,0.574 -0.07,0.28 -0.196,0.602 l 1.708,2.016 h -1.33 l -1.218,-1.442 h -0.07 q -0.196,0.728 -0.798,1.176 -0.602,0.434 -1.554,0.434 z m 0.294,-0.994 q 0.602,0 1.064,-0.252 0.462,-0.252 0.728,-0.7 l -2.436,-2.94 q -0.644,0.406 -0.91,0.924 -0.266,0.504 -0.266,1.106 v 0.21 q 0,0.756 0.504,1.204 0.504,0.448 1.316,0.448 z" />
+      </g>
+    </g>
+    <!-- _c -->
+    <g
+       class="node"
+       id="node15">
+      <title
+         id="title104">_c</title>
+      <path
+         id="polygon106"
+         d="m 308.5,-288.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text108"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label=",">
+        <path
+           id="path890"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 298.90073,-295.70399 h 1.806 l -1.61,3.878 h -0.938 z" />
+      </g>
+    </g>
+    <!-- _u -->
+    <g
+       class="node"
+       id="node16">
+      <title
+         id="title111">_u</title>
+      <path
+         id="polygon113"
+         d="m 345.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text115"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="_">
+        <path
+           id="path894"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 333.14273,-350.43399 v -1.036 h 6.72 v 1.036 z" />
+      </g>
+    </g>
+    <!-- _p -->
+    <g
+       class="node"
+       id="node17">
+      <title
+         id="title118">_p</title>
+      <path
+         id="polygon120"
+         d="m 355.5,-288.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text122"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label=".">
+        <path
+           id="path898"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 346.50273,-293.67399 q -0.574,0 -0.812,-0.238 -0.224,-0.238 -0.224,-0.602 v -0.252 q 0,-0.364 0.224,-0.602 0.238,-0.238 0.812,-0.238 0.574,0 0.798,0.238 0.238,0.238 0.238,0.602 v 0.252 q 0,0.364 -0.238,0.602 -0.224,0.238 -0.798,0.238 z" />
+      </g>
+    </g>
+    <!-- L -->
+    <g
+       class="node"
+       id="node18">
+      <title
+         id="title125">L</title>
+      <path
+         id="polygon127"
+         d="m 398.5,-288.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text129"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="L">
+        <path
+           id="path902"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 386.98273,-293.79999 v -9.772 h 1.176 v 8.75 h 4.634 v 1.022 z" />
+      </g>
+    </g>
+    <!-- A -->
+    <g
+       class="node"
+       id="node19">
+      <title
+         id="title132">A</title>
+      <path
+         id="polygon134"
+         d="m 421.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text136"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="A">
+        <path
+           id="path906"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 415.03673,-352.79999 -0.826,-2.786 h -3.43 l -0.826,2.786 h -1.218 l 2.996,-9.772 h 1.554 l 2.996,9.772 z m -2.478,-8.526 h -0.126 l -1.372,4.718 h 2.87 z" />
+      </g>
+    </g>
+    <!-- G -->
+    <g
+       class="node"
+       id="node20">
+      <title
+         id="title139">G</title>
+      <path
+         id="polygon141"
+         d="m 396.5,-229.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text143"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="G">
+        <path
+           id="path910"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 389.51873,-236.102 h -0.07 q -0.126,0.28 -0.294,0.546 -0.168,0.266 -0.434,0.476 -0.252,0.196 -0.616,0.322 -0.364,0.126 -0.868,0.126 -1.596,0 -2.38,-1.288 -0.77,-1.288 -0.77,-3.696 0,-2.52 0.854,-3.822 0.854,-1.302 2.632,-1.302 0.686,0 1.19,0.182 0.504,0.182 0.854,0.49 0.364,0.308 0.602,0.7 0.238,0.378 0.392,0.77 l -1.008,0.462 q -0.126,-0.322 -0.294,-0.602 -0.154,-0.294 -0.392,-0.504 -0.224,-0.224 -0.546,-0.35 -0.322,-0.126 -0.756,-0.126 -1.176,0 -1.736,0.882 -0.546,0.882 -0.546,2.352 v 1.512 q 0,0.742 0.112,1.358 0.112,0.602 0.364,1.05 0.266,0.448 0.672,0.7 0.42,0.238 1.022,0.238 0.952,0 1.484,-0.574 0.532,-0.574 0.532,-1.484 v -1.008 h -2.058 v -0.938 h 3.15 v 4.83 h -1.092 z" />
+      </g>
+    </g>
+    <!-- F -->
+    <g
+       class="node"
+       id="node21">
+      <title
+         id="title146">F</title>
+      <path
+         id="polygon148"
+         d="m 439.5,-229.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text150"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="F">
+        <path
+           id="path914"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 427.56273,-234.8 v -9.772 h 6.16 v 1.022 h -4.984 v 3.29 h 4.564 v 1.022 h -4.564 v 4.438 z" />
+      </g>
+    </g>
+    <!-- D -->
+    <g
+       class="node"
+       id="node22">
+      <title
+         id="title153">D</title>
+      <path
+         id="polygon155"
+         d="m 476.5,-288.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text157"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="D">
+        <path
+           id="path918"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 464.63273,-303.57199 h 2.73 q 1.792,0 2.674,1.232 0.882,1.232 0.882,3.654 0,2.422 -0.882,3.654 -0.882,1.232 -2.674,1.232 h -2.73 z m 2.674,8.75 q 1.176,0 1.764,-0.812 0.602,-0.812 0.602,-2.296 v -1.512 q 0,-1.484 -0.602,-2.296 -0.588,-0.812 -1.764,-0.812 h -1.498 v 7.728 z" />
+      </g>
+    </g>
+    <!-- T -->
+    <g
+       class="node"
+       id="node23">
+      <title
+         id="title160">T</title>
+      <path
+         id="polygon162"
+         d="m 497.5,-347.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text164"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="T">
+        <path
+           id="path922"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 489.09073,-361.54999 v 8.75 h -1.176 v -8.75 h -3.262 v -1.022 h 7.7 v 1.022 z" />
+      </g>
+    </g>
+    <!-- W -->
+    <g
+       class="node"
+       id="node24">
+      <title
+         id="title167">W</title>
+      <path
+         id="polygon169"
+         d="m 491.5,-229.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text171"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="W">
+        <path
+           id="path926"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 479.56273,-234.8 -0.77,-9.772 h 1.05 l 0.406,5.6 0.21,2.954 h 0.112 l 1.288,-6.006 h 1.316 l 1.288,6.006 h 0.112 l 0.21,-2.954 0.406,-5.6 h 1.022 l -0.77,9.772 h -1.694 l -1.19,-5.838 h -0.112 l -1.19,5.838 z" />
+      </g>
+    </g>
+    <!-- M -->
+    <g
+       class="node"
+       id="node25">
+      <title
+         id="title174">M</title>
+      <path
+         id="polygon176"
+         d="m 534.5,-229.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text178"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="M">
+        <path
+           id="path930"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 527.67273,-239.7 v -3.094 h -0.112 l -2.058,5.026 -2.058,-5.026 h -0.112 v 3.094 4.9 h -1.078 v -9.772 h 1.512 l 1.722,4.312 h 0.084 l 1.722,-4.312 h 1.456 v 9.772 h -1.078 z" />
+      </g>
+    </g>
+    <!-- Z -->
+    <g
+       class="node"
+       id="node26">
+      <title
+         id="title181">Z</title>
+      <path
+         id="polygon183"
+         d="m 470.5,-2.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text185"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="Z">
+        <path
+           id="path934"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 465.03073,-7.8000002 h -7.056 v -1.05 l 5.53,-7.6999998 h -5.292 v -1.022 h 6.58 v 1.05 l -5.544,7.6999998 h 5.782 z" />
+      </g>
+    </g>
+    <!-- Q -->
+    <g
+       class="node"
+       id="node27">
+      <title
+         id="title188">Q</title>
+      <path
+         id="polygon190"
+         d="m 513.5,-2.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text192"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="Q">
+        <path
+           id="path938"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 507.17673,-5.5040002 h -1.638 q -0.826,0 -1.218,-0.462 -0.378,-0.462 -0.378,-1.19 v -0.518 q -0.742,-0.098 -1.288,-0.476 -0.532,-0.392 -0.882,-1.022 -0.35,-0.644 -0.518,-1.5259998 -0.168,-0.896 -0.168,-1.988 0,-1.19 0.196,-2.128 0.196,-0.952 0.616,-1.596 0.42,-0.644 1.064,-0.98 0.644,-0.35 1.54,-0.35 0.896,0 1.54,0.35 0.644,0.336 1.064,0.98 0.42,0.644 0.616,1.596 0.196,0.938 0.196,2.128 0,2.198 -0.686,3.5139998 -0.686,1.302 -2.17,1.498 v 1.218 h 2.114 z m -2.674,-3.15 q 0.588,0 0.994,-0.224 0.406,-0.238 0.672,-0.658 0.266,-0.42 0.378,-1.0079998 0.126,-0.602 0.126,-1.344 v -1.596 q 0,-0.728 -0.126,-1.33 -0.112,-0.602 -0.378,-1.022 -0.266,-0.42 -0.672,-0.644 -0.406,-0.238 -0.994,-0.238 -0.588,0 -0.994,0.238 -0.406,0.224 -0.672,0.644 -0.266,0.42 -0.392,1.022 -0.112,0.602 -0.112,1.33 v 1.596 q 0,0.742 0.112,1.344 0.126,0.5879998 0.392,1.0079998 0.266,0.42 0.672,0.658 0.406,0.224 0.994,0.224 z" />
+      </g>
+    </g>
+    <!-- X -->
+    <g
+       class="node"
+       id="node28">
+      <title
+         id="title195">X</title>
+      <path
+         id="polygon197"
+         d="m 556.5,-2.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text199"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="X">
+        <path
+           id="path942"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 551.35273,-7.8000002 h -1.33 l -1.162,-1.946 -1.288,-2.1279998 h -0.056 l -1.33,2.1279998 -1.232,1.946 h -1.288 l 3.192,-4.9839998 -3.01,-4.788 h 1.33 l 1.134,1.89 1.218,1.974 h 0.056 l 1.204,-1.974 1.176,-1.89 h 1.288 l -3.024,4.774 z" />
+      </g>
+    </g>
+    <!-- J -->
+    <g
+       class="node"
+       id="node29">
+      <title
+         id="title202">J</title>
+      <path
+         id="polygon204"
+         d="m 599.5,-2.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text206"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="J">
+        <path
+           id="path946"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 593.02273,-17.572 v 7.238 q 0,0.6159998 -0.21,1.1199998 -0.21,0.504 -0.602,0.854 -0.378,0.35 -0.91,0.546 -0.532,0.182 -1.162,0.182 -1.12,0 -1.848,-0.574 -0.728,-0.588 -0.952,-1.638 l 1.12,-0.2379998 q 0.07,0.2939998 0.182,0.5599998 0.126,0.252 0.322,0.448 0.21,0.182 0.504,0.294 0.294,0.112 0.7,0.112 0.798,0 1.232,-0.448 0.448,-0.462 0.448,-1.4279998 v -6.006 h -3.528 v -1.022 z" />
+      </g>
+    </g>
+    <!-- K -->
+    <g
+       class="node"
+       id="node30">
+      <title
+         id="title209">K</title>
+      <path
+         id="polygon211"
+         d="m 572.5,-111.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text213"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="K">
+        <path
+           id="path950"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 563.06873,-121.588 -1.4,1.652 v 3.136 h -1.176 v -9.772 h 1.176 v 5.096 h 0.042 l 1.288,-1.624 2.884,-3.472 h 1.414 l -3.43,4.116 3.528,5.656 h -1.372 z" />
+      </g>
+    </g>
+    <!-- B -->
+    <g
+       class="node"
+       id="node31">
+      <title
+         id="title216">B</title>
+      <path
+         id="polygon218"
+         d="m 591.5,-170.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text220"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="B">
+        <path
+           id="path954"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 579.53473,-185.572 h 3.318 q 1.26,0 1.974,0.686 0.714,0.686 0.714,1.834 0,0.882 -0.434,1.386 -0.42,0.504 -1.092,0.714 v 0.042 q 0.826,0.196 1.358,0.742 0.532,0.532 0.532,1.554 0,0.588 -0.196,1.106 -0.196,0.518 -0.56,0.896 -0.35,0.378 -0.84,0.602 -0.476,0.21 -1.036,0.21 h -3.738 z m 3.388,8.75 q 0.812,0 1.274,-0.364 0.462,-0.364 0.462,-1.12 v -0.574 q 0,-0.742 -0.462,-1.106 -0.462,-0.378 -1.274,-0.378 h -2.212 v 3.542 z m -0.196,-4.508 q 0.742,0 1.162,-0.322 0.42,-0.336 0.42,-1.008 v -0.546 q 0,-0.672 -0.42,-1.008 -0.42,-0.336 -1.162,-0.336 h -2.016 v 3.22 z" />
+      </g>
+    </g>
+    <!-- U -->
+    <g
+       class="node"
+       id="node32">
+      <title
+         id="title223">U</title>
+      <path
+         id="polygon225"
+         d="m 610.5,-229.5 v -18 h -18 v 18 z"
+         style="fill:none;stroke:#000000" />
+      <g
+         id="text227"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="U">
+        <path
+           id="path958"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 599.59873,-244.572 v 5.866 q 0,0.714 0.042,1.274 0.042,0.56 0.224,0.966 0.182,0.392 0.56,0.602 0.392,0.21 1.078,0.21 0.686,0 1.064,-0.21 0.392,-0.21 0.574,-0.602 0.182,-0.406 0.224,-0.966 0.042,-0.56 0.042,-1.274 v -5.866 h 1.176 v 5.586 q 0,1.092 -0.112,1.904 -0.098,0.812 -0.434,1.358 -0.322,0.546 -0.938,0.826 -0.602,0.266 -1.596,0.266 -0.994,0 -1.61,-0.266 -0.602,-0.28 -0.938,-0.826 -0.322,-0.546 -0.434,-1.358 -0.098,-0.812 -0.098,-1.904 v -5.586 z" />
+      </g>
+    </g>
+    <!-- rh -->
+    <g
+       class="node"
+       id="node33">
+      <title
+         id="title230">rh</title>
+      <path
+         id="ellipse232"
+         d="m 62.5,-415.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- rh&#45;&gt;R -->
+    <g
+       class="edge"
+       id="edge1">
+      <title
+         id="title235">rh-&gt;R</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path237"
+         d="m 51.2198,-409.6272 c -5.9586,8.1758 -17.0098,23.339 -25.7851,35.3796" />
+      <path
+         id="polygon239"
+         d="m 28.0082,-371.8362 -8.7185,6.02 3.0614,-10.1429 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- rh&#45;&gt;H -->
+    <g
+       class="edge"
+       id="edge2">
+      <title
+         id="title242">rh-&gt;H</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path244"
+         d="m 55.5,-408.2654 c 0,8.0312 0,21.3261 0,32.4313" />
+      <path
+         id="polygon246"
+         d="m 59.0001,-375.7349 -3.5001,9.9999 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- re -->
+    <g
+       class="node"
+       id="node34">
+      <title
+         id="title249">re</title>
+      <path
+         id="ellipse251"
+         d="m 103.5,-470 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- re&#45;&gt;E -->
+    <g
+       class="edge"
+       id="edge4">
+      <title
+         id="title254">re-&gt;E</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path256"
+         d="m 96.5,-462.8751 c 0,7.1277 0,18.4058 0,28.1701" />
+      <path
+         id="polygon258"
+         d="m 100.0001,-434.6259 -3.5001,10 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- re&#45;&gt;rh -->
+    <g
+       class="edge"
+       id="edge3">
+      <title
+         id="title261">re-&gt;rh</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path263"
+         d="m 92.1123,-464.1675 c -6.1974,8.238 -17.7021,23.5307 -26.1668,34.7827" />
+      <path
+         id="polygon265"
+         d="m 68.542,-427.0143 -8.8087,5.8871 3.2148,-10.0953 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- py -->
+    <g
+       class="node"
+       id="node35">
+      <title
+         id="title268">py</title>
+      <path
+         id="ellipse270"
+         d="m 162.5,-297.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- py&#45;&gt;P -->
+    <g
+       class="edge"
+       id="edge5">
+      <title
+         id="title273">py-&gt;P</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path275"
+         d="m 153.091,-290.7319 c -2.8704,8.0646 -7.7879,21.8802 -11.8445,33.2775" />
+      <path
+         id="polygon277"
+         d="m 144.497,-256.1491 -6.6506,8.2474 0.0559,-10.5947 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- py&#45;&gt;Y -->
+    <g
+       class="edge"
+       id="edge6">
+      <title
+         id="title280">py-&gt;Y</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path282"
+         d="m 158.0237,-290.7319 c 3.0071,8.0646 8.1587,21.8802 12.4086,33.2775" />
+      <path
+         id="polygon284"
+         d="m 173.7798,-258.4944 0.2145,10.5927 -6.7733,-8.147 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- cy -->
+    <g
+       class="node"
+       id="node36">
+      <title
+         id="title287">cy</title>
+      <path
+         id="ellipse289"
+         d="m 143.5,-356.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- cy&#45;&gt;C -->
+    <g
+       class="edge"
+       id="edge7">
+      <title
+         id="title292">cy-&gt;C</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path294"
+         d="m 134.3205,-349.7319 c -2.5971,8.0646 -7.0462,21.8802 -10.7166,33.2775" />
+      <path
+         id="polygon296"
+         d="m 126.9246,-315.3474 -6.3969,8.4457 -0.2662,-10.5915 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- cy&#45;&gt;py -->
+    <g
+       class="edge"
+       id="edge8">
+      <title
+         id="title299">cy-&gt;py</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path301"
+         d="m 138.6795,-349.7319 c 2.8061,8.7134 7.7742,24.1407 11.586,35.9774" />
+      <path
+         id="polygon303"
+         d="m 153.612,-314.7806 -0.2661,10.5915 -6.3969,-8.4457 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- sy -->
+    <g
+       class="node"
+       id="node37">
+      <title
+         id="title306">sy</title>
+      <path
+         id="ellipse308"
+         d="m 143.5,-415.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- sy&#45;&gt;S -->
+    <g
+       class="edge"
+       id="edge9">
+      <title
+         id="title311">sy-&gt;S</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path313"
+         d="m 132.4333,-409.186 c -5.3179,8.2568 -14.8521,23.06 -22.4632,34.8771" />
+      <path
+         id="polygon315"
+         d="m 112.7531,-372.166 -8.3573,6.512 2.4723,-10.3024 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- sy&#45;&gt;cy -->
+    <g
+       class="edge"
+       id="edge10">
+      <title
+         id="title318">sy-&gt;cy</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path320"
+         d="m 136.5,-408.2654 c 0,8.4927 0,22.8717 0,34.3228" />
+      <path
+         id="polygon322"
+         d="m 140.0001,-373.7937 -3.5001,10 -3.4999,-10.0001 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- ni -->
+    <g
+       class="node"
+       id="node38">
+      <title
+         id="title325">ni</title>
+      <path
+         id="ellipse327"
+         d="m 181.5,-415.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- ni&#45;&gt;N -->
+    <g
+       class="edge"
+       id="edge11">
+      <title
+         id="title330">ni-&gt;N</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path332"
+         d="m 174.5,-408.2654 c 0,8.0312 0,21.3261 0,32.4313" />
+      <path
+         id="polygon334"
+         d="m 178.0001,-375.7349 -3.5001,9.9999 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- ni&#45;&gt;I -->
+    <g
+       class="edge"
+       id="edge12">
+      <title
+         id="title337">ni-&gt;I</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path339"
+         d="m 178.7802,-409.6272 c 5.9586,8.1758 17.0098,23.339 25.7851,35.3796" />
+      <path
+         id="polygon341"
+         d="m 207.6489,-375.9591 3.0614,10.1429 -8.7185,-6.02 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- si -->
+    <g
+       class="node"
+       id="node39">
+      <title
+         id="title344">si</title>
+      <path
+         id="ellipse346"
+         d="m 162.5,-470 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- si&#45;&gt;sy -->
+    <g
+       class="edge"
+       id="edge13">
+      <title
+         id="title349">si-&gt;sy</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path351"
+         d="m 153.1702,-463.3172 c -2.7064,7.7633 -7.2692,20.8511 -10.9376,31.3736" />
+      <path
+         id="polygon353"
+         d="m 145.4457,-430.5279 -6.5969,8.2905 -0.0129,-10.5949 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- si&#45;&gt;ni -->
+    <g
+       class="edge"
+       id="edge14">
+      <title
+         id="title356">si-&gt;ni</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path358"
+         d="m 157.8298,-463.3172 c 2.7064,7.7633 7.2692,20.8511 10.9376,31.3736" />
+      <path
+         id="polygon360"
+         d="m 172.1641,-432.8323 -0.0129,10.5949 -6.5969,-8.2905 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- ri -->
+    <g
+       class="node"
+       id="node40">
+      <title
+         id="title363">ri</title>
+      <path
+         id="ellipse365"
+         d="m 162.5,-520 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- ri&#45;&gt;re -->
+    <g
+       class="edge"
+       id="edge15">
+      <title
+         id="title368">ri-&gt;re</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path370"
+         d="m 150.0552,-515.3857 c -9.086,7.6999 -27.592,23.383 -40.2823,34.1375" />
+      <path
+         id="polygon372"
+         d="m 111.9956,-478.5441 -9.8918,3.7951 5.3661,-9.1354 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- ri&#45;&gt;si -->
+    <g
+       class="edge"
+       id="edge16">
+      <title
+         id="title375">ri-&gt;si</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path377"
+         d="m 155.5,-512.6223 c 0,6.6485 0,16.6803 0,25.3416" />
+      <path
+         id="polygon379"
+         d="m 159.0001,-487.0842 -3.5001,10 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- v_q -->
+    <g
+       class="node"
+       id="node41">
+      <title
+         id="title382">v_q</title>
+      <path
+         id="ellipse384"
+         d="m 247.5,-238.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- v_q&#45;&gt;V -->
+    <g
+       class="edge"
+       id="edge17">
+      <title
+         id="title387">v_q-&gt;V</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path389"
+         d="m 236.2198,-232.6272 c -5.9586,8.1758 -17.0098,23.339 -25.7851,35.3796" />
+      <path
+         id="polygon391"
+         d="m 213.0082,-194.8362 -8.7185,6.02 3.0614,-10.1429 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- v_q&#45;&gt;_q -->
+    <g
+       class="edge"
+       id="edge18">
+      <title
+         id="title394">v_q-&gt;_q</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path396"
+         d="m 240.5,-231.2654 c 0,8.0312 0,21.3261 0,32.4313" />
+      <path
+         id="polygon398"
+         d="m 244.0001,-198.7349 -3.5001,9.9999 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- _e_a -->
+    <g
+       class="node"
+       id="node42">
+      <title
+         id="title401">_e_a</title>
+      <path
+         id="ellipse403"
+         d="m 290.5,-238.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- _e_a&#45;&gt;_e -->
+    <g
+       class="edge"
+       id="edge19">
+      <title
+         id="title406">_e_a-&gt;_e</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path408"
+         d="m 283.5,-231.2654 c 0,8.0312 0,21.3261 0,32.4313" />
+      <path
+         id="polygon410"
+         d="m 287.0001,-198.7349 -3.5001,9.9999 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- _e_a&#45;&gt;_a -->
+    <g
+       class="edge"
+       id="edge20">
+      <title
+         id="title413">_e_a-&gt;_a</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path415"
+         d="m 287.7802,-232.6272 c 5.9586,8.1758 17.0098,23.339 25.7851,35.3796" />
+      <path
+         id="polygon417"
+         d="m 316.6489,-198.9591 3.0614,10.1429 -8.7185,-6.02 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- v_a -->
+    <g
+       class="node"
+       id="node43">
+      <title
+         id="title420">v_a</title>
+      <path
+         id="ellipse422"
+         d="m 268.5,-297.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- v_a&#45;&gt;v_q -->
+    <g
+       class="edge"
+       id="edge21">
+      <title
+         id="title425">v_a-&gt;v_q</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path427"
+         d="m 259.091,-290.7319 c -3.1014,8.7134 -8.5924,24.1407 -12.8055,35.9774" />
+      <path
+         id="polygon429"
+         d="m 249.5315,-253.4365 -6.6506,8.2474 0.0559,-10.5947 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- v_a&#45;&gt;_e_a -->
+    <g
+       class="edge"
+       id="edge22">
+      <title
+         id="title432">v_a-&gt;_e_a</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path434"
+         d="m 264.0237,-290.7319 c 3.2491,8.7134 9.0016,24.1407 13.4153,35.9774" />
+      <path
+         id="polygon436"
+         d="m 280.7913,-255.7818 0.2145,10.5927 -6.7734,-8.147 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- v_c -->
+    <g
+       class="node"
+       id="node44">
+      <title
+         id="title439">v_c</title>
+      <path
+         id="ellipse441"
+         d="m 305.5,-356.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- v_c&#45;&gt;_c -->
+    <g
+       class="edge"
+       id="edge24">
+      <title
+         id="title444">v_c-&gt;_c</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path446"
+         d="m 298.6226,-349.2654 c 0.1361,8.0312 0.3615,21.3261 0.5497,32.4313" />
+      <path
+         id="polygon448"
+         d="m 302.6734,-316.7929 -3.3299,10.0579 -3.6691,-9.9392 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- v_c&#45;&gt;v_a -->
+    <g
+       class="edge"
+       id="edge23">
+      <title
+         id="title451">v_c-&gt;v_a</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path453"
+         d="m 294.5404,-350.186 c -5.6487,9.0074 -16.1832,25.8056 -23.8423,38.0188" />
+      <path
+         id="polygon455"
+         d="m 273.5984,-310.2042 -8.2781,6.6124 2.3478,-10.3315 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- o_c -->
+    <g
+       class="node"
+       id="node45">
+      <title
+         id="title458">o_c</title>
+      <path
+         id="ellipse460"
+         d="m 305.5,-415.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- o_c&#45;&gt;O -->
+    <g
+       class="edge"
+       id="edge25">
+      <title
+         id="title463">o_c-&gt;O</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path465"
+         d="m 294.4333,-409.186 c -5.3179,8.2568 -14.8521,23.06 -22.4632,34.8771" />
+      <path
+         id="polygon467"
+         d="m 274.7531,-372.166 -8.3573,6.512 2.4723,-10.3024 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- o_c&#45;&gt;v_c -->
+    <g
+       class="edge"
+       id="edge26">
+      <title
+         id="title470">o_c-&gt;v_c</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path472"
+         d="m 298.5,-408.2654 c 0,8.4927 0,22.8717 0,34.3228" />
+      <path
+         id="polygon474"
+         d="m 302.0001,-373.7937 -3.5001,10 -3.4999,-10.0001 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- _pl -->
+    <g
+       class="node"
+       id="node46">
+      <title
+         id="title477">_pl</title>
+      <path
+         id="ellipse479"
+         d="m 381.5,-356.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- _pl&#45;&gt;_p -->
+    <g
+       class="edge"
+       id="edge27">
+      <title
+         id="title482">_pl-&gt;_p</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path484"
+         d="m 371.288,-349.7319 c -3.8663,8.1469 -10.5179,22.1628 -15.9579,33.6257" />
+      <path
+         id="polygon486"
+         d="m 358.4113,-314.4354 -7.4495,7.5337 1.1255,-10.5349 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- _pl&#45;&gt;L -->
+    <g
+       class="edge"
+       id="edge28">
+      <title
+         id="title489">_pl-&gt;L</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path491"
+         d="m 376.3393,-349.2654 c 2.0631,8.1148 5.4925,21.6037 8.3333,32.7776" />
+      <path
+         id="polygon493"
+         d="m 388.0802,-317.2891 -0.9281,10.5541 -5.8561,-8.8292 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- _ul -->
+    <g
+       class="node"
+       id="node47">
+      <title
+         id="title496">_ul</title>
+      <path
+         id="ellipse498"
+         d="m 343.5,-415.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- _ul&#45;&gt;_u -->
+    <g
+       class="edge"
+       id="edge29">
+      <title
+         id="title501">_ul-&gt;_u</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path503"
+         d="m 336.5,-408.2654 c 0,8.0312 0,21.3261 0,32.4313" />
+      <path
+         id="polygon505"
+         d="m 340.0001,-375.7349 -3.5001,9.9999 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- _ul&#45;&gt;_pl -->
+    <g
+       class="edge"
+       id="edge30">
+      <title
+         id="title508">_ul-&gt;_pl</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path510"
+         d="m 340.5667,-409.186 c 5.8013,9.0074 16.6205,25.8056 24.4866,38.0188" />
+      <path
+         id="polygon512"
+         d="m 368.1041,-372.8942 2.4724,10.3024 -8.3574,-6.512 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- ol -->
+    <g
+       class="node"
+       id="node48">
+      <title
+         id="title515">ol</title>
+      <path
+         id="ellipse517"
+         d="m 324.5,-470 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- ol&#45;&gt;o_c -->
+    <g
+       class="edge"
+       id="edge31">
+      <title
+         id="title520">ol-&gt;o_c</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path522"
+         d="m 315.1702,-463.3172 c -2.7064,7.7633 -7.2692,20.8511 -10.9376,31.3736" />
+      <path
+         id="polygon524"
+         d="m 307.4457,-430.5279 -6.5969,8.2905 -0.0129,-10.5949 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- ol&#45;&gt;_ul -->
+    <g
+       class="edge"
+       id="edge32">
+      <title
+         id="title527">ol-&gt;_ul</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path529"
+         d="m 319.8298,-463.3172 c 2.7064,7.7633 7.2692,20.8511 10.9376,31.3736" />
+      <path
+         id="polygon531"
+         d="m 334.1641,-432.8323 -0.0129,10.5949 -6.5969,-8.2905 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- gf -->
+    <g
+       class="node"
+       id="node49">
+      <title
+         id="title534">gf</title>
+      <path
+         id="ellipse536"
+         d="m 436.5,-297.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- gf&#45;&gt;G -->
+    <g
+       class="edge"
+       id="edge33">
+      <title
+         id="title539">gf-&gt;G</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path541"
+         d="m 425.3193,-291.6272 c -5.82,8.1758 -16.6142,23.339 -25.1854,35.3796" />
+      <path
+         id="polygon543"
+         d="m 402.7825,-253.9331 -8.6507,6.1169 2.9481,-10.1764 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- gf&#45;&gt;F -->
+    <g
+       class="edge"
+       id="edge34">
+      <title
+         id="title546">gf-&gt;F</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path548"
+         d="m 429.6226,-290.2654 c 0.1361,8.0312 0.3615,21.3261 0.5497,32.4313" />
+      <path
+         id="polygon550"
+         d="m 433.6734,-257.7929 -3.3299,10.0579 -3.6691,-9.9392 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- gd -->
+    <g
+       class="node"
+       id="node50">
+      <title
+         id="title553">gd</title>
+      <path
+         id="ellipse555"
+         d="m 457.5,-356.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- gd&#45;&gt;D -->
+    <g
+       class="edge"
+       id="edge36">
+      <title
+         id="title558">gd-&gt;D</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path560"
+         d="m 452.4501,-349.7319 c 2.3,7.9823 6.2234,21.5989 9.4877,32.9279" />
+      <path
+         id="polygon562"
+         d="m 465.3854,-317.4799 -0.5944,10.5782 -6.1319,-8.64 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- gd&#45;&gt;gf -->
+    <g
+       class="edge"
+       id="edge35">
+      <title
+         id="title565">gd-&gt;gf</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path567"
+         d="m 448.091,-349.7319 c -3.1014,8.7134 -8.5924,24.1407 -12.8055,35.9774" />
+      <path
+         id="polygon569"
+         d="m 438.5315,-312.4365 -6.6506,8.2474 0.0559,-10.5947 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- ad -->
+    <g
+       class="node"
+       id="node51">
+      <title
+         id="title572">ad</title>
+      <path
+         id="ellipse574"
+         d="m 438.5,-415.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- ad&#45;&gt;A -->
+    <g
+       class="edge"
+       id="edge37">
+      <title
+         id="title577">ad-&gt;A</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path579"
+         d="m 429.3205,-408.7319 c -2.5971,8.0646 -7.0462,21.8802 -10.7166,33.2775" />
+      <path
+         id="polygon581"
+         d="m 421.9246,-374.3474 -6.3969,8.4457 -0.2662,-10.5915 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- ad&#45;&gt;gd -->
+    <g
+       class="edge"
+       id="edge38">
+      <title
+         id="title584">ad-&gt;gd</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path586"
+         d="m 433.6795,-408.7319 c 2.8061,8.7134 7.7742,24.1407 11.586,35.9774" />
+      <path
+         id="polygon588"
+         d="m 448.612,-373.7806 -0.2661,10.5915 -6.3969,-8.4457 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- zq -->
+    <g
+       class="node"
+       id="node52">
+      <title
+         id="title591">zq</title>
+      <path
+         id="ellipse593"
+         d="m 511.5,-66 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- zq&#45;&gt;Z -->
+    <g
+       class="edge"
+       id="edge39">
+      <title
+         id="title596">zq-&gt;Z</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path598"
+         d="m 499.8982,-60.1675 c -5.8808,7.4536 -16.3184,20.6827 -24.8284,31.4685" />
+      <path
+         id="polygon600"
+         d="m 477.7241,-26.4125 -8.9419,5.6827 3.4464,-10.0186 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- zq&#45;&gt;Q -->
+    <g
+       class="edge"
+       id="edge40">
+      <title
+         id="title603">zq-&gt;Q</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path605"
+         d="m 504.5,-58.8751 c 0,7.1277 0,18.4058 0,28.1701" />
+      <path
+         id="polygon607"
+         d="m 508.0001,-30.6259 -3.5001,10 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- xj -->
+    <g
+       class="node"
+       id="node53">
+      <title
+         id="title610">xj</title>
+      <path
+         id="ellipse612"
+         d="m 554.5,-66 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- xj&#45;&gt;X -->
+    <g
+       class="edge"
+       id="edge41">
+      <title
+         id="title615">xj-&gt;X</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path617"
+         d="m 547.5,-58.8751 c 0,7.1277 0,18.4058 0,28.1701" />
+      <path
+         id="polygon619"
+         d="m 551.0001,-30.6259 -3.5001,10 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- xj&#45;&gt;J -->
+    <g
+       class="edge"
+       id="edge42">
+      <title
+         id="title622">xj-&gt;J</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path624"
+         d="m 552.1018,-60.1675 c 5.8808,7.4536 16.3184,20.6827 24.8284,31.4685" />
+      <path
+         id="polygon626"
+         d="m 579.7714,-30.7484 3.4464,10.0186 -8.9419,-5.6827 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- zj -->
+    <g
+       class="node"
+       id="node54">
+      <title
+         id="title629">zj</title>
+      <path
+         id="ellipse631"
+         d="m 532.5,-120.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- zj&#45;&gt;zq -->
+    <g
+       class="edge"
+       id="edge43">
+      <title
+         id="title634">zj-&gt;zq</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path636"
+         d="m 522.925,-113.8172 c -3.0229,7.845 -8.1408,21.1272 -12.2166,31.705" />
+      <path
+         id="polygon638"
+         d="m 513.9576,-80.8102 -6.8615,8.0728 0.3296,-10.5897 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- zj&#45;&gt;xj -->
+    <g
+       class="edge"
+       id="edge44">
+      <title
+         id="title641">zj-&gt;xj</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path643"
+         d="m 528.1976,-113.8172 c 3.1668,7.845 8.5285,21.1272 12.7984,31.705" />
+      <path
+         id="polygon645"
+         d="m 544.2826,-83.3206 0.4977,10.5832 -6.9888,-7.9629 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- zk -->
+    <g
+       class="node"
+       id="node55">
+      <title
+         id="title648">zk</title>
+      <path
+         id="ellipse650"
+         d="m 551.5,-179.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- zk&#45;&gt;K -->
+    <g
+       class="edge"
+       id="edge46">
+      <title
+         id="title653">zk-&gt;K</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path655"
+         d="m 546.6795,-172.7319 c 2.5971,8.0646 7.0462,21.8802 10.7166,33.2775" />
+      <path
+         id="polygon657"
+         d="m 560.7385,-140.4932 -0.2662,10.5915 -6.3969,-8.4457 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- zk&#45;&gt;zj -->
+    <g
+       class="edge"
+       id="edge45">
+      <title
+         id="title660">zk-&gt;zj</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path662"
+         d="m 542.3205,-172.7319 c -2.8061,8.7134 -7.7742,24.1407 -11.586,35.9774" />
+      <path
+         id="polygon664"
+         d="m 534.051,-135.6348 -6.3969,8.4457 -0.2661,-10.5915 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- zb -->
+    <g
+       class="node"
+       id="node56">
+      <title
+         id="title667">zb</title>
+      <path
+         id="ellipse669"
+         d="m 570.5,-238.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- zb&#45;&gt;B -->
+    <g
+       class="edge"
+       id="edge48">
+      <title
+         id="title672">zb-&gt;B</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path674"
+         d="m 565.6795,-231.7319 c 2.5971,8.0646 7.0462,21.8802 10.7166,33.2775" />
+      <path
+         id="polygon676"
+         d="m 579.7385,-199.4932 -0.2662,10.5915 -6.3969,-8.4457 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- zb&#45;&gt;zk -->
+    <g
+       class="edge"
+       id="edge47">
+      <title
+         id="title679">zb-&gt;zk</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path681"
+         d="m 561.3205,-231.7319 c -2.8061,8.7134 -7.7742,24.1407 -11.586,35.9774" />
+      <path
+         id="polygon683"
+         d="m 553.051,-194.6348 -6.3969,8.4457 -0.2661,-10.5915 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- zu -->
+    <g
+       class="node"
+       id="node57">
+      <title
+         id="title686">zu</title>
+      <path
+         id="ellipse688"
+         d="m 570.5,-297.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- zu&#45;&gt;U -->
+    <g
+       class="edge"
+       id="edge50">
+      <title
+         id="title691">zu-&gt;U</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path693"
+         d="m 567.5667,-291.186 c 5.3179,8.2568 14.8521,23.06 22.4632,34.8771" />
+      <path
+         id="polygon695"
+         d="m 593.1319,-257.9564 2.4723,10.3024 -8.3573,-6.512 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- zu&#45;&gt;zb -->
+    <g
+       class="edge"
+       id="edge49">
+      <title
+         id="title698">zu-&gt;zb</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path700"
+         d="m 563.5,-290.2654 c 0,8.4927 0,22.8717 0,34.3228" />
+      <path
+         id="polygon702"
+         d="m 567.0001,-255.7937 -3.5001,10 -3.4999,-10.0001 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- wm -->
+    <g
+       class="node"
+       id="node58">
+      <title
+         id="title705">wm</title>
+      <path
+         id="ellipse707"
+         d="m 532.5,-297.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- wm&#45;&gt;W -->
+    <g
+       class="edge"
+       id="edge51">
+      <title
+         id="title710">wm-&gt;W</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path712"
+         d="m 521.2198,-291.6272 c -5.9586,8.1758 -17.0098,23.339 -25.7851,35.3796" />
+      <path
+         id="polygon714"
+         d="m 498.0082,-253.8362 -8.7185,6.02 3.0614,-10.1429 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- wm&#45;&gt;M -->
+    <g
+       class="edge"
+       id="edge52">
+      <title
+         id="title717">wm-&gt;M</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path719"
+         d="m 525.5,-290.2654 c 0,8.0312 0,21.3261 0,32.4313" />
+      <path
+         id="polygon721"
+         d="m 529.0001,-257.7349 -3.5001,9.9999 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- wu -->
+    <g
+       class="node"
+       id="node59">
+      <title
+         id="title724">wu</title>
+      <path
+         id="ellipse726"
+         d="m 533.5,-356.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- wu&#45;&gt;zu -->
+    <g
+       class="edge"
+       id="edge54">
+      <title
+         id="title729">wu-&gt;zu</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path731"
+         d="m 530.4596,-350.186 c 5.6487,9.0074 16.1832,25.8056 23.8423,38.0188" />
+      <path
+         id="polygon733"
+         d="m 557.3319,-313.9233 2.3478,10.3315 -8.2781,-6.6124 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- wu&#45;&gt;wm -->
+    <g
+       class="edge"
+       id="edge53">
+      <title
+         id="title736">wu-&gt;wm</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path738"
+         d="m 526.3774,-349.2654 c -0.144,8.4927 -0.3877,22.8717 -0.5818,34.3228" />
+      <path
+         id="polygon740"
+         d="m 529.2927,-314.7329 -3.6691,9.9392 -3.3299,-10.0579 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- tu -->
+    <g
+       class="node"
+       id="node60">
+      <title
+         id="title743">tu</title>
+      <path
+         id="ellipse745"
+         d="m 495.5,-415.5 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- tu&#45;&gt;T -->
+    <g
+       class="edge"
+       id="edge55">
+      <title
+         id="title748">tu-&gt;T</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path750"
+         d="m 488.5,-408.2654 c 0,8.0312 0,21.3261 0,32.4313" />
+      <path
+         id="polygon752"
+         d="m 492.0001,-375.7349 -3.5001,9.9999 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- tu&#45;&gt;wu -->
+    <g
+       class="edge"
+       id="edge56">
+      <title
+         id="title755">tu-&gt;wu</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path757"
+         d="m 492.5667,-409.186 c 5.8013,9.0074 16.6205,25.8056 24.4866,38.0188" />
+      <path
+         id="polygon759"
+         d="m 520.1041,-372.8942 2.4724,10.3024 -8.3574,-6.512 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- au -->
+    <g
+       class="node"
+       id="node61">
+      <title
+         id="title762">au</title>
+      <path
+         id="ellipse764"
+         d="m 438.5,-470 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- au&#45;&gt;ad -->
+    <g
+       class="edge"
+       id="edge57">
+      <title
+         id="title767">au-&gt;ad</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path769"
+         d="m 431.5,-462.8751 c 0,7.547 0,19.747 0,29.8764" />
+      <path
+         id="polygon771"
+         d="m 435.0001,-432.8006 -3.5001,10 -3.4999,-10.0001 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- au&#45;&gt;tu -->
+    <g
+       class="edge"
+       id="edge58">
+      <title
+         id="title774">au-&gt;tu</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path776"
+         d="m 436.7603,-464.9705 c 8.8675,8.4786 27.0225,25.8374 39.2902,37.5671" />
+      <path
+         id="polygon778"
+         d="m 478.6075,-429.801 4.8091,9.4405 -9.6466,-4.381 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- ou -->
+    <g
+       class="node"
+       id="node62">
+      <title
+         id="title781">ou</title>
+      <path
+         id="ellipse783"
+         d="m 324.5,-520 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- ou&#45;&gt;ol -->
+    <g
+       class="edge"
+       id="edge59">
+      <title
+         id="title786">ou-&gt;ol</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path788"
+         d="m 317.5,-512.6223 c 0,6.6485 0,16.6803 0,25.3416" />
+      <path
+         id="polygon790"
+         d="m 321.0001,-487.0842 -3.5001,10 -3.4999,-10 z"
+         style="fill:#000000;stroke:#000000" />
+    </g>
+    <!-- ou&#45;&gt;au -->
+    <g
+       class="edge"
+       id="edge60">
+      <title
+         id="title793">ou-&gt;au</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path795"
+         d="m 323.9558,-517.1685 c 17.4746,7.6643 66.0917,28.9876 91.5438,40.1508" />
+      <path
+         id="polygon797"
+         d="m 417.079,-480.1469 7.7521,7.2219 -10.5637,-0.8114 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+    </g>
+    <!-- root -->
+    <g
+       class="node"
+       id="node63">
+      <title
+         id="title800">root</title>
+      <path
+         id="ellipse802"
+         d="m 243.5,-570 a 7,7 0 0 1 -7,7 7,7 0 0 1 -7,-7 7,7 0 0 1 7,-7 7,7 0 0 1 7,7 z"
+         style="fill:none;stroke:#000000" />
+    </g>
+    <!-- root&#45;&gt;ri -->
+    <g
+       class="edge"
+       id="edge61">
+      <title
+         id="title805">root-&gt;ri</title>
+      <path
+         style="fill:none;stroke:#000000"
+         id="path807"
+         d="m 230.4118,-566.2419 c -12.6656,7.8183 -42.165,26.0278 -60.1356,37.1208" />
+      <path
+         id="polygon809"
+         d="m 172.0066,-526.0762 -10.3478,2.2745 6.6709,-8.2311 z"
+         style="fill:#000000;stroke:#000000" />
+      <g
+         id="text811"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="0">
+        <path
+           id="path1053"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 191.48714,-548.62228 q -0.896,0 -1.54,-0.336 -0.644,-0.35 -1.064,-0.994 -0.42,-0.644 -0.616,-1.582 -0.196,-0.938 -0.196,-2.142 0,-1.19 0.196,-2.128 0.196,-0.952 0.616,-1.596 0.42,-0.644 1.064,-0.98 0.644,-0.35 1.54,-0.35 0.896,0 1.54,0.35 0.644,0.336 1.064,0.98 0.42,0.644 0.616,1.596 0.196,0.938 0.196,2.128 0,1.204 -0.196,2.142 -0.196,0.938 -0.616,1.582 -0.42,0.644 -1.064,0.994 -0.644,0.336 -1.54,0.336 z m 0,-1.022 q 0.588,0 1.008,-0.224 0.42,-0.238 0.672,-0.658 0.266,-0.42 0.392,-1.008 0.126,-0.602 0.126,-1.344 v -1.596 q 0,-0.728 -0.126,-1.33 -0.126,-0.602 -0.392,-1.022 -0.252,-0.42 -0.672,-0.644 -0.42,-0.238 -1.008,-0.238 -0.588,0 -1.008,0.238 -0.42,0.224 -0.686,0.644 -0.252,0.42 -0.378,1.022 -0.126,0.602 -0.126,1.33 v 1.596 q 0,0.742 0.126,1.344 0.126,0.588 0.378,1.008 0.266,0.42 0.686,0.658 0.42,0.224 1.008,0.224 z m 0,-3.206 q -0.49,0 -0.686,-0.196 -0.182,-0.196 -0.182,-0.476 v -0.308 q 0,-0.28 0.182,-0.476 0.196,-0.196 0.686,-0.196 0.49,0 0.672,0.196 0.196,0.196 0.196,0.476 v 0.308 q 0,0.28 -0.196,0.476 -0.182,0.196 -0.672,0.196 z" />
+      </g>
+    </g>
+    <!-- root&#45;&gt;ou -->
+    <g
+       class="edge"
+       id="edge62">
+      <title
+         id="title814">root-&gt;ou</title>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:2"
+         id="path816"
+         d="m 242.5882,-566.2419 c 12.6656,7.8183 42.165,26.0278 60.1356,37.1208" />
+      <path
+         id="polygon818"
+         d="m 304.6703,-532.0328 6.6709,8.2311 -10.3478,-2.2745 z"
+         style="fill:#000000;stroke:#000000;stroke-width:2" />
+      <g
+         id="text820"
+         style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+         aria-label="1">
+        <path
+           id="path1057"
+           style="font-size:14px;font-family:'IBM Plex Mono';text-anchor:middle;fill:#000000"
+           d="m 269.50833,-548.79028 v -1.022 h 2.8 v -7.882 h -0.098 l -2.464,2.296 -0.686,-0.742 2.59,-2.422 h 1.834 v 8.75 h 2.576 v 1.022 z" />
+      </g>
+    </g>
+  </g>
+</svg>

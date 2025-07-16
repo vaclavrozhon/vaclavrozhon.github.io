@@ -1,0 +1,6204 @@
+{
+  "metadata": {
+    "languages": [
+      "ruby",
+      "chef",
+      "java",
+      "matlab",
+      "ocaml",
+      "prolog",
+      "brainfuck",
+      "fortran",
+      "julia",
+      "cpp",
+      "haskell",
+      "rust",
+      "perl",
+      "csharp",
+      "typescript",
+      "lisp",
+      "scheme",
+      "dart",
+      "go",
+      "r",
+      "scala",
+      "php",
+      "clojure",
+      "python",
+      "lua",
+      "c",
+      "javascript"
+    ],
+    "num_languages": 27,
+    "analysis_type": "dictionary_compression"
+  },
+  "dictionary_compression": {
+    "languages": [
+      "ruby",
+      "chef",
+      "java",
+      "matlab",
+      "ocaml",
+      "prolog",
+      "brainfuck",
+      "fortran",
+      "julia",
+      "cpp",
+      "haskell",
+      "rust",
+      "perl",
+      "csharp",
+      "typescript",
+      "lisp",
+      "scheme",
+      "dart",
+      "go",
+      "r",
+      "scala",
+      "php",
+      "clojure",
+      "python",
+      "lua",
+      "c",
+      "javascript"
+    ],
+    "method": "dictionary_compression",
+    "baseline_sizes": {
+      "ruby": {
+        "original": 5481,
+        "compressed": 2442,
+        "ratio": 0.4455391351943076
+      },
+      "chef": {
+        "original": 4806,
+        "compressed": 1134,
+        "ratio": 0.23595505617977527
+      },
+      "java": {
+        "original": 9624,
+        "compressed": 3107,
+        "ratio": 0.3228387364921031
+      },
+      "matlab": {
+        "original": 2375,
+        "compressed": 954,
+        "ratio": 0.4016842105263158
+      },
+      "ocaml": {
+        "original": 6339,
+        "compressed": 2485,
+        "ratio": 0.3920176684019561
+      },
+      "prolog": {
+        "original": 5423,
+        "compressed": 2196,
+        "ratio": 0.4049419140697031
+      },
+      "brainfuck": {
+        "original": 869,
+        "compressed": 231,
+        "ratio": 0.26582278481012656
+      },
+      "fortran": {
+        "original": 12578,
+        "compressed": 4236,
+        "ratio": 0.3367785021466052
+      },
+      "julia": {
+        "original": 5360,
+        "compressed": 2355,
+        "ratio": 0.439365671641791
+      },
+      "cpp": {
+        "original": 15118,
+        "compressed": 4577,
+        "ratio": 0.3027516867310491
+      },
+      "haskell": {
+        "original": 6001,
+        "compressed": 2448,
+        "ratio": 0.40793201133144474
+      },
+      "rust": {
+        "original": 11003,
+        "compressed": 4232,
+        "ratio": 0.3846223757157139
+      },
+      "perl": {
+        "original": 5730,
+        "compressed": 2546,
+        "ratio": 0.4443280977312391
+      },
+      "csharp": {
+        "original": 25904,
+        "compressed": 7101,
+        "ratio": 0.27412754786905497
+      },
+      "typescript": {
+        "original": 3502,
+        "compressed": 1450,
+        "ratio": 0.4140491147915477
+      },
+      "lisp": {
+        "original": 6010,
+        "compressed": 2328,
+        "ratio": 0.3873544093178037
+      },
+      "scheme": {
+        "original": 5867,
+        "compressed": 2074,
+        "ratio": 0.35350264189534686
+      },
+      "dart": {
+        "original": 6419,
+        "compressed": 2427,
+        "ratio": 0.3780962766786104
+      },
+      "go": {
+        "original": 11619,
+        "compressed": 4054,
+        "ratio": 0.3489112660297788
+      },
+      "r": {
+        "original": 3140,
+        "compressed": 1299,
+        "ratio": 0.4136942675159236
+      },
+      "scala": {
+        "original": 6970,
+        "compressed": 2902,
+        "ratio": 0.4163558106169297
+      },
+      "php": {
+        "original": 5977,
+        "compressed": 2298,
+        "ratio": 0.3844738162958006
+      },
+      "clojure": {
+        "original": 7255,
+        "compressed": 2982,
+        "ratio": 0.41102687801516197
+      },
+      "python": {
+        "original": 3808,
+        "compressed": 1680,
+        "ratio": 0.4411764705882353
+      },
+      "lua": {
+        "original": 8505,
+        "compressed": 2884,
+        "ratio": 0.3390946502057613
+      },
+      "c": {
+        "original": 13976,
+        "compressed": 4625,
+        "ratio": 0.3309244419004007
+      },
+      "javascript": {
+        "original": 5679,
+        "compressed": 2166,
+        "ratio": 0.38140517696777604
+      }
+    },
+    "dictionary_sizes": {
+      "ruby": {
+        "ruby": {
+          "baseline_size": 1235,
+          "dictionary_size": 2440,
+          "compression_ratio": 1.9757085020242915,
+          "bytes_saved": -1205
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3241,
+          "compression_ratio": 2.8580246913580245,
+          "bytes_saved": -2107
+        },
+        "java": {
+          "baseline_size": 1826,
+          "dictionary_size": 4126,
+          "compression_ratio": 2.2595837897042714,
+          "bytes_saved": -2300
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 2067,
+          "compression_ratio": 2.1666666666666665,
+          "bytes_saved": -1113
+        },
+        "ocaml": {
+          "baseline_size": 2152,
+          "dictionary_size": 4447,
+          "compression_ratio": 2.066449814126394,
+          "bytes_saved": -2295
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4485,
+          "compression_ratio": 2.0423497267759565,
+          "bytes_saved": -2289
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 740,
+          "compression_ratio": 3.2034632034632033,
+          "bytes_saved": -509
+        },
+        "fortran": {
+          "baseline_size": 1895,
+          "dictionary_size": 4221,
+          "compression_ratio": 2.2274406332453824,
+          "bytes_saved": -2326
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4507,
+          "compression_ratio": 1.9138004246284501,
+          "bytes_saved": -2152
+        },
+        "cpp": {
+          "baseline_size": 1685,
+          "dictionary_size": 4016,
+          "compression_ratio": 2.3833827893175075,
+          "bytes_saved": -2331
+        },
+        "haskell": {
+          "baseline_size": 2222,
+          "dictionary_size": 4539,
+          "compression_ratio": 2.042754275427543,
+          "bytes_saved": -2317
+        },
+        "rust": {
+          "baseline_size": 2247,
+          "dictionary_size": 4543,
+          "compression_ratio": 2.0218068535825546,
+          "bytes_saved": -2296
+        },
+        "perl": {
+          "baseline_size": 2474,
+          "dictionary_size": 4654,
+          "compression_ratio": 1.8811641067097817,
+          "bytes_saved": -2180
+        },
+        "csharp": {
+          "baseline_size": 1385,
+          "dictionary_size": 3708,
+          "compression_ratio": 2.6772563176895305,
+          "bytes_saved": -2323
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2990,
+          "compression_ratio": 2.0620689655172413,
+          "bytes_saved": -1540
+        },
+        "lisp": {
+          "baseline_size": 2157,
+          "dictionary_size": 4467,
+          "compression_ratio": 2.070931849791377,
+          "bytes_saved": -2310
+        },
+        "scheme": {
+          "baseline_size": 1953,
+          "dictionary_size": 4254,
+          "compression_ratio": 2.1781874039938556,
+          "bytes_saved": -2301
+        },
+        "dart": {
+          "baseline_size": 2055,
+          "dictionary_size": 4349,
+          "compression_ratio": 2.116301703163017,
+          "bytes_saved": -2294
+        },
+        "go": {
+          "baseline_size": 1955,
+          "dictionary_size": 4269,
+          "compression_ratio": 2.183631713554987,
+          "bytes_saved": -2314
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2680,
+          "compression_ratio": 2.063125481139338,
+          "bytes_saved": -1381
+        },
+        "scala": {
+          "baseline_size": 2275,
+          "dictionary_size": 4526,
+          "compression_ratio": 1.9894505494505494,
+          "bytes_saved": -2251
+        },
+        "php": {
+          "baseline_size": 2087,
+          "dictionary_size": 4306,
+          "compression_ratio": 2.0632486823191183,
+          "bytes_saved": -2219
+        },
+        "clojure": {
+          "baseline_size": 2323,
+          "dictionary_size": 4616,
+          "compression_ratio": 1.987085665088248,
+          "bytes_saved": -2293
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3224,
+          "compression_ratio": 1.9190476190476191,
+          "bytes_saved": -1544
+        },
+        "lua": {
+          "baseline_size": 2098,
+          "dictionary_size": 4338,
+          "compression_ratio": 2.067683508102955,
+          "bytes_saved": -2240
+        },
+        "c": {
+          "baseline_size": 1897,
+          "dictionary_size": 4254,
+          "compression_ratio": 2.242488139167106,
+          "bytes_saved": -2357
+        },
+        "javascript": {
+          "baseline_size": 2096,
+          "dictionary_size": 4355,
+          "compression_ratio": 2.077767175572519,
+          "bytes_saved": -2259
+        }
+      },
+      "chef": {
+        "ruby": {
+          "baseline_size": 2144,
+          "dictionary_size": 3228,
+          "compression_ratio": 1.5055970149253732,
+          "bytes_saved": -1084
+        },
+        "chef": {
+          "baseline_size": 635,
+          "dictionary_size": 1132,
+          "compression_ratio": 1.7826771653543307,
+          "bytes_saved": -497
+        },
+        "java": {
+          "baseline_size": 1624,
+          "dictionary_size": 2724,
+          "compression_ratio": 1.6773399014778325,
+          "bytes_saved": -1100
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1564,
+          "compression_ratio": 1.6394129979035639,
+          "bytes_saved": -610
+        },
+        "ocaml": {
+          "baseline_size": 1892,
+          "dictionary_size": 3008,
+          "compression_ratio": 1.5898520084566596,
+          "bytes_saved": -1116
+        },
+        "prolog": {
+          "baseline_size": 1952,
+          "dictionary_size": 3060,
+          "compression_ratio": 1.5676229508196722,
+          "bytes_saved": -1108
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 482,
+          "compression_ratio": 2.0865800865800868,
+          "bytes_saved": -251
+        },
+        "fortran": {
+          "baseline_size": 1689,
+          "dictionary_size": 2780,
+          "compression_ratio": 1.6459443457667258,
+          "bytes_saved": -1091
+        },
+        "julia": {
+          "baseline_size": 2098,
+          "dictionary_size": 3194,
+          "compression_ratio": 1.5224022878932317,
+          "bytes_saved": -1096
+        },
+        "cpp": {
+          "baseline_size": 1579,
+          "dictionary_size": 2689,
+          "compression_ratio": 1.7029765674477517,
+          "bytes_saved": -1110
+        },
+        "haskell": {
+          "baseline_size": 1949,
+          "dictionary_size": 3050,
+          "compression_ratio": 1.564905079527963,
+          "bytes_saved": -1101
+        },
+        "rust": {
+          "baseline_size": 2025,
+          "dictionary_size": 3129,
+          "compression_ratio": 1.5451851851851852,
+          "bytes_saved": -1104
+        },
+        "perl": {
+          "baseline_size": 2133,
+          "dictionary_size": 3241,
+          "compression_ratio": 1.5194561650257852,
+          "bytes_saved": -1108
+        },
+        "csharp": {
+          "baseline_size": 1170,
+          "dictionary_size": 2270,
+          "compression_ratio": 1.9401709401709402,
+          "bytes_saved": -1100
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2310,
+          "compression_ratio": 1.5931034482758621,
+          "bytes_saved": -860
+        },
+        "lisp": {
+          "baseline_size": 1908,
+          "dictionary_size": 2995,
+          "compression_ratio": 1.569706498951782,
+          "bytes_saved": -1087
+        },
+        "scheme": {
+          "baseline_size": 1776,
+          "dictionary_size": 2892,
+          "compression_ratio": 1.6283783783783783,
+          "bytes_saved": -1116
+        },
+        "dart": {
+          "baseline_size": 1839,
+          "dictionary_size": 2934,
+          "compression_ratio": 1.595432300163132,
+          "bytes_saved": -1095
+        },
+        "go": {
+          "baseline_size": 1753,
+          "dictionary_size": 2869,
+          "compression_ratio": 1.6366229321163719,
+          "bytes_saved": -1116
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2100,
+          "compression_ratio": 1.6166281755196306,
+          "bytes_saved": -801
+        },
+        "scala": {
+          "baseline_size": 2039,
+          "dictionary_size": 3145,
+          "compression_ratio": 1.5424227562530652,
+          "bytes_saved": -1106
+        },
+        "php": {
+          "baseline_size": 1832,
+          "dictionary_size": 2933,
+          "compression_ratio": 1.6009825327510918,
+          "bytes_saved": -1101
+        },
+        "clojure": {
+          "baseline_size": 2071,
+          "dictionary_size": 3172,
+          "compression_ratio": 1.5316272332206664,
+          "bytes_saved": -1101
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 2602,
+          "compression_ratio": 1.5488095238095239,
+          "bytes_saved": -922
+        },
+        "lua": {
+          "baseline_size": 1850,
+          "dictionary_size": 2950,
+          "compression_ratio": 1.5945945945945945,
+          "bytes_saved": -1100
+        },
+        "c": {
+          "baseline_size": 1705,
+          "dictionary_size": 2817,
+          "compression_ratio": 1.652199413489736,
+          "bytes_saved": -1112
+        },
+        "javascript": {
+          "baseline_size": 1872,
+          "dictionary_size": 2981,
+          "compression_ratio": 1.5924145299145298,
+          "bytes_saved": -1109
+        }
+      },
+      "java": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4109,
+          "compression_ratio": 1.6826371826371826,
+          "bytes_saved": -1667
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2730,
+          "compression_ratio": 2.4074074074074074,
+          "bytes_saved": -1596
+        },
+        "java": {
+          "baseline_size": 1685,
+          "dictionary_size": 3105,
+          "compression_ratio": 1.8427299703264095,
+          "bytes_saved": -1420
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1805,
+          "compression_ratio": 1.8920335429769393,
+          "bytes_saved": -851
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4473,
+          "compression_ratio": 1.8,
+          "bytes_saved": -1988
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 3927,
+          "compression_ratio": 1.7882513661202186,
+          "bytes_saved": -1731
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 597,
+          "compression_ratio": 2.5844155844155843,
+          "bytes_saved": -366
+        },
+        "fortran": {
+          "baseline_size": 3264,
+          "dictionary_size": 6219,
+          "compression_ratio": 1.9053308823529411,
+          "bytes_saved": -2955
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4000,
+          "compression_ratio": 1.6985138004246285,
+          "bytes_saved": -1645
+        },
+        "cpp": {
+          "baseline_size": 3086,
+          "dictionary_size": 5929,
+          "compression_ratio": 1.9212572909915748,
+          "bytes_saved": -2843
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4319,
+          "compression_ratio": 1.764297385620915,
+          "bytes_saved": -1871
+        },
+        "rust": {
+          "baseline_size": 3815,
+          "dictionary_size": 6748,
+          "compression_ratio": 1.7688073394495414,
+          "bytes_saved": -2933
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4315,
+          "compression_ratio": 1.694815396700707,
+          "bytes_saved": -1769
+        },
+        "csharp": {
+          "baseline_size": 2762,
+          "dictionary_size": 5621,
+          "compression_ratio": 2.0351194786386677,
+          "bytes_saved": -2859
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2602,
+          "compression_ratio": 1.7944827586206897,
+          "bytes_saved": -1152
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4235,
+          "compression_ratio": 1.8191580756013745,
+          "bytes_saved": -1907
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 3931,
+          "compression_ratio": 1.8953712632594022,
+          "bytes_saved": -1857
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4379,
+          "compression_ratio": 1.804285125669551,
+          "bytes_saved": -1952
+        },
+        "go": {
+          "baseline_size": 3423,
+          "dictionary_size": 6318,
+          "compression_ratio": 1.845749342681858,
+          "bytes_saved": -2895
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2372,
+          "compression_ratio": 1.8260200153964588,
+          "bytes_saved": -1073
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 4983,
+          "compression_ratio": 1.717091660923501,
+          "bytes_saved": -2081
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4076,
+          "compression_ratio": 1.773716275021758,
+          "bytes_saved": -1778
+        },
+        "clojure": {
+          "baseline_size": 2982,
+          "dictionary_size": 5214,
+          "compression_ratio": 1.7484909456740443,
+          "bytes_saved": -2232
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 2894,
+          "compression_ratio": 1.7226190476190477,
+          "bytes_saved": -1214
+        },
+        "lua": {
+          "baseline_size": 2884,
+          "dictionary_size": 5466,
+          "compression_ratio": 1.8952843273231623,
+          "bytes_saved": -2582
+        },
+        "c": {
+          "baseline_size": 3318,
+          "dictionary_size": 6234,
+          "compression_ratio": 1.8788426763110306,
+          "bytes_saved": -2916
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 3895,
+          "compression_ratio": 1.7982456140350878,
+          "bytes_saved": -1729
+        }
+      },
+      "matlab": {
+        "ruby": {
+          "baseline_size": 1209,
+          "dictionary_size": 2062,
+          "compression_ratio": 1.7055417700578992,
+          "bytes_saved": -853
+        },
+        "chef": {
+          "baseline_size": 646,
+          "dictionary_size": 1570,
+          "compression_ratio": 2.430340557275542,
+          "bytes_saved": -924
+        },
+        "java": {
+          "baseline_size": 922,
+          "dictionary_size": 1813,
+          "compression_ratio": 1.9663774403470715,
+          "bytes_saved": -891
+        },
+        "matlab": {
+          "baseline_size": 522,
+          "dictionary_size": 952,
+          "compression_ratio": 1.8237547892720307,
+          "bytes_saved": -430
+        },
+        "ocaml": {
+          "baseline_size": 998,
+          "dictionary_size": 1885,
+          "compression_ratio": 1.8887775551102204,
+          "bytes_saved": -887
+        },
+        "prolog": {
+          "baseline_size": 1107,
+          "dictionary_size": 2011,
+          "compression_ratio": 1.8166214995483287,
+          "bytes_saved": -904
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 627,
+          "compression_ratio": 2.7142857142857144,
+          "bytes_saved": -396
+        },
+        "fortran": {
+          "baseline_size": 923,
+          "dictionary_size": 1789,
+          "compression_ratio": 1.9382448537378114,
+          "bytes_saved": -866
+        },
+        "julia": {
+          "baseline_size": 1152,
+          "dictionary_size": 2003,
+          "compression_ratio": 1.7387152777777777,
+          "bytes_saved": -851
+        },
+        "cpp": {
+          "baseline_size": 892,
+          "dictionary_size": 1782,
+          "compression_ratio": 1.9977578475336324,
+          "bytes_saved": -890
+        },
+        "haskell": {
+          "baseline_size": 918,
+          "dictionary_size": 1828,
+          "compression_ratio": 1.991285403050109,
+          "bytes_saved": -910
+        },
+        "rust": {
+          "baseline_size": 1111,
+          "dictionary_size": 2002,
+          "compression_ratio": 1.801980198019802,
+          "bytes_saved": -891
+        },
+        "perl": {
+          "baseline_size": 1162,
+          "dictionary_size": 2014,
+          "compression_ratio": 1.7332185886402753,
+          "bytes_saved": -852
+        },
+        "csharp": {
+          "baseline_size": 819,
+          "dictionary_size": 1692,
+          "compression_ratio": 2.065934065934066,
+          "bytes_saved": -873
+        },
+        "typescript": {
+          "baseline_size": 1114,
+          "dictionary_size": 1967,
+          "compression_ratio": 1.7657091561938958,
+          "bytes_saved": -853
+        },
+        "lisp": {
+          "baseline_size": 1099,
+          "dictionary_size": 1991,
+          "compression_ratio": 1.8116469517743403,
+          "bytes_saved": -892
+        },
+        "scheme": {
+          "baseline_size": 1013,
+          "dictionary_size": 1885,
+          "compression_ratio": 1.8608094768015795,
+          "bytes_saved": -872
+        },
+        "dart": {
+          "baseline_size": 1014,
+          "dictionary_size": 1885,
+          "compression_ratio": 1.858974358974359,
+          "bytes_saved": -871
+        },
+        "go": {
+          "baseline_size": 999,
+          "dictionary_size": 1878,
+          "compression_ratio": 1.87987987987988,
+          "bytes_saved": -879
+        },
+        "r": {
+          "baseline_size": 1004,
+          "dictionary_size": 1876,
+          "compression_ratio": 1.8685258964143425,
+          "bytes_saved": -872
+        },
+        "scala": {
+          "baseline_size": 1097,
+          "dictionary_size": 1995,
+          "compression_ratio": 1.8185961713764813,
+          "bytes_saved": -898
+        },
+        "php": {
+          "baseline_size": 1012,
+          "dictionary_size": 1859,
+          "compression_ratio": 1.8369565217391304,
+          "bytes_saved": -847
+        },
+        "clojure": {
+          "baseline_size": 1109,
+          "dictionary_size": 1990,
+          "compression_ratio": 1.7944093778178538,
+          "bytes_saved": -881
+        },
+        "python": {
+          "baseline_size": 1113,
+          "dictionary_size": 2019,
+          "compression_ratio": 1.8140161725067385,
+          "bytes_saved": -906
+        },
+        "lua": {
+          "baseline_size": 1035,
+          "dictionary_size": 1876,
+          "compression_ratio": 1.8125603864734299,
+          "bytes_saved": -841
+        },
+        "c": {
+          "baseline_size": 1004,
+          "dictionary_size": 1900,
+          "compression_ratio": 1.8924302788844622,
+          "bytes_saved": -896
+        },
+        "javascript": {
+          "baseline_size": 1077,
+          "dictionary_size": 1968,
+          "compression_ratio": 1.8272980501392757,
+          "bytes_saved": -891
+        }
+      },
+      "ocaml": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4429,
+          "compression_ratio": 1.8136773136773137,
+          "bytes_saved": -1987
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3005,
+          "compression_ratio": 2.6499118165784834,
+          "bytes_saved": -1871
+        },
+        "java": {
+          "baseline_size": 2096,
+          "dictionary_size": 4488,
+          "compression_ratio": 2.1412213740458017,
+          "bytes_saved": -2392
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1882,
+          "compression_ratio": 1.9727463312368974,
+          "bytes_saved": -928
+        },
+        "ocaml": {
+          "baseline_size": 1381,
+          "dictionary_size": 2483,
+          "compression_ratio": 1.7979724837074584,
+          "bytes_saved": -1102
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4222,
+          "compression_ratio": 1.9225865209471766,
+          "bytes_saved": -2026
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 625,
+          "compression_ratio": 2.705627705627706,
+          "bytes_saved": -394
+        },
+        "fortran": {
+          "baseline_size": 2181,
+          "dictionary_size": 4580,
+          "compression_ratio": 2.099954149472719,
+          "bytes_saved": -2399
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4308,
+          "compression_ratio": 1.8292993630573249,
+          "bytes_saved": -1953
+        },
+        "cpp": {
+          "baseline_size": 1998,
+          "dictionary_size": 4369,
+          "compression_ratio": 2.1866866866866865,
+          "bytes_saved": -2371
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4660,
+          "compression_ratio": 1.90359477124183,
+          "bytes_saved": -2212
+        },
+        "rust": {
+          "baseline_size": 2495,
+          "dictionary_size": 4855,
+          "compression_ratio": 1.9458917835671343,
+          "bytes_saved": -2360
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4667,
+          "compression_ratio": 1.8330714846818539,
+          "bytes_saved": -2121
+        },
+        "csharp": {
+          "baseline_size": 1729,
+          "dictionary_size": 4151,
+          "compression_ratio": 2.4008097165991904,
+          "bytes_saved": -2422
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2811,
+          "compression_ratio": 1.9386206896551723,
+          "bytes_saved": -1361
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4586,
+          "compression_ratio": 1.9699312714776633,
+          "bytes_saved": -2258
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4298,
+          "compression_ratio": 2.0723240115718418,
+          "bytes_saved": -2224
+        },
+        "dart": {
+          "baseline_size": 2410,
+          "dictionary_size": 4805,
+          "compression_ratio": 1.9937759336099585,
+          "bytes_saved": -2395
+        },
+        "go": {
+          "baseline_size": 2213,
+          "dictionary_size": 4601,
+          "compression_ratio": 2.079078174423859,
+          "bytes_saved": -2388
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2497,
+          "compression_ratio": 1.922247882986913,
+          "bytes_saved": -1198
+        },
+        "scala": {
+          "baseline_size": 2667,
+          "dictionary_size": 5032,
+          "compression_ratio": 1.88676415448069,
+          "bytes_saved": -2365
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4510,
+          "compression_ratio": 1.9625761531766754,
+          "bytes_saved": -2212
+        },
+        "clojure": {
+          "baseline_size": 2625,
+          "dictionary_size": 5004,
+          "compression_ratio": 1.9062857142857144,
+          "bytes_saved": -2379
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3130,
+          "compression_ratio": 1.8630952380952381,
+          "bytes_saved": -1450
+        },
+        "lua": {
+          "baseline_size": 2230,
+          "dictionary_size": 4555,
+          "compression_ratio": 2.0426008968609866,
+          "bytes_saved": -2325
+        },
+        "c": {
+          "baseline_size": 2199,
+          "dictionary_size": 4544,
+          "compression_ratio": 2.066393815370623,
+          "bytes_saved": -2345
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4288,
+          "compression_ratio": 1.979686057248384,
+          "bytes_saved": -2122
+        }
+      },
+      "prolog": {
+        "ruby": {
+          "baseline_size": 2413,
+          "dictionary_size": 4498,
+          "compression_ratio": 1.8640696228760878,
+          "bytes_saved": -2085
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3061,
+          "compression_ratio": 2.699294532627866,
+          "bytes_saved": -1927
+        },
+        "java": {
+          "baseline_size": 1801,
+          "dictionary_size": 3927,
+          "compression_ratio": 2.180455302609661,
+          "bytes_saved": -2126
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 2007,
+          "compression_ratio": 2.1037735849056602,
+          "bytes_saved": -1053
+        },
+        "ocaml": {
+          "baseline_size": 2132,
+          "dictionary_size": 4231,
+          "compression_ratio": 1.9845215759849906,
+          "bytes_saved": -2099
+        },
+        "prolog": {
+          "baseline_size": 1109,
+          "dictionary_size": 2194,
+          "compression_ratio": 1.9783588818755635,
+          "bytes_saved": -1085
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 567,
+          "compression_ratio": 2.4545454545454546,
+          "bytes_saved": -336
+        },
+        "fortran": {
+          "baseline_size": 1872,
+          "dictionary_size": 3949,
+          "compression_ratio": 2.109508547008547,
+          "bytes_saved": -2077
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4440,
+          "compression_ratio": 1.8853503184713376,
+          "bytes_saved": -2085
+        },
+        "cpp": {
+          "baseline_size": 1674,
+          "dictionary_size": 3825,
+          "compression_ratio": 2.28494623655914,
+          "bytes_saved": -2151
+        },
+        "haskell": {
+          "baseline_size": 2196,
+          "dictionary_size": 4288,
+          "compression_ratio": 1.95264116575592,
+          "bytes_saved": -2092
+        },
+        "rust": {
+          "baseline_size": 2235,
+          "dictionary_size": 4360,
+          "compression_ratio": 1.9507829977628635,
+          "bytes_saved": -2125
+        },
+        "perl": {
+          "baseline_size": 2449,
+          "dictionary_size": 4552,
+          "compression_ratio": 1.8587178440179666,
+          "bytes_saved": -2103
+        },
+        "csharp": {
+          "baseline_size": 1356,
+          "dictionary_size": 3507,
+          "compression_ratio": 2.586283185840708,
+          "bytes_saved": -2151
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2924,
+          "compression_ratio": 2.016551724137931,
+          "bytes_saved": -1474
+        },
+        "lisp": {
+          "baseline_size": 2136,
+          "dictionary_size": 4258,
+          "compression_ratio": 1.993445692883895,
+          "bytes_saved": -2122
+        },
+        "scheme": {
+          "baseline_size": 1940,
+          "dictionary_size": 4071,
+          "compression_ratio": 2.0984536082474228,
+          "bytes_saved": -2131
+        },
+        "dart": {
+          "baseline_size": 2030,
+          "dictionary_size": 4159,
+          "compression_ratio": 2.0487684729064037,
+          "bytes_saved": -2129
+        },
+        "go": {
+          "baseline_size": 1932,
+          "dictionary_size": 4048,
+          "compression_ratio": 2.0952380952380953,
+          "bytes_saved": -2116
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2614,
+          "compression_ratio": 2.0123171670515783,
+          "bytes_saved": -1315
+        },
+        "scala": {
+          "baseline_size": 2235,
+          "dictionary_size": 4348,
+          "compression_ratio": 1.945413870246085,
+          "bytes_saved": -2113
+        },
+        "php": {
+          "baseline_size": 2047,
+          "dictionary_size": 4146,
+          "compression_ratio": 2.025403028822667,
+          "bytes_saved": -2099
+        },
+        "clojure": {
+          "baseline_size": 2297,
+          "dictionary_size": 4436,
+          "compression_ratio": 1.9312146277753592,
+          "bytes_saved": -2139
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3249,
+          "compression_ratio": 1.9339285714285714,
+          "bytes_saved": -1569
+        },
+        "lua": {
+          "baseline_size": 2063,
+          "dictionary_size": 4175,
+          "compression_ratio": 2.0237518177411538,
+          "bytes_saved": -2112
+        },
+        "c": {
+          "baseline_size": 1877,
+          "dictionary_size": 4019,
+          "compression_ratio": 2.1411827384123603,
+          "bytes_saved": -2142
+        },
+        "javascript": {
+          "baseline_size": 2053,
+          "dictionary_size": 4180,
+          "compression_ratio": 2.036044812469557,
+          "bytes_saved": -2127
+        }
+      },
+      "brainfuck": {
+        "ruby": {
+          "baseline_size": 509,
+          "dictionary_size": 741,
+          "compression_ratio": 1.455795677799607,
+          "bytes_saved": -232
+        },
+        "chef": {
+          "baseline_size": 251,
+          "dictionary_size": 482,
+          "compression_ratio": 1.9203187250996017,
+          "bytes_saved": -231
+        },
+        "java": {
+          "baseline_size": 370,
+          "dictionary_size": 598,
+          "compression_ratio": 1.6162162162162161,
+          "bytes_saved": -228
+        },
+        "matlab": {
+          "baseline_size": 403,
+          "dictionary_size": 627,
+          "compression_ratio": 1.5558312655086848,
+          "bytes_saved": -224
+        },
+        "ocaml": {
+          "baseline_size": 395,
+          "dictionary_size": 625,
+          "compression_ratio": 1.5822784810126582,
+          "bytes_saved": -230
+        },
+        "prolog": {
+          "baseline_size": 341,
+          "dictionary_size": 566,
+          "compression_ratio": 1.6598240469208212,
+          "bytes_saved": -225
+        },
+        "brainfuck": {
+          "baseline_size": 121,
+          "dictionary_size": 229,
+          "compression_ratio": 1.8925619834710743,
+          "bytes_saved": -108
+        },
+        "fortran": {
+          "baseline_size": 455,
+          "dictionary_size": 686,
+          "compression_ratio": 1.5076923076923077,
+          "bytes_saved": -231
+        },
+        "julia": {
+          "baseline_size": 519,
+          "dictionary_size": 750,
+          "compression_ratio": 1.4450867052023122,
+          "bytes_saved": -231
+        },
+        "cpp": {
+          "baseline_size": 408,
+          "dictionary_size": 630,
+          "compression_ratio": 1.5441176470588236,
+          "bytes_saved": -222
+        },
+        "haskell": {
+          "baseline_size": 301,
+          "dictionary_size": 530,
+          "compression_ratio": 1.760797342192691,
+          "bytes_saved": -229
+        },
+        "rust": {
+          "baseline_size": 436,
+          "dictionary_size": 665,
+          "compression_ratio": 1.525229357798165,
+          "bytes_saved": -229
+        },
+        "perl": {
+          "baseline_size": 448,
+          "dictionary_size": 675,
+          "compression_ratio": 1.5066964285714286,
+          "bytes_saved": -227
+        },
+        "csharp": {
+          "baseline_size": 317,
+          "dictionary_size": 546,
+          "compression_ratio": 1.722397476340694,
+          "bytes_saved": -229
+        },
+        "typescript": {
+          "baseline_size": 443,
+          "dictionary_size": 671,
+          "compression_ratio": 1.5146726862302482,
+          "bytes_saved": -228
+        },
+        "lisp": {
+          "baseline_size": 469,
+          "dictionary_size": 708,
+          "compression_ratio": 1.5095948827292112,
+          "bytes_saved": -239
+        },
+        "scheme": {
+          "baseline_size": 452,
+          "dictionary_size": 693,
+          "compression_ratio": 1.5331858407079646,
+          "bytes_saved": -241
+        },
+        "dart": {
+          "baseline_size": 434,
+          "dictionary_size": 667,
+          "compression_ratio": 1.5368663594470047,
+          "bytes_saved": -233
+        },
+        "go": {
+          "baseline_size": 426,
+          "dictionary_size": 649,
+          "compression_ratio": 1.5234741784037558,
+          "bytes_saved": -223
+        },
+        "r": {
+          "baseline_size": 418,
+          "dictionary_size": 646,
+          "compression_ratio": 1.5454545454545454,
+          "bytes_saved": -228
+        },
+        "scala": {
+          "baseline_size": 454,
+          "dictionary_size": 681,
+          "compression_ratio": 1.5,
+          "bytes_saved": -227
+        },
+        "php": {
+          "baseline_size": 419,
+          "dictionary_size": 647,
+          "compression_ratio": 1.5441527446300716,
+          "bytes_saved": -228
+        },
+        "clojure": {
+          "baseline_size": 469,
+          "dictionary_size": 702,
+          "compression_ratio": 1.4968017057569296,
+          "bytes_saved": -233
+        },
+        "python": {
+          "baseline_size": 464,
+          "dictionary_size": 692,
+          "compression_ratio": 1.4913793103448276,
+          "bytes_saved": -228
+        },
+        "lua": {
+          "baseline_size": 399,
+          "dictionary_size": 629,
+          "compression_ratio": 1.5764411027568923,
+          "bytes_saved": -230
+        },
+        "c": {
+          "baseline_size": 426,
+          "dictionary_size": 651,
+          "compression_ratio": 1.528169014084507,
+          "bytes_saved": -225
+        },
+        "javascript": {
+          "baseline_size": 477,
+          "dictionary_size": 708,
+          "compression_ratio": 1.4842767295597483,
+          "bytes_saved": -231
+        }
+      },
+      "fortran": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4225,
+          "compression_ratio": 1.7301392301392302,
+          "bytes_saved": -1783
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2798,
+          "compression_ratio": 2.4673721340388006,
+          "bytes_saved": -1664
+        },
+        "java": {
+          "baseline_size": 3107,
+          "dictionary_size": 6252,
+          "compression_ratio": 2.012230447376891,
+          "bytes_saved": -3145
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1811,
+          "compression_ratio": 1.89832285115304,
+          "bytes_saved": -857
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4584,
+          "compression_ratio": 1.8446680080482898,
+          "bytes_saved": -2099
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 3971,
+          "compression_ratio": 1.808287795992714,
+          "bytes_saved": -1775
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 687,
+          "compression_ratio": 2.9740259740259742,
+          "bytes_saved": -456
+        },
+        "fortran": {
+          "baseline_size": 2378,
+          "dictionary_size": 4234,
+          "compression_ratio": 1.7804878048780488,
+          "bytes_saved": -1856
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4121,
+          "compression_ratio": 1.7498938428874735,
+          "bytes_saved": -1766
+        },
+        "cpp": {
+          "baseline_size": 3930,
+          "dictionary_size": 8024,
+          "compression_ratio": 2.0417302798982186,
+          "bytes_saved": -4094
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4446,
+          "compression_ratio": 1.8161764705882353,
+          "bytes_saved": -1998
+        },
+        "rust": {
+          "baseline_size": 4232,
+          "dictionary_size": 7724,
+          "compression_ratio": 1.8251417769376181,
+          "bytes_saved": -3492
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4425,
+          "compression_ratio": 1.7380204241948154,
+          "bytes_saved": -1879
+        },
+        "csharp": {
+          "baseline_size": 3515,
+          "dictionary_size": 7643,
+          "compression_ratio": 2.174395448079659,
+          "bytes_saved": -4128
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2616,
+          "compression_ratio": 1.8041379310344827,
+          "bytes_saved": -1166
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4330,
+          "compression_ratio": 1.8599656357388317,
+          "bytes_saved": -2002
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4030,
+          "compression_ratio": 1.9431051108968178,
+          "bytes_saved": -1956
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4549,
+          "compression_ratio": 1.8743304491141326,
+          "bytes_saved": -2122
+        },
+        "go": {
+          "baseline_size": 4054,
+          "dictionary_size": 7813,
+          "compression_ratio": 1.9272323630981747,
+          "bytes_saved": -3759
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2379,
+          "compression_ratio": 1.8314087759815243,
+          "bytes_saved": -1080
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 5167,
+          "compression_ratio": 1.7804962095106822,
+          "bytes_saved": -2265
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4274,
+          "compression_ratio": 1.8598781549173193,
+          "bytes_saved": -1976
+        },
+        "clojure": {
+          "baseline_size": 2982,
+          "dictionary_size": 5362,
+          "compression_ratio": 1.7981220657276995,
+          "bytes_saved": -2380
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 2908,
+          "compression_ratio": 1.730952380952381,
+          "bytes_saved": -1228
+        },
+        "lua": {
+          "baseline_size": 2884,
+          "dictionary_size": 5684,
+          "compression_ratio": 1.970873786407767,
+          "bytes_saved": -2800
+        },
+        "c": {
+          "baseline_size": 4189,
+          "dictionary_size": 8291,
+          "compression_ratio": 1.9792313201241347,
+          "bytes_saved": -4102
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4062,
+          "compression_ratio": 1.8753462603878117,
+          "bytes_saved": -1896
+        }
+      },
+      "julia": {
+        "ruby": {
+          "baseline_size": 2382,
+          "dictionary_size": 4496,
+          "compression_ratio": 1.887489504617968,
+          "bytes_saved": -2114
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3211,
+          "compression_ratio": 2.8315696649029984,
+          "bytes_saved": -2077
+        },
+        "java": {
+          "baseline_size": 1780,
+          "dictionary_size": 4024,
+          "compression_ratio": 2.2606741573033706,
+          "bytes_saved": -2244
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 2015,
+          "compression_ratio": 2.1121593291404612,
+          "bytes_saved": -1061
+        },
+        "ocaml": {
+          "baseline_size": 2114,
+          "dictionary_size": 4328,
+          "compression_ratio": 2.0473036896877956,
+          "bytes_saved": -2214
+        },
+        "prolog": {
+          "baseline_size": 2168,
+          "dictionary_size": 4427,
+          "compression_ratio": 2.0419741697416973,
+          "bytes_saved": -2259
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 750,
+          "compression_ratio": 3.2467532467532467,
+          "bytes_saved": -519
+        },
+        "fortran": {
+          "baseline_size": 1847,
+          "dictionary_size": 4105,
+          "compression_ratio": 2.222523010286952,
+          "bytes_saved": -2258
+        },
+        "julia": {
+          "baseline_size": 1270,
+          "dictionary_size": 2353,
+          "compression_ratio": 1.852755905511811,
+          "bytes_saved": -1083
+        },
+        "cpp": {
+          "baseline_size": 1652,
+          "dictionary_size": 3919,
+          "compression_ratio": 2.37227602905569,
+          "bytes_saved": -2267
+        },
+        "haskell": {
+          "baseline_size": 2175,
+          "dictionary_size": 4407,
+          "compression_ratio": 2.026206896551724,
+          "bytes_saved": -2232
+        },
+        "rust": {
+          "baseline_size": 2217,
+          "dictionary_size": 4468,
+          "compression_ratio": 2.0153360396932793,
+          "bytes_saved": -2251
+        },
+        "perl": {
+          "baseline_size": 2423,
+          "dictionary_size": 4584,
+          "compression_ratio": 1.89186958316137,
+          "bytes_saved": -2161
+        },
+        "csharp": {
+          "baseline_size": 1337,
+          "dictionary_size": 3595,
+          "compression_ratio": 2.68885564697083,
+          "bytes_saved": -2258
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2940,
+          "compression_ratio": 2.027586206896552,
+          "bytes_saved": -1490
+        },
+        "lisp": {
+          "baseline_size": 2112,
+          "dictionary_size": 4361,
+          "compression_ratio": 2.0648674242424243,
+          "bytes_saved": -2249
+        },
+        "scheme": {
+          "baseline_size": 1924,
+          "dictionary_size": 4150,
+          "compression_ratio": 2.156964656964657,
+          "bytes_saved": -2226
+        },
+        "dart": {
+          "baseline_size": 2013,
+          "dictionary_size": 4234,
+          "compression_ratio": 2.1033283656234474,
+          "bytes_saved": -2221
+        },
+        "go": {
+          "baseline_size": 1916,
+          "dictionary_size": 4136,
+          "compression_ratio": 2.1586638830897704,
+          "bytes_saved": -2220
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2667,
+          "compression_ratio": 2.0531177829099305,
+          "bytes_saved": -1368
+        },
+        "scala": {
+          "baseline_size": 2222,
+          "dictionary_size": 4441,
+          "compression_ratio": 1.9986498649864985,
+          "bytes_saved": -2219
+        },
+        "php": {
+          "baseline_size": 2025,
+          "dictionary_size": 4193,
+          "compression_ratio": 2.070617283950617,
+          "bytes_saved": -2168
+        },
+        "clojure": {
+          "baseline_size": 2283,
+          "dictionary_size": 4524,
+          "compression_ratio": 1.9816031537450722,
+          "bytes_saved": -2241
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3235,
+          "compression_ratio": 1.9255952380952381,
+          "bytes_saved": -1555
+        },
+        "lua": {
+          "baseline_size": 2049,
+          "dictionary_size": 4218,
+          "compression_ratio": 2.0585651537335283,
+          "bytes_saved": -2169
+        },
+        "c": {
+          "baseline_size": 1858,
+          "dictionary_size": 4141,
+          "compression_ratio": 2.228740581270183,
+          "bytes_saved": -2283
+        },
+        "javascript": {
+          "baseline_size": 2045,
+          "dictionary_size": 4258,
+          "compression_ratio": 2.082151589242054,
+          "bytes_saved": -2213
+        }
+      },
+      "cpp": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4020,
+          "compression_ratio": 1.6461916461916462,
+          "bytes_saved": -1578
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2689,
+          "compression_ratio": 2.371252204585538,
+          "bytes_saved": -1555
+        },
+        "java": {
+          "baseline_size": 3107,
+          "dictionary_size": 5978,
+          "compression_ratio": 1.9240424847119408,
+          "bytes_saved": -2871
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1788,
+          "compression_ratio": 1.8742138364779874,
+          "bytes_saved": -834
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4366,
+          "compression_ratio": 1.7569416498993964,
+          "bytes_saved": -1881
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 3830,
+          "compression_ratio": 1.7440801457194899,
+          "bytes_saved": -1634
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 631,
+          "compression_ratio": 2.7316017316017316,
+          "bytes_saved": -400
+        },
+        "fortran": {
+          "baseline_size": 4236,
+          "dictionary_size": 8024,
+          "compression_ratio": 1.89423984891407,
+          "bytes_saved": -3788
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 3919,
+          "compression_ratio": 1.6641188959660298,
+          "bytes_saved": -1564
+        },
+        "cpp": {
+          "baseline_size": 2435,
+          "dictionary_size": 4575,
+          "compression_ratio": 1.8788501026694044,
+          "bytes_saved": -2140
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4223,
+          "compression_ratio": 1.7250816993464053,
+          "bytes_saved": -1775
+        },
+        "rust": {
+          "baseline_size": 4232,
+          "dictionary_size": 7483,
+          "compression_ratio": 1.768194706994329,
+          "bytes_saved": -3251
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4224,
+          "compression_ratio": 1.6590730557737627,
+          "bytes_saved": -1678
+        },
+        "csharp": {
+          "baseline_size": 4158,
+          "dictionary_size": 8524,
+          "compression_ratio": 2.05002405002405,
+          "bytes_saved": -4366
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2642,
+          "compression_ratio": 1.8220689655172413,
+          "bytes_saved": -1192
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4127,
+          "compression_ratio": 1.772766323024055,
+          "bytes_saved": -1799
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 3829,
+          "compression_ratio": 1.8461909353905497,
+          "bytes_saved": -1755
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4353,
+          "compression_ratio": 1.7935723114956736,
+          "bytes_saved": -1926
+        },
+        "go": {
+          "baseline_size": 4054,
+          "dictionary_size": 7583,
+          "compression_ratio": 1.8704982733103108,
+          "bytes_saved": -3529
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2388,
+          "compression_ratio": 1.838337182448037,
+          "bytes_saved": -1089
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 5005,
+          "compression_ratio": 1.724672639558925,
+          "bytes_saved": -2103
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4028,
+          "compression_ratio": 1.752828546562228,
+          "bytes_saved": -1730
+        },
+        "clojure": {
+          "baseline_size": 2982,
+          "dictionary_size": 5236,
+          "compression_ratio": 1.755868544600939,
+          "bytes_saved": -2254
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 2961,
+          "compression_ratio": 1.7625,
+          "bytes_saved": -1281
+        },
+        "lua": {
+          "baseline_size": 2884,
+          "dictionary_size": 5496,
+          "compression_ratio": 1.9056865464632455,
+          "bytes_saved": -2612
+        },
+        "c": {
+          "baseline_size": 4625,
+          "dictionary_size": 8634,
+          "compression_ratio": 1.8668108108108108,
+          "bytes_saved": -4009
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 3808,
+          "compression_ratio": 1.7580794090489382,
+          "bytes_saved": -1642
+        }
+      },
+      "haskell": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4520,
+          "compression_ratio": 1.850941850941851,
+          "bytes_saved": -2078
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3055,
+          "compression_ratio": 2.6940035273368608,
+          "bytes_saved": -1921
+        },
+        "java": {
+          "baseline_size": 1980,
+          "dictionary_size": 4322,
+          "compression_ratio": 2.182828282828283,
+          "bytes_saved": -2342
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1821,
+          "compression_ratio": 1.9088050314465408,
+          "bytes_saved": -867
+        },
+        "ocaml": {
+          "baseline_size": 2353,
+          "dictionary_size": 4665,
+          "compression_ratio": 1.9825754356141096,
+          "bytes_saved": -2312
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4286,
+          "compression_ratio": 1.9517304189435336,
+          "bytes_saved": -2090
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 530,
+          "compression_ratio": 2.294372294372294,
+          "bytes_saved": -299
+        },
+        "fortran": {
+          "baseline_size": 2077,
+          "dictionary_size": 4445,
+          "compression_ratio": 2.140105922002889,
+          "bytes_saved": -2368
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4400,
+          "compression_ratio": 1.8683651804670913,
+          "bytes_saved": -2045
+        },
+        "cpp": {
+          "baseline_size": 1856,
+          "dictionary_size": 4223,
+          "compression_ratio": 2.275323275862069,
+          "bytes_saved": -2367
+        },
+        "haskell": {
+          "baseline_size": 1437,
+          "dictionary_size": 2446,
+          "compression_ratio": 1.7021572720946416,
+          "bytes_saved": -1009
+        },
+        "rust": {
+          "baseline_size": 2428,
+          "dictionary_size": 4752,
+          "compression_ratio": 1.957166392092257,
+          "bytes_saved": -2324
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4728,
+          "compression_ratio": 1.857030636292223,
+          "bytes_saved": -2182
+        },
+        "csharp": {
+          "baseline_size": 1599,
+          "dictionary_size": 3979,
+          "compression_ratio": 2.4884302689180737,
+          "bytes_saved": -2380
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2760,
+          "compression_ratio": 1.903448275862069,
+          "bytes_saved": -1310
+        },
+        "lisp": {
+          "baseline_size": 2325,
+          "dictionary_size": 4663,
+          "compression_ratio": 2.005591397849462,
+          "bytes_saved": -2338
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4364,
+          "compression_ratio": 2.104146576663452,
+          "bytes_saved": -2290
+        },
+        "dart": {
+          "baseline_size": 2267,
+          "dictionary_size": 4621,
+          "compression_ratio": 2.038376709307455,
+          "bytes_saved": -2354
+        },
+        "go": {
+          "baseline_size": 2109,
+          "dictionary_size": 4483,
+          "compression_ratio": 2.1256519677572308,
+          "bytes_saved": -2374
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2464,
+          "compression_ratio": 1.896843725943033,
+          "bytes_saved": -1165
+        },
+        "scala": {
+          "baseline_size": 2511,
+          "dictionary_size": 4836,
+          "compression_ratio": 1.9259259259259258,
+          "bytes_saved": -2325
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4600,
+          "compression_ratio": 2.001740644038294,
+          "bytes_saved": -2302
+        },
+        "clojure": {
+          "baseline_size": 2514,
+          "dictionary_size": 4866,
+          "compression_ratio": 1.9355608591885443,
+          "bytes_saved": -2352
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3112,
+          "compression_ratio": 1.8523809523809525,
+          "bytes_saved": -1432
+        },
+        "lua": {
+          "baseline_size": 2197,
+          "dictionary_size": 4548,
+          "compression_ratio": 2.070095584888484,
+          "bytes_saved": -2351
+        },
+        "c": {
+          "baseline_size": 2050,
+          "dictionary_size": 4449,
+          "compression_ratio": 2.1702439024390245,
+          "bytes_saved": -2399
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4369,
+          "compression_ratio": 2.0170821791320406,
+          "bytes_saved": -2203
+        }
+      },
+      "rust": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4530,
+          "compression_ratio": 1.855036855036855,
+          "bytes_saved": -2088
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3128,
+          "compression_ratio": 2.758377425044092,
+          "bytes_saved": -1994
+        },
+        "java": {
+          "baseline_size": 3107,
+          "dictionary_size": 6748,
+          "compression_ratio": 2.171869971033151,
+          "bytes_saved": -3641
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 2002,
+          "compression_ratio": 2.09853249475891,
+          "bytes_saved": -1048
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4852,
+          "compression_ratio": 1.9525150905432596,
+          "bytes_saved": -2367
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4358,
+          "compression_ratio": 1.9845173041894353,
+          "bytes_saved": -2162
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 665,
+          "compression_ratio": 2.878787878787879,
+          "bytes_saved": -434
+        },
+        "fortran": {
+          "baseline_size": 3658,
+          "dictionary_size": 7719,
+          "compression_ratio": 2.110169491525424,
+          "bytes_saved": -4061
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4447,
+          "compression_ratio": 1.8883227176220807,
+          "bytes_saved": -2092
+        },
+        "cpp": {
+          "baseline_size": 3457,
+          "dictionary_size": 7492,
+          "compression_ratio": 2.1671969916112235,
+          "bytes_saved": -4035
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4757,
+          "compression_ratio": 1.943218954248366,
+          "bytes_saved": -2309
+        },
+        "rust": {
+          "baseline_size": 2214,
+          "dictionary_size": 4230,
+          "compression_ratio": 1.910569105691057,
+          "bytes_saved": -2016
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4722,
+          "compression_ratio": 1.854673998428908,
+          "bytes_saved": -2176
+        },
+        "csharp": {
+          "baseline_size": 3118,
+          "dictionary_size": 7219,
+          "compression_ratio": 2.3152661962796666,
+          "bytes_saved": -4101
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2916,
+          "compression_ratio": 2.0110344827586206,
+          "bytes_saved": -1466
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4672,
+          "compression_ratio": 2.006872852233677,
+          "bytes_saved": -2344
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4385,
+          "compression_ratio": 2.11427193828351,
+          "bytes_saved": -2311
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4855,
+          "compression_ratio": 2.00041203131438,
+          "bytes_saved": -2428
+        },
+        "go": {
+          "baseline_size": 3841,
+          "dictionary_size": 7914,
+          "compression_ratio": 2.060400937255923,
+          "bytes_saved": -4073
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2651,
+          "compression_ratio": 2.0408006158583527,
+          "bytes_saved": -1352
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 5416,
+          "compression_ratio": 1.8662991040661612,
+          "bytes_saved": -2514
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4563,
+          "compression_ratio": 1.985639686684073,
+          "bytes_saved": -2265
+        },
+        "clojure": {
+          "baseline_size": 2982,
+          "dictionary_size": 5671,
+          "compression_ratio": 1.9017437961099932,
+          "bytes_saved": -2689
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3234,
+          "compression_ratio": 1.925,
+          "bytes_saved": -1554
+        },
+        "lua": {
+          "baseline_size": 2884,
+          "dictionary_size": 5996,
+          "compression_ratio": 2.0790568654646324,
+          "bytes_saved": -3112
+        },
+        "c": {
+          "baseline_size": 3678,
+          "dictionary_size": 7760,
+          "compression_ratio": 2.10984230560087,
+          "bytes_saved": -4082
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4370,
+          "compression_ratio": 2.017543859649123,
+          "bytes_saved": -2204
+        }
+      },
+      "perl": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4667,
+          "compression_ratio": 1.911138411138411,
+          "bytes_saved": -2225
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3251,
+          "compression_ratio": 2.8668430335097,
+          "bytes_saved": -2117
+        },
+        "java": {
+          "baseline_size": 1887,
+          "dictionary_size": 4324,
+          "compression_ratio": 2.291467938526762,
+          "bytes_saved": -2437
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 2022,
+          "compression_ratio": 2.119496855345912,
+          "bytes_saved": -1068
+        },
+        "ocaml": {
+          "baseline_size": 2237,
+          "dictionary_size": 4671,
+          "compression_ratio": 2.0880643719266874,
+          "bytes_saved": -2434
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4553,
+          "compression_ratio": 2.0733151183970855,
+          "bytes_saved": -2357
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 675,
+          "compression_ratio": 2.9220779220779223,
+          "bytes_saved": -444
+        },
+        "fortran": {
+          "baseline_size": 1957,
+          "dictionary_size": 4423,
+          "compression_ratio": 2.260091977516607,
+          "bytes_saved": -2466
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4597,
+          "compression_ratio": 1.9520169851380043,
+          "bytes_saved": -2242
+        },
+        "cpp": {
+          "baseline_size": 1746,
+          "dictionary_size": 4205,
+          "compression_ratio": 2.40836197021764,
+          "bytes_saved": -2459
+        },
+        "haskell": {
+          "baseline_size": 2305,
+          "dictionary_size": 4731,
+          "compression_ratio": 2.0524945770065077,
+          "bytes_saved": -2426
+        },
+        "rust": {
+          "baseline_size": 2319,
+          "dictionary_size": 4738,
+          "compression_ratio": 2.043122035360069,
+          "bytes_saved": -2419
+        },
+        "perl": {
+          "baseline_size": 1322,
+          "dictionary_size": 2544,
+          "compression_ratio": 1.924357034795764,
+          "bytes_saved": -1222
+        },
+        "csharp": {
+          "baseline_size": 1439,
+          "dictionary_size": 3887,
+          "compression_ratio": 2.7011813759555245,
+          "bytes_saved": -2448
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2983,
+          "compression_ratio": 2.057241379310345,
+          "bytes_saved": -1533
+        },
+        "lisp": {
+          "baseline_size": 2206,
+          "dictionary_size": 4659,
+          "compression_ratio": 2.111967361740707,
+          "bytes_saved": -2453
+        },
+        "scheme": {
+          "baseline_size": 2019,
+          "dictionary_size": 4433,
+          "compression_ratio": 2.195641406636949,
+          "bytes_saved": -2414
+        },
+        "dart": {
+          "baseline_size": 2128,
+          "dictionary_size": 4537,
+          "compression_ratio": 2.132048872180451,
+          "bytes_saved": -2409
+        },
+        "go": {
+          "baseline_size": 2002,
+          "dictionary_size": 4471,
+          "compression_ratio": 2.233266733266733,
+          "bytes_saved": -2469
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2725,
+          "compression_ratio": 2.0977675134719016,
+          "bytes_saved": -1426
+        },
+        "scala": {
+          "baseline_size": 2359,
+          "dictionary_size": 4775,
+          "compression_ratio": 2.0241627808393385,
+          "bytes_saved": -2416
+        },
+        "php": {
+          "baseline_size": 2171,
+          "dictionary_size": 4453,
+          "compression_ratio": 2.0511285122063567,
+          "bytes_saved": -2282
+        },
+        "clojure": {
+          "baseline_size": 2382,
+          "dictionary_size": 4811,
+          "compression_ratio": 2.0197313182199834,
+          "bytes_saved": -2429
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3309,
+          "compression_ratio": 1.9696428571428573,
+          "bytes_saved": -1629
+        },
+        "lua": {
+          "baseline_size": 2138,
+          "dictionary_size": 4540,
+          "compression_ratio": 2.1234798877455567,
+          "bytes_saved": -2402
+        },
+        "c": {
+          "baseline_size": 1959,
+          "dictionary_size": 4398,
+          "compression_ratio": 2.245022970903522,
+          "bytes_saved": -2439
+        },
+        "javascript": {
+          "baseline_size": 2156,
+          "dictionary_size": 4590,
+          "compression_ratio": 2.1289424860853434,
+          "bytes_saved": -2434
+        }
+      },
+      "csharp": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 3688,
+          "compression_ratio": 1.5102375102375103,
+          "bytes_saved": -1246
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2278,
+          "compression_ratio": 2.0088183421516757,
+          "bytes_saved": -1144
+        },
+        "java": {
+          "baseline_size": 3107,
+          "dictionary_size": 5635,
+          "compression_ratio": 1.8136466044415835,
+          "bytes_saved": -2528
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1690,
+          "compression_ratio": 1.771488469601677,
+          "bytes_saved": -736
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4136,
+          "compression_ratio": 1.6643863179074447,
+          "bytes_saved": -1651
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 3509,
+          "compression_ratio": 1.5979052823315119,
+          "bytes_saved": -1313
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 546,
+          "compression_ratio": 2.3636363636363638,
+          "bytes_saved": -315
+        },
+        "fortran": {
+          "baseline_size": 4236,
+          "dictionary_size": 7638,
+          "compression_ratio": 1.8031161473087818,
+          "bytes_saved": -3402
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 3588,
+          "compression_ratio": 1.5235668789808918,
+          "bytes_saved": -1233
+        },
+        "cpp": {
+          "baseline_size": 4577,
+          "dictionary_size": 8483,
+          "compression_ratio": 1.853397421892069,
+          "bytes_saved": -3906
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 3966,
+          "compression_ratio": 1.6200980392156863,
+          "bytes_saved": -1518
+        },
+        "rust": {
+          "baseline_size": 4232,
+          "dictionary_size": 7212,
+          "compression_ratio": 1.7041587901701323,
+          "bytes_saved": -2980
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 3867,
+          "compression_ratio": 1.51885310290652,
+          "bytes_saved": -1321
+        },
+        "csharp": {
+          "baseline_size": 3925,
+          "dictionary_size": 7099,
+          "compression_ratio": 1.8086624203821655,
+          "bytes_saved": -3174
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2355,
+          "compression_ratio": 1.6241379310344828,
+          "bytes_saved": -905
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 3870,
+          "compression_ratio": 1.6623711340206186,
+          "bytes_saved": -1542
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 3528,
+          "compression_ratio": 1.7010607521697203,
+          "bytes_saved": -1454
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4045,
+          "compression_ratio": 1.6666666666666667,
+          "bytes_saved": -1618
+        },
+        "go": {
+          "baseline_size": 4054,
+          "dictionary_size": 7209,
+          "compression_ratio": 1.7782437099161321,
+          "bytes_saved": -3155
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2211,
+          "compression_ratio": 1.702078521939954,
+          "bytes_saved": -912
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 4698,
+          "compression_ratio": 1.6188835286009648,
+          "bytes_saved": -1796
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 3746,
+          "compression_ratio": 1.630113141862489,
+          "bytes_saved": -1448
+        },
+        "clojure": {
+          "baseline_size": 2982,
+          "dictionary_size": 4922,
+          "compression_ratio": 1.6505700871898055,
+          "bytes_saved": -1940
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 2623,
+          "compression_ratio": 1.5613095238095238,
+          "bytes_saved": -943
+        },
+        "lua": {
+          "baseline_size": 2884,
+          "dictionary_size": 5185,
+          "compression_ratio": 1.7978502080443828,
+          "bytes_saved": -2301
+        },
+        "c": {
+          "baseline_size": 4625,
+          "dictionary_size": 8363,
+          "compression_ratio": 1.8082162162162163,
+          "bytes_saved": -3738
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 3512,
+          "compression_ratio": 1.6214219759926132,
+          "bytes_saved": -1346
+        }
+      },
+      "typescript": {
+        "ruby": {
+          "baseline_size": 1624,
+          "dictionary_size": 2976,
+          "compression_ratio": 1.832512315270936,
+          "bytes_saved": -1352
+        },
+        "chef": {
+          "baseline_size": 889,
+          "dictionary_size": 2313,
+          "compression_ratio": 2.6017997750281214,
+          "bytes_saved": -1424
+        },
+        "java": {
+          "baseline_size": 1246,
+          "dictionary_size": 2604,
+          "compression_ratio": 2.0898876404494384,
+          "bytes_saved": -1358
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1978,
+          "compression_ratio": 2.0733752620545074,
+          "bytes_saved": -1024
+        },
+        "ocaml": {
+          "baseline_size": 1417,
+          "dictionary_size": 2809,
+          "compression_ratio": 1.9823570924488356,
+          "bytes_saved": -1392
+        },
+        "prolog": {
+          "baseline_size": 1543,
+          "dictionary_size": 2919,
+          "compression_ratio": 1.8917692806221647,
+          "bytes_saved": -1376
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 671,
+          "compression_ratio": 2.9047619047619047,
+          "bytes_saved": -440
+        },
+        "fortran": {
+          "baseline_size": 1239,
+          "dictionary_size": 2603,
+          "compression_ratio": 2.1008878127522195,
+          "bytes_saved": -1364
+        },
+        "julia": {
+          "baseline_size": 1594,
+          "dictionary_size": 2938,
+          "compression_ratio": 1.8431618569636135,
+          "bytes_saved": -1344
+        },
+        "cpp": {
+          "baseline_size": 1271,
+          "dictionary_size": 2630,
+          "compression_ratio": 2.069236821400472,
+          "bytes_saved": -1359
+        },
+        "haskell": {
+          "baseline_size": 1367,
+          "dictionary_size": 2767,
+          "compression_ratio": 2.0241404535479153,
+          "bytes_saved": -1400
+        },
+        "rust": {
+          "baseline_size": 1535,
+          "dictionary_size": 2913,
+          "compression_ratio": 1.8977198697068405,
+          "bytes_saved": -1378
+        },
+        "perl": {
+          "baseline_size": 1637,
+          "dictionary_size": 2971,
+          "compression_ratio": 1.814905314599878,
+          "bytes_saved": -1334
+        },
+        "csharp": {
+          "baseline_size": 996,
+          "dictionary_size": 2346,
+          "compression_ratio": 2.355421686746988,
+          "bytes_saved": -1350
+        },
+        "typescript": {
+          "baseline_size": 746,
+          "dictionary_size": 1448,
+          "compression_ratio": 1.9410187667560321,
+          "bytes_saved": -702
+        },
+        "lisp": {
+          "baseline_size": 1442,
+          "dictionary_size": 2843,
+          "compression_ratio": 1.9715672676837726,
+          "bytes_saved": -1401
+        },
+        "scheme": {
+          "baseline_size": 1360,
+          "dictionary_size": 2741,
+          "compression_ratio": 2.0154411764705884,
+          "bytes_saved": -1381
+        },
+        "dart": {
+          "baseline_size": 1474,
+          "dictionary_size": 2779,
+          "compression_ratio": 1.8853459972862958,
+          "bytes_saved": -1305
+        },
+        "go": {
+          "baseline_size": 1360,
+          "dictionary_size": 2716,
+          "compression_ratio": 1.9970588235294118,
+          "bytes_saved": -1356
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2541,
+          "compression_ratio": 1.956120092378753,
+          "bytes_saved": -1242
+        },
+        "scala": {
+          "baseline_size": 1545,
+          "dictionary_size": 2910,
+          "compression_ratio": 1.883495145631068,
+          "bytes_saved": -1365
+        },
+        "php": {
+          "baseline_size": 1413,
+          "dictionary_size": 2746,
+          "compression_ratio": 1.9433828733191791,
+          "bytes_saved": -1333
+        },
+        "clojure": {
+          "baseline_size": 1538,
+          "dictionary_size": 2907,
+          "compression_ratio": 1.8901170351105332,
+          "bytes_saved": -1369
+        },
+        "python": {
+          "baseline_size": 1543,
+          "dictionary_size": 2917,
+          "compression_ratio": 1.8904731043421905,
+          "bytes_saved": -1374
+        },
+        "lua": {
+          "baseline_size": 1354,
+          "dictionary_size": 2721,
+          "compression_ratio": 2.0096011816838995,
+          "bytes_saved": -1367
+        },
+        "c": {
+          "baseline_size": 1348,
+          "dictionary_size": 2718,
+          "compression_ratio": 2.016320474777448,
+          "bytes_saved": -1370
+        },
+        "javascript": {
+          "baseline_size": 1445,
+          "dictionary_size": 2712,
+          "compression_ratio": 1.8768166089965397,
+          "bytes_saved": -1267
+        }
+      },
+      "lisp": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4459,
+          "compression_ratio": 1.8259623259623259,
+          "bytes_saved": -2017
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2995,
+          "compression_ratio": 2.6410934744268078,
+          "bytes_saved": -1861
+        },
+        "java": {
+          "baseline_size": 1986,
+          "dictionary_size": 4233,
+          "compression_ratio": 2.1314199395770395,
+          "bytes_saved": -2247
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1995,
+          "compression_ratio": 2.091194968553459,
+          "bytes_saved": -1041
+        },
+        "ocaml": {
+          "baseline_size": 2360,
+          "dictionary_size": 4591,
+          "compression_ratio": 1.9453389830508474,
+          "bytes_saved": -2231
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4250,
+          "compression_ratio": 1.9353369763205828,
+          "bytes_saved": -2054
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 707,
+          "compression_ratio": 3.0606060606060606,
+          "bytes_saved": -476
+        },
+        "fortran": {
+          "baseline_size": 2079,
+          "dictionary_size": 4329,
+          "compression_ratio": 2.0822510822510822,
+          "bytes_saved": -2250
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4342,
+          "compression_ratio": 1.8437367303609342,
+          "bytes_saved": -1987
+        },
+        "cpp": {
+          "baseline_size": 1861,
+          "dictionary_size": 4131,
+          "compression_ratio": 2.2197743148844706,
+          "bytes_saved": -2270
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4681,
+          "compression_ratio": 1.9121732026143792,
+          "bytes_saved": -2233
+        },
+        "rust": {
+          "baseline_size": 2432,
+          "dictionary_size": 4677,
+          "compression_ratio": 1.923108552631579,
+          "bytes_saved": -2245
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4645,
+          "compression_ratio": 1.8244304791830321,
+          "bytes_saved": -2099
+        },
+        "csharp": {
+          "baseline_size": 1602,
+          "dictionary_size": 3872,
+          "compression_ratio": 2.4169787765293385,
+          "bytes_saved": -2270
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2842,
+          "compression_ratio": 1.96,
+          "bytes_saved": -1392
+        },
+        "lisp": {
+          "baseline_size": 1239,
+          "dictionary_size": 2326,
+          "compression_ratio": 1.877320419693301,
+          "bytes_saved": -1087
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4171,
+          "compression_ratio": 2.011089681774349,
+          "bytes_saved": -2097
+        },
+        "dart": {
+          "baseline_size": 2272,
+          "dictionary_size": 4526,
+          "compression_ratio": 1.9920774647887325,
+          "bytes_saved": -2254
+        },
+        "go": {
+          "baseline_size": 2111,
+          "dictionary_size": 4380,
+          "compression_ratio": 2.0748460445286594,
+          "bytes_saved": -2269
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2549,
+          "compression_ratio": 1.9622786759045419,
+          "bytes_saved": -1250
+        },
+        "scala": {
+          "baseline_size": 2517,
+          "dictionary_size": 4765,
+          "compression_ratio": 1.8931267381803734,
+          "bytes_saved": -2248
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4515,
+          "compression_ratio": 1.9647519582245432,
+          "bytes_saved": -2217
+        },
+        "clojure": {
+          "baseline_size": 2518,
+          "dictionary_size": 4722,
+          "compression_ratio": 1.875297855440826,
+          "bytes_saved": -2204
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3130,
+          "compression_ratio": 1.8630952380952381,
+          "bytes_saved": -1450
+        },
+        "lua": {
+          "baseline_size": 2198,
+          "dictionary_size": 4460,
+          "compression_ratio": 2.0291173794358506,
+          "bytes_saved": -2262
+        },
+        "c": {
+          "baseline_size": 2054,
+          "dictionary_size": 4336,
+          "compression_ratio": 2.1110029211295034,
+          "bytes_saved": -2282
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4297,
+          "compression_ratio": 1.9838411819021238,
+          "bytes_saved": -2131
+        }
+      },
+      "scheme": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4260,
+          "compression_ratio": 1.7444717444717446,
+          "bytes_saved": -1818
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2895,
+          "compression_ratio": 2.552910052910053,
+          "bytes_saved": -1761
+        },
+        "java": {
+          "baseline_size": 1954,
+          "dictionary_size": 3942,
+          "compression_ratio": 2.0174002047082906,
+          "bytes_saved": -1988
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1890,
+          "compression_ratio": 1.9811320754716981,
+          "bytes_saved": -936
+        },
+        "ocaml": {
+          "baseline_size": 2319,
+          "dictionary_size": 4294,
+          "compression_ratio": 1.8516601983613628,
+          "bytes_saved": -1975
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4058,
+          "compression_ratio": 1.8479052823315119,
+          "bytes_saved": -1862
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 693,
+          "compression_ratio": 3.0,
+          "bytes_saved": -462
+        },
+        "fortran": {
+          "baseline_size": 2017,
+          "dictionary_size": 4024,
+          "compression_ratio": 1.9950421417947446,
+          "bytes_saved": -2007
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4154,
+          "compression_ratio": 1.7639065817409767,
+          "bytes_saved": -1799
+        },
+        "cpp": {
+          "baseline_size": 1807,
+          "dictionary_size": 3823,
+          "compression_ratio": 2.115661317100166,
+          "bytes_saved": -2016
+        },
+        "haskell": {
+          "baseline_size": 2395,
+          "dictionary_size": 4380,
+          "compression_ratio": 1.8288100208768268,
+          "bytes_saved": -1985
+        },
+        "rust": {
+          "baseline_size": 2393,
+          "dictionary_size": 4391,
+          "compression_ratio": 1.8349352277475972,
+          "bytes_saved": -1998
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4435,
+          "compression_ratio": 1.741948153967007,
+          "bytes_saved": -1889
+        },
+        "csharp": {
+          "baseline_size": 1536,
+          "dictionary_size": 3545,
+          "compression_ratio": 2.3079427083333335,
+          "bytes_saved": -2009
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2742,
+          "compression_ratio": 1.8910344827586207,
+          "bytes_saved": -1292
+        },
+        "lisp": {
+          "baseline_size": 2292,
+          "dictionary_size": 4157,
+          "compression_ratio": 1.8136998254799301,
+          "bytes_saved": -1865
+        },
+        "scheme": {
+          "baseline_size": 1023,
+          "dictionary_size": 2072,
+          "compression_ratio": 2.0254154447702835,
+          "bytes_saved": -1049
+        },
+        "dart": {
+          "baseline_size": 2226,
+          "dictionary_size": 4204,
+          "compression_ratio": 1.8885893980233603,
+          "bytes_saved": -1978
+        },
+        "go": {
+          "baseline_size": 2065,
+          "dictionary_size": 4078,
+          "compression_ratio": 1.974818401937046,
+          "bytes_saved": -2013
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2513,
+          "compression_ratio": 1.9345650500384912,
+          "bytes_saved": -1214
+        },
+        "scala": {
+          "baseline_size": 2453,
+          "dictionary_size": 4443,
+          "compression_ratio": 1.811251528740318,
+          "bytes_saved": -1990
+        },
+        "php": {
+          "baseline_size": 2264,
+          "dictionary_size": 4189,
+          "compression_ratio": 1.8502650176678446,
+          "bytes_saved": -1925
+        },
+        "clojure": {
+          "baseline_size": 2468,
+          "dictionary_size": 4372,
+          "compression_ratio": 1.7714748784440844,
+          "bytes_saved": -1904
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3036,
+          "compression_ratio": 1.8071428571428572,
+          "bytes_saved": -1356
+        },
+        "lua": {
+          "baseline_size": 2174,
+          "dictionary_size": 4143,
+          "compression_ratio": 1.905703771849126,
+          "bytes_saved": -1969
+        },
+        "c": {
+          "baseline_size": 2023,
+          "dictionary_size": 4050,
+          "compression_ratio": 2.0019772614928324,
+          "bytes_saved": -2027
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4122,
+          "compression_ratio": 1.9030470914127424,
+          "bytes_saved": -1956
+        }
+      },
+      "dart": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4333,
+          "compression_ratio": 1.7743652743652745,
+          "bytes_saved": -1891
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2947,
+          "compression_ratio": 2.5987654320987654,
+          "bytes_saved": -1813
+        },
+        "java": {
+          "baseline_size": 2127,
+          "dictionary_size": 4398,
+          "compression_ratio": 2.0677009873060648,
+          "bytes_saved": -2271
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1885,
+          "compression_ratio": 1.9758909853249476,
+          "bytes_saved": -931
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4808,
+          "compression_ratio": 1.9348088531187122,
+          "bytes_saved": -2323
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4149,
+          "compression_ratio": 1.889344262295082,
+          "bytes_saved": -1953
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 666,
+          "compression_ratio": 2.883116883116883,
+          "bytes_saved": -435
+        },
+        "fortran": {
+          "baseline_size": 2203,
+          "dictionary_size": 4539,
+          "compression_ratio": 2.0603722197004086,
+          "bytes_saved": -2336
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4229,
+          "compression_ratio": 1.7957537154989385,
+          "bytes_saved": -1874
+        },
+        "cpp": {
+          "baseline_size": 2023,
+          "dictionary_size": 4348,
+          "compression_ratio": 2.149283242708848,
+          "bytes_saved": -2325
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4632,
+          "compression_ratio": 1.892156862745098,
+          "bytes_saved": -2184
+        },
+        "rust": {
+          "baseline_size": 2524,
+          "dictionary_size": 4855,
+          "compression_ratio": 1.9235340729001584,
+          "bytes_saved": -2331
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4534,
+          "compression_ratio": 1.7808326787117046,
+          "bytes_saved": -1988
+        },
+        "csharp": {
+          "baseline_size": 1763,
+          "dictionary_size": 4053,
+          "compression_ratio": 2.298922291548497,
+          "bytes_saved": -2290
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2768,
+          "compression_ratio": 1.9089655172413793,
+          "bytes_saved": -1318
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4536,
+          "compression_ratio": 1.9484536082474226,
+          "bytes_saved": -2208
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4197,
+          "compression_ratio": 2.023625843780135,
+          "bytes_saved": -2123
+        },
+        "dart": {
+          "baseline_size": 1213,
+          "dictionary_size": 2425,
+          "compression_ratio": 1.9991755976916736,
+          "bytes_saved": -1212
+        },
+        "go": {
+          "baseline_size": 2251,
+          "dictionary_size": 4589,
+          "compression_ratio": 2.0386494891159486,
+          "bytes_saved": -2338
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2533,
+          "compression_ratio": 1.9499615088529638,
+          "bytes_saved": -1234
+        },
+        "scala": {
+          "baseline_size": 2691,
+          "dictionary_size": 5012,
+          "compression_ratio": 1.8625046451133407,
+          "bytes_saved": -2321
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4378,
+          "compression_ratio": 1.9051348999129678,
+          "bytes_saved": -2080
+        },
+        "clojure": {
+          "baseline_size": 2651,
+          "dictionary_size": 4946,
+          "compression_ratio": 1.865711052433044,
+          "bytes_saved": -2295
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3143,
+          "compression_ratio": 1.8708333333333333,
+          "bytes_saved": -1463
+        },
+        "lua": {
+          "baseline_size": 2237,
+          "dictionary_size": 4545,
+          "compression_ratio": 2.0317389360751004,
+          "bytes_saved": -2308
+        },
+        "c": {
+          "baseline_size": 2224,
+          "dictionary_size": 4547,
+          "compression_ratio": 2.0445143884892087,
+          "bytes_saved": -2323
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4126,
+          "compression_ratio": 1.9048938134810711,
+          "bytes_saved": -1960
+        }
+      },
+      "go": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4256,
+          "compression_ratio": 1.7428337428337428,
+          "bytes_saved": -1814
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2861,
+          "compression_ratio": 2.5229276895943564,
+          "bytes_saved": -1727
+        },
+        "java": {
+          "baseline_size": 3107,
+          "dictionary_size": 6316,
+          "compression_ratio": 2.0328290955906017,
+          "bytes_saved": -3209
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1877,
+          "compression_ratio": 1.9675052410901468,
+          "bytes_saved": -923
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4598,
+          "compression_ratio": 1.8503018108651912,
+          "bytes_saved": -2113
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4045,
+          "compression_ratio": 1.8419854280510017,
+          "bytes_saved": -1849
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 649,
+          "compression_ratio": 2.8095238095238093,
+          "bytes_saved": -418
+        },
+        "fortran": {
+          "baseline_size": 3890,
+          "dictionary_size": 7788,
+          "compression_ratio": 2.002056555269923,
+          "bytes_saved": -3898
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4118,
+          "compression_ratio": 1.748619957537155,
+          "bytes_saved": -1763
+        },
+        "cpp": {
+          "baseline_size": 3661,
+          "dictionary_size": 7579,
+          "compression_ratio": 2.070199399071292,
+          "bytes_saved": -3918
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4477,
+          "compression_ratio": 1.8288398692810457,
+          "bytes_saved": -2029
+        },
+        "rust": {
+          "baseline_size": 4232,
+          "dictionary_size": 7906,
+          "compression_ratio": 1.8681474480151228,
+          "bytes_saved": -3674
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4465,
+          "compression_ratio": 1.7537313432835822,
+          "bytes_saved": -1919
+        },
+        "csharp": {
+          "baseline_size": 3279,
+          "dictionary_size": 7211,
+          "compression_ratio": 2.1991460811222936,
+          "bytes_saved": -3932
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2725,
+          "compression_ratio": 1.8793103448275863,
+          "bytes_saved": -1275
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4379,
+          "compression_ratio": 1.8810137457044673,
+          "bytes_saved": -2051
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4079,
+          "compression_ratio": 1.9667309546769527,
+          "bytes_saved": -2005
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4598,
+          "compression_ratio": 1.8945199835187474,
+          "bytes_saved": -2171
+        },
+        "go": {
+          "baseline_size": 2221,
+          "dictionary_size": 4052,
+          "compression_ratio": 1.824403421882035,
+          "bytes_saved": -1831
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2452,
+          "compression_ratio": 1.8876058506543496,
+          "bytes_saved": -1153
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 5208,
+          "compression_ratio": 1.7946243969676086,
+          "bytes_saved": -2306
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4271,
+          "compression_ratio": 1.8585726718885989,
+          "bytes_saved": -1973
+        },
+        "clojure": {
+          "baseline_size": 2982,
+          "dictionary_size": 5450,
+          "compression_ratio": 1.8276324614352784,
+          "bytes_saved": -2468
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3058,
+          "compression_ratio": 1.8202380952380952,
+          "bytes_saved": -1378
+        },
+        "lua": {
+          "baseline_size": 2884,
+          "dictionary_size": 5746,
+          "compression_ratio": 1.992371705963939,
+          "bytes_saved": -2862
+        },
+        "c": {
+          "baseline_size": 3893,
+          "dictionary_size": 7818,
+          "compression_ratio": 2.0082198818391985,
+          "bytes_saved": -3925
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4052,
+          "compression_ratio": 1.8707294552169897,
+          "bytes_saved": -1886
+        }
+      },
+      "r": {
+        "ruby": {
+          "baseline_size": 1451,
+          "dictionary_size": 2658,
+          "compression_ratio": 1.8318401102687802,
+          "bytes_saved": -1207
+        },
+        "chef": {
+          "baseline_size": 842,
+          "dictionary_size": 2109,
+          "compression_ratio": 2.504750593824228,
+          "bytes_saved": -1267
+        },
+        "java": {
+          "baseline_size": 1138,
+          "dictionary_size": 2376,
+          "compression_ratio": 2.0878734622144113,
+          "bytes_saved": -1238
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1883,
+          "compression_ratio": 1.9737945492662474,
+          "bytes_saved": -929
+        },
+        "ocaml": {
+          "baseline_size": 1270,
+          "dictionary_size": 2496,
+          "compression_ratio": 1.9653543307086614,
+          "bytes_saved": -1226
+        },
+        "prolog": {
+          "baseline_size": 1399,
+          "dictionary_size": 2610,
+          "compression_ratio": 1.8656182987848464,
+          "bytes_saved": -1211
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 646,
+          "compression_ratio": 2.7965367965367967,
+          "bytes_saved": -415
+        },
+        "fortran": {
+          "baseline_size": 1163,
+          "dictionary_size": 2369,
+          "compression_ratio": 2.0369733447979366,
+          "bytes_saved": -1206
+        },
+        "julia": {
+          "baseline_size": 1457,
+          "dictionary_size": 2665,
+          "compression_ratio": 1.8291008922443377,
+          "bytes_saved": -1208
+        },
+        "cpp": {
+          "baseline_size": 1168,
+          "dictionary_size": 2380,
+          "compression_ratio": 2.037671232876712,
+          "bytes_saved": -1212
+        },
+        "haskell": {
+          "baseline_size": 1224,
+          "dictionary_size": 2462,
+          "compression_ratio": 2.011437908496732,
+          "bytes_saved": -1238
+        },
+        "rust": {
+          "baseline_size": 1421,
+          "dictionary_size": 2639,
+          "compression_ratio": 1.8571428571428572,
+          "bytes_saved": -1218
+        },
+        "perl": {
+          "baseline_size": 1493,
+          "dictionary_size": 2707,
+          "compression_ratio": 1.8131279303415941,
+          "bytes_saved": -1214
+        },
+        "csharp": {
+          "baseline_size": 980,
+          "dictionary_size": 2209,
+          "compression_ratio": 2.2540816326530613,
+          "bytes_saved": -1229
+        },
+        "typescript": {
+          "baseline_size": 1339,
+          "dictionary_size": 2547,
+          "compression_ratio": 1.902165795369679,
+          "bytes_saved": -1208
+        },
+        "lisp": {
+          "baseline_size": 1313,
+          "dictionary_size": 2553,
+          "compression_ratio": 1.9444021325209444,
+          "bytes_saved": -1240
+        },
+        "scheme": {
+          "baseline_size": 1266,
+          "dictionary_size": 2507,
+          "compression_ratio": 1.9802527646129542,
+          "bytes_saved": -1241
+        },
+        "dart": {
+          "baseline_size": 1315,
+          "dictionary_size": 2546,
+          "compression_ratio": 1.9361216730038022,
+          "bytes_saved": -1231
+        },
+        "go": {
+          "baseline_size": 1254,
+          "dictionary_size": 2450,
+          "compression_ratio": 1.9537480063795853,
+          "bytes_saved": -1196
+        },
+        "r": {
+          "baseline_size": 690,
+          "dictionary_size": 1297,
+          "compression_ratio": 1.8797101449275362,
+          "bytes_saved": -607
+        },
+        "scala": {
+          "baseline_size": 1432,
+          "dictionary_size": 2658,
+          "compression_ratio": 1.856145251396648,
+          "bytes_saved": -1226
+        },
+        "php": {
+          "baseline_size": 1245,
+          "dictionary_size": 2466,
+          "compression_ratio": 1.9807228915662651,
+          "bytes_saved": -1221
+        },
+        "clojure": {
+          "baseline_size": 1438,
+          "dictionary_size": 2684,
+          "compression_ratio": 1.866481223922114,
+          "bytes_saved": -1246
+        },
+        "python": {
+          "baseline_size": 1436,
+          "dictionary_size": 2643,
+          "compression_ratio": 1.8405292479108635,
+          "bytes_saved": -1207
+        },
+        "lua": {
+          "baseline_size": 1255,
+          "dictionary_size": 2486,
+          "compression_ratio": 1.9808764940239043,
+          "bytes_saved": -1231
+        },
+        "c": {
+          "baseline_size": 1241,
+          "dictionary_size": 2471,
+          "compression_ratio": 1.991136180499597,
+          "bytes_saved": -1230
+        },
+        "javascript": {
+          "baseline_size": 1300,
+          "dictionary_size": 2531,
+          "compression_ratio": 1.946923076923077,
+          "bytes_saved": -1231
+        }
+      },
+      "scala": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4529,
+          "compression_ratio": 1.8546273546273546,
+          "bytes_saved": -2087
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3153,
+          "compression_ratio": 2.7804232804232805,
+          "bytes_saved": -2019
+        },
+        "java": {
+          "baseline_size": 2281,
+          "dictionary_size": 5009,
+          "compression_ratio": 2.19596668128014,
+          "bytes_saved": -2728
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1985,
+          "compression_ratio": 2.080712788259958,
+          "bytes_saved": -1031
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 5029,
+          "compression_ratio": 2.02374245472837,
+          "bytes_saved": -2544
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4349,
+          "compression_ratio": 1.9804189435336976,
+          "bytes_saved": -2153
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 683,
+          "compression_ratio": 2.9567099567099566,
+          "bytes_saved": -452
+        },
+        "fortran": {
+          "baseline_size": 2371,
+          "dictionary_size": 5172,
+          "compression_ratio": 2.1813580767608602,
+          "bytes_saved": -2801
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4436,
+          "compression_ratio": 1.883651804670913,
+          "bytes_saved": -2081
+        },
+        "cpp": {
+          "baseline_size": 2252,
+          "dictionary_size": 5018,
+          "compression_ratio": 2.2282415630550623,
+          "bytes_saved": -2766
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4819,
+          "compression_ratio": 1.9685457516339868,
+          "bytes_saved": -2371
+        },
+        "rust": {
+          "baseline_size": 2680,
+          "dictionary_size": 5420,
+          "compression_ratio": 2.0223880597014925,
+          "bytes_saved": -2740
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4791,
+          "compression_ratio": 1.8817753338570307,
+          "bytes_saved": -2245
+        },
+        "csharp": {
+          "baseline_size": 1937,
+          "dictionary_size": 4731,
+          "compression_ratio": 2.4424367578729993,
+          "bytes_saved": -2794
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2923,
+          "compression_ratio": 2.015862068965517,
+          "bytes_saved": -1473
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4750,
+          "compression_ratio": 2.040378006872852,
+          "bytes_saved": -2422
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4423,
+          "compression_ratio": 2.1325940212150436,
+          "bytes_saved": -2349
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 5004,
+          "compression_ratio": 2.061804697156984,
+          "bytes_saved": -2577
+        },
+        "go": {
+          "baseline_size": 2443,
+          "dictionary_size": 5216,
+          "compression_ratio": 2.1350798198935736,
+          "bytes_saved": -2773
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2651,
+          "compression_ratio": 2.0408006158583527,
+          "bytes_saved": -1352
+        },
+        "scala": {
+          "baseline_size": 1537,
+          "dictionary_size": 2900,
+          "compression_ratio": 1.8867924528301887,
+          "bytes_saved": -1363
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4657,
+          "compression_ratio": 2.026544821583986,
+          "bytes_saved": -2359
+        },
+        "clojure": {
+          "baseline_size": 2880,
+          "dictionary_size": 5669,
+          "compression_ratio": 1.9684027777777777,
+          "bytes_saved": -2789
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3208,
+          "compression_ratio": 1.9095238095238096,
+          "bytes_saved": -1528
+        },
+        "lua": {
+          "baseline_size": 2370,
+          "dictionary_size": 5133,
+          "compression_ratio": 2.1658227848101266,
+          "bytes_saved": -2763
+        },
+        "c": {
+          "baseline_size": 2428,
+          "dictionary_size": 5242,
+          "compression_ratio": 2.158978583196046,
+          "bytes_saved": -2814
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4414,
+          "compression_ratio": 2.0378578024007385,
+          "bytes_saved": -2248
+        }
+      },
+      "php": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4288,
+          "compression_ratio": 1.755937755937756,
+          "bytes_saved": -1846
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2950,
+          "compression_ratio": 2.601410934744268,
+          "bytes_saved": -1816
+        },
+        "java": {
+          "baseline_size": 1974,
+          "dictionary_size": 4087,
+          "compression_ratio": 2.0704154002026343,
+          "bytes_saved": -2113
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1861,
+          "compression_ratio": 1.950733752620545,
+          "bytes_saved": -907
+        },
+        "ocaml": {
+          "baseline_size": 2345,
+          "dictionary_size": 4494,
+          "compression_ratio": 1.9164179104477612,
+          "bytes_saved": -2149
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4141,
+          "compression_ratio": 1.8857012750455373,
+          "bytes_saved": -1945
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 646,
+          "compression_ratio": 2.7965367965367967,
+          "bytes_saved": -415
+        },
+        "fortran": {
+          "baseline_size": 2070,
+          "dictionary_size": 4277,
+          "compression_ratio": 2.066183574879227,
+          "bytes_saved": -2207
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4191,
+          "compression_ratio": 1.7796178343949045,
+          "bytes_saved": -1836
+        },
+        "cpp": {
+          "baseline_size": 1847,
+          "dictionary_size": 4015,
+          "compression_ratio": 2.173795343800758,
+          "bytes_saved": -2168
+        },
+        "haskell": {
+          "baseline_size": 2441,
+          "dictionary_size": 4602,
+          "compression_ratio": 1.8852929127406801,
+          "bytes_saved": -2161
+        },
+        "rust": {
+          "baseline_size": 2416,
+          "dictionary_size": 4548,
+          "compression_ratio": 1.8824503311258278,
+          "bytes_saved": -2132
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4443,
+          "compression_ratio": 1.7450903377847604,
+          "bytes_saved": -1897
+        },
+        "csharp": {
+          "baseline_size": 1587,
+          "dictionary_size": 3752,
+          "compression_ratio": 2.364209199747952,
+          "bytes_saved": -2165
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2749,
+          "compression_ratio": 1.8958620689655172,
+          "bytes_saved": -1299
+        },
+        "lisp": {
+          "baseline_size": 2321,
+          "dictionary_size": 4509,
+          "compression_ratio": 1.9426971133132271,
+          "bytes_saved": -2188
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4183,
+          "compression_ratio": 2.0168756027000962,
+          "bytes_saved": -2109
+        },
+        "dart": {
+          "baseline_size": 2260,
+          "dictionary_size": 4386,
+          "compression_ratio": 1.94070796460177,
+          "bytes_saved": -2126
+        },
+        "go": {
+          "baseline_size": 2100,
+          "dictionary_size": 4269,
+          "compression_ratio": 2.032857142857143,
+          "bytes_saved": -2169
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2470,
+          "compression_ratio": 1.9014626635873748,
+          "bytes_saved": -1171
+        },
+        "scala": {
+          "baseline_size": 2502,
+          "dictionary_size": 4649,
+          "compression_ratio": 1.858113509192646,
+          "bytes_saved": -2147
+        },
+        "php": {
+          "baseline_size": 1223,
+          "dictionary_size": 2296,
+          "compression_ratio": 1.8773507767784137,
+          "bytes_saved": -1073
+        },
+        "clojure": {
+          "baseline_size": 2506,
+          "dictionary_size": 4654,
+          "compression_ratio": 1.8571428571428572,
+          "bytes_saved": -2148
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3019,
+          "compression_ratio": 1.7970238095238096,
+          "bytes_saved": -1339
+        },
+        "lua": {
+          "baseline_size": 2194,
+          "dictionary_size": 4302,
+          "compression_ratio": 1.9608021877848678,
+          "bytes_saved": -2108
+        },
+        "c": {
+          "baseline_size": 2045,
+          "dictionary_size": 4220,
+          "compression_ratio": 2.063569682151589,
+          "bytes_saved": -2175
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4137,
+          "compression_ratio": 1.9099722991689752,
+          "bytes_saved": -1971
+        }
+      },
+      "clojure": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4607,
+          "compression_ratio": 1.8865683865683867,
+          "bytes_saved": -2165
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 3171,
+          "compression_ratio": 2.7962962962962963,
+          "bytes_saved": -2037
+        },
+        "java": {
+          "baseline_size": 2366,
+          "dictionary_size": 5201,
+          "compression_ratio": 2.198224852071006,
+          "bytes_saved": -2835
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1989,
+          "compression_ratio": 2.0849056603773586,
+          "bytes_saved": -1035
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 5000,
+          "compression_ratio": 2.0120724346076457,
+          "bytes_saved": -2515
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4426,
+          "compression_ratio": 2.0154826958105647,
+          "bytes_saved": -2230
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 702,
+          "compression_ratio": 3.038961038961039,
+          "bytes_saved": -471
+        },
+        "fortran": {
+          "baseline_size": 2456,
+          "dictionary_size": 5351,
+          "compression_ratio": 2.178745928338762,
+          "bytes_saved": -2895
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4507,
+          "compression_ratio": 1.9138004246284501,
+          "bytes_saved": -2152
+        },
+        "cpp": {
+          "baseline_size": 2362,
+          "dictionary_size": 5236,
+          "compression_ratio": 2.216765453005927,
+          "bytes_saved": -2874
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4868,
+          "compression_ratio": 1.988562091503268,
+          "bytes_saved": -2420
+        },
+        "rust": {
+          "baseline_size": 2793,
+          "dictionary_size": 5669,
+          "compression_ratio": 2.029717150017902,
+          "bytes_saved": -2876
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4795,
+          "compression_ratio": 1.8833464257659074,
+          "bytes_saved": -2249
+        },
+        "csharp": {
+          "baseline_size": 2043,
+          "dictionary_size": 4932,
+          "compression_ratio": 2.4140969162995596,
+          "bytes_saved": -2889
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2905,
+          "compression_ratio": 2.003448275862069,
+          "bytes_saved": -1455
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4706,
+          "compression_ratio": 2.0214776632302405,
+          "bytes_saved": -2378
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4379,
+          "compression_ratio": 2.1113789778206367,
+          "bytes_saved": -2305
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4938,
+          "compression_ratio": 2.034610630407911,
+          "bytes_saved": -2511
+        },
+        "go": {
+          "baseline_size": 2562,
+          "dictionary_size": 5439,
+          "compression_ratio": 2.122950819672131,
+          "bytes_saved": -2877
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2680,
+          "compression_ratio": 2.063125481139338,
+          "bytes_saved": -1381
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 5655,
+          "compression_ratio": 1.9486560992419022,
+          "bytes_saved": -2753
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4666,
+          "compression_ratio": 2.030461270670148,
+          "bytes_saved": -2368
+        },
+        "clojure": {
+          "baseline_size": 1562,
+          "dictionary_size": 2980,
+          "compression_ratio": 1.907810499359795,
+          "bytes_saved": -1418
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3254,
+          "compression_ratio": 1.936904761904762,
+          "bytes_saved": -1574
+        },
+        "lua": {
+          "baseline_size": 2428,
+          "dictionary_size": 5256,
+          "compression_ratio": 2.1647446457990114,
+          "bytes_saved": -2828
+        },
+        "c": {
+          "baseline_size": 2532,
+          "dictionary_size": 5451,
+          "compression_ratio": 2.1528436018957344,
+          "bytes_saved": -2919
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4474,
+          "compression_ratio": 2.0655586334256695,
+          "bytes_saved": -2308
+        }
+      },
+      "python": {
+        "ruby": {
+          "baseline_size": 1741,
+          "dictionary_size": 3213,
+          "compression_ratio": 1.845491097070649,
+          "bytes_saved": -1472
+        },
+        "chef": {
+          "baseline_size": 951,
+          "dictionary_size": 2602,
+          "compression_ratio": 2.736067297581493,
+          "bytes_saved": -1651
+        },
+        "java": {
+          "baseline_size": 1356,
+          "dictionary_size": 2898,
+          "compression_ratio": 2.1371681415929205,
+          "bytes_saved": -1542
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 2022,
+          "compression_ratio": 2.119496855345912,
+          "bytes_saved": -1068
+        },
+        "ocaml": {
+          "baseline_size": 1552,
+          "dictionary_size": 3133,
+          "compression_ratio": 2.0186855670103094,
+          "bytes_saved": -1581
+        },
+        "prolog": {
+          "baseline_size": 1652,
+          "dictionary_size": 3236,
+          "compression_ratio": 1.9588377723970944,
+          "bytes_saved": -1584
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 692,
+          "compression_ratio": 2.9956709956709955,
+          "bytes_saved": -461
+        },
+        "fortran": {
+          "baseline_size": 1295,
+          "dictionary_size": 2895,
+          "compression_ratio": 2.2355212355212357,
+          "bytes_saved": -1600
+        },
+        "julia": {
+          "baseline_size": 1729,
+          "dictionary_size": 3218,
+          "compression_ratio": 1.8611914401388086,
+          "bytes_saved": -1489
+        },
+        "cpp": {
+          "baseline_size": 1358,
+          "dictionary_size": 2956,
+          "compression_ratio": 2.1767304860088363,
+          "bytes_saved": -1598
+        },
+        "haskell": {
+          "baseline_size": 1510,
+          "dictionary_size": 3114,
+          "compression_ratio": 2.0622516556291393,
+          "bytes_saved": -1604
+        },
+        "rust": {
+          "baseline_size": 1666,
+          "dictionary_size": 3226,
+          "compression_ratio": 1.936374549819928,
+          "bytes_saved": -1560
+        },
+        "perl": {
+          "baseline_size": 1773,
+          "dictionary_size": 3294,
+          "compression_ratio": 1.8578680203045685,
+          "bytes_saved": -1521
+        },
+        "csharp": {
+          "baseline_size": 1010,
+          "dictionary_size": 2624,
+          "compression_ratio": 2.598019801980198,
+          "bytes_saved": -1614
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2911,
+          "compression_ratio": 2.0075862068965518,
+          "bytes_saved": -1461
+        },
+        "lisp": {
+          "baseline_size": 1535,
+          "dictionary_size": 3129,
+          "compression_ratio": 2.0384364820846907,
+          "bytes_saved": -1594
+        },
+        "scheme": {
+          "baseline_size": 1459,
+          "dictionary_size": 3027,
+          "compression_ratio": 2.0747087045921866,
+          "bytes_saved": -1568
+        },
+        "dart": {
+          "baseline_size": 1576,
+          "dictionary_size": 3148,
+          "compression_ratio": 1.99746192893401,
+          "bytes_saved": -1572
+        },
+        "go": {
+          "baseline_size": 1476,
+          "dictionary_size": 3053,
+          "compression_ratio": 2.0684281842818426,
+          "bytes_saved": -1577
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2641,
+          "compression_ratio": 2.0331023864511164,
+          "bytes_saved": -1342
+        },
+        "scala": {
+          "baseline_size": 1681,
+          "dictionary_size": 3219,
+          "compression_ratio": 1.9149315883402735,
+          "bytes_saved": -1538
+        },
+        "php": {
+          "baseline_size": 1524,
+          "dictionary_size": 3017,
+          "compression_ratio": 1.9796587926509186,
+          "bytes_saved": -1493
+        },
+        "clojure": {
+          "baseline_size": 1651,
+          "dictionary_size": 3249,
+          "compression_ratio": 1.9678982434887946,
+          "bytes_saved": -1598
+        },
+        "python": {
+          "baseline_size": 885,
+          "dictionary_size": 1678,
+          "compression_ratio": 1.896045197740113,
+          "bytes_saved": -793
+        },
+        "lua": {
+          "baseline_size": 1514,
+          "dictionary_size": 3075,
+          "compression_ratio": 2.0310435931307795,
+          "bytes_saved": -1561
+        },
+        "c": {
+          "baseline_size": 1443,
+          "dictionary_size": 3054,
+          "compression_ratio": 2.1164241164241164,
+          "bytes_saved": -1611
+        },
+        "javascript": {
+          "baseline_size": 1571,
+          "dictionary_size": 3118,
+          "compression_ratio": 1.9847231063017186,
+          "bytes_saved": -1547
+        }
+      },
+      "lua": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4320,
+          "compression_ratio": 1.769041769041769,
+          "bytes_saved": -1878
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2956,
+          "compression_ratio": 2.6067019400352733,
+          "bytes_saved": -1822
+        },
+        "java": {
+          "baseline_size": 2731,
+          "dictionary_size": 5464,
+          "compression_ratio": 2.0007323324789454,
+          "bytes_saved": -2733
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1873,
+          "compression_ratio": 1.9633123689727463,
+          "bytes_saved": -919
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4541,
+          "compression_ratio": 1.827364185110664,
+          "bytes_saved": -2056
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4167,
+          "compression_ratio": 1.8975409836065573,
+          "bytes_saved": -1971
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 628,
+          "compression_ratio": 2.7186147186147185,
+          "bytes_saved": -397
+        },
+        "fortran": {
+          "baseline_size": 2921,
+          "dictionary_size": 5657,
+          "compression_ratio": 1.936665525504964,
+          "bytes_saved": -2736
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4214,
+          "compression_ratio": 1.7893842887473461,
+          "bytes_saved": -1859
+        },
+        "cpp": {
+          "baseline_size": 2746,
+          "dictionary_size": 5488,
+          "compression_ratio": 1.998543335761107,
+          "bytes_saved": -2742
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4542,
+          "compression_ratio": 1.8553921568627452,
+          "bytes_saved": -2094
+        },
+        "rust": {
+          "baseline_size": 3278,
+          "dictionary_size": 6003,
+          "compression_ratio": 1.8312995729103112,
+          "bytes_saved": -2725
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4518,
+          "compression_ratio": 1.774548311076198,
+          "bytes_saved": -1972
+        },
+        "csharp": {
+          "baseline_size": 2442,
+          "dictionary_size": 5197,
+          "compression_ratio": 2.128173628173628,
+          "bytes_saved": -2755
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2725,
+          "compression_ratio": 1.8793103448275863,
+          "bytes_saved": -1275
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4450,
+          "compression_ratio": 1.911512027491409,
+          "bytes_saved": -2122
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4128,
+          "compression_ratio": 1.9903567984570878,
+          "bytes_saved": -2054
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4545,
+          "compression_ratio": 1.872682323856613,
+          "bytes_saved": -2118
+        },
+        "go": {
+          "baseline_size": 2988,
+          "dictionary_size": 5727,
+          "compression_ratio": 1.9166666666666667,
+          "bytes_saved": -2739
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2473,
+          "compression_ratio": 1.9037721324095458,
+          "bytes_saved": -1174
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 5128,
+          "compression_ratio": 1.7670572019297037,
+          "bytes_saved": -2226
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4304,
+          "compression_ratio": 1.8729329852045258,
+          "bytes_saved": -2006
+        },
+        "clojure": {
+          "baseline_size": 2982,
+          "dictionary_size": 5270,
+          "compression_ratio": 1.767270288397049,
+          "bytes_saved": -2288
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3065,
+          "compression_ratio": 1.8244047619047619,
+          "bytes_saved": -1385
+        },
+        "lua": {
+          "baseline_size": 1360,
+          "dictionary_size": 2882,
+          "compression_ratio": 2.1191176470588236,
+          "bytes_saved": -1522
+        },
+        "c": {
+          "baseline_size": 2928,
+          "dictionary_size": 5641,
+          "compression_ratio": 1.926571038251366,
+          "bytes_saved": -2713
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4185,
+          "compression_ratio": 1.9321329639889198,
+          "bytes_saved": -2019
+        }
+      },
+      "c": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4233,
+          "compression_ratio": 1.7334152334152335,
+          "bytes_saved": -1791
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2822,
+          "compression_ratio": 2.488536155202822,
+          "bytes_saved": -1688
+        },
+        "java": {
+          "baseline_size": 3107,
+          "dictionary_size": 6234,
+          "compression_ratio": 2.0064370775667846,
+          "bytes_saved": -3127
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1890,
+          "compression_ratio": 1.9811320754716981,
+          "bytes_saved": -936
+        },
+        "ocaml": {
+          "baseline_size": 2485,
+          "dictionary_size": 4542,
+          "compression_ratio": 1.8277665995975856,
+          "bytes_saved": -2057
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4017,
+          "compression_ratio": 1.8292349726775956,
+          "bytes_saved": -1821
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 652,
+          "compression_ratio": 2.8225108225108224,
+          "bytes_saved": -421
+        },
+        "fortran": {
+          "baseline_size": 4236,
+          "dictionary_size": 8294,
+          "compression_ratio": 1.957979225684608,
+          "bytes_saved": -4058
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4131,
+          "compression_ratio": 1.754140127388535,
+          "bytes_saved": -1776
+        },
+        "cpp": {
+          "baseline_size": 4237,
+          "dictionary_size": 8568,
+          "compression_ratio": 2.022185508614586,
+          "bytes_saved": -4331
+        },
+        "haskell": {
+          "baseline_size": 2448,
+          "dictionary_size": 4438,
+          "compression_ratio": 1.8129084967320261,
+          "bytes_saved": -1990
+        },
+        "rust": {
+          "baseline_size": 4232,
+          "dictionary_size": 7751,
+          "compression_ratio": 1.8315217391304348,
+          "bytes_saved": -3519
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4382,
+          "compression_ratio": 1.7211311861743912,
+          "bytes_saved": -1836
+        },
+        "csharp": {
+          "baseline_size": 3866,
+          "dictionary_size": 8331,
+          "compression_ratio": 2.1549405069839627,
+          "bytes_saved": -4465
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2729,
+          "compression_ratio": 1.8820689655172413,
+          "bytes_saved": -1279
+        },
+        "lisp": {
+          "baseline_size": 2328,
+          "dictionary_size": 4339,
+          "compression_ratio": 1.863831615120275,
+          "bytes_saved": -2011
+        },
+        "scheme": {
+          "baseline_size": 2074,
+          "dictionary_size": 4049,
+          "compression_ratio": 1.9522661523625844,
+          "bytes_saved": -1975
+        },
+        "dart": {
+          "baseline_size": 2427,
+          "dictionary_size": 4543,
+          "compression_ratio": 1.8718582612278534,
+          "bytes_saved": -2116
+        },
+        "go": {
+          "baseline_size": 4054,
+          "dictionary_size": 7789,
+          "compression_ratio": 1.9213122841637889,
+          "bytes_saved": -3735
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2461,
+          "compression_ratio": 1.894534257120862,
+          "bytes_saved": -1162
+        },
+        "scala": {
+          "baseline_size": 2902,
+          "dictionary_size": 5232,
+          "compression_ratio": 1.80289455547898,
+          "bytes_saved": -2330
+        },
+        "php": {
+          "baseline_size": 2298,
+          "dictionary_size": 4213,
+          "compression_ratio": 1.8333333333333333,
+          "bytes_saved": -1915
+        },
+        "clojure": {
+          "baseline_size": 2982,
+          "dictionary_size": 5448,
+          "compression_ratio": 1.8269617706237424,
+          "bytes_saved": -2466
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3056,
+          "compression_ratio": 1.819047619047619,
+          "bytes_saved": -1376
+        },
+        "lua": {
+          "baseline_size": 2884,
+          "dictionary_size": 5648,
+          "compression_ratio": 1.9583911234396671,
+          "bytes_saved": -2764
+        },
+        "c": {
+          "baseline_size": 2456,
+          "dictionary_size": 4623,
+          "compression_ratio": 1.882328990228013,
+          "bytes_saved": -2167
+        },
+        "javascript": {
+          "baseline_size": 2166,
+          "dictionary_size": 4013,
+          "compression_ratio": 1.8527239150507848,
+          "bytes_saved": -1847
+        }
+      },
+      "javascript": {
+        "ruby": {
+          "baseline_size": 2442,
+          "dictionary_size": 4359,
+          "compression_ratio": 1.785012285012285,
+          "bytes_saved": -1917
+        },
+        "chef": {
+          "baseline_size": 1134,
+          "dictionary_size": 2988,
+          "compression_ratio": 2.634920634920635,
+          "bytes_saved": -1854
+        },
+        "java": {
+          "baseline_size": 1889,
+          "dictionary_size": 3914,
+          "compression_ratio": 2.0719957649550027,
+          "bytes_saved": -2025
+        },
+        "matlab": {
+          "baseline_size": 954,
+          "dictionary_size": 1973,
+          "compression_ratio": 2.0681341719077566,
+          "bytes_saved": -1019
+        },
+        "ocaml": {
+          "baseline_size": 2245,
+          "dictionary_size": 4300,
+          "compression_ratio": 1.9153674832962138,
+          "bytes_saved": -2055
+        },
+        "prolog": {
+          "baseline_size": 2196,
+          "dictionary_size": 4175,
+          "compression_ratio": 1.901183970856102,
+          "bytes_saved": -1979
+        },
+        "brainfuck": {
+          "baseline_size": 231,
+          "dictionary_size": 708,
+          "compression_ratio": 3.064935064935065,
+          "bytes_saved": -477
+        },
+        "fortran": {
+          "baseline_size": 1962,
+          "dictionary_size": 4054,
+          "compression_ratio": 2.0662589194699286,
+          "bytes_saved": -2092
+        },
+        "julia": {
+          "baseline_size": 2355,
+          "dictionary_size": 4250,
+          "compression_ratio": 1.8046709129511678,
+          "bytes_saved": -1895
+        },
+        "cpp": {
+          "baseline_size": 1747,
+          "dictionary_size": 3807,
+          "compression_ratio": 2.179164281625644,
+          "bytes_saved": -2060
+        },
+        "haskell": {
+          "baseline_size": 2315,
+          "dictionary_size": 4384,
+          "compression_ratio": 1.8937365010799136,
+          "bytes_saved": -2069
+        },
+        "rust": {
+          "baseline_size": 2325,
+          "dictionary_size": 4382,
+          "compression_ratio": 1.884731182795699,
+          "bytes_saved": -2057
+        },
+        "perl": {
+          "baseline_size": 2546,
+          "dictionary_size": 4583,
+          "compression_ratio": 1.8000785545954439,
+          "bytes_saved": -2037
+        },
+        "csharp": {
+          "baseline_size": 1443,
+          "dictionary_size": 3512,
+          "compression_ratio": 2.4338184338184337,
+          "bytes_saved": -2069
+        },
+        "typescript": {
+          "baseline_size": 1450,
+          "dictionary_size": 2713,
+          "compression_ratio": 1.8710344827586207,
+          "bytes_saved": -1263
+        },
+        "lisp": {
+          "baseline_size": 2216,
+          "dictionary_size": 4305,
+          "compression_ratio": 1.9426895306859207,
+          "bytes_saved": -2089
+        },
+        "scheme": {
+          "baseline_size": 2024,
+          "dictionary_size": 4130,
+          "compression_ratio": 2.0405138339920947,
+          "bytes_saved": -2106
+        },
+        "dart": {
+          "baseline_size": 2141,
+          "dictionary_size": 4136,
+          "compression_ratio": 1.9318075665576833,
+          "bytes_saved": -1995
+        },
+        "go": {
+          "baseline_size": 2008,
+          "dictionary_size": 4049,
+          "compression_ratio": 2.016434262948207,
+          "bytes_saved": -2041
+        },
+        "r": {
+          "baseline_size": 1299,
+          "dictionary_size": 2529,
+          "compression_ratio": 1.9468822170900693,
+          "bytes_saved": -1230
+        },
+        "scala": {
+          "baseline_size": 2365,
+          "dictionary_size": 4410,
+          "compression_ratio": 1.864693446088795,
+          "bytes_saved": -2045
+        },
+        "php": {
+          "baseline_size": 2175,
+          "dictionary_size": 4157,
+          "compression_ratio": 1.9112643678160919,
+          "bytes_saved": -1982
+        },
+        "clojure": {
+          "baseline_size": 2391,
+          "dictionary_size": 4491,
+          "compression_ratio": 1.878293601003764,
+          "bytes_saved": -2100
+        },
+        "python": {
+          "baseline_size": 1680,
+          "dictionary_size": 3122,
+          "compression_ratio": 1.8583333333333334,
+          "bytes_saved": -1442
+        },
+        "lua": {
+          "baseline_size": 2143,
+          "dictionary_size": 4193,
+          "compression_ratio": 1.9566028931404573,
+          "bytes_saved": -2050
+        },
+        "c": {
+          "baseline_size": 1966,
+          "dictionary_size": 4023,
+          "compression_ratio": 2.046286876907426,
+          "bytes_saved": -2057
+        },
+        "javascript": {
+          "baseline_size": 1086,
+          "dictionary_size": 2164,
+          "compression_ratio": 1.992633517495396,
+          "bytes_saved": -1078
+        }
+      }
+    },
+    "compression_ratios": {
+      "ruby": {
+        "ruby": 1.9757085020242915,
+        "chef": 2.8580246913580245,
+        "java": 2.2595837897042714,
+        "matlab": 2.1666666666666665,
+        "ocaml": 2.066449814126394,
+        "prolog": 2.0423497267759565,
+        "brainfuck": 3.2034632034632033,
+        "fortran": 2.2274406332453824,
+        "julia": 1.9138004246284501,
+        "cpp": 2.3833827893175075,
+        "haskell": 2.042754275427543,
+        "rust": 2.0218068535825546,
+        "perl": 1.8811641067097817,
+        "csharp": 2.6772563176895305,
+        "typescript": 2.0620689655172413,
+        "lisp": 2.070931849791377,
+        "scheme": 2.1781874039938556,
+        "dart": 2.116301703163017,
+        "go": 2.183631713554987,
+        "r": 2.063125481139338,
+        "scala": 1.9894505494505494,
+        "php": 2.0632486823191183,
+        "clojure": 1.987085665088248,
+        "python": 1.9190476190476191,
+        "lua": 2.067683508102955,
+        "c": 2.242488139167106,
+        "javascript": 2.077767175572519
+      },
+      "chef": {
+        "ruby": 1.5055970149253732,
+        "chef": 1.7826771653543307,
+        "java": 1.6773399014778325,
+        "matlab": 1.6394129979035639,
+        "ocaml": 1.5898520084566596,
+        "prolog": 1.5676229508196722,
+        "brainfuck": 2.0865800865800868,
+        "fortran": 1.6459443457667258,
+        "julia": 1.5224022878932317,
+        "cpp": 1.7029765674477517,
+        "haskell": 1.564905079527963,
+        "rust": 1.5451851851851852,
+        "perl": 1.5194561650257852,
+        "csharp": 1.9401709401709402,
+        "typescript": 1.5931034482758621,
+        "lisp": 1.569706498951782,
+        "scheme": 1.6283783783783783,
+        "dart": 1.595432300163132,
+        "go": 1.6366229321163719,
+        "r": 1.6166281755196306,
+        "scala": 1.5424227562530652,
+        "php": 1.6009825327510918,
+        "clojure": 1.5316272332206664,
+        "python": 1.5488095238095239,
+        "lua": 1.5945945945945945,
+        "c": 1.652199413489736,
+        "javascript": 1.5924145299145298
+      },
+      "java": {
+        "ruby": 1.6826371826371826,
+        "chef": 2.4074074074074074,
+        "java": 1.8427299703264095,
+        "matlab": 1.8920335429769393,
+        "ocaml": 1.8,
+        "prolog": 1.7882513661202186,
+        "brainfuck": 2.5844155844155843,
+        "fortran": 1.9053308823529411,
+        "julia": 1.6985138004246285,
+        "cpp": 1.9212572909915748,
+        "haskell": 1.764297385620915,
+        "rust": 1.7688073394495414,
+        "perl": 1.694815396700707,
+        "csharp": 2.0351194786386677,
+        "typescript": 1.7944827586206897,
+        "lisp": 1.8191580756013745,
+        "scheme": 1.8953712632594022,
+        "dart": 1.804285125669551,
+        "go": 1.845749342681858,
+        "r": 1.8260200153964588,
+        "scala": 1.717091660923501,
+        "php": 1.773716275021758,
+        "clojure": 1.7484909456740443,
+        "python": 1.7226190476190477,
+        "lua": 1.8952843273231623,
+        "c": 1.8788426763110306,
+        "javascript": 1.7982456140350878
+      },
+      "matlab": {
+        "ruby": 1.7055417700578992,
+        "chef": 2.430340557275542,
+        "java": 1.9663774403470715,
+        "matlab": 1.8237547892720307,
+        "ocaml": 1.8887775551102204,
+        "prolog": 1.8166214995483287,
+        "brainfuck": 2.7142857142857144,
+        "fortran": 1.9382448537378114,
+        "julia": 1.7387152777777777,
+        "cpp": 1.9977578475336324,
+        "haskell": 1.991285403050109,
+        "rust": 1.801980198019802,
+        "perl": 1.7332185886402753,
+        "csharp": 2.065934065934066,
+        "typescript": 1.7657091561938958,
+        "lisp": 1.8116469517743403,
+        "scheme": 1.8608094768015795,
+        "dart": 1.858974358974359,
+        "go": 1.87987987987988,
+        "r": 1.8685258964143425,
+        "scala": 1.8185961713764813,
+        "php": 1.8369565217391304,
+        "clojure": 1.7944093778178538,
+        "python": 1.8140161725067385,
+        "lua": 1.8125603864734299,
+        "c": 1.8924302788844622,
+        "javascript": 1.8272980501392757
+      },
+      "ocaml": {
+        "ruby": 1.8136773136773137,
+        "chef": 2.6499118165784834,
+        "java": 2.1412213740458017,
+        "matlab": 1.9727463312368974,
+        "ocaml": 1.7979724837074584,
+        "prolog": 1.9225865209471766,
+        "brainfuck": 2.705627705627706,
+        "fortran": 2.099954149472719,
+        "julia": 1.8292993630573249,
+        "cpp": 2.1866866866866865,
+        "haskell": 1.90359477124183,
+        "rust": 1.9458917835671343,
+        "perl": 1.8330714846818539,
+        "csharp": 2.4008097165991904,
+        "typescript": 1.9386206896551723,
+        "lisp": 1.9699312714776633,
+        "scheme": 2.0723240115718418,
+        "dart": 1.9937759336099585,
+        "go": 2.079078174423859,
+        "r": 1.922247882986913,
+        "scala": 1.88676415448069,
+        "php": 1.9625761531766754,
+        "clojure": 1.9062857142857144,
+        "python": 1.8630952380952381,
+        "lua": 2.0426008968609866,
+        "c": 2.066393815370623,
+        "javascript": 1.979686057248384
+      },
+      "prolog": {
+        "ruby": 1.8640696228760878,
+        "chef": 2.699294532627866,
+        "java": 2.180455302609661,
+        "matlab": 2.1037735849056602,
+        "ocaml": 1.9845215759849906,
+        "prolog": 1.9783588818755635,
+        "brainfuck": 2.4545454545454546,
+        "fortran": 2.109508547008547,
+        "julia": 1.8853503184713376,
+        "cpp": 2.28494623655914,
+        "haskell": 1.95264116575592,
+        "rust": 1.9507829977628635,
+        "perl": 1.8587178440179666,
+        "csharp": 2.586283185840708,
+        "typescript": 2.016551724137931,
+        "lisp": 1.993445692883895,
+        "scheme": 2.0984536082474228,
+        "dart": 2.0487684729064037,
+        "go": 2.0952380952380953,
+        "r": 2.0123171670515783,
+        "scala": 1.945413870246085,
+        "php": 2.025403028822667,
+        "clojure": 1.9312146277753592,
+        "python": 1.9339285714285714,
+        "lua": 2.0237518177411538,
+        "c": 2.1411827384123603,
+        "javascript": 2.036044812469557
+      },
+      "brainfuck": {
+        "ruby": 1.455795677799607,
+        "chef": 1.9203187250996017,
+        "java": 1.6162162162162161,
+        "matlab": 1.5558312655086848,
+        "ocaml": 1.5822784810126582,
+        "prolog": 1.6598240469208212,
+        "brainfuck": 1.8925619834710743,
+        "fortran": 1.5076923076923077,
+        "julia": 1.4450867052023122,
+        "cpp": 1.5441176470588236,
+        "haskell": 1.760797342192691,
+        "rust": 1.525229357798165,
+        "perl": 1.5066964285714286,
+        "csharp": 1.722397476340694,
+        "typescript": 1.5146726862302482,
+        "lisp": 1.5095948827292112,
+        "scheme": 1.5331858407079646,
+        "dart": 1.5368663594470047,
+        "go": 1.5234741784037558,
+        "r": 1.5454545454545454,
+        "scala": 1.5,
+        "php": 1.5441527446300716,
+        "clojure": 1.4968017057569296,
+        "python": 1.4913793103448276,
+        "lua": 1.5764411027568923,
+        "c": 1.528169014084507,
+        "javascript": 1.4842767295597483
+      },
+      "fortran": {
+        "ruby": 1.7301392301392302,
+        "chef": 2.4673721340388006,
+        "java": 2.012230447376891,
+        "matlab": 1.89832285115304,
+        "ocaml": 1.8446680080482898,
+        "prolog": 1.808287795992714,
+        "brainfuck": 2.9740259740259742,
+        "fortran": 1.7804878048780488,
+        "julia": 1.7498938428874735,
+        "cpp": 2.0417302798982186,
+        "haskell": 1.8161764705882353,
+        "rust": 1.8251417769376181,
+        "perl": 1.7380204241948154,
+        "csharp": 2.174395448079659,
+        "typescript": 1.8041379310344827,
+        "lisp": 1.8599656357388317,
+        "scheme": 1.9431051108968178,
+        "dart": 1.8743304491141326,
+        "go": 1.9272323630981747,
+        "r": 1.8314087759815243,
+        "scala": 1.7804962095106822,
+        "php": 1.8598781549173193,
+        "clojure": 1.7981220657276995,
+        "python": 1.730952380952381,
+        "lua": 1.970873786407767,
+        "c": 1.9792313201241347,
+        "javascript": 1.8753462603878117
+      },
+      "julia": {
+        "ruby": 1.887489504617968,
+        "chef": 2.8315696649029984,
+        "java": 2.2606741573033706,
+        "matlab": 2.1121593291404612,
+        "ocaml": 2.0473036896877956,
+        "prolog": 2.0419741697416973,
+        "brainfuck": 3.2467532467532467,
+        "fortran": 2.222523010286952,
+        "julia": 1.852755905511811,
+        "cpp": 2.37227602905569,
+        "haskell": 2.026206896551724,
+        "rust": 2.0153360396932793,
+        "perl": 1.89186958316137,
+        "csharp": 2.68885564697083,
+        "typescript": 2.027586206896552,
+        "lisp": 2.0648674242424243,
+        "scheme": 2.156964656964657,
+        "dart": 2.1033283656234474,
+        "go": 2.1586638830897704,
+        "r": 2.0531177829099305,
+        "scala": 1.9986498649864985,
+        "php": 2.070617283950617,
+        "clojure": 1.9816031537450722,
+        "python": 1.9255952380952381,
+        "lua": 2.0585651537335283,
+        "c": 2.228740581270183,
+        "javascript": 2.082151589242054
+      },
+      "cpp": {
+        "ruby": 1.6461916461916462,
+        "chef": 2.371252204585538,
+        "java": 1.9240424847119408,
+        "matlab": 1.8742138364779874,
+        "ocaml": 1.7569416498993964,
+        "prolog": 1.7440801457194899,
+        "brainfuck": 2.7316017316017316,
+        "fortran": 1.89423984891407,
+        "julia": 1.6641188959660298,
+        "cpp": 1.8788501026694044,
+        "haskell": 1.7250816993464053,
+        "rust": 1.768194706994329,
+        "perl": 1.6590730557737627,
+        "csharp": 2.05002405002405,
+        "typescript": 1.8220689655172413,
+        "lisp": 1.772766323024055,
+        "scheme": 1.8461909353905497,
+        "dart": 1.7935723114956736,
+        "go": 1.8704982733103108,
+        "r": 1.838337182448037,
+        "scala": 1.724672639558925,
+        "php": 1.752828546562228,
+        "clojure": 1.755868544600939,
+        "python": 1.7625,
+        "lua": 1.9056865464632455,
+        "c": 1.8668108108108108,
+        "javascript": 1.7580794090489382
+      },
+      "haskell": {
+        "ruby": 1.850941850941851,
+        "chef": 2.6940035273368608,
+        "java": 2.182828282828283,
+        "matlab": 1.9088050314465408,
+        "ocaml": 1.9825754356141096,
+        "prolog": 1.9517304189435336,
+        "brainfuck": 2.294372294372294,
+        "fortran": 2.140105922002889,
+        "julia": 1.8683651804670913,
+        "cpp": 2.275323275862069,
+        "haskell": 1.7021572720946416,
+        "rust": 1.957166392092257,
+        "perl": 1.857030636292223,
+        "csharp": 2.4884302689180737,
+        "typescript": 1.903448275862069,
+        "lisp": 2.005591397849462,
+        "scheme": 2.104146576663452,
+        "dart": 2.038376709307455,
+        "go": 2.1256519677572308,
+        "r": 1.896843725943033,
+        "scala": 1.9259259259259258,
+        "php": 2.001740644038294,
+        "clojure": 1.9355608591885443,
+        "python": 1.8523809523809525,
+        "lua": 2.070095584888484,
+        "c": 2.1702439024390245,
+        "javascript": 2.0170821791320406
+      },
+      "rust": {
+        "ruby": 1.855036855036855,
+        "chef": 2.758377425044092,
+        "java": 2.171869971033151,
+        "matlab": 2.09853249475891,
+        "ocaml": 1.9525150905432596,
+        "prolog": 1.9845173041894353,
+        "brainfuck": 2.878787878787879,
+        "fortran": 2.110169491525424,
+        "julia": 1.8883227176220807,
+        "cpp": 2.1671969916112235,
+        "haskell": 1.943218954248366,
+        "rust": 1.910569105691057,
+        "perl": 1.854673998428908,
+        "csharp": 2.3152661962796666,
+        "typescript": 2.0110344827586206,
+        "lisp": 2.006872852233677,
+        "scheme": 2.11427193828351,
+        "dart": 2.00041203131438,
+        "go": 2.060400937255923,
+        "r": 2.0408006158583527,
+        "scala": 1.8662991040661612,
+        "php": 1.985639686684073,
+        "clojure": 1.9017437961099932,
+        "python": 1.925,
+        "lua": 2.0790568654646324,
+        "c": 2.10984230560087,
+        "javascript": 2.017543859649123
+      },
+      "perl": {
+        "ruby": 1.911138411138411,
+        "chef": 2.8668430335097,
+        "java": 2.291467938526762,
+        "matlab": 2.119496855345912,
+        "ocaml": 2.0880643719266874,
+        "prolog": 2.0733151183970855,
+        "brainfuck": 2.9220779220779223,
+        "fortran": 2.260091977516607,
+        "julia": 1.9520169851380043,
+        "cpp": 2.40836197021764,
+        "haskell": 2.0524945770065077,
+        "rust": 2.043122035360069,
+        "perl": 1.924357034795764,
+        "csharp": 2.7011813759555245,
+        "typescript": 2.057241379310345,
+        "lisp": 2.111967361740707,
+        "scheme": 2.195641406636949,
+        "dart": 2.132048872180451,
+        "go": 2.233266733266733,
+        "r": 2.0977675134719016,
+        "scala": 2.0241627808393385,
+        "php": 2.0511285122063567,
+        "clojure": 2.0197313182199834,
+        "python": 1.9696428571428573,
+        "lua": 2.1234798877455567,
+        "c": 2.245022970903522,
+        "javascript": 2.1289424860853434
+      },
+      "csharp": {
+        "ruby": 1.5102375102375103,
+        "chef": 2.0088183421516757,
+        "java": 1.8136466044415835,
+        "matlab": 1.771488469601677,
+        "ocaml": 1.6643863179074447,
+        "prolog": 1.5979052823315119,
+        "brainfuck": 2.3636363636363638,
+        "fortran": 1.8031161473087818,
+        "julia": 1.5235668789808918,
+        "cpp": 1.853397421892069,
+        "haskell": 1.6200980392156863,
+        "rust": 1.7041587901701323,
+        "perl": 1.51885310290652,
+        "csharp": 1.8086624203821655,
+        "typescript": 1.6241379310344828,
+        "lisp": 1.6623711340206186,
+        "scheme": 1.7010607521697203,
+        "dart": 1.6666666666666667,
+        "go": 1.7782437099161321,
+        "r": 1.702078521939954,
+        "scala": 1.6188835286009648,
+        "php": 1.630113141862489,
+        "clojure": 1.6505700871898055,
+        "python": 1.5613095238095238,
+        "lua": 1.7978502080443828,
+        "c": 1.8082162162162163,
+        "javascript": 1.6214219759926132
+      },
+      "typescript": {
+        "ruby": 1.832512315270936,
+        "chef": 2.6017997750281214,
+        "java": 2.0898876404494384,
+        "matlab": 2.0733752620545074,
+        "ocaml": 1.9823570924488356,
+        "prolog": 1.8917692806221647,
+        "brainfuck": 2.9047619047619047,
+        "fortran": 2.1008878127522195,
+        "julia": 1.8431618569636135,
+        "cpp": 2.069236821400472,
+        "haskell": 2.0241404535479153,
+        "rust": 1.8977198697068405,
+        "perl": 1.814905314599878,
+        "csharp": 2.355421686746988,
+        "typescript": 1.9410187667560321,
+        "lisp": 1.9715672676837726,
+        "scheme": 2.0154411764705884,
+        "dart": 1.8853459972862958,
+        "go": 1.9970588235294118,
+        "r": 1.956120092378753,
+        "scala": 1.883495145631068,
+        "php": 1.9433828733191791,
+        "clojure": 1.8901170351105332,
+        "python": 1.8904731043421905,
+        "lua": 2.0096011816838995,
+        "c": 2.016320474777448,
+        "javascript": 1.8768166089965397
+      },
+      "lisp": {
+        "ruby": 1.8259623259623259,
+        "chef": 2.6410934744268078,
+        "java": 2.1314199395770395,
+        "matlab": 2.091194968553459,
+        "ocaml": 1.9453389830508474,
+        "prolog": 1.9353369763205828,
+        "brainfuck": 3.0606060606060606,
+        "fortran": 2.0822510822510822,
+        "julia": 1.8437367303609342,
+        "cpp": 2.2197743148844706,
+        "haskell": 1.9121732026143792,
+        "rust": 1.923108552631579,
+        "perl": 1.8244304791830321,
+        "csharp": 2.4169787765293385,
+        "typescript": 1.96,
+        "lisp": 1.877320419693301,
+        "scheme": 2.011089681774349,
+        "dart": 1.9920774647887325,
+        "go": 2.0748460445286594,
+        "r": 1.9622786759045419,
+        "scala": 1.8931267381803734,
+        "php": 1.9647519582245432,
+        "clojure": 1.875297855440826,
+        "python": 1.8630952380952381,
+        "lua": 2.0291173794358506,
+        "c": 2.1110029211295034,
+        "javascript": 1.9838411819021238
+      },
+      "scheme": {
+        "ruby": 1.7444717444717446,
+        "chef": 2.552910052910053,
+        "java": 2.0174002047082906,
+        "matlab": 1.9811320754716981,
+        "ocaml": 1.8516601983613628,
+        "prolog": 1.8479052823315119,
+        "brainfuck": 3.0,
+        "fortran": 1.9950421417947446,
+        "julia": 1.7639065817409767,
+        "cpp": 2.115661317100166,
+        "haskell": 1.8288100208768268,
+        "rust": 1.8349352277475972,
+        "perl": 1.741948153967007,
+        "csharp": 2.3079427083333335,
+        "typescript": 1.8910344827586207,
+        "lisp": 1.8136998254799301,
+        "scheme": 2.0254154447702835,
+        "dart": 1.8885893980233603,
+        "go": 1.974818401937046,
+        "r": 1.9345650500384912,
+        "scala": 1.811251528740318,
+        "php": 1.8502650176678446,
+        "clojure": 1.7714748784440844,
+        "python": 1.8071428571428572,
+        "lua": 1.905703771849126,
+        "c": 2.0019772614928324,
+        "javascript": 1.9030470914127424
+      },
+      "dart": {
+        "ruby": 1.7743652743652745,
+        "chef": 2.5987654320987654,
+        "java": 2.0677009873060648,
+        "matlab": 1.9758909853249476,
+        "ocaml": 1.9348088531187122,
+        "prolog": 1.889344262295082,
+        "brainfuck": 2.883116883116883,
+        "fortran": 2.0603722197004086,
+        "julia": 1.7957537154989385,
+        "cpp": 2.149283242708848,
+        "haskell": 1.892156862745098,
+        "rust": 1.9235340729001584,
+        "perl": 1.7808326787117046,
+        "csharp": 2.298922291548497,
+        "typescript": 1.9089655172413793,
+        "lisp": 1.9484536082474226,
+        "scheme": 2.023625843780135,
+        "dart": 1.9991755976916736,
+        "go": 2.0386494891159486,
+        "r": 1.9499615088529638,
+        "scala": 1.8625046451133407,
+        "php": 1.9051348999129678,
+        "clojure": 1.865711052433044,
+        "python": 1.8708333333333333,
+        "lua": 2.0317389360751004,
+        "c": 2.0445143884892087,
+        "javascript": 1.9048938134810711
+      },
+      "go": {
+        "ruby": 1.7428337428337428,
+        "chef": 2.5229276895943564,
+        "java": 2.0328290955906017,
+        "matlab": 1.9675052410901468,
+        "ocaml": 1.8503018108651912,
+        "prolog": 1.8419854280510017,
+        "brainfuck": 2.8095238095238093,
+        "fortran": 2.002056555269923,
+        "julia": 1.748619957537155,
+        "cpp": 2.070199399071292,
+        "haskell": 1.8288398692810457,
+        "rust": 1.8681474480151228,
+        "perl": 1.7537313432835822,
+        "csharp": 2.1991460811222936,
+        "typescript": 1.8793103448275863,
+        "lisp": 1.8810137457044673,
+        "scheme": 1.9667309546769527,
+        "dart": 1.8945199835187474,
+        "go": 1.824403421882035,
+        "r": 1.8876058506543496,
+        "scala": 1.7946243969676086,
+        "php": 1.8585726718885989,
+        "clojure": 1.8276324614352784,
+        "python": 1.8202380952380952,
+        "lua": 1.992371705963939,
+        "c": 2.0082198818391985,
+        "javascript": 1.8707294552169897
+      },
+      "r": {
+        "ruby": 1.8318401102687802,
+        "chef": 2.504750593824228,
+        "java": 2.0878734622144113,
+        "matlab": 1.9737945492662474,
+        "ocaml": 1.9653543307086614,
+        "prolog": 1.8656182987848464,
+        "brainfuck": 2.7965367965367967,
+        "fortran": 2.0369733447979366,
+        "julia": 1.8291008922443377,
+        "cpp": 2.037671232876712,
+        "haskell": 2.011437908496732,
+        "rust": 1.8571428571428572,
+        "perl": 1.8131279303415941,
+        "csharp": 2.2540816326530613,
+        "typescript": 1.902165795369679,
+        "lisp": 1.9444021325209444,
+        "scheme": 1.9802527646129542,
+        "dart": 1.9361216730038022,
+        "go": 1.9537480063795853,
+        "r": 1.8797101449275362,
+        "scala": 1.856145251396648,
+        "php": 1.9807228915662651,
+        "clojure": 1.866481223922114,
+        "python": 1.8405292479108635,
+        "lua": 1.9808764940239043,
+        "c": 1.991136180499597,
+        "javascript": 1.946923076923077
+      },
+      "scala": {
+        "ruby": 1.8546273546273546,
+        "chef": 2.7804232804232805,
+        "java": 2.19596668128014,
+        "matlab": 2.080712788259958,
+        "ocaml": 2.02374245472837,
+        "prolog": 1.9804189435336976,
+        "brainfuck": 2.9567099567099566,
+        "fortran": 2.1813580767608602,
+        "julia": 1.883651804670913,
+        "cpp": 2.2282415630550623,
+        "haskell": 1.9685457516339868,
+        "rust": 2.0223880597014925,
+        "perl": 1.8817753338570307,
+        "csharp": 2.4424367578729993,
+        "typescript": 2.015862068965517,
+        "lisp": 2.040378006872852,
+        "scheme": 2.1325940212150436,
+        "dart": 2.061804697156984,
+        "go": 2.1350798198935736,
+        "r": 2.0408006158583527,
+        "scala": 1.8867924528301887,
+        "php": 2.026544821583986,
+        "clojure": 1.9684027777777777,
+        "python": 1.9095238095238096,
+        "lua": 2.1658227848101266,
+        "c": 2.158978583196046,
+        "javascript": 2.0378578024007385
+      },
+      "php": {
+        "ruby": 1.755937755937756,
+        "chef": 2.601410934744268,
+        "java": 2.0704154002026343,
+        "matlab": 1.950733752620545,
+        "ocaml": 1.9164179104477612,
+        "prolog": 1.8857012750455373,
+        "brainfuck": 2.7965367965367967,
+        "fortran": 2.066183574879227,
+        "julia": 1.7796178343949045,
+        "cpp": 2.173795343800758,
+        "haskell": 1.8852929127406801,
+        "rust": 1.8824503311258278,
+        "perl": 1.7450903377847604,
+        "csharp": 2.364209199747952,
+        "typescript": 1.8958620689655172,
+        "lisp": 1.9426971133132271,
+        "scheme": 2.0168756027000962,
+        "dart": 1.94070796460177,
+        "go": 2.032857142857143,
+        "r": 1.9014626635873748,
+        "scala": 1.858113509192646,
+        "php": 1.8773507767784137,
+        "clojure": 1.8571428571428572,
+        "python": 1.7970238095238096,
+        "lua": 1.9608021877848678,
+        "c": 2.063569682151589,
+        "javascript": 1.9099722991689752
+      },
+      "clojure": {
+        "ruby": 1.8865683865683867,
+        "chef": 2.7962962962962963,
+        "java": 2.198224852071006,
+        "matlab": 2.0849056603773586,
+        "ocaml": 2.0120724346076457,
+        "prolog": 2.0154826958105647,
+        "brainfuck": 3.038961038961039,
+        "fortran": 2.178745928338762,
+        "julia": 1.9138004246284501,
+        "cpp": 2.216765453005927,
+        "haskell": 1.988562091503268,
+        "rust": 2.029717150017902,
+        "perl": 1.8833464257659074,
+        "csharp": 2.4140969162995596,
+        "typescript": 2.003448275862069,
+        "lisp": 2.0214776632302405,
+        "scheme": 2.1113789778206367,
+        "dart": 2.034610630407911,
+        "go": 2.122950819672131,
+        "r": 2.063125481139338,
+        "scala": 1.9486560992419022,
+        "php": 2.030461270670148,
+        "clojure": 1.907810499359795,
+        "python": 1.936904761904762,
+        "lua": 2.1647446457990114,
+        "c": 2.1528436018957344,
+        "javascript": 2.0655586334256695
+      },
+      "python": {
+        "ruby": 1.845491097070649,
+        "chef": 2.736067297581493,
+        "java": 2.1371681415929205,
+        "matlab": 2.119496855345912,
+        "ocaml": 2.0186855670103094,
+        "prolog": 1.9588377723970944,
+        "brainfuck": 2.9956709956709955,
+        "fortran": 2.2355212355212357,
+        "julia": 1.8611914401388086,
+        "cpp": 2.1767304860088363,
+        "haskell": 2.0622516556291393,
+        "rust": 1.936374549819928,
+        "perl": 1.8578680203045685,
+        "csharp": 2.598019801980198,
+        "typescript": 2.0075862068965518,
+        "lisp": 2.0384364820846907,
+        "scheme": 2.0747087045921866,
+        "dart": 1.99746192893401,
+        "go": 2.0684281842818426,
+        "r": 2.0331023864511164,
+        "scala": 1.9149315883402735,
+        "php": 1.9796587926509186,
+        "clojure": 1.9678982434887946,
+        "python": 1.896045197740113,
+        "lua": 2.0310435931307795,
+        "c": 2.1164241164241164,
+        "javascript": 1.9847231063017186
+      },
+      "lua": {
+        "ruby": 1.769041769041769,
+        "chef": 2.6067019400352733,
+        "java": 2.0007323324789454,
+        "matlab": 1.9633123689727463,
+        "ocaml": 1.827364185110664,
+        "prolog": 1.8975409836065573,
+        "brainfuck": 2.7186147186147185,
+        "fortran": 1.936665525504964,
+        "julia": 1.7893842887473461,
+        "cpp": 1.998543335761107,
+        "haskell": 1.8553921568627452,
+        "rust": 1.8312995729103112,
+        "perl": 1.774548311076198,
+        "csharp": 2.128173628173628,
+        "typescript": 1.8793103448275863,
+        "lisp": 1.911512027491409,
+        "scheme": 1.9903567984570878,
+        "dart": 1.872682323856613,
+        "go": 1.9166666666666667,
+        "r": 1.9037721324095458,
+        "scala": 1.7670572019297037,
+        "php": 1.8729329852045258,
+        "clojure": 1.767270288397049,
+        "python": 1.8244047619047619,
+        "lua": 2.1191176470588236,
+        "c": 1.926571038251366,
+        "javascript": 1.9321329639889198
+      },
+      "c": {
+        "ruby": 1.7334152334152335,
+        "chef": 2.488536155202822,
+        "java": 2.0064370775667846,
+        "matlab": 1.9811320754716981,
+        "ocaml": 1.8277665995975856,
+        "prolog": 1.8292349726775956,
+        "brainfuck": 2.8225108225108224,
+        "fortran": 1.957979225684608,
+        "julia": 1.754140127388535,
+        "cpp": 2.022185508614586,
+        "haskell": 1.8129084967320261,
+        "rust": 1.8315217391304348,
+        "perl": 1.7211311861743912,
+        "csharp": 2.1549405069839627,
+        "typescript": 1.8820689655172413,
+        "lisp": 1.863831615120275,
+        "scheme": 1.9522661523625844,
+        "dart": 1.8718582612278534,
+        "go": 1.9213122841637889,
+        "r": 1.894534257120862,
+        "scala": 1.80289455547898,
+        "php": 1.8333333333333333,
+        "clojure": 1.8269617706237424,
+        "python": 1.819047619047619,
+        "lua": 1.9583911234396671,
+        "c": 1.882328990228013,
+        "javascript": 1.8527239150507848
+      },
+      "javascript": {
+        "ruby": 1.785012285012285,
+        "chef": 2.634920634920635,
+        "java": 2.0719957649550027,
+        "matlab": 2.0681341719077566,
+        "ocaml": 1.9153674832962138,
+        "prolog": 1.901183970856102,
+        "brainfuck": 3.064935064935065,
+        "fortran": 2.0662589194699286,
+        "julia": 1.8046709129511678,
+        "cpp": 2.179164281625644,
+        "haskell": 1.8937365010799136,
+        "rust": 1.884731182795699,
+        "perl": 1.8000785545954439,
+        "csharp": 2.4338184338184337,
+        "typescript": 1.8710344827586207,
+        "lisp": 1.9426895306859207,
+        "scheme": 2.0405138339920947,
+        "dart": 1.9318075665576833,
+        "go": 2.016434262948207,
+        "r": 1.9468822170900693,
+        "scala": 1.864693446088795,
+        "php": 1.9112643678160919,
+        "clojure": 1.878293601003764,
+        "python": 1.8583333333333334,
+        "lua": 1.9566028931404573,
+        "c": 2.046286876907426,
+        "javascript": 1.992633517495396
+      }
+    },
+    "distance_matrix": {
+      "ruby": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "chef": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "java": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "matlab": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "ocaml": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "prolog": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "brainfuck": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "fortran": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "julia": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "cpp": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "haskell": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "rust": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "perl": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "csharp": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "typescript": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "lisp": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "scheme": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "dart": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "go": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "r": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "scala": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "php": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "clojure": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "python": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "lua": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "c": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      },
+      "javascript": {
+        "ruby": 0.0,
+        "chef": 0.0,
+        "java": 0.0,
+        "matlab": 0.0,
+        "ocaml": 0.0,
+        "prolog": 0.0,
+        "brainfuck": 0.0,
+        "fortran": 0.0,
+        "julia": 0.0,
+        "cpp": 0.0,
+        "haskell": 0.0,
+        "rust": 0.0,
+        "perl": 0.0,
+        "csharp": 0.0,
+        "typescript": 0.0,
+        "lisp": 0.0,
+        "scheme": 0.0,
+        "dart": 0.0,
+        "go": 0.0,
+        "r": 0.0,
+        "scala": 0.0,
+        "php": 0.0,
+        "clojure": 0.0,
+        "python": 0.0,
+        "lua": 0.0,
+        "c": 0.0,
+        "javascript": 0.0
+      }
+    }
+  }
+}

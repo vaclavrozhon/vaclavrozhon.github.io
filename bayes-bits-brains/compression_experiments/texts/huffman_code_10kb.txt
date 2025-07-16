@@ -1,0 +1,326 @@
+import heapq
+from collections import defaultdict, Counter
+from typing import Dict, List, Tuple, Optional, Any
+
+class HuffmanNode:
+    # Node in the Huffman tree.
+    def __init__(self, char: Optional[str] = None, freq: int = 0, left: Optional['HuffmanNode'] = None, right: Optional['HuffmanNode'] = None):
+        self.char = char
+        self.freq = freq
+        self.left = left
+        self.right = right
+    
+    def __lt__(self, other: 'HuffmanNode') -> bool:
+        return self.freq < other.freq
+    
+    def __repr__(self) -> str:
+        if self.char:
+            return f"HuffmanNode({self.char}, {self.freq})"
+        return f"HuffmanNode(Internal, {self.freq})"
+
+class HuffmanCoding:
+    # Complete implementation of Huffman coding algorithm.
+    
+    def __init__(self):
+        self.root: Optional[HuffmanNode] = None
+        self.char_to_code: Dict[str, str] = {}
+        self.code_to_char: Dict[str, str] = {}
+    
+    def build_frequency_table(self, text: str) -> Dict[str, int]:
+        # Build frequency table from input text.
+        return dict(Counter(text))
+    
+    def build_huffman_tree(self, freq_table: Dict[str, int]) -> Optional[HuffmanNode]:
+        # Build Huffman tree from frequency table.
+        if not freq_table:
+            return None
+        
+        # Create a priority queue with leaf nodes
+        heap: List[HuffmanNode] = []
+        for char, freq in freq_table.items():
+            node = HuffmanNode(char=char, freq=freq)
+            heapq.heappush(heap, node)
+        
+        # Build the tree bottom-up
+        while len(heap) > 1:
+            left = heapq.heappop(heap)
+            right = heapq.heappop(heap)
+            
+            # Create internal node
+            internal = HuffmanNode(
+                freq=left.freq + right.freq,
+                left=left,
+                right=right
+            )
+            heapq.heappush(heap, internal)
+        
+        return heap[0] if heap else None
+    
+    def generate_codes(self, root: Optional[HuffmanNode], code: str = "") -> None:
+        # Generate Huffman codes by traversing the tree.
+        if not root:
+            return
+        
+        # Leaf node - store the code
+        if root.char is not None:
+            # Handle edge case of single character
+            if code == "":
+                code = "0"
+            self.char_to_code[root.char] = code
+            self.code_to_char[code] = root.char
+            return
+        
+        # Recursively generate codes
+        if root.left:
+            self.generate_codes(root.left, code + "0")
+        if root.right:
+            self.generate_codes(root.right, code + "1")
+    
+    def encode(self, text: str) -> Tuple[str, Dict[str, str]]:
+        # Encode text using Huffman coding.
+        if not text:
+            return "", {}
+        
+        # Build frequency table
+        freq_table = self.build_frequency_table(text)
+        
+        # Build Huffman tree
+        self.root = self.build_huffman_tree(freq_table)
+        
+        # Generate codes
+        self.char_to_code = {}
+        self.code_to_char = {}
+        self.generate_codes(self.root)
+        
+        # Encode the text
+        encoded = "".join(self.char_to_code[char] for char in text)
+        
+        return encoded, self.char_to_code
+    
+    def decode(self, encoded: str, root: Optional[HuffmanNode] = None) -> str:
+        # Decode Huffman-encoded string.
+        if not encoded or not root:
+            root = self.root
+        
+        if not root:
+            return ""
+        
+        # Handle single character edge case
+        if root.char is not None:
+            return root.char * len(encoded)
+        
+        decoded = []
+        current = root
+        
+        for bit in encoded:
+            if bit == "0":
+                current = current.left
+            else:
+                current = current.right
+            
+            # Reached a leaf node
+            if current and current.char is not None:
+                decoded.append(current.char)
+                current = root
+        
+        return "".join(decoded)
+    
+    def compress(self, text: str) -> Tuple[bytes, Dict[str, str]]:
+        # Compress text to bytes.
+        encoded_str, code_table = self.encode(text)
+        
+        # Convert bit string to bytes
+        # Pad to make it divisible by 8
+        padding = 8 - len(encoded_str) % 8
+        if padding != 8:
+            encoded_str += "0" * padding
+        
+        # Convert to bytes
+        compressed = bytearray()
+        for i in range(0, len(encoded_str), 8):
+            byte = encoded_str[i:i+8]
+            compressed.append(int(byte, 2))
+        
+        return bytes(compressed), code_table
+    
+    def decompress(self, compressed: bytes, code_table: Dict[str, str], original_length: int) -> str:
+        # Decompress bytes back to text.
+        # Convert bytes back to bit string
+        bit_string = "".join(format(byte, "08b") for byte in compressed)
+        
+        # Rebuild the tree from code table
+        self.root = self._rebuild_tree(code_table)
+        
+        # Decode
+        decoded = self.decode(bit_string)
+        
+        # Remove padding by using original length
+        return decoded[:original_length]
+    
+    def _rebuild_tree(self, code_table: Dict[str, str]) -> HuffmanNode:
+        # Rebuild Huffman tree from code table.
+        root = HuffmanNode()
+        
+        for char, code in code_table.items():
+            current = root
+            for bit in code:
+                if bit == "0":
+                    if not current.left:
+                        current.left = HuffmanNode()
+                    current = current.left
+                else:
+                    if not current.right:
+                        current.right = HuffmanNode()
+                    current = current.right
+            current.char = char
+        
+        return root
+    
+    def calculate_compression_ratio(self, original: str, compressed: bytes) -> float:
+        # Calculate compression ratio.
+        original_bits = len(original) * 8
+        compressed_bits = len(compressed) * 8
+        return original_bits / compressed_bits if compressed_bits > 0 else 0
+    
+    def print_code_table(self, code_table: Dict[str, str]) -> None:
+        # Pretty print the code table.
+        print("Huffman Code Table:")
+        print("-" * 40)
+        for char, code in sorted(code_table.items()):
+            display_char = repr(char) if char in ["\n", "\t", " "] else char
+            print(f"{display_char:10} | {code}")
+    
+    def analyze_encoding(self, text: str) -> Dict[str, Any]:
+        # Analyze the encoding efficiency.
+        freq_table = self.build_frequency_table(text)
+        total_chars = len(text)
+        
+        encoded, code_table = self.encode(text)
+        
+        # Calculate average bits per character
+        avg_bits = sum(len(code_table[char]) * freq_table[char] 
+                      for char in freq_table) / total_chars
+        
+        # Calculate entropy (theoretical minimum)
+        import math
+        entropy = -sum((freq/total_chars) * math.log2(freq/total_chars) 
+                      for freq in freq_table.values())
+        
+        return {
+            'original_size': total_chars * 8,
+            'encoded_size': len(encoded),
+            'compression_ratio': (total_chars * 8) / len(encoded),
+            'average_bits_per_char': avg_bits,
+            'entropy': entropy,
+            'efficiency': entropy / avg_bits if avg_bits > 0 else 0,
+            'unique_chars': len(freq_table),
+            'code_table': code_table
+        }
+
+def demonstrate_huffman():
+    # Demonstrate Huffman coding with various examples.
+    
+    # Example 1: Simple text
+    print("Example 1: Simple repetitive text")
+    print("=" * 50)
+    text1 = "abracadabra"
+    huffman1 = HuffmanCoding()
+    encoded1, codes1 = huffman1.encode(text1)
+    
+    print(f"Original text: {text1}")
+    print(f"Original size: {len(text1) * 8} bits")
+    print(f"Encoded size: {len(encoded1)} bits")
+    print(f"Compression ratio: {len(text1) * 8 / len(encoded1):.2f}x")
+    huffman1.print_code_table(codes1)
+    
+    # Verify decoding
+    decoded1 = huffman1.decode(encoded1)
+    print(f"Decoded text: {decoded1}")
+    print(f"Decoding correct: {text1 == decoded1}")
+    print()
+    
+    # Example 2: English text
+    print("\nExample 2: English text")
+    print("=" * 50)
+    text2 = "the quick brown fox jumps over the lazy dog"
+    huffman2 = HuffmanCoding()
+    analysis2 = huffman2.analyze_encoding(text2)
+    
+    print(f"Original text: {text2}")
+    print(f"Original size: {analysis2['original_size']} bits")
+    print(f"Encoded size: {analysis2['encoded_size']} bits")
+    print(f"Compression ratio: {analysis2['compression_ratio']:.2f}x")
+    print(f"Average bits per character: {analysis2['average_bits_per_char']:.2f}")
+    print(f"Theoretical minimum (entropy): {analysis2['entropy']:.2f}")
+    print(f"Encoding efficiency: {analysis2['efficiency']:.1%}")
+    print()
+    
+    # Example 3: Highly skewed distribution
+    print("\nExample 3: Highly skewed distribution")
+    print("=" * 50)
+    text3 = "a" * 100 + "b" * 10 + "c" * 5 + "d" * 2 + "e"
+    huffman3 = HuffmanCoding()
+    analysis3 = huffman3.analyze_encoding(text3)
+    
+    print(f"Text composition: 100 as, 10 bs, 5 cs, 2 ds, 1 e")
+    print(f"Original size: {analysis3['original_size']} bits")
+    print(f"Encoded size: {analysis3['encoded_size']} bits")
+    print(f"Compression ratio: {analysis3['compression_ratio']:.2f}x")
+    print(f"Average bits per character: {analysis3['average_bits_per_char']:.2f}")
+    print(f"Theoretical minimum (entropy): {analysis3['entropy']:.2f}")
+    huffman3.print_code_table(analysis3['code_table'])
+    
+    # Example 4: Binary data compression
+    print("\nExample 4: DNA sequence")
+    print("=" * 50)
+    dna = "ATGCGATCGTAGCTAGCTAGCTAGCTACGATCGATCGATCGTAGCTAGCTAGCTAGCTACGAT" * 5
+    huffman4 = HuffmanCoding()
+    compressed4, codes4 = huffman4.compress(dna)
+    
+    print(f"DNA sequence length: {len(dna)} characters")
+    print(f"Original size: {len(dna)} bytes")
+    print(f"Compressed size: {len(compressed4)} bytes")
+    print(f"Compression ratio: {len(dna) / len(compressed4):.2f}x")
+    print(f"Bits per nucleotide: {len(compressed4) * 8 / len(dna):.2f}")
+    huffman4.print_code_table(codes4)
+    
+    # Verify compression/decompression
+    decompressed4 = huffman4.decompress(compressed4, codes4, len(dna))
+    print(f"Decompression correct: {dna == decompressed4}")
+
+class AdaptiveHuffman:
+    # Adaptive Huffman coding that updates the tree as it encodes.
+    
+    def __init__(self):
+        self.root = None
+        self.nodes = {}
+        self.next_node_num = 0
+    
+    # Additional implementation for adaptive variant...
+    # This would be quite complex, so I'll focus on the static version above
+
+if __name__ == "__main__":
+    demonstrate_huffman()
+    
+    # Test on larger text
+    print("\n\nLarge text compression test:")
+    print("=" * 50)
+    
+    # Generate a larger text with known distribution
+    large_text = "the " * 1000 + "quick " * 500 + "brown " * 300 + "fox " * 200
+    large_text += "jumps " * 150 + "over " * 100 + "lazy " * 50 + "dog " * 25
+    
+    huffman = HuffmanCoding()
+    start_time = time.time() if 'time' in globals() else 0
+    
+    compressed, code_table = huffman.compress(large_text)
+    compression_time = time.time() - start_time if 'time' in globals() else 0
+    
+    print(f"Original size: {len(large_text)} characters ({len(large_text)} bytes)")
+    print(f"Compressed size: {len(compressed)} bytes")
+    print(f"Compression ratio: {len(large_text) / len(compressed):.2f}x")
+    print(f"Compression time: {compression_time:.3f} seconds" if compression_time else "")
+    
+    # Verify decompression
+    decompressed = huffman.decompress(compressed, code_table, len(large_text))
+    print(f"Decompression successful: {large_text == decompressed}")

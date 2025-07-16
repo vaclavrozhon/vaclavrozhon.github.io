@@ -1,0 +1,4944 @@
+{
+  "gpt-2": {
+    "kl_intro_10kb": {
+      "name": "KL Introduction (~10KB)",
+      "filename": "kl_intro_10kb.txt",
+      "description": "Academic text about information theory and KL divergence",
+      "totalChars": 9413,
+      "totalBits": 11118.19,
+      "averageBitsPerChar": 1.1811526612132157,
+      "modelName": "GPT-2",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 1.4317949494949498
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 1.4630940944881892
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 1.3131259541984734
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 1.1703806306306306
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 1.2115659090909088
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 1.195754183266932
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 1.1471180811808115
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 1.2061744855967078
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 1.3053730512249446
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 1.1821647597254008
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 1.1197112831858411
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 1.0744447661469938
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 1.0522883668903802
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 1.0085208520179374
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 1.075798938428875
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 1.1092381374722844
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 1.0852186147186151
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 1.1410163223140501
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 1.1296624472573846
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 1.2415457516339867
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 1.175519914346895
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 1.2245261160714294
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 1.1550220374220377
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 1.1162775047258982
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 1.106186372360845
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 1.1520800000000004
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 1.1269634920634921
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 1.120293103448276
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 1.190579520697168
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 1.0730128256513025
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 1.0077135531135528
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 1.0646715034965037
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 1.0544100178890872
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 1.1230434470377015
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 1.2086137176938374
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 1.2452786852589648
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 1.1927210000000004
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 1.1517051689860835
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 0.9098912313432838
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 0.8664757365684573
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 0.8976838842975208
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 1.015600847457627
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 1.0733686825053994
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 1.2340676724137931
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 1.3275552863436118
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 1.3317456896551734
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 1.3465851441241687
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 1.2851223451327443
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 1.277056120092379
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 1.2546667481662597
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 1.1883875278396436
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 1.120096923076923
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 1.3459053240740735
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 1.2885157112526537
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 1.253070941883767
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 1.248285907335907
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 1.271568893129771
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 1.185249604743083
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 1.2598358574610249
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 1.2657649382716054
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 1.2724468493150685
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 1.2147572944297078
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 1.1604723880597012
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 1.216265714285714
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 1.1760879569892473
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 1.0993474264705887
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 1.1010057761732852
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 1.0735210801393733
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 1.0237268581081078
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 1.1046872340425535
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 1.1806001782531192
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 1.125968495575221
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 1.1285381118881117
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 1.196747547169811
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 1.228061830357144
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 1.2200489702517168
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 1.299275647668393
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 1.4003506493506486
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 1.3844098305084742
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 1.2950509536784742
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 1.3171516709511566
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 1.3463736585365853
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 1.2857852390852387
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 1.3195512974051888
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 1.2684987999999997
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 1.2776391566265062
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 1.2013034351145038
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 1.290736399217221
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 1.1653758558558565
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 1.1465609890109894
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 1.1458311594202906
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 1.2404355769230775
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 1.2407903930131012
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 1.3432623342175065
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 1.3705119363395228
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 1.4040487106017199
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 1.2263894594594593
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 1.1238424936386768
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 1.048346892655367
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 1.0078464566929133
+        }
+      ]
+    },
+    "pi_digits_10kb": {
+      "name": "Pi Digits (~10KB)",
+      "filename": "pi_digits_10kb.txt",
+      "description": "First 10,000 digits of π (mathematically random)",
+      "totalChars": 9999,
+      "totalBits": 34290.06,
+      "averageBitsPerChar": 3.429348934893489,
+      "modelName": "GPT-2",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 3.3314171875
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 3.351234560906516
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 3.3709959051724163
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 3.4295494117647083
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 3.4309126459143973
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 3.432840313111546
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 3.426346484375
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 3.426120436507936
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 3.4243964143426284
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 3.415797357723578
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 3.416507489878542
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 3.403270833333333
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 3.4098565217391275
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 3.4066159448818896
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 3.4147853515625015
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 3.4133245544554454
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 3.4362608782435125
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 3.4494919354838705
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 3.449695315682279
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 3.4330191836734674
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 3.4217012048192754
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 3.404750813008129
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 3.4253401622718056
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 3.4405087649402395
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 3.476930708661417
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 3.478724206349206
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 3.464790297029703
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 3.4424292246520882
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 3.4370677354709387
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 3.4065613168724234
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 3.4017395537525332
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 3.420564574898787
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 3.3954235772357735
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 3.409596516393443
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 3.402939595959596
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 3.410129959514169
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 3.4123249488752556
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 3.416660000000001
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 3.4334762000000008
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 3.4473654
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 3.45568363273453
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 3.4602500994035785
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 3.4676193675889335
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 3.4393787148594375
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 3.413426961770622
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 3.423302822580642
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 3.4282816532258042
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 3.444679317269079
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 3.4675166007905145
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 3.5021604373757445
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 3.498434194831014
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 3.4726459081836323
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 3.4519838323353276
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 3.4546721774193534
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 3.43291923076923
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 3.4183706477732803
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 3.422054858299596
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 3.4281418511066386
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 3.4023099601593603
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 3.414267594433399
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 3.4263005940594047
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 3.414338645418323
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 3.411783199999999
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 3.4353332661290343
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 3.428408400000001
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 3.4159717171717157
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 3.415873641851107
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 3.420395901639347
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 3.417796741344199
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 3.4467421588594704
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 3.4392016161616143
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 3.4568091999999995
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 3.446262178217822
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 3.4510204
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 3.4152139442231078
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 3.4302808853118725
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 3.410843724696355
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 3.412515169660677
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 3.430362248995984
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 3.4179571428571447
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 3.418350905432598
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 3.42823931451613
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 3.4177540650406515
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 3.4132768145161294
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 3.416115020576131
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 3.4150470347648265
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 3.4079508230452684
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 3.412672967479674
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 3.4151569696969686
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 3.410381362725449
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 3.416272599999998
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 3.432984262948208
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 3.4561576612903244
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 3.4744103379721696
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 3.4750900199600814
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 3.474170564516129
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 3.461063286004056
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 3.4744999999999995
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 3.449364035087719
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 3.4563285714285725
+        }
+      ]
+    },
+    "declaration_full": {
+      "name": "Declaration of Independence",
+      "filename": "declaration_full.txt",
+      "description": "Natural English prose with historical vocabulary",
+      "totalChars": 9259,
+      "totalBits": 8794.1,
+      "averageBitsPerChar": 0.949789394103035,
+      "modelName": "GPT-2",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 0.9356794425087108
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 0.9090897905759162
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 0.8671248971193414
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 0.6881964497041417
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 0.5164820717131472
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 0.362864694280079
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 0.3001857142857143
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 0.17955914396887165
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 0.21402774674115457
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 0.3530034862385321
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 0.5372610294117648
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 0.5734745387453875
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 0.7605580705009277
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 0.87722
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 0.9209078277886497
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 0.9021225352112674
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 0.9181316831683168
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 0.8908597249508845
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 0.9988251984126988
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 0.9732627572016463
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 0.9790087128712872
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 0.9726303278688525
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 0.9549621730382295
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 0.8746371316306487
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 0.8999028517110268
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 0.8876752455795676
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 0.9635706766917291
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 0.9541173737373736
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 0.9690015533980583
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 0.9480916988416987
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 0.9521292490118577
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 0.9522578528827039
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 0.980548076923077
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 0.909562451361868
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 0.9235848425196851
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 0.9472857142857142
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 0.9452298947368423
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 0.9522933760683763
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 0.9870402569593152
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 0.9618995680345573
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 1.0358164926931108
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 1.0580123689727465
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 1.0075997872340425
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 0.9643169265033411
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 0.9611672018348624
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 0.9253126168224297
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 0.8449590413943358
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 0.9148348008385748
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 1.0676666003976145
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 1.0350686907020876
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 1.063220921305182
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 1.09501881390593
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 1.0670595698924734
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 1.0160318872017358
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 1.0874323144104803
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 1.0654725366876305
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 1.0651074747474742
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 1.0978151873767257
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 1.078280239520958
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 1.0877312244897959
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 1.1008872881355933
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 1.1714733333333338
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 1.19903487394958
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 1.2290886214442012
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 1.134769444444445
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 1.0478252525252527
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 0.9813997899159665
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 0.9556824803149604
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 0.9160169921874999
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 0.9610231083844579
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 1.0134745762711865
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 0.9899697478991595
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 0.9682093333333334
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 0.962045374449339
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 0.8804836518046708
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 0.8001260780287475
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 0.7853454175152749
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 0.7672265107212476
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 0.7650606525911708
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 0.7923060311284045
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 1.033565665236051
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 1.1606964539007092
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 1.252841160949868
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 1.3399652941176465
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 1.538828840125392
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 1.330151818181818
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 1.2230914201183427
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 1.261467069486404
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 1.2184619469026547
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 1.2215468277945616
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 1.2169963302752287
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 1.235397819314641
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 1.2461106583072106
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 1.292511437908497
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 1.2554662295081966
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 1.2217294498381879
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 1.1881100313479622
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 1.191257
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 1.1179326530612246
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 1.1451363636363636
+        }
+      ]
+    },
+    "human_mitochondrial_dna": {
+      "name": "Human Mitochondrial DNA",
+      "filename": "human_mitochondrial_dna.txt",
+      "description": "Complete human mitochondrial genome (16,569 bases)",
+      "totalChars": 16568,
+      "totalBits": 36006.07,
+      "averageBitsPerChar": 2.173229719942057,
+      "modelName": "GPT-2",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 2.3376244552058107
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 2.2363794871794878
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 2.2315344042838023
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 2.1665818072289147
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 2.134413148371532
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 2.132948668280872
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 2.1750426814268136
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 2.1668732186732176
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 2.1483725943970753
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 2.1631105199516325
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 2.2328567436208995
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 2.233733531510109
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 2.23283163507109
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 2.2397277511961726
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 2.273621480582524
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 2.2089799037304454
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 2.203646305418722
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 2.209917385943279
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 2.2253782396088
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 2.1785925427872854
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 2.2040954094292804
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 2.197540953545231
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 2.2550311057108137
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 2.255684009840098
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 2.2535658476658496
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 2.2421892944038935
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 2.2434163017031614
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 2.1816028117359414
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 2.1714598062953994
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 2.164760167464112
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 2.1206644208037804
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 2.0956830548926018
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 2.099067695961995
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 2.114037591240875
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 2.1687138480392147
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 2.2485239506172836
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 2.260435776397516
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 2.2556958698372966
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 2.240081617647059
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 2.2150375764993884
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 2.1751050061050066
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 2.1720342682926836
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 2.188204797047972
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 2.186371863580999
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 2.166915594059406
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 2.159656273291925
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 2.215843788437884
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 2.240199636363635
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 2.232943857493856
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 2.1961650644783117
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 2.2017312718786473
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 2.155465847953217
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 2.1319228773584893
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 2.133928723404255
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 2.1608034271725836
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 2.163607965686276
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 2.1563381707317086
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 2.1413484029484025
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 2.1914991452991446
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 2.21620600240096
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 2.23032649880096
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 2.2143532296650723
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 2.2572500597371574
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 2.1575910151691944
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 2.11297137767221
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 2.1075315726290524
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 2.1110896057347657
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 2.096848690476189
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 2.1111302184466028
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 2.13475881642512
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 2.1394531360946725
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 2.19489592326139
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 2.172596348645465
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 2.2033441073512257
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 2.2064104093567245
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 2.209443629807694
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 2.1493909090909096
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 2.1510717258261947
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 2.1425927250308283
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 2.103196314496316
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 2.10335206812652
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 2.1017235860409142
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 2.1140512514898697
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 2.118699170616111
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 2.1195600706713766
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 2.1109374566473997
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 2.1041005747126453
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 2.101341156069363
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 2.0927673372781035
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 2.1069742243436758
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 2.1096941463414636
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 2.1094020961775595
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 2.0998135696821545
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 2.0789134292565956
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 2.1049794359576977
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 2.1241306242638394
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 2.1564851590105985
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 2.1698295275590556
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 2.203855952380953
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 2.1635363414634137
+        }
+      ]
+    },
+    "huffman_code_10kb": {
+      "name": "Code Snippet",
+      "filename": "huffman_code_10kb.txt",
+      "description": "JavaScript function with typical programming patterns",
+      "totalChars": 11937,
+      "totalBits": 13565.91,
+      "averageBitsPerChar": 1.1364589092736868,
+      "modelName": "GPT-2",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 1.4453383999999994
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 1.37933394308943
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 1.402619015280135
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 1.2463385852090039
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 1.1533387755102038
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 1.2275263069139963
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 1.2329833057851245
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 1.0767742635658921
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 1.1618981907894728
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 1.1433725619834705
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 1.1977989743589748
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 1.126019521178638
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 1.2023815999999996
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 1.1364672451193063
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 1.0929
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 1.055120886075949
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 1.0721163672654686
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 1.3093623134328347
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 1.3599873370577276
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 1.3793179078014173
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 1.3325411196911194
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 1.3666697318007663
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 1.199887795275591
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 1.1887885338345872
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 1.1277230483271365
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 1.0475735185185169
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 0.9949337121212124
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 0.984560861759425
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 0.9004018315018318
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 0.8901889292196007
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 0.9153554347826085
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 0.8904774253731345
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 0.7531283433133736
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 0.7566912955465587
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 0.7643485537190083
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 1.0144754455445548
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 1.1701586715867167
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 1.2808130909090918
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 1.30362315978456
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 1.330188108108107
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 1.2146753496503502
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 1.0854331615120267
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 1.1096699834162518
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 1.1037755517826828
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 1.0947404423380729
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 1.0027913907284767
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 0.9926465277777781
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 0.9123888045540799
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 0.8420123595505623
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 0.7534972573839664
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 0.6778466522678184
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 0.7759623217922608
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 0.7376773451327433
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 0.7781991789819379
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 1.0744734059097978
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 1.296553048780488
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 1.427109651898734
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 1.62211512605042
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 1.632229780033841
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 1.4973315044247786
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 1.3626853913043486
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 1.1773953271028033
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 1.1979232692307702
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 1.1717223529411762
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 1.0896924812030078
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 1.087075781250001
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 1.2067106779661025
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 1.265249006622517
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 1.2897202898550721
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 1.357890630048465
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 1.2609399686520375
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 1.1546634710743808
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 1.1770106858054232
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 1.2840462132921175
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 1.1203096632503657
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 1.0658154848046306
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 1.1509576601671305
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 1.0853567685589525
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 1.0536894495412847
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 0.9149903030303028
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 0.76218497723824
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 0.6347405279503101
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 0.6692448328267482
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 0.6326240369799693
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 0.8166918750000001
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 0.9660192733017375
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 1.0025308681672032
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 0.9226876160990719
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 1.022211077844311
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 1.1397644117647059
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 1.2534034236804568
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 1.4752539310344839
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 1.637009915014165
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 1.6323924033149169
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 1.6411296829971174
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 1.5380713467048712
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 1.324195063469676
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 1.1189237113402069
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 1.041746804511278
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 0.9739348837209301
+        }
+      ]
+    },
+    "repeated_phrase": {
+      "name": "Repeated Pattern",
+      "filename": "repeated_phrase.txt",
+      "description": "Highly structured repetitive text",
+      "totalChars": 8796,
+      "totalBits": 196.31,
+      "averageBitsPerChar": 0.022318099135970895,
+      "modelName": "GPT-2",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 0.3851377272727274
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 0.2757405844155845
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 0.21501969696969703
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 0.01010276497695853
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 0.0023695852534562217
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 0.002166589861751152
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 0.002074884792626727
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 0.0021064516129032248
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 0.002131336405529953
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 0.002169815668202764
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 0.0022096774193548375
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 0.0022262672811059897
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 0.0022324884792626724
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 0.002243119266055045
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 0.0022314220183486237
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 0.002232110091743118
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 0.0022522935779816502
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 0.0022692660550458705
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 0.0022926605504587153
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 0.0023398617511520723
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 0.0024082949308755746
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 0.0024910138248847914
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 0.002588940092165897
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 0.0026928571428571414
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 0.002797926267281105
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 0.0028383908045977006
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 0.0029445977011494256
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 0.0030689655172413794
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 0.0031894252873563207
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 0.00328942528735632
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 0.0033781609195402285
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 0.0035665137614678904
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 0.003629587155963303
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 0.003671330275229358
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 0.003701605504587156
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 0.003731192660550457
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 0.0037678899082568794
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 0.003810779816513761
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 0.0038032183908045976
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 0.003852413793103448
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 0.0039036781609195392
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 0.003935402298850574
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 0.003949425287356321
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 0.003931494252873564
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 0.003928669724770641
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 0.003870183486238532
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 0.003819036697247705
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 0.003774541284403667
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 0.003747247706422017
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 0.0037227064220183475
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 0.003696330275229358
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 0.003661009174311925
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 0.003628669724770641
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 0.003606422018348625
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 0.03286834862385321
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 0.19536284403669726
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 0.19954354838709668
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 0.1994179723502303
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 0.1993124423963132
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 0.12055184331797245
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 0.0038642857142857107
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 0.002508064516129032
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 0.002417972350230414
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 0.0023034562211981563
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 0.0022956221198156667
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 0.0023225806451612893
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 0.0023626728110599077
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 0.002387557603686636
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 0.002395391705069124
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 0.002406651376146789
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 0.0023903669724770647
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 0.0023766055045871554
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 0.0023853211009174304
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 0.0023986238532110087
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 0.002413990825688073
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 0.002458294930875576
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 0.002526958525345623
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 0.002612442396313364
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 0.002708755760368663
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 0.0028126728110599076
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 0.002911751152073732
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 0.002941609195402299
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 0.0030400000000000006
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 0.0031595402298850578
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 0.003289425287356321
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 0.003408505747126435
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 0.0035059770114942517
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 0.0037025229357798167
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 0.003772706422018348
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 0.0038172018348623838
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 0.0038428899082568794
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 0.0038658256880733924
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 0.0038935779816513735
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 0.0038885057471264354
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 0.003931494252873563
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 0.003974942528735633
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 0.004025057471264367
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 0.004051249999999998
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 0.00406153846153846
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 0.004109545454545455
+        }
+      ]
+    }
+  },
+  "llama-4": {
+    "kl_intro_10kb": {
+      "name": "KL Introduction (~10KB)",
+      "filename": "kl_intro_10kb.txt",
+      "description": "Academic text about information theory and KL divergence",
+      "totalChars": 9371,
+      "totalBits": 8125.26,
+      "averageBitsPerChar": 0.8670643474549141,
+      "modelName": "Llama 4",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 1.1172111627906978
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 1.1153331343283581
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 1.055305381165919
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 0.9860036
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 1.0400714876033057
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 1.0182249063670412
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 0.9162432323232323
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 0.8604583509513741
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 0.7765878378378377
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 0.7209205542725177
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 0.630608370044053
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 0.7083216157205239
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 0.6877689976689975
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 0.8786700223713649
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 0.840237605042017
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 0.8921477272727275
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 0.9659432653061225
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 0.9035241803278687
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 0.8500640969162994
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 0.9930535714285715
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 1.0106440281030444
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 0.8951439824945294
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 0.814791287128713
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 0.8405610507246376
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 0.7870408914728684
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 0.8039186000000001
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 0.8959835416666668
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 1.012748060344828
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 0.9776436440677968
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 0.92617722007722
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 0.8975182468694095
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 1.0075792660550456
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 1.019076965265082
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 0.9296537401574799
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 0.9560438752783958
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 0.9122661504424773
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 0.6877817977528089
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 0.6156740825688073
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 0.5977069037656902
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 0.5890080459770115
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 0.5909491031390133
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 0.6125079625292736
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 0.7037323943661974
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 0.6929749414519907
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 0.7712408983451535
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 0.6991181015452537
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 0.6161394299287408
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 0.5549614117647056
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 0.5990606879606878
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 0.5766342857142857
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 0.6658433420365535
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 0.8302997590361447
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 0.8134187500000001
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 1.0279822454308098
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 0.9213482269503543
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 0.9255586776859499
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 0.8682476653696496
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 0.8698268939393936
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 0.7942540384615385
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 0.7756413502109706
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 0.710595100222717
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 0.7035193236714978
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 0.7069476744186047
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 0.72466921182266
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 0.9764205882352941
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 1.0499307500000001
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 0.9762017699115041
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 1.0321611111111106
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 1.0340130019120455
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 0.8973251736111112
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 0.9784309719934102
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 1.0154966725043781
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 0.9934386363636364
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 1.03004938704028
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 1.0643160447761193
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 0.924104641350211
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 0.9369918918918918
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 1.0160563725490195
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 1.0224581602373886
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 0.8755418803418804
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 1.1022858942065492
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 1.1328010178117052
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 1.1458496598639458
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 1.16664427184466
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 1.1755288032454365
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 1.0351999999999997
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 0.9715172147001927
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 0.9618821561338289
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 0.9029137864077671
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 0.9479781609195405
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 0.8113741312741308
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 0.7662930635838148
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 0.7009448801742918
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 0.6704580808080807
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 0.7204581863979846
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 0.7061324873096446
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 0.6621932642487047
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 0.5502691139240508
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 0.5518311977715878
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 0.4439564885496183
+        }
+      ]
+    },
+    "pi_digits_10kb": {
+      "name": "Pi Digits (~10KB)",
+      "filename": "pi_digits_10kb.txt",
+      "description": "First 10,000 digits of π (mathematically random)",
+      "totalChars": 10000,
+      "totalBits": 929.1,
+      "averageBitsPerChar": 0.09291,
+      "modelName": "Llama 4",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 0.2670923387096774
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 0.1903442528735632
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 0.14690953436807097
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 0.05137704590818363
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 0.008284969939879762
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 0.000047105788423153685
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 0.0001994011976047904
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 0.0001677354709418838
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 0.0005566866267465069
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 0.0006171656686626747
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 0.0006141716566866268
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 0.0004699398797595189
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 0.0013742514970059877
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 0.0009890219560878244
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 0.0009324649298597194
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 0.0009298597194388777
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 0.000921756487025948
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 0.000018762475049900202
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 0.020845090180360727
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 0.020891816367265472
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 0.02412554890219561
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 0.024277154308617238
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 0.04315511022044087
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 0.02762854291417165
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 0.02767784431137724
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 0.03409358717434869
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 0.018212974051896202
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 0.01662814371257485
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 0.012095209580838321
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 0.04638957915831664
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 0.05327704590818364
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 0.05356127744510977
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 0.06573507014028054
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 0.07715029940119762
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 0.044089620758483015
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 0.03526087824351297
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 0.03751823647294589
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 0.022602594810379236
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 0.028331736526946108
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 0.029432665330661325
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 0.0643306613226453
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 0.06921217564870258
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 0.0701065868263473
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 0.06322084168336671
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 0.05249740518962073
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 0.04790419161676646
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 0.057543912175648713
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 0.061835270541082156
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 0.0665580838323353
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 0.06036247504990017
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 0.060229258517034055
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 0.05477365269461075
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 0.07718043912175647
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 0.08185828343313374
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 0.07648977955911829
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 0.09160998003992019
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 0.09310618762475045
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 0.08765751503006014
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 0.10509879759519042
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 0.10376067864271461
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 0.11627904191616768
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 0.15078496993987972
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 0.14562974051896205
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 0.12273173652694615
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 0.13130518962075852
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 0.12685090180360722
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 0.10202155688622759
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 0.11150698602794416
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 0.11300020040080168
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 0.1677259481037925
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 0.17450838323353302
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 0.172174251497006
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 0.17394709418837678
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 0.21578203592814385
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 0.20358542914171665
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 0.17170701402805616
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 0.1748150300601203
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 0.1767728542914173
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 0.12419560878243521
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 0.10080781563126257
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 0.09654650698602794
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 0.08857225548902198
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 0.06246913827655311
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 0.0637436873747495
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 0.036347704590818354
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 0.05454051896207585
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 0.08653607214428859
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 0.15390578842315367
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 0.16189960079840315
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 0.16870818363273452
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 0.22897454909819645
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 0.2038532934131737
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 0.17566127744510976
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 0.17980761523046093
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 0.18375409181636726
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 0.11781057884231541
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 0.1334860279441118
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 0.299390989010989
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 0.35672372881355935
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 0.4344749003984064
+        }
+      ]
+    },
+    "declaration_full": {
+      "name": "Declaration of Independence",
+      "filename": "declaration_full.txt",
+      "description": "Natural English prose with historical vocabulary",
+      "totalChars": 9262,
+      "totalBits": 200.53,
+      "averageBitsPerChar": 0.02165083135391924,
+      "modelName": "Llama 4",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 0.1662823076923077
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 0.12400143266475647
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 0.09511318681318683
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 0.04878220858895705
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 0.04703189300411522
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 0.04811804979253111
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 0.047249183673469385
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 0.04843535564853556
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 0.0006811244979919677
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 0.0006923232323232323
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 0.000011706349206349205
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 0.00014594059405940594
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 0.00014507874015748032
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 0.0001507157464212679
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 0.00014883227176220806
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 0.00015474613686534215
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 6.696428571428572e-7
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 6.622516556291392e-7
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 6.465517241379311e-7
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 6.211180124223603e-7
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 0.000001037344398340249
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 6.097560975609757e-7
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 6.185567010309279e-7
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 6.109979633401222e-7
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 6.000000000000001e-7
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 1.9455252918287938e-7
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 1.949317738791423e-7
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 1.876172607879925e-7
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 9.652509652509653e-7
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 9.861932938856016e-7
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 0.0000010040160642570282
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 0.000007984031936127745
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 0.000008541666666666668
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 0.000007692307692307692
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 0.000007599999999999999
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 0.000007615230460921842
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 4.123711340206186e-7
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 2.092050209205021e-7
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 0.000034640522875817
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 0.00003494505494505495
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 0.000034415584415584416
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 0.00003404710920770878
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 0.00006801705756929637
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 0.000034177215189873416
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 0.00003354037267080745
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 0.00003506493506493506
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 0.00003521739130434782
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 0.026464989517819705
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 0.026244490644490644
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 0.02545100806451613
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 0.0248498031496063
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 0.02437007722007722
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 1.9801980198019803e-7
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 2.0790020790020791e-7
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 0.000021748878923766818
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 0.018432714617169374
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 0.01864906103286385
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 0.01761529933481153
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 0.01708494623655914
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 0.017027467811158797
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 0.039304273504273506
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 0.04060596026490067
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 0.047374613686534214
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 0.046653695652173914
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 0.04556411889596603
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 0.006829175946547884
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 0.006464033264033265
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 0.00009014675052410901
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 0.0000947136563876652
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 0.00010165094339622642
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 0.00009493392070484581
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 2.331002331002331e-7
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 0.000003160270880361174
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 0.000003348214285714286
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 0.000002953586497890295
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 0.000003004291845493562
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 0.0000031315240083507308
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 4.2462845010615716e-7
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 0.000004655870445344129
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 0.05324831223628692
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 0.11576570796460177
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 0.119515296803653
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 0.17126520737327194
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 0.18283447432762845
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 0.11852129186602871
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 0.05246752336448598
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 0.05217372093023255
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 0.03974355231143552
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 0.03815107913669064
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 0.039972361809045225
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 0.04332512690355329
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 0.04400489690721647
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 0.0028687499999999993
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 0.004953475935828875
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 0.006134437086092713
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 0.003198611111111111
+        }
+      ]
+    },
+    "human_mitochondrial_dna": {
+      "name": "Human Mitochondrial DNA",
+      "filename": "human_mitochondrial_dna.txt",
+      "description": "Complete human mitochondrial genome (16,569 bases)",
+      "totalChars": 16569,
+      "totalBits": 36656,
+      "averageBitsPerChar": 2.2123242199287825,
+      "modelName": "Llama 4",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 0.9220920863309353
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 1.013109358752166
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 1.2570768506056529
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 1.427606804374241
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 1.8530680048661805
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 2.003908272506082
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 2.16130558252427
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 2.171594505494504
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 2.16299317904994
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 2.172600737100738
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 2.193169975186105
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 2.2044178217821777
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 2.2135862111801226
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 2.23243645320197
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 2.2633184956843406
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 2.2536151774785798
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 2.261305282555282
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 2.2953799754299764
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 2.3021061349693253
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 2.2568985419198055
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 2.265675490196078
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 2.2778131067961143
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 2.287316267942584
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 2.265423941958887
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 2.3007039663461537
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 2.295847475961538
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 2.307914320096269
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 2.2601892512077297
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 2.270837560386473
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 2.2310521844660185
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 2.209184178743962
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 2.183272848484849
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 2.1903957107843137
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 2.222556590084642
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 2.2654400726392256
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 2.2845978102189783
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 2.2647660146699273
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 2.26013134872418
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 2.286614475271412
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 2.2685231796116505
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 2.3090661407766975
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 2.3390786223277895
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 2.378095255041515
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 2.335818171021376
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 2.3158107692307683
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 2.2925691577698704
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 2.313666069295103
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 2.311170948379351
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 2.2987832932692305
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 2.2939771428571425
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 2.2800059031877202
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 2.2312511350059734
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 2.1894026410564225
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 2.199401459854012
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 2.2077427688504323
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 2.2396849196538935
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 2.3070673939393935
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 2.380902830188679
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 2.3655070175438597
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 2.3615939675174022
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 2.378811188811188
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 2.312516352941177
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 2.2655621394230767
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 2.271411918951132
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 2.257989264173702
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 2.228497451456309
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 2.240037530562346
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 2.2491850855745703
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 2.292680271270036
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 2.3203838669950727
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 2.2696763320941753
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 2.306669866342649
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 2.2782496394230765
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 2.2821020286396183
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 2.2913524317912226
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 2.3014346475507765
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 2.236274393203884
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 2.2345310727496925
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 2.2263365551425016
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 2.2234442521631634
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 2.281895584725536
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 2.2580603571428557
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 2.2102703836930453
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 2.17924143712575
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 2.15752717520858
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 2.143456009615383
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 2.1519870699881385
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 2.1768208333333328
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 2.2251631330977624
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 2.268855437352246
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 2.259069212410502
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 2.259099520383692
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 2.2782266666666664
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 2.2865957244655575
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 2.283832066508314
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 2.2511677033492825
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 2.291478682634729
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 2.265488399999997
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 2.2432072664359852
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 2.2297272058823516
+        }
+      ]
+    },
+    "huffman_code_10kb": {
+      "name": "Code Snippet",
+      "filename": "huffman_code_10kb.txt",
+      "description": "JavaScript function with typical programming patterns",
+      "totalChars": 11943,
+      "totalBits": 2573.77,
+      "averageBitsPerChar": 0.2155044796114879,
+      "modelName": "Llama 4",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 0.44216014234875445
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 0.3204175257731959
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 0.2760452716297786
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 0.20013889943074012
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 0.17227977736549166
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 0.18677125435540073
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 0.20317062937062944
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 0.199339152542373
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 0.19277377049180336
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 0.15340222575516693
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 0.13195047468354432
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 0.15832456692913388
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 0.17697070552147237
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 0.1570674735249622
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 0.1387462132921175
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 0.13916821589205397
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 0.21402296718972902
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 0.18276506024096384
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 0.22632558823529414
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 0.22093283582089557
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 0.22042581602373876
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 0.09626592261904765
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 0.11274914529914536
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 0.08274562682215744
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 0.09375865102639298
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 0.14399304347826086
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 0.1957663323782235
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 0.16906745810055873
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 0.17457799479166677
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 0.15939243807040426
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 0.15632543275632493
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 0.1779097841726619
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 0.20707710843373497
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 0.19792356902356908
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 0.19326650485436903
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 0.10823383333333335
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 0.11566756756756758
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 0.1704085758039816
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 0.17358112633181128
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 0.1558876488095238
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 0.1395473103448276
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 0.08613920099875158
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 0.03652213836477987
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 0.04222465408805031
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 0.07013441138421733
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 0.10954356435643563
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 0.2082927652733119
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 0.2663287878787879
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 0.27403218390804607
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 0.2868767660910519
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 0.3226260935143289
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 0.2957752562225475
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 0.2605968232044198
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 0.2752130867709814
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 0.2711077844311377
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 0.27089031296572286
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 0.3645366242038217
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 0.42842035087719293
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 0.4660583804143125
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 0.4315876712328765
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 0.418117167381974
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 0.24756932773109253
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 0.2243841101694915
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 0.19442392638036815
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 0.21134083665338654
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 0.14480433070866142
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 0.118674569789675
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 0.06378608534322819
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 0.08790664206642067
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 0.11888171846435101
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 0.1606741803278689
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 0.17553731343283588
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 0.30400868544600945
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 0.22830411899313502
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 0.15863045454545457
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 0.11285971943887775
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 0.18069142300194932
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 0.1921707224334601
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 0.32290083160083155
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 0.34665418410041837
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 0.3937774946921443
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 0.3221764966740577
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 0.22260734966592435
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 0.1311795634920635
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 0.20665481927710846
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 0.2158221797323136
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 0.3662542608695652
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 0.4250671521035599
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 0.4860494400000002
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 0.4689597292724197
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 0.483316380952381
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 0.47439444444444445
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 0.39163086419753107
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 0.2899400428265525
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 0.25883207920792095
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 0.25911860902255646
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 0.1473254416961131
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 0.16957529182879377
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 0.15826821515892422
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 0.21794545454545458
+        }
+      ]
+    },
+    "repeated_phrase": {
+      "name": "Repeated Pattern",
+      "filename": "repeated_phrase.txt",
+      "description": "Highly structured repetitive text",
+      "totalChars": 8799,
+      "totalBits": 42.74,
+      "averageBitsPerChar": 0.004857370155699511,
+      "modelName": "Llama 4",
+      "dataPoints": [
+        {
+          "progressPercent": 0,
+          "bitsPerChar": 0.1912798206278028
+        },
+        {
+          "progressPercent": 1.0101010101010102,
+          "bitsPerChar": 0.13724951768488755
+        },
+        {
+          "progressPercent": 2.0202020202020203,
+          "bitsPerChar": 0.10718671679198001
+        },
+        {
+          "progressPercent": 3.0303030303030303,
+          "bitsPerChar": 0.005196171171171171
+        },
+        {
+          "progressPercent": 4.040404040404041,
+          "bitsPerChar": 0.0004047297297297298
+        },
+        {
+          "progressPercent": 5.05050505050505,
+          "bitsPerChar": 0.0003448198198198199
+        },
+        {
+          "progressPercent": 6.0606060606060606,
+          "bitsPerChar": 0.0002701793721973094
+        },
+        {
+          "progressPercent": 7.07070707070707,
+          "bitsPerChar": 0.00008744394618834082
+        },
+        {
+          "progressPercent": 8.080808080808081,
+          "bitsPerChar": 0.00003766816143497758
+        },
+        {
+          "progressPercent": 9.090909090909092,
+          "bitsPerChar": 0.000027802690582959645
+        },
+        {
+          "progressPercent": 10.1010101010101,
+          "bitsPerChar": 0.000023318385650224214
+        },
+        {
+          "progressPercent": 11.11111111111111,
+          "bitsPerChar": 0.0000257847533632287
+        },
+        {
+          "progressPercent": 12.121212121212121,
+          "bitsPerChar": 0.000025112107623318382
+        },
+        {
+          "progressPercent": 13.131313131313133,
+          "bitsPerChar": 0.000019506726457399105
+        },
+        {
+          "progressPercent": 14.14141414141414,
+          "bitsPerChar": 0.000018385650224215248
+        },
+        {
+          "progressPercent": 15.151515151515152,
+          "bitsPerChar": 0.00001390134529147982
+        },
+        {
+          "progressPercent": 16.161616161616163,
+          "bitsPerChar": 0.000009641255605381167
+        },
+        {
+          "progressPercent": 17.17171717171717,
+          "bitsPerChar": 0.0000076233183856502244
+        },
+        {
+          "progressPercent": 18.181818181818183,
+          "bitsPerChar": 0.000004504504504504506
+        },
+        {
+          "progressPercent": 19.19191919191919,
+          "bitsPerChar": 0.0000040540540540540545
+        },
+        {
+          "progressPercent": 20.2020202020202,
+          "bitsPerChar": 0.0000036036036036036043
+        },
+        {
+          "progressPercent": 21.21212121212121,
+          "bitsPerChar": 0.0000036036036036036043
+        },
+        {
+          "progressPercent": 22.22222222222222,
+          "bitsPerChar": 0.00000382882882882883
+        },
+        {
+          "progressPercent": 23.232323232323232,
+          "bitsPerChar": 0.0000031531531531531537
+        },
+        {
+          "progressPercent": 24.242424242424242,
+          "bitsPerChar": 0.0000029147982062780272
+        },
+        {
+          "progressPercent": 25.252525252525253,
+          "bitsPerChar": 0.0000029147982062780276
+        },
+        {
+          "progressPercent": 26.262626262626267,
+          "bitsPerChar": 0.000002466367713004485
+        },
+        {
+          "progressPercent": 27.27272727272727,
+          "bitsPerChar": 0.0000022421524663677136
+        },
+        {
+          "progressPercent": 28.28282828282828,
+          "bitsPerChar": 0.0000022421524663677136
+        },
+        {
+          "progressPercent": 29.292929292929294,
+          "bitsPerChar": 0.0000022421524663677136
+        },
+        {
+          "progressPercent": 30.303030303030305,
+          "bitsPerChar": 0.00000202247191011236
+        },
+        {
+          "progressPercent": 31.313131313131315,
+          "bitsPerChar": 0.0000015730337078651688
+        },
+        {
+          "progressPercent": 32.323232323232325,
+          "bitsPerChar": 0.0000011235955056179775
+        },
+        {
+          "progressPercent": 33.33333333333333,
+          "bitsPerChar": 6.741573033707866e-7
+        },
+        {
+          "progressPercent": 34.34343434343434,
+          "bitsPerChar": 2.247191011235955e-7
+        },
+        {
+          "progressPercent": 35.35353535353536,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 36.36363636363637,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 37.37373737373738,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 38.38383838383838,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 39.39393939393939,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 40.4040404040404,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 41.41414141414141,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 42.42424242424242,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 43.43434343434344,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 44.44444444444444,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 45.45454545454545,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 46.464646464646464,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 47.474747474747474,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 48.484848484848484,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 49.494949494949495,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 50.505050505050505,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 51.515151515151516,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 52.52525252525253,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 53.535353535353536,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 54.54545454545454,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 55.55555555555556,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 56.56565656565656,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 57.57575757575758,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 58.58585858585859,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 59.59595959595959,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 60.60606060606061,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 61.61616161616161,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 62.62626262626263,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 63.63636363636363,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 64.64646464646465,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 65.65656565656566,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 66.66666666666666,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 67.67676767676768,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 68.68686868686868,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 69.6969696969697,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 70.70707070707071,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 71.71717171717171,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 72.72727272727273,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 73.73737373737373,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 74.74747474747475,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 75.75757575757575,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 76.76767676767676,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 77.77777777777779,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 78.78787878787878,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 79.7979797979798,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 80.8080808080808,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 81.81818181818183,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 82.82828282828282,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 83.83838383838383,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 84.84848484848484,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 85.85858585858585,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 86.86868686868688,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 87.87878787878788,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 88.88888888888889,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 89.8989898989899,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 90.9090909090909,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 91.91919191919192,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 92.92929292929293,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 93.93939393939394,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 94.94949494949495,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 95.95959595959596,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 96.96969696969697,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 97.97979797979798,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 98.98989898989899,
+          "bitsPerChar": 0
+        },
+        {
+          "progressPercent": 100,
+          "bitsPerChar": 0
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "generatedAt": "2025-06-14T10:58:17.102Z",
+    "description": "Preprocessed LLM compression progression data with 100 points per experiment",
+    "dataPointsPerExperiment": 100,
+    "smoothingWindow": "5% rolling average"
+  }
+}

@@ -1,0 +1,5478 @@
+{
+  "metadata": {
+    "languages": [
+      "brainfuck",
+      "c",
+      "chef",
+      "clojure",
+      "cpp",
+      "csharp",
+      "dart",
+      "fortran",
+      "go",
+      "haskell",
+      "java",
+      "javascript",
+      "julia",
+      "lisp",
+      "lua",
+      "matlab",
+      "ocaml",
+      "perl",
+      "php",
+      "prolog",
+      "python",
+      "r",
+      "ruby",
+      "rust",
+      "scala",
+      "scheme",
+      "typescript"
+    ],
+    "num_languages": 27,
+    "analysis_type": "deflate_static_dictionary",
+    "dictionary_size": 32768,
+    "compression_strategy": "Z_FIXED (static Huffman)",
+    "notes": "No adaptive learning - pure dictionary-based compression"
+  },
+  "deflate_analysis": {
+    "languages": [
+      "brainfuck",
+      "c",
+      "chef",
+      "clojure",
+      "cpp",
+      "csharp",
+      "dart",
+      "fortran",
+      "go",
+      "haskell",
+      "java",
+      "javascript",
+      "julia",
+      "lisp",
+      "lua",
+      "matlab",
+      "ocaml",
+      "perl",
+      "php",
+      "prolog",
+      "python",
+      "r",
+      "ruby",
+      "rust",
+      "scala",
+      "scheme",
+      "typescript"
+    ],
+    "method": "deflate_static_dictionary",
+    "baseline_compression": {
+      "brainfuck": {
+        "original": 869,
+        "compressed": 280,
+        "ratio": 0.3222094361334868
+      },
+      "c": {
+        "original": 13976,
+        "compressed": 5327,
+        "ratio": 0.38115340583858043
+      },
+      "chef": {
+        "original": 4806,
+        "compressed": 1325,
+        "ratio": 0.2756970453599667
+      },
+      "clojure": {
+        "original": 7255,
+        "compressed": 3570,
+        "ratio": 0.49207443142660234
+      },
+      "cpp": {
+        "original": 15118,
+        "compressed": 5294,
+        "ratio": 0.35017859505225557
+      },
+      "csharp": {
+        "original": 25904,
+        "compressed": 8161,
+        "ratio": 0.31504786905497223
+      },
+      "dart": {
+        "original": 6419,
+        "compressed": 2829,
+        "ratio": 0.44072285402710704
+      },
+      "fortran": {
+        "original": 12578,
+        "compressed": 4905,
+        "ratio": 0.3899666083638098
+      },
+      "go": {
+        "original": 11619,
+        "compressed": 4700,
+        "ratio": 0.40450985454858424
+      },
+      "haskell": {
+        "original": 6001,
+        "compressed": 2924,
+        "ratio": 0.48725212464589235
+      },
+      "java": {
+        "original": 9624,
+        "compressed": 3595,
+        "ratio": 0.3735453034081463
+      },
+      "javascript": {
+        "original": 5679,
+        "compressed": 2558,
+        "ratio": 0.45043141398133474
+      },
+      "julia": {
+        "original": 5360,
+        "compressed": 2796,
+        "ratio": 0.5216417910447761
+      },
+      "lisp": {
+        "original": 6010,
+        "compressed": 2794,
+        "ratio": 0.464891846921797
+      },
+      "lua": {
+        "original": 8505,
+        "compressed": 3360,
+        "ratio": 0.3950617283950617
+      },
+      "matlab": {
+        "original": 2375,
+        "compressed": 1134,
+        "ratio": 0.47747368421052633
+      },
+      "ocaml": {
+        "original": 6339,
+        "compressed": 2942,
+        "ratio": 0.46411105852658147
+      },
+      "perl": {
+        "original": 5730,
+        "compressed": 2941,
+        "ratio": 0.5132635253054101
+      },
+      "php": {
+        "original": 5977,
+        "compressed": 2701,
+        "ratio": 0.45189894595951147
+      },
+      "prolog": {
+        "original": 5423,
+        "compressed": 2576,
+        "ratio": 0.475013829983404
+      },
+      "python": {
+        "original": 3808,
+        "compressed": 2025,
+        "ratio": 0.5317752100840336
+      },
+      "r": {
+        "original": 3140,
+        "compressed": 1539,
+        "ratio": 0.49012738853503185
+      },
+      "ruby": {
+        "original": 5481,
+        "compressed": 2883,
+        "ratio": 0.5259989053092501
+      },
+      "rust": {
+        "original": 11003,
+        "compressed": 4904,
+        "ratio": 0.4456966281923112
+      },
+      "scala": {
+        "original": 6970,
+        "compressed": 3446,
+        "ratio": 0.49440459110473456
+      },
+      "scheme": {
+        "original": 5867,
+        "compressed": 2484,
+        "ratio": 0.4233850349411965
+      },
+      "typescript": {
+        "original": 3502,
+        "compressed": 1672,
+        "ratio": 0.4774414620217019
+      }
+    },
+    "dictionary_compression": {
+      "brainfuck": {
+        "brainfuck": {
+          "compressed_size": 13,
+          "ratio": 0.014959723820483314,
+          "improvement": 0.9535714285714286
+        },
+        "c": {
+          "compressed_size": 5325,
+          "ratio": 0.3810103033772181,
+          "improvement": 0.00037544584193730055
+        },
+        "chef": {
+          "compressed_size": 1324,
+          "ratio": 0.2754889721181856,
+          "improvement": 0.0007547169811320754
+        },
+        "clojure": {
+          "compressed_size": 3567,
+          "ratio": 0.4916609235010338,
+          "improvement": 0.0008403361344537816
+        },
+        "cpp": {
+          "compressed_size": 5292,
+          "ratio": 0.35004630242095514,
+          "improvement": 0.00037778617302606723
+        },
+        "csharp": {
+          "compressed_size": 8160,
+          "ratio": 0.3150092649783817,
+          "improvement": 0.00012253400318588408
+        },
+        "dart": {
+          "compressed_size": 2828,
+          "ratio": 0.440567066521265,
+          "improvement": 0.0003534817956875221
+        },
+        "fortran": {
+          "compressed_size": 4902,
+          "ratio": 0.38972809667673713,
+          "improvement": 0.0006116207951070336
+        },
+        "go": {
+          "compressed_size": 4698,
+          "ratio": 0.4043377226955848,
+          "improvement": 0.000425531914893617
+        },
+        "haskell": {
+          "compressed_size": 2923,
+          "ratio": 0.4870854857523746,
+          "improvement": 0.0003419972640218878
+        },
+        "java": {
+          "compressed_size": 3594,
+          "ratio": 0.3734413965087282,
+          "improvement": 0.0002781641168289291
+        },
+        "javascript": {
+          "compressed_size": 2557,
+          "ratio": 0.45025532664201445,
+          "improvement": 0.00039093041438623924
+        },
+        "julia": {
+          "compressed_size": 2794,
+          "ratio": 0.5212686567164179,
+          "improvement": 0.000715307582260372
+        },
+        "lisp": {
+          "compressed_size": 2794,
+          "ratio": 0.464891846921797,
+          "improvement": 0.0
+        },
+        "lua": {
+          "compressed_size": 3359,
+          "ratio": 0.39494415049970605,
+          "improvement": 0.00029761904761904765
+        },
+        "matlab": {
+          "compressed_size": 1133,
+          "ratio": 0.4770526315789474,
+          "improvement": 0.0008818342151675485
+        },
+        "ocaml": {
+          "compressed_size": 2942,
+          "ratio": 0.46411105852658147,
+          "improvement": 0.0
+        },
+        "perl": {
+          "compressed_size": 2940,
+          "ratio": 0.5130890052356021,
+          "improvement": 0.00034002040122407346
+        },
+        "php": {
+          "compressed_size": 2701,
+          "ratio": 0.45189894595951147,
+          "improvement": 0.0
+        },
+        "prolog": {
+          "compressed_size": 2575,
+          "ratio": 0.47482943020468377,
+          "improvement": 0.00038819875776397513
+        },
+        "python": {
+          "compressed_size": 2025,
+          "ratio": 0.5317752100840336,
+          "improvement": 0.0
+        },
+        "r": {
+          "compressed_size": 1538,
+          "ratio": 0.48980891719745223,
+          "improvement": 0.000649772579597141
+        },
+        "ruby": {
+          "compressed_size": 2883,
+          "ratio": 0.5259989053092501,
+          "improvement": 0.0
+        },
+        "rust": {
+          "compressed_size": 4904,
+          "ratio": 0.4456966281923112,
+          "improvement": 0.0
+        },
+        "scala": {
+          "compressed_size": 3444,
+          "ratio": 0.49411764705882355,
+          "improvement": 0.0005803830528148578
+        },
+        "scheme": {
+          "compressed_size": 2483,
+          "ratio": 0.4232145900801091,
+          "improvement": 0.00040257648953301127
+        },
+        "typescript": {
+          "compressed_size": 1671,
+          "ratio": 0.47715591090805254,
+          "improvement": 0.0005980861244019139
+        }
+      },
+      "c": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 176,
+          "ratio": 0.012593016599885518,
+          "improvement": 0.9669607659095175
+        },
+        "chef": {
+          "compressed_size": 1302,
+          "ratio": 0.27091136079900124,
+          "improvement": 0.017358490566037735
+        },
+        "clojure": {
+          "compressed_size": 3426,
+          "ratio": 0.4722260509993108,
+          "improvement": 0.040336134453781515
+        },
+        "cpp": {
+          "compressed_size": 4857,
+          "ratio": 0.3212726551131102,
+          "improvement": 0.0825462788061957
+        },
+        "csharp": {
+          "compressed_size": 7774,
+          "ratio": 0.3001080914144534,
+          "improvement": 0.04742065923293714
+        },
+        "dart": {
+          "compressed_size": 2647,
+          "ratio": 0.4123695279638573,
+          "improvement": 0.06433368681512902
+        },
+        "fortran": {
+          "compressed_size": 4693,
+          "ratio": 0.3731117824773414,
+          "improvement": 0.043221202854230374
+        },
+        "go": {
+          "compressed_size": 4462,
+          "ratio": 0.3840261640416559,
+          "improvement": 0.05063829787234043
+        },
+        "haskell": {
+          "compressed_size": 2766,
+          "ratio": 0.4609231794700883,
+          "improvement": 0.054035567715458276
+        },
+        "java": {
+          "compressed_size": 3288,
+          "ratio": 0.341645885286783,
+          "improvement": 0.08539638386648123
+        },
+        "javascript": {
+          "compressed_size": 2349,
+          "ratio": 0.41362916006339145,
+          "improvement": 0.081704456606724
+        },
+        "julia": {
+          "compressed_size": 2573,
+          "ratio": 0.48003731343283584,
+          "improvement": 0.07975679542203147
+        },
+        "lisp": {
+          "compressed_size": 2678,
+          "ratio": 0.44559068219633946,
+          "improvement": 0.04151753758052971
+        },
+        "lua": {
+          "compressed_size": 3117,
+          "ratio": 0.3664902998236332,
+          "improvement": 0.07232142857142858
+        },
+        "matlab": {
+          "compressed_size": 1059,
+          "ratio": 0.4458947368421053,
+          "improvement": 0.06613756613756613
+        },
+        "ocaml": {
+          "compressed_size": 2698,
+          "ratio": 0.42561918283640954,
+          "improvement": 0.08293677770224338
+        },
+        "perl": {
+          "compressed_size": 2690,
+          "ratio": 0.4694589877835951,
+          "improvement": 0.08534512070724243
+        },
+        "php": {
+          "compressed_size": 2456,
+          "ratio": 0.4109084825163125,
+          "improvement": 0.09070714550166604
+        },
+        "prolog": {
+          "compressed_size": 2456,
+          "ratio": 0.45288585653697216,
+          "improvement": 0.046583850931677016
+        },
+        "python": {
+          "compressed_size": 1855,
+          "ratio": 0.48713235294117646,
+          "improvement": 0.08395061728395062
+        },
+        "r": {
+          "compressed_size": 1416,
+          "ratio": 0.45095541401273886,
+          "improvement": 0.07992202729044834
+        },
+        "ruby": {
+          "compressed_size": 2640,
+          "ratio": 0.481663929939792,
+          "improvement": 0.08428720083246619
+        },
+        "rust": {
+          "compressed_size": 4655,
+          "ratio": 0.42306643642642916,
+          "improvement": 0.05077487765089723
+        },
+        "scala": {
+          "compressed_size": 3258,
+          "ratio": 0.4674318507890961,
+          "improvement": 0.054556006964596636
+        },
+        "scheme": {
+          "compressed_size": 2366,
+          "ratio": 0.4032725413328788,
+          "improvement": 0.04750402576489533
+        },
+        "typescript": {
+          "compressed_size": 1513,
+          "ratio": 0.4320388349514563,
+          "improvement": 0.0950956937799043
+        }
+      },
+      "chef": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5304,
+          "ratio": 0.37950772753291356,
+          "improvement": 0.004317627182278956
+        },
+        "chef": {
+          "compressed_size": 58,
+          "ratio": 0.012068248023304202,
+          "improvement": 0.9562264150943396
+        },
+        "clojure": {
+          "compressed_size": 3514,
+          "ratio": 0.484355616815989,
+          "improvement": 0.01568627450980392
+        },
+        "cpp": {
+          "compressed_size": 5233,
+          "ratio": 0.34614366979759226,
+          "improvement": 0.01152247827729505
+        },
+        "csharp": {
+          "compressed_size": 8086,
+          "ratio": 0.3121525633106856,
+          "improvement": 0.009190050238941306
+        },
+        "dart": {
+          "compressed_size": 2780,
+          "ratio": 0.4330892662408475,
+          "improvement": 0.017320607988688584
+        },
+        "fortran": {
+          "compressed_size": 4841,
+          "ratio": 0.38487835903959294,
+          "improvement": 0.013047910295616718
+        },
+        "go": {
+          "compressed_size": 4673,
+          "ratio": 0.40218607453309235,
+          "improvement": 0.00574468085106383
+        },
+        "haskell": {
+          "compressed_size": 2867,
+          "ratio": 0.4777537077153808,
+          "improvement": 0.019493844049247606
+        },
+        "java": {
+          "compressed_size": 3533,
+          "ratio": 0.3671030756442228,
+          "improvement": 0.017246175243393603
+        },
+        "javascript": {
+          "compressed_size": 2525,
+          "ratio": 0.44462053178376476,
+          "improvement": 0.012900703674745896
+        },
+        "julia": {
+          "compressed_size": 2737,
+          "ratio": 0.510634328358209,
+          "improvement": 0.021101573676680974
+        },
+        "lisp": {
+          "compressed_size": 2730,
+          "ratio": 0.454242928452579,
+          "improvement": 0.02290622763063708
+        },
+        "lua": {
+          "compressed_size": 3312,
+          "ratio": 0.38941798941798944,
+          "improvement": 0.014285714285714285
+        },
+        "matlab": {
+          "compressed_size": 1104,
+          "ratio": 0.4648421052631579,
+          "improvement": 0.026455026455026454
+        },
+        "ocaml": {
+          "compressed_size": 2907,
+          "ratio": 0.45858968291528635,
+          "improvement": 0.011896668932698844
+        },
+        "perl": {
+          "compressed_size": 2894,
+          "ratio": 0.5050610820244328,
+          "improvement": 0.015980958857531452
+        },
+        "php": {
+          "compressed_size": 2653,
+          "ratio": 0.44386816128492557,
+          "improvement": 0.017771195853387635
+        },
+        "prolog": {
+          "compressed_size": 2546,
+          "ratio": 0.46948183662179604,
+          "improvement": 0.011645962732919254
+        },
+        "python": {
+          "compressed_size": 1978,
+          "ratio": 0.5194327731092437,
+          "improvement": 0.023209876543209877
+        },
+        "r": {
+          "compressed_size": 1488,
+          "ratio": 0.47388535031847134,
+          "improvement": 0.03313840155945419
+        },
+        "ruby": {
+          "compressed_size": 2799,
+          "ratio": 0.5106732348111659,
+          "improvement": 0.029136316337148804
+        },
+        "rust": {
+          "compressed_size": 4849,
+          "ratio": 0.4406979914568754,
+          "improvement": 0.011215334420880914
+        },
+        "scala": {
+          "compressed_size": 3395,
+          "ratio": 0.48708751793400284,
+          "improvement": 0.014799767846778875
+        },
+        "scheme": {
+          "compressed_size": 2442,
+          "ratio": 0.4162263507755241,
+          "improvement": 0.016908212560386472
+        },
+        "typescript": {
+          "compressed_size": 1641,
+          "ratio": 0.46858937749857227,
+          "improvement": 0.01854066985645933
+        }
+      },
+      "clojure": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5201,
+          "ratio": 0.3721379507727533,
+          "improvement": 0.023653088042049936
+        },
+        "chef": {
+          "compressed_size": 1273,
+          "ratio": 0.26487723678734915,
+          "improvement": 0.03924528301886793
+        },
+        "clojure": {
+          "compressed_size": 89,
+          "ratio": 0.012267401791867678,
+          "improvement": 0.9750700280112045
+        },
+        "cpp": {
+          "compressed_size": 5081,
+          "ratio": 0.3360894298187591,
+          "improvement": 0.04023422742727616
+        },
+        "csharp": {
+          "compressed_size": 7913,
+          "ratio": 0.3054740580605312,
+          "improvement": 0.030388432790099253
+        },
+        "dart": {
+          "compressed_size": 2638,
+          "ratio": 0.41096744041127903,
+          "improvement": 0.06751502297631672
+        },
+        "fortran": {
+          "compressed_size": 4729,
+          "ratio": 0.3759739227222134,
+          "improvement": 0.03588175331294597
+        },
+        "go": {
+          "compressed_size": 4554,
+          "ratio": 0.3919442292796282,
+          "improvement": 0.031063829787234043
+        },
+        "haskell": {
+          "compressed_size": 2749,
+          "ratio": 0.4580903182802866,
+          "improvement": 0.05984952120383037
+        },
+        "java": {
+          "compressed_size": 3393,
+          "ratio": 0.3525561097256858,
+          "improvement": 0.056189151599443675
+        },
+        "javascript": {
+          "compressed_size": 2443,
+          "ratio": 0.4301813699594999,
+          "improvement": 0.04495699765441751
+        },
+        "julia": {
+          "compressed_size": 2565,
+          "ratio": 0.478544776119403,
+          "improvement": 0.08261802575107297
+        },
+        "lisp": {
+          "compressed_size": 2517,
+          "ratio": 0.41880199667221296,
+          "improvement": 0.09914101646385111
+        },
+        "lua": {
+          "compressed_size": 3153,
+          "ratio": 0.3707231040564374,
+          "improvement": 0.06160714285714286
+        },
+        "matlab": {
+          "compressed_size": 1030,
+          "ratio": 0.4336842105263158,
+          "improvement": 0.09171075837742504
+        },
+        "ocaml": {
+          "compressed_size": 2788,
+          "ratio": 0.43981700583688277,
+          "improvement": 0.052345343303874914
+        },
+        "perl": {
+          "compressed_size": 2728,
+          "ratio": 0.47609075043630017,
+          "improvement": 0.07242434546072764
+        },
+        "php": {
+          "compressed_size": 2493,
+          "ratio": 0.4170988790363058,
+          "improvement": 0.07700851536467974
+        },
+        "prolog": {
+          "compressed_size": 2457,
+          "ratio": 0.4530702563156924,
+          "improvement": 0.04619565217391304
+        },
+        "python": {
+          "compressed_size": 1857,
+          "ratio": 0.4876575630252101,
+          "improvement": 0.08296296296296296
+        },
+        "r": {
+          "compressed_size": 1444,
+          "ratio": 0.45987261146496816,
+          "improvement": 0.06172839506172839
+        },
+        "ruby": {
+          "compressed_size": 2599,
+          "ratio": 0.4741835431490604,
+          "improvement": 0.098508498092265
+        },
+        "rust": {
+          "compressed_size": 4710,
+          "ratio": 0.42806507316186493,
+          "improvement": 0.039559543230016314
+        },
+        "scala": {
+          "compressed_size": 3277,
+          "ratio": 0.4701578192252511,
+          "improvement": 0.049042367962855486
+        },
+        "scheme": {
+          "compressed_size": 2236,
+          "ratio": 0.3811147093915118,
+          "improvement": 0.0998389694041868
+        },
+        "typescript": {
+          "compressed_size": 1536,
+          "ratio": 0.4386065105653912,
+          "improvement": 0.08133971291866028
+        }
+      },
+      "cpp": {
+        "brainfuck": {
+          "compressed_size": 280,
+          "ratio": 0.3222094361334868,
+          "improvement": 0.0
+        },
+        "c": {
+          "compressed_size": 4927,
+          "ratio": 0.3525329135661133,
+          "improvement": 0.0750891683874601
+        },
+        "chef": {
+          "compressed_size": 1271,
+          "ratio": 0.26446109030378695,
+          "improvement": 0.040754716981132075
+        },
+        "clojure": {
+          "compressed_size": 3348,
+          "ratio": 0.4614748449345279,
+          "improvement": 0.06218487394957983
+        },
+        "cpp": {
+          "compressed_size": 191,
+          "ratio": 0.012633946289191691,
+          "improvement": 0.9639214204760106
+        },
+        "csharp": {
+          "compressed_size": 7681,
+          "ratio": 0.296517912291538,
+          "improvement": 0.05881632152922436
+        },
+        "dart": {
+          "compressed_size": 2629,
+          "ratio": 0.4095653528587007,
+          "improvement": 0.07069635913750442
+        },
+        "fortran": {
+          "compressed_size": 4625,
+          "ratio": 0.36770551757036096,
+          "improvement": 0.05708460754332314
+        },
+        "go": {
+          "compressed_size": 4448,
+          "ratio": 0.3828212410706601,
+          "improvement": 0.05361702127659575
+        },
+        "haskell": {
+          "compressed_size": 2712,
+          "ratio": 0.45192467922012997,
+          "improvement": 0.07250341997264022
+        },
+        "java": {
+          "compressed_size": 3220,
+          "ratio": 0.3345802161263508,
+          "improvement": 0.1043115438108484
+        },
+        "javascript": {
+          "compressed_size": 2321,
+          "ratio": 0.40869871456242296,
+          "improvement": 0.0926505082095387
+        },
+        "julia": {
+          "compressed_size": 2532,
+          "ratio": 0.47238805970149256,
+          "improvement": 0.0944206008583691
+        },
+        "lisp": {
+          "compressed_size": 2621,
+          "ratio": 0.4361064891846922,
+          "improvement": 0.06191839656406586
+        },
+        "lua": {
+          "compressed_size": 3113,
+          "ratio": 0.36601998824221044,
+          "improvement": 0.07351190476190476
+        },
+        "matlab": {
+          "compressed_size": 1011,
+          "ratio": 0.4256842105263158,
+          "improvement": 0.10846560846560846
+        },
+        "ocaml": {
+          "compressed_size": 2687,
+          "ratio": 0.4238838933585739,
+          "improvement": 0.0866757307953773
+        },
+        "perl": {
+          "compressed_size": 2693,
+          "ratio": 0.4699825479930192,
+          "improvement": 0.08432505950357022
+        },
+        "php": {
+          "compressed_size": 2424,
+          "ratio": 0.4055546260665886,
+          "improvement": 0.10255460940392447
+        },
+        "prolog": {
+          "compressed_size": 2426,
+          "ratio": 0.4473538631753642,
+          "improvement": 0.05822981366459627
+        },
+        "python": {
+          "compressed_size": 1829,
+          "ratio": 0.4803046218487395,
+          "improvement": 0.09679012345679013
+        },
+        "r": {
+          "compressed_size": 1359,
+          "ratio": 0.43280254777070065,
+          "improvement": 0.11695906432748537
+        },
+        "ruby": {
+          "compressed_size": 2559,
+          "ratio": 0.4668856048166393,
+          "improvement": 0.11238293444328824
+        },
+        "rust": {
+          "compressed_size": 4548,
+          "ratio": 0.4133418158683995,
+          "improvement": 0.07259380097879282
+        },
+        "scala": {
+          "compressed_size": 3154,
+          "ratio": 0.45251076040172167,
+          "improvement": 0.08473592571096925
+        },
+        "scheme": {
+          "compressed_size": 2319,
+          "ratio": 0.39526163286176924,
+          "improvement": 0.06642512077294686
+        },
+        "typescript": {
+          "compressed_size": 1501,
+          "ratio": 0.4286122215876642,
+          "improvement": 0.10227272727272728
+        }
+      },
+      "csharp": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 4964,
+          "ratio": 0.35518030910131654,
+          "improvement": 0.06814342031162005
+        },
+        "chef": {
+          "compressed_size": 1265,
+          "ratio": 0.2632126508531003,
+          "improvement": 0.045283018867924525
+        },
+        "clojure": {
+          "compressed_size": 3298,
+          "ratio": 0.4545830461750517,
+          "improvement": 0.0761904761904762
+        },
+        "cpp": {
+          "compressed_size": 4749,
+          "ratio": 0.3141288530228866,
+          "improvement": 0.10294673214960333
+        },
+        "csharp": {
+          "compressed_size": 5137,
+          "ratio": 0.19830914144533662,
+          "improvement": 0.37054282563411345
+        },
+        "dart": {
+          "compressed_size": 2508,
+          "ratio": 0.39071506465181494,
+          "improvement": 0.11346765641569459
+        },
+        "fortran": {
+          "compressed_size": 4574,
+          "ratio": 0.3636508188901256,
+          "improvement": 0.06748216106014271
+        },
+        "go": {
+          "compressed_size": 4411,
+          "ratio": 0.3796368017901713,
+          "improvement": 0.06148936170212766
+        },
+        "haskell": {
+          "compressed_size": 2680,
+          "ratio": 0.4465922346275621,
+          "improvement": 0.08344733242134063
+        },
+        "java": {
+          "compressed_size": 3066,
+          "ratio": 0.3185785536159601,
+          "improvement": 0.14714881780250347
+        },
+        "javascript": {
+          "compressed_size": 2246,
+          "ratio": 0.39549216411340027,
+          "improvement": 0.12197028928850664
+        },
+        "julia": {
+          "compressed_size": 2480,
+          "ratio": 0.4626865671641791,
+          "improvement": 0.11301859799713877
+        },
+        "lisp": {
+          "compressed_size": 2614,
+          "ratio": 0.43494176372712146,
+          "improvement": 0.06442376521116679
+        },
+        "lua": {
+          "compressed_size": 3057,
+          "ratio": 0.3594356261022928,
+          "improvement": 0.09017857142857143
+        },
+        "matlab": {
+          "compressed_size": 954,
+          "ratio": 0.4016842105263158,
+          "improvement": 0.15873015873015872
+        },
+        "ocaml": {
+          "compressed_size": 2731,
+          "ratio": 0.4308250512699164,
+          "improvement": 0.0717199184228416
+        },
+        "perl": {
+          "compressed_size": 2635,
+          "ratio": 0.4598603839441536,
+          "improvement": 0.10404624277456648
+        },
+        "php": {
+          "compressed_size": 2370,
+          "ratio": 0.39651999330767945,
+          "improvement": 0.12254720473898556
+        },
+        "prolog": {
+          "compressed_size": 2449,
+          "ratio": 0.4515950580859303,
+          "improvement": 0.04930124223602485
+        },
+        "python": {
+          "compressed_size": 1781,
+          "ratio": 0.4676995798319328,
+          "improvement": 0.12049382716049382
+        },
+        "r": {
+          "compressed_size": 1370,
+          "ratio": 0.43630573248407645,
+          "improvement": 0.10981156595191682
+        },
+        "ruby": {
+          "compressed_size": 2519,
+          "ratio": 0.4595876664842182,
+          "improvement": 0.12625737079431149
+        },
+        "rust": {
+          "compressed_size": 4516,
+          "ratio": 0.4104335181314187,
+          "improvement": 0.07911908646003263
+        },
+        "scala": {
+          "compressed_size": 3094,
+          "ratio": 0.44390243902439025,
+          "improvement": 0.10214741729541497
+        },
+        "scheme": {
+          "compressed_size": 2277,
+          "ratio": 0.3881029486960968,
+          "improvement": 0.08333333333333333
+        },
+        "typescript": {
+          "compressed_size": 1442,
+          "ratio": 0.4117647058823529,
+          "improvement": 0.1375598086124402
+        }
+      },
+      "dart": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5169,
+          "ratio": 0.3698483113909559,
+          "improvement": 0.029660221513046744
+        },
+        "chef": {
+          "compressed_size": 1292,
+          "ratio": 0.2688306283811902,
+          "improvement": 0.02490566037735849
+        },
+        "clojure": {
+          "compressed_size": 3382,
+          "ratio": 0.46616126809097175,
+          "improvement": 0.05266106442577031
+        },
+        "cpp": {
+          "compressed_size": 5105,
+          "ratio": 0.3376769413943643,
+          "improvement": 0.03570079335096336
+        },
+        "csharp": {
+          "compressed_size": 7859,
+          "ratio": 0.30338943792464484,
+          "improvement": 0.037005268962136996
+        },
+        "dart": {
+          "compressed_size": 77,
+          "ratio": 0.011995637949836423,
+          "improvement": 0.9727819017320608
+        },
+        "fortran": {
+          "compressed_size": 4751,
+          "ratio": 0.37772300842741297,
+          "improvement": 0.031396534148827725
+        },
+        "go": {
+          "compressed_size": 4565,
+          "ratio": 0.3928909544711249,
+          "improvement": 0.02872340425531915
+        },
+        "haskell": {
+          "compressed_size": 2811,
+          "ratio": 0.4684219296783869,
+          "improvement": 0.03864569083447333
+        },
+        "java": {
+          "compressed_size": 3328,
+          "ratio": 0.3458021612635079,
+          "improvement": 0.07426981919332407
+        },
+        "javascript": {
+          "compressed_size": 2332,
+          "ratio": 0.41063567529494627,
+          "improvement": 0.08835027365129007
+        },
+        "julia": {
+          "compressed_size": 2619,
+          "ratio": 0.4886194029850746,
+          "improvement": 0.06330472103004292
+        },
+        "lisp": {
+          "compressed_size": 2698,
+          "ratio": 0.4489184692179701,
+          "improvement": 0.03435934144595562
+        },
+        "lua": {
+          "compressed_size": 3189,
+          "ratio": 0.37495590828924164,
+          "improvement": 0.05089285714285714
+        },
+        "matlab": {
+          "compressed_size": 993,
+          "ratio": 0.41810526315789476,
+          "improvement": 0.12433862433862433
+        },
+        "ocaml": {
+          "compressed_size": 2825,
+          "ratio": 0.4456538886259662,
+          "improvement": 0.03976886471787899
+        },
+        "perl": {
+          "compressed_size": 2754,
+          "ratio": 0.4806282722513089,
+          "improvement": 0.06358381502890173
+        },
+        "php": {
+          "compressed_size": 2489,
+          "ratio": 0.41642964698009033,
+          "improvement": 0.07848944835246205
+        },
+        "prolog": {
+          "compressed_size": 2468,
+          "ratio": 0.45509865388161536,
+          "improvement": 0.04192546583850932
+        },
+        "python": {
+          "compressed_size": 1865,
+          "ratio": 0.4897584033613445,
+          "improvement": 0.07901234567901234
+        },
+        "r": {
+          "compressed_size": 1430,
+          "ratio": 0.4554140127388535,
+          "improvement": 0.07082521117608837
+        },
+        "ruby": {
+          "compressed_size": 2659,
+          "ratio": 0.485130450647692,
+          "improvement": 0.07769684356573014
+        },
+        "rust": {
+          "compressed_size": 4722,
+          "ratio": 0.42915568481323274,
+          "improvement": 0.03711256117455139
+        },
+        "scala": {
+          "compressed_size": 3293,
+          "ratio": 0.4724533715925395,
+          "improvement": 0.044399303540336624
+        },
+        "scheme": {
+          "compressed_size": 2351,
+          "ratio": 0.40071586841656726,
+          "improvement": 0.0535426731078905
+        },
+        "typescript": {
+          "compressed_size": 1432,
+          "ratio": 0.4089091947458595,
+          "improvement": 0.14354066985645933
+        }
+      },
+      "fortran": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5133,
+          "ratio": 0.3672724670864339,
+          "improvement": 0.03641824666791815
+        },
+        "chef": {
+          "compressed_size": 1278,
+          "ratio": 0.26591760299625467,
+          "improvement": 0.03547169811320755
+        },
+        "clojure": {
+          "compressed_size": 3396,
+          "ratio": 0.4680909717436251,
+          "improvement": 0.04873949579831933
+        },
+        "cpp": {
+          "compressed_size": 5031,
+          "ratio": 0.3327821140362482,
+          "improvement": 0.049678881752927846
+        },
+        "csharp": {
+          "compressed_size": 7896,
+          "ratio": 0.3048177887584929,
+          "improvement": 0.03247151084425928
+        },
+        "dart": {
+          "compressed_size": 2694,
+          "ratio": 0.4196915407384328,
+          "improvement": 0.04772004241781548
+        },
+        "fortran": {
+          "compressed_size": 154,
+          "ratio": 0.012243599936396883,
+          "improvement": 0.9686034658511723
+        },
+        "go": {
+          "compressed_size": 4477,
+          "ratio": 0.38531715293915136,
+          "improvement": 0.047446808510638296
+        },
+        "haskell": {
+          "compressed_size": 2736,
+          "ratio": 0.4559240126645559,
+          "improvement": 0.06429548563611491
+        },
+        "java": {
+          "compressed_size": 3405,
+          "ratio": 0.35380299251870323,
+          "improvement": 0.05285118219749652
+        },
+        "javascript": {
+          "compressed_size": 2401,
+          "ratio": 0.4227857017080472,
+          "improvement": 0.06137607505863956
+        },
+        "julia": {
+          "compressed_size": 2565,
+          "ratio": 0.478544776119403,
+          "improvement": 0.08261802575107297
+        },
+        "lisp": {
+          "compressed_size": 2653,
+          "ratio": 0.44143094841930114,
+          "improvement": 0.050465282748747314
+        },
+        "lua": {
+          "compressed_size": 3154,
+          "ratio": 0.37084068195179304,
+          "improvement": 0.06130952380952381
+        },
+        "matlab": {
+          "compressed_size": 1012,
+          "ratio": 0.4261052631578947,
+          "improvement": 0.10758377425044091
+        },
+        "ocaml": {
+          "compressed_size": 2758,
+          "ratio": 0.4350843981700584,
+          "improvement": 0.06254248810333107
+        },
+        "perl": {
+          "compressed_size": 2759,
+          "ratio": 0.481500872600349,
+          "improvement": 0.06188371302278137
+        },
+        "php": {
+          "compressed_size": 2482,
+          "ratio": 0.41525849088171324,
+          "improvement": 0.08108108108108109
+        },
+        "prolog": {
+          "compressed_size": 2418,
+          "ratio": 0.4458786649456021,
+          "improvement": 0.06133540372670807
+        },
+        "python": {
+          "compressed_size": 1850,
+          "ratio": 0.48581932773109243,
+          "improvement": 0.08641975308641975
+        },
+        "r": {
+          "compressed_size": 1356,
+          "ratio": 0.4318471337579618,
+          "improvement": 0.1189083820662768
+        },
+        "ruby": {
+          "compressed_size": 2634,
+          "ratio": 0.48056923918992883,
+          "improvement": 0.08636836628511967
+        },
+        "rust": {
+          "compressed_size": 4647,
+          "ratio": 0.42233936199218397,
+          "improvement": 0.052406199021207175
+        },
+        "scala": {
+          "compressed_size": 3232,
+          "ratio": 0.4637015781922525,
+          "improvement": 0.062100986651189787
+        },
+        "scheme": {
+          "compressed_size": 2344,
+          "ratio": 0.3995227543889552,
+          "improvement": 0.05636070853462158
+        },
+        "typescript": {
+          "compressed_size": 1541,
+          "ratio": 0.44003426613363794,
+          "improvement": 0.07834928229665072
+        }
+      },
+      "go": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5123,
+          "ratio": 0.3665569547796222,
+          "improvement": 0.03829547587760466
+        },
+        "chef": {
+          "compressed_size": 1291,
+          "ratio": 0.2686225551394091,
+          "improvement": 0.025660377358490565
+        },
+        "clojure": {
+          "compressed_size": 3418,
+          "ratio": 0.47112336319779463,
+          "improvement": 0.04257703081232493
+        },
+        "cpp": {
+          "compressed_size": 5046,
+          "ratio": 0.33377430877100145,
+          "improvement": 0.04684548545523234
+        },
+        "csharp": {
+          "compressed_size": 7923,
+          "ratio": 0.30586009882643606,
+          "improvement": 0.029163092758240413
+        },
+        "dart": {
+          "compressed_size": 2675,
+          "ratio": 0.41673157812743417,
+          "improvement": 0.0544361965358784
+        },
+        "fortran": {
+          "compressed_size": 4659,
+          "ratio": 0.37040865002385115,
+          "improvement": 0.05015290519877676
+        },
+        "go": {
+          "compressed_size": 147,
+          "ratio": 0.012651691195455719,
+          "improvement": 0.9687234042553191
+        },
+        "haskell": {
+          "compressed_size": 2737,
+          "ratio": 0.45609065155807366,
+          "improvement": 0.06395348837209303
+        },
+        "java": {
+          "compressed_size": 3313,
+          "ratio": 0.3442435577722361,
+          "improvement": 0.078442280945758
+        },
+        "javascript": {
+          "compressed_size": 2342,
+          "ratio": 0.41239654868814934,
+          "improvement": 0.08444096950742767
+        },
+        "julia": {
+          "compressed_size": 2488,
+          "ratio": 0.46417910447761196,
+          "improvement": 0.11015736766809728
+        },
+        "lisp": {
+          "compressed_size": 2674,
+          "ratio": 0.4449251247920133,
+          "improvement": 0.04294917680744453
+        },
+        "lua": {
+          "compressed_size": 3167,
+          "ratio": 0.3723691945914168,
+          "improvement": 0.05744047619047619
+        },
+        "matlab": {
+          "compressed_size": 1037,
+          "ratio": 0.4366315789473684,
+          "improvement": 0.0855379188712522
+        },
+        "ocaml": {
+          "compressed_size": 2746,
+          "ratio": 0.4331913551033286,
+          "improvement": 0.06662134602311352
+        },
+        "perl": {
+          "compressed_size": 2760,
+          "ratio": 0.4816753926701571,
+          "improvement": 0.061543692621557296
+        },
+        "php": {
+          "compressed_size": 2479,
+          "ratio": 0.4147565668395516,
+          "improvement": 0.0821917808219178
+        },
+        "prolog": {
+          "compressed_size": 2440,
+          "ratio": 0.4499354600774479,
+          "improvement": 0.052795031055900624
+        },
+        "python": {
+          "compressed_size": 1816,
+          "ratio": 0.47689075630252103,
+          "improvement": 0.10320987654320987
+        },
+        "r": {
+          "compressed_size": 1360,
+          "ratio": 0.43312101910828027,
+          "improvement": 0.11630929174788823
+        },
+        "ruby": {
+          "compressed_size": 2612,
+          "ratio": 0.4765553731070972,
+          "improvement": 0.09399930627818245
+        },
+        "rust": {
+          "compressed_size": 4653,
+          "ratio": 0.4228846678178679,
+          "improvement": 0.05118270799347471
+        },
+        "scala": {
+          "compressed_size": 3228,
+          "ratio": 0.4631276901004304,
+          "improvement": 0.0632617527568195
+        },
+        "scheme": {
+          "compressed_size": 2357,
+          "ratio": 0.40173853758309186,
+          "improvement": 0.05112721417069243
+        },
+        "typescript": {
+          "compressed_size": 1531,
+          "ratio": 0.4371787549971445,
+          "improvement": 0.08433014354066985
+        }
+      },
+      "haskell": {
+        "brainfuck": {
+          "compressed_size": 278,
+          "ratio": 0.31990794016110474,
+          "improvement": 0.007142857142857143
+        },
+        "c": {
+          "compressed_size": 5186,
+          "ratio": 0.37106468231253575,
+          "improvement": 0.026468931856579687
+        },
+        "chef": {
+          "compressed_size": 1276,
+          "ratio": 0.26550145651269247,
+          "improvement": 0.0369811320754717
+        },
+        "clojure": {
+          "compressed_size": 3410,
+          "ratio": 0.47002067539627845,
+          "improvement": 0.04481792717086835
+        },
+        "cpp": {
+          "compressed_size": 5097,
+          "ratio": 0.3371477708691626,
+          "improvement": 0.037211938043067626
+        },
+        "csharp": {
+          "compressed_size": 7952,
+          "ratio": 0.3069796170475602,
+          "improvement": 0.025609606665849775
+        },
+        "dart": {
+          "compressed_size": 2710,
+          "ratio": 0.4221841408319053,
+          "improvement": 0.04206433368681513
+        },
+        "fortran": {
+          "compressed_size": 4725,
+          "ratio": 0.37565590713944985,
+          "improvement": 0.03669724770642202
+        },
+        "go": {
+          "compressed_size": 4539,
+          "ratio": 0.3906532403821327,
+          "improvement": 0.03425531914893617
+        },
+        "haskell": {
+          "compressed_size": 75,
+          "ratio": 0.012497917013831027,
+          "improvement": 0.9743502051983585
+        },
+        "java": {
+          "compressed_size": 3424,
+          "ratio": 0.3557772236076476,
+          "improvement": 0.04756606397774687
+        },
+        "javascript": {
+          "compressed_size": 2419,
+          "ratio": 0.42595527381581266,
+          "improvement": 0.05433932759968726
+        },
+        "julia": {
+          "compressed_size": 2594,
+          "ratio": 0.48395522388059703,
+          "improvement": 0.07224606580829757
+        },
+        "lisp": {
+          "compressed_size": 2638,
+          "ratio": 0.4389351081530782,
+          "improvement": 0.05583392984967788
+        },
+        "lua": {
+          "compressed_size": 3214,
+          "ratio": 0.3778953556731334,
+          "improvement": 0.04345238095238095
+        },
+        "matlab": {
+          "compressed_size": 1056,
+          "ratio": 0.44463157894736843,
+          "improvement": 0.06878306878306878
+        },
+        "ocaml": {
+          "compressed_size": 2733,
+          "ratio": 0.43114055844770466,
+          "improvement": 0.07104010876954453
+        },
+        "perl": {
+          "compressed_size": 2765,
+          "ratio": 0.4825479930191972,
+          "improvement": 0.059843590615436926
+        },
+        "php": {
+          "compressed_size": 2540,
+          "ratio": 0.4249623556968379,
+          "improvement": 0.05960755275823769
+        },
+        "prolog": {
+          "compressed_size": 2445,
+          "ratio": 0.45085745897104923,
+          "improvement": 0.050854037267080744
+        },
+        "python": {
+          "compressed_size": 1885,
+          "ratio": 0.4950105042016807,
+          "improvement": 0.0691358024691358
+        },
+        "r": {
+          "compressed_size": 1444,
+          "ratio": 0.45987261146496816,
+          "improvement": 0.06172839506172839
+        },
+        "ruby": {
+          "compressed_size": 2653,
+          "ratio": 0.4840357598978289,
+          "improvement": 0.07977800901838362
+        },
+        "rust": {
+          "compressed_size": 4707,
+          "ratio": 0.427792420249023,
+          "improvement": 0.040171288743882545
+        },
+        "scala": {
+          "compressed_size": 3268,
+          "ratio": 0.46886657101865137,
+          "improvement": 0.05165409170052235
+        },
+        "scheme": {
+          "compressed_size": 2334,
+          "ratio": 0.3978183057780808,
+          "improvement": 0.06038647342995169
+        },
+        "typescript": {
+          "compressed_size": 1594,
+          "ratio": 0.4551684751570531,
+          "improvement": 0.04665071770334928
+        }
+      },
+      "java": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5033,
+          "ratio": 0.36011734401831713,
+          "improvement": 0.05519053876478318
+        },
+        "chef": {
+          "compressed_size": 1272,
+          "ratio": 0.264669163545568,
+          "improvement": 0.04
+        },
+        "clojure": {
+          "compressed_size": 3371,
+          "ratio": 0.46464507236388697,
+          "improvement": 0.05574229691876751
+        },
+        "cpp": {
+          "compressed_size": 4817,
+          "ratio": 0.31862680248710146,
+          "improvement": 0.09010200226671704
+        },
+        "csharp": {
+          "compressed_size": 7586,
+          "ratio": 0.2928505250154416,
+          "improvement": 0.07045705183188335
+        },
+        "dart": {
+          "compressed_size": 2533,
+          "ratio": 0.3946097522978657,
+          "improvement": 0.10463061152350654
+        },
+        "fortran": {
+          "compressed_size": 4659,
+          "ratio": 0.37040865002385115,
+          "improvement": 0.05015290519877676
+        },
+        "go": {
+          "compressed_size": 4386,
+          "ratio": 0.3774851536276788,
+          "improvement": 0.06680851063829787
+        },
+        "haskell": {
+          "compressed_size": 2742,
+          "ratio": 0.4569238460256624,
+          "improvement": 0.06224350205198358
+        },
+        "java": {
+          "compressed_size": 117,
+          "ratio": 0.012157107231920199,
+          "improvement": 0.9674547983310153
+        },
+        "javascript": {
+          "compressed_size": 2274,
+          "ratio": 0.4004226096143687,
+          "improvement": 0.11102423768569195
+        },
+        "julia": {
+          "compressed_size": 2515,
+          "ratio": 0.46921641791044777,
+          "improvement": 0.10050071530758226
+        },
+        "lisp": {
+          "compressed_size": 2661,
+          "ratio": 0.4427620632279534,
+          "improvement": 0.047602004294917684
+        },
+        "lua": {
+          "compressed_size": 3170,
+          "ratio": 0.37272192827748385,
+          "improvement": 0.05654761904761905
+        },
+        "matlab": {
+          "compressed_size": 1036,
+          "ratio": 0.4362105263157895,
+          "improvement": 0.08641975308641975
+        },
+        "ocaml": {
+          "compressed_size": 2745,
+          "ratio": 0.43303360151443443,
+          "improvement": 0.06696125084976207
+        },
+        "perl": {
+          "compressed_size": 2705,
+          "ratio": 0.4720767888307155,
+          "improvement": 0.08024481468888134
+        },
+        "php": {
+          "compressed_size": 2365,
+          "ratio": 0.39568345323741005,
+          "improvement": 0.12439837097371344
+        },
+        "prolog": {
+          "compressed_size": 2436,
+          "ratio": 0.44919786096256686,
+          "improvement": 0.05434782608695652
+        },
+        "python": {
+          "compressed_size": 1745,
+          "ratio": 0.4582457983193277,
+          "improvement": 0.1382716049382716
+        },
+        "r": {
+          "compressed_size": 1383,
+          "ratio": 0.4404458598726115,
+          "improvement": 0.10136452241715399
+        },
+        "ruby": {
+          "compressed_size": 2590,
+          "ratio": 0.4725415070242657,
+          "improvement": 0.10163024627124523
+        },
+        "rust": {
+          "compressed_size": 4618,
+          "ratio": 0.41970371716804505,
+          "improvement": 0.05831973898858075
+        },
+        "scala": {
+          "compressed_size": 3081,
+          "ratio": 0.4420373027259684,
+          "improvement": 0.10591990713871155
+        },
+        "scheme": {
+          "compressed_size": 2316,
+          "ratio": 0.3947502982785069,
+          "improvement": 0.06763285024154589
+        },
+        "typescript": {
+          "compressed_size": 1483,
+          "ratio": 0.423472301541976,
+          "improvement": 0.11303827751196172
+        }
+      },
+      "javascript": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5132,
+          "ratio": 0.3672009158557527,
+          "improvement": 0.0366059695888868
+        },
+        "chef": {
+          "compressed_size": 1302,
+          "ratio": 0.27091136079900124,
+          "improvement": 0.017358490566037735
+        },
+        "clojure": {
+          "compressed_size": 3463,
+          "ratio": 0.4773259820813232,
+          "improvement": 0.02997198879551821
+        },
+        "cpp": {
+          "compressed_size": 5046,
+          "ratio": 0.33377430877100145,
+          "improvement": 0.04684548545523234
+        },
+        "csharp": {
+          "compressed_size": 7877,
+          "ratio": 0.3040843113032736,
+          "improvement": 0.03479965690479108
+        },
+        "dart": {
+          "compressed_size": 2605,
+          "ratio": 0.405826452718492,
+          "improvement": 0.07917992223400495
+        },
+        "fortran": {
+          "compressed_size": 4743,
+          "ratio": 0.37708697726188584,
+          "improvement": 0.03302752293577982
+        },
+        "go": {
+          "compressed_size": 4489,
+          "ratio": 0.3863499440571478,
+          "improvement": 0.044893617021276595
+        },
+        "haskell": {
+          "compressed_size": 2791,
+          "ratio": 0.465089151808032,
+          "improvement": 0.045485636114911084
+        },
+        "java": {
+          "compressed_size": 3339,
+          "ratio": 0.34694513715710723,
+          "improvement": 0.07121001390820585
+        },
+        "javascript": {
+          "compressed_size": 71,
+          "ratio": 0.012502201091741504,
+          "improvement": 0.972243940578577
+        },
+        "julia": {
+          "compressed_size": 2589,
+          "ratio": 0.4830223880597015,
+          "improvement": 0.0740343347639485
+        },
+        "lisp": {
+          "compressed_size": 2684,
+          "ratio": 0.4465890183028286,
+          "improvement": 0.03937007874015748
+        },
+        "lua": {
+          "compressed_size": 3192,
+          "ratio": 0.37530864197530867,
+          "improvement": 0.05
+        },
+        "matlab": {
+          "compressed_size": 1032,
+          "ratio": 0.4345263157894737,
+          "improvement": 0.08994708994708994
+        },
+        "ocaml": {
+          "compressed_size": 2778,
+          "ratio": 0.43823946994794133,
+          "improvement": 0.0557443915703603
+        },
+        "perl": {
+          "compressed_size": 2780,
+          "ratio": 0.4851657940663176,
+          "improvement": 0.05474328459707582
+        },
+        "php": {
+          "compressed_size": 2466,
+          "ratio": 0.41258156265685125,
+          "improvement": 0.08700481303221029
+        },
+        "prolog": {
+          "compressed_size": 2486,
+          "ratio": 0.45841784989858014,
+          "improvement": 0.03493788819875776
+        },
+        "python": {
+          "compressed_size": 1836,
+          "ratio": 0.48214285714285715,
+          "improvement": 0.09333333333333334
+        },
+        "r": {
+          "compressed_size": 1451,
+          "ratio": 0.4621019108280255,
+          "improvement": 0.057179987004548405
+        },
+        "ruby": {
+          "compressed_size": 2645,
+          "ratio": 0.48257617223134464,
+          "improvement": 0.08255289628858828
+        },
+        "rust": {
+          "compressed_size": 4663,
+          "ratio": 0.42379351086067435,
+          "improvement": 0.049143556280587274
+        },
+        "scala": {
+          "compressed_size": 3284,
+          "ratio": 0.47116212338593977,
+          "improvement": 0.047011027278003485
+        },
+        "scheme": {
+          "compressed_size": 2399,
+          "ratio": 0.40889722174876425,
+          "improvement": 0.03421900161030596
+        },
+        "typescript": {
+          "compressed_size": 1384,
+          "ratio": 0.39520274129069105,
+          "improvement": 0.1722488038277512
+        }
+      },
+      "julia": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5131,
+          "ratio": 0.36712936462507156,
+          "improvement": 0.03679369250985545
+        },
+        "chef": {
+          "compressed_size": 1290,
+          "ratio": 0.26841448189762795,
+          "improvement": 0.026415094339622643
+        },
+        "clojure": {
+          "compressed_size": 3360,
+          "ratio": 0.4631288766368022,
+          "improvement": 0.058823529411764705
+        },
+        "cpp": {
+          "compressed_size": 5041,
+          "ratio": 0.33344357719275036,
+          "improvement": 0.04778995088779751
+        },
+        "csharp": {
+          "compressed_size": 7882,
+          "ratio": 0.30427733168622606,
+          "improvement": 0.03418698688886166
+        },
+        "dart": {
+          "compressed_size": 2656,
+          "ratio": 0.4137716155164356,
+          "improvement": 0.06115235065394132
+        },
+        "fortran": {
+          "compressed_size": 4677,
+          "ratio": 0.3718397201462872,
+          "improvement": 0.046483180428134555
+        },
+        "go": {
+          "compressed_size": 4424,
+          "ratio": 0.38075565883466733,
+          "improvement": 0.05872340425531915
+        },
+        "haskell": {
+          "compressed_size": 2718,
+          "ratio": 0.45292451258123645,
+          "improvement": 0.0704514363885089
+        },
+        "java": {
+          "compressed_size": 3370,
+          "ratio": 0.350166251039069,
+          "improvement": 0.06258692628650904
+        },
+        "javascript": {
+          "compressed_size": 2356,
+          "ratio": 0.41486177143863356,
+          "improvement": 0.07896794370602032
+        },
+        "julia": {
+          "compressed_size": 65,
+          "ratio": 0.012126865671641791,
+          "improvement": 0.9767525035765379
+        },
+        "lisp": {
+          "compressed_size": 2626,
+          "ratio": 0.43693843594009985,
+          "improvement": 0.06012884753042233
+        },
+        "lua": {
+          "compressed_size": 3066,
+          "ratio": 0.36049382716049383,
+          "improvement": 0.0875
+        },
+        "matlab": {
+          "compressed_size": 975,
+          "ratio": 0.4105263157894737,
+          "improvement": 0.1402116402116402
+        },
+        "ocaml": {
+          "compressed_size": 2728,
+          "ratio": 0.43035179050323397,
+          "improvement": 0.07273963290278722
+        },
+        "perl": {
+          "compressed_size": 2692,
+          "ratio": 0.4698080279232112,
+          "improvement": 0.08466507990479429
+        },
+        "php": {
+          "compressed_size": 2429,
+          "ratio": 0.40639116613685794,
+          "improvement": 0.10070344316919659
+        },
+        "prolog": {
+          "compressed_size": 2439,
+          "ratio": 0.44975106029872763,
+          "improvement": 0.0531832298136646
+        },
+        "python": {
+          "compressed_size": 1732,
+          "ratio": 0.45483193277310924,
+          "improvement": 0.14469135802469135
+        },
+        "r": {
+          "compressed_size": 1396,
+          "ratio": 0.4445859872611465,
+          "improvement": 0.09291747888239116
+        },
+        "ruby": {
+          "compressed_size": 2568,
+          "ratio": 0.46852764094143406,
+          "improvement": 0.10926118626430802
+        },
+        "rust": {
+          "compressed_size": 4668,
+          "ratio": 0.42424793238207764,
+          "improvement": 0.04812398042414356
+        },
+        "scala": {
+          "compressed_size": 3221,
+          "ratio": 0.4621233859397417,
+          "improvement": 0.0652930934416715
+        },
+        "scheme": {
+          "compressed_size": 2299,
+          "ratio": 0.39185273564002043,
+          "improvement": 0.07447665056360708
+        },
+        "typescript": {
+          "compressed_size": 1527,
+          "ratio": 0.43603655054254714,
+          "improvement": 0.0867224880382775
+        }
+      },
+      "lisp": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5225,
+          "ratio": 0.3738551803091013,
+          "improvement": 0.01914773793880233
+        },
+        "chef": {
+          "compressed_size": 1267,
+          "ratio": 0.2636287973366625,
+          "improvement": 0.04377358490566038
+        },
+        "clojure": {
+          "compressed_size": 3298,
+          "ratio": 0.4545830461750517,
+          "improvement": 0.0761904761904762
+        },
+        "cpp": {
+          "compressed_size": 5119,
+          "ratio": 0.33860298981346737,
+          "improvement": 0.03305629013978088
+        },
+        "csharp": {
+          "compressed_size": 7992,
+          "ratio": 0.30852378011117976,
+          "improvement": 0.02070824653841441
+        },
+        "dart": {
+          "compressed_size": 2722,
+          "ratio": 0.42405359090200967,
+          "improvement": 0.03782255213856486
+        },
+        "fortran": {
+          "compressed_size": 4764,
+          "ratio": 0.3787565590713945,
+          "improvement": 0.02874617737003058
+        },
+        "go": {
+          "compressed_size": 4584,
+          "ratio": 0.39452620707461916,
+          "improvement": 0.02468085106382979
+        },
+        "haskell": {
+          "compressed_size": 2781,
+          "ratio": 0.4634227628728545,
+          "improvement": 0.04890560875512996
+        },
+        "java": {
+          "compressed_size": 3481,
+          "ratio": 0.36169991687448044,
+          "improvement": 0.03171070931849791
+        },
+        "javascript": {
+          "compressed_size": 2452,
+          "ratio": 0.43176615601338264,
+          "improvement": 0.04143862392494136
+        },
+        "julia": {
+          "compressed_size": 2613,
+          "ratio": 0.4875,
+          "improvement": 0.06545064377682404
+        },
+        "lisp": {
+          "compressed_size": 75,
+          "ratio": 0.012479201331114808,
+          "improvement": 0.9731567644953472
+        },
+        "lua": {
+          "compressed_size": 3247,
+          "ratio": 0.38177542621987065,
+          "improvement": 0.03363095238095238
+        },
+        "matlab": {
+          "compressed_size": 1045,
+          "ratio": 0.44,
+          "improvement": 0.07848324514991181
+        },
+        "ocaml": {
+          "compressed_size": 2796,
+          "ratio": 0.441079034548036,
+          "improvement": 0.04962610469068661
+        },
+        "perl": {
+          "compressed_size": 2786,
+          "ratio": 0.4862129144851658,
+          "improvement": 0.05270316218973138
+        },
+        "php": {
+          "compressed_size": 2577,
+          "ratio": 0.4311527522168312,
+          "improvement": 0.04590892262125139
+        },
+        "prolog": {
+          "compressed_size": 2462,
+          "ratio": 0.45399225520929376,
+          "improvement": 0.04425465838509317
+        },
+        "python": {
+          "compressed_size": 1887,
+          "ratio": 0.4955357142857143,
+          "improvement": 0.06814814814814815
+        },
+        "r": {
+          "compressed_size": 1451,
+          "ratio": 0.4621019108280255,
+          "improvement": 0.057179987004548405
+        },
+        "ruby": {
+          "compressed_size": 2680,
+          "ratio": 0.4889618682722131,
+          "improvement": 0.07041276448144294
+        },
+        "rust": {
+          "compressed_size": 4751,
+          "ratio": 0.4317913296373716,
+          "improvement": 0.031199021207177813
+        },
+        "scala": {
+          "compressed_size": 3318,
+          "ratio": 0.4760401721664275,
+          "improvement": 0.0371445153801509
+        },
+        "scheme": {
+          "compressed_size": 2199,
+          "ratio": 0.3748082495312766,
+          "improvement": 0.11473429951690821
+        },
+        "typescript": {
+          "compressed_size": 1575,
+          "ratio": 0.4497430039977156,
+          "improvement": 0.05801435406698564
+        }
+      },
+      "lua": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5080,
+          "ratio": 0.363480251860332,
+          "improvement": 0.046367561479256615
+        },
+        "chef": {
+          "compressed_size": 1282,
+          "ratio": 0.2667498959633791,
+          "improvement": 0.03245283018867925
+        },
+        "clojure": {
+          "compressed_size": 3352,
+          "ratio": 0.462026188835286,
+          "improvement": 0.06106442577030812
+        },
+        "cpp": {
+          "compressed_size": 5035,
+          "ratio": 0.33304669929884906,
+          "improvement": 0.048923309406875705
+        },
+        "csharp": {
+          "compressed_size": 7894,
+          "ratio": 0.3047405806053119,
+          "improvement": 0.03271657885063105
+        },
+        "dart": {
+          "compressed_size": 2660,
+          "ratio": 0.4143947655398037,
+          "improvement": 0.05973842347119123
+        },
+        "fortran": {
+          "compressed_size": 4657,
+          "ratio": 0.37024964223246937,
+          "improvement": 0.05056065239551478
+        },
+        "go": {
+          "compressed_size": 4492,
+          "ratio": 0.3866081418366469,
+          "improvement": 0.04425531914893617
+        },
+        "haskell": {
+          "compressed_size": 2759,
+          "ratio": 0.4597567072154641,
+          "improvement": 0.056429548563611494
+        },
+        "java": {
+          "compressed_size": 3391,
+          "ratio": 0.3523482959268495,
+          "improvement": 0.05674547983310153
+        },
+        "javascript": {
+          "compressed_size": 2388,
+          "ratio": 0.42049656629688326,
+          "improvement": 0.06645817044566067
+        },
+        "julia": {
+          "compressed_size": 2492,
+          "ratio": 0.46492537313432836,
+          "improvement": 0.10872675250357654
+        },
+        "lisp": {
+          "compressed_size": 2667,
+          "ratio": 0.4437603993344426,
+          "improvement": 0.045454545454545456
+        },
+        "lua": {
+          "compressed_size": 102,
+          "ratio": 0.01199294532627866,
+          "improvement": 0.9696428571428571
+        },
+        "matlab": {
+          "compressed_size": 966,
+          "ratio": 0.4067368421052632,
+          "improvement": 0.14814814814814814
+        },
+        "ocaml": {
+          "compressed_size": 2706,
+          "ratio": 0.4268812115475627,
+          "improvement": 0.08021753908905506
+        },
+        "perl": {
+          "compressed_size": 2715,
+          "ratio": 0.4738219895287958,
+          "improvement": 0.0768446106766406
+        },
+        "php": {
+          "compressed_size": 2440,
+          "ratio": 0.4082315542914506,
+          "improvement": 0.09663087745279526
+        },
+        "prolog": {
+          "compressed_size": 2449,
+          "ratio": 0.4515950580859303,
+          "improvement": 0.04930124223602485
+        },
+        "python": {
+          "compressed_size": 1795,
+          "ratio": 0.47137605042016806,
+          "improvement": 0.11358024691358025
+        },
+        "r": {
+          "compressed_size": 1403,
+          "ratio": 0.44681528662420383,
+          "improvement": 0.08836907082521117
+        },
+        "ruby": {
+          "compressed_size": 2564,
+          "ratio": 0.46779784710819194,
+          "improvement": 0.11064862989941034
+        },
+        "rust": {
+          "compressed_size": 4670,
+          "ratio": 0.4244297009906389,
+          "improvement": 0.047716150081566065
+        },
+        "scala": {
+          "compressed_size": 3218,
+          "ratio": 0.46169296987087516,
+          "improvement": 0.0661636680208938
+        },
+        "scheme": {
+          "compressed_size": 2309,
+          "ratio": 0.3935571842508948,
+          "improvement": 0.07045088566827697
+        },
+        "typescript": {
+          "compressed_size": 1533,
+          "ratio": 0.43774985722444315,
+          "improvement": 0.08313397129186603
+        }
+      },
+      "matlab": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5251,
+          "ratio": 0.37571551230681166,
+          "improvement": 0.014266941993617421
+        },
+        "chef": {
+          "compressed_size": 1303,
+          "ratio": 0.27111943404078237,
+          "improvement": 0.01660377358490566
+        },
+        "clojure": {
+          "compressed_size": 3452,
+          "ratio": 0.47580978635423843,
+          "improvement": 0.03305322128851541
+        },
+        "cpp": {
+          "compressed_size": 5155,
+          "ratio": 0.34098425717687525,
+          "improvement": 0.026256139025311674
+        },
+        "csharp": {
+          "compressed_size": 8007,
+          "ratio": 0.30910284126003706,
+          "improvement": 0.01887023649062615
+        },
+        "dart": {
+          "compressed_size": 2680,
+          "ratio": 0.4175105156566443,
+          "improvement": 0.05266878755744079
+        },
+        "fortran": {
+          "compressed_size": 4776,
+          "ratio": 0.3797106058196852,
+          "improvement": 0.026299694189602447
+        },
+        "go": {
+          "compressed_size": 4609,
+          "ratio": 0.39667785523711163,
+          "improvement": 0.019361702127659575
+        },
+        "haskell": {
+          "compressed_size": 2857,
+          "ratio": 0.4760873187802033,
+          "improvement": 0.022913816689466484
+        },
+        "java": {
+          "compressed_size": 3495,
+          "ratio": 0.36315461346633415,
+          "improvement": 0.027816411682892908
+        },
+        "javascript": {
+          "compressed_size": 2455,
+          "ratio": 0.43229441803134355,
+          "improvement": 0.040265832681782646
+        },
+        "julia": {
+          "compressed_size": 2612,
+          "ratio": 0.4873134328358209,
+          "improvement": 0.06580829756795423
+        },
+        "lisp": {
+          "compressed_size": 2704,
+          "ratio": 0.4499168053244592,
+          "improvement": 0.03221188260558339
+        },
+        "lua": {
+          "compressed_size": 3195,
+          "ratio": 0.37566137566137564,
+          "improvement": 0.049107142857142856
+        },
+        "matlab": {
+          "compressed_size": 30,
+          "ratio": 0.01263157894736842,
+          "improvement": 0.9735449735449735
+        },
+        "ocaml": {
+          "compressed_size": 2844,
+          "ratio": 0.448651206814955,
+          "improvement": 0.03331067301155676
+        },
+        "perl": {
+          "compressed_size": 2803,
+          "ratio": 0.48917975567190225,
+          "improvement": 0.046922815368922136
+        },
+        "php": {
+          "compressed_size": 2567,
+          "ratio": 0.42947967207629245,
+          "improvement": 0.04961125509070714
+        },
+        "prolog": {
+          "compressed_size": 2515,
+          "ratio": 0.4637654434814678,
+          "improvement": 0.023680124223602484
+        },
+        "python": {
+          "compressed_size": 1931,
+          "ratio": 0.5070903361344538,
+          "improvement": 0.046419753086419754
+        },
+        "r": {
+          "compressed_size": 1444,
+          "ratio": 0.45987261146496816,
+          "improvement": 0.06172839506172839
+        },
+        "ruby": {
+          "compressed_size": 2714,
+          "ratio": 0.495165115854771,
+          "improvement": 0.05861949358307319
+        },
+        "rust": {
+          "compressed_size": 4807,
+          "ratio": 0.43688085067708804,
+          "improvement": 0.019779771615008157
+        },
+        "scala": {
+          "compressed_size": 3343,
+          "ratio": 0.4796269727403156,
+          "improvement": 0.029889727219965176
+        },
+        "scheme": {
+          "compressed_size": 2368,
+          "ratio": 0.4036134310550537,
+          "improvement": 0.04669887278582931
+        },
+        "typescript": {
+          "compressed_size": 1542,
+          "ratio": 0.44031981724728725,
+          "improvement": 0.07775119617224881
+        }
+      },
+      "ocaml": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5081,
+          "ratio": 0.36355180309101315,
+          "improvement": 0.046179838558287965
+        },
+        "chef": {
+          "compressed_size": 1292,
+          "ratio": 0.2688306283811902,
+          "improvement": 0.02490566037735849
+        },
+        "clojure": {
+          "compressed_size": 3403,
+          "ratio": 0.46905582356995174,
+          "improvement": 0.04677871148459384
+        },
+        "cpp": {
+          "compressed_size": 5029,
+          "ratio": 0.33264982140494775,
+          "improvement": 0.05005666792595391
+        },
+        "csharp": {
+          "compressed_size": 7970,
+          "ratio": 0.307674490426189,
+          "improvement": 0.02340399460850386
+        },
+        "dart": {
+          "compressed_size": 2695,
+          "ratio": 0.4198473282442748,
+          "improvement": 0.04736656062212796
+        },
+        "fortran": {
+          "compressed_size": 4715,
+          "ratio": 0.37486086818254094,
+          "improvement": 0.03873598369011213
+        },
+        "go": {
+          "compressed_size": 4523,
+          "ratio": 0.38927618555813753,
+          "improvement": 0.03765957446808511
+        },
+        "haskell": {
+          "compressed_size": 2701,
+          "ratio": 0.45009165139143475,
+          "improvement": 0.07626538987688099
+        },
+        "java": {
+          "compressed_size": 3430,
+          "ratio": 0.3564006650041563,
+          "improvement": 0.0458970792767733
+        },
+        "javascript": {
+          "compressed_size": 2399,
+          "ratio": 0.42243352702940656,
+          "improvement": 0.062157935887412044
+        },
+        "julia": {
+          "compressed_size": 2563,
+          "ratio": 0.47817164179104477,
+          "improvement": 0.08333333333333333
+        },
+        "lisp": {
+          "compressed_size": 2634,
+          "ratio": 0.43826955074875207,
+          "improvement": 0.0572655690765927
+        },
+        "lua": {
+          "compressed_size": 3130,
+          "ratio": 0.3680188124632569,
+          "improvement": 0.06845238095238096
+        },
+        "matlab": {
+          "compressed_size": 1030,
+          "ratio": 0.4336842105263158,
+          "improvement": 0.09171075837742504
+        },
+        "ocaml": {
+          "compressed_size": 76,
+          "ratio": 0.011989272755955198,
+          "improvement": 0.9741672331747111
+        },
+        "perl": {
+          "compressed_size": 2766,
+          "ratio": 0.4827225130890052,
+          "improvement": 0.059503570214212854
+        },
+        "php": {
+          "compressed_size": 2512,
+          "ratio": 0.4202777313033294,
+          "improvement": 0.06997408367271381
+        },
+        "prolog": {
+          "compressed_size": 2422,
+          "ratio": 0.4466162640604831,
+          "improvement": 0.059782608695652176
+        },
+        "python": {
+          "compressed_size": 1853,
+          "ratio": 0.48660714285714285,
+          "improvement": 0.08493827160493828
+        },
+        "r": {
+          "compressed_size": 1440,
+          "ratio": 0.4585987261146497,
+          "improvement": 0.06432748538011696
+        },
+        "ruby": {
+          "compressed_size": 2643,
+          "ratio": 0.4822112753147236,
+          "improvement": 0.08324661810613944
+        },
+        "rust": {
+          "compressed_size": 4690,
+          "ratio": 0.4262473870762519,
+          "improvement": 0.04363784665579119
+        },
+        "scala": {
+          "compressed_size": 3253,
+          "ratio": 0.4667144906743185,
+          "improvement": 0.056006964596633776
+        },
+        "scheme": {
+          "compressed_size": 2328,
+          "ratio": 0.39679563661155615,
+          "improvement": 0.06280193236714976
+        },
+        "typescript": {
+          "compressed_size": 1582,
+          "ratio": 0.451741861793261,
+          "improvement": 0.05382775119617225
+        }
+      },
+      "perl": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5100,
+          "ratio": 0.3649112764739553,
+          "improvement": 0.04261310305988361
+        },
+        "chef": {
+          "compressed_size": 1298,
+          "ratio": 0.2700790678318768,
+          "improvement": 0.020377358490566037
+        },
+        "clojure": {
+          "compressed_size": 3360,
+          "ratio": 0.4631288766368022,
+          "improvement": 0.058823529411764705
+        },
+        "cpp": {
+          "compressed_size": 5033,
+          "ratio": 0.3329144066675486,
+          "improvement": 0.049301095579901776
+        },
+        "csharp": {
+          "compressed_size": 7892,
+          "ratio": 0.30466337245213093,
+          "improvement": 0.03296164685700282
+        },
+        "dart": {
+          "compressed_size": 2644,
+          "ratio": 0.4119021654463312,
+          "improvement": 0.06539413220219159
+        },
+        "fortran": {
+          "compressed_size": 4727,
+          "ratio": 0.37581491493083163,
+          "improvement": 0.036289500509684
+        },
+        "go": {
+          "compressed_size": 4528,
+          "ratio": 0.38970651519063604,
+          "improvement": 0.03659574468085106
+        },
+        "haskell": {
+          "compressed_size": 2749,
+          "ratio": 0.4580903182802866,
+          "improvement": 0.05984952120383037
+        },
+        "java": {
+          "compressed_size": 3385,
+          "ratio": 0.3517248545303408,
+          "improvement": 0.0584144645340751
+        },
+        "javascript": {
+          "compressed_size": 2402,
+          "ratio": 0.4229617890473675,
+          "improvement": 0.06098514464425332
+        },
+        "julia": {
+          "compressed_size": 2553,
+          "ratio": 0.47630597014925374,
+          "improvement": 0.08690987124463519
+        },
+        "lisp": {
+          "compressed_size": 2653,
+          "ratio": 0.44143094841930114,
+          "improvement": 0.050465282748747314
+        },
+        "lua": {
+          "compressed_size": 3149,
+          "ratio": 0.3702527924750147,
+          "improvement": 0.06279761904761905
+        },
+        "matlab": {
+          "compressed_size": 1007,
+          "ratio": 0.424,
+          "improvement": 0.11199294532627865
+        },
+        "ocaml": {
+          "compressed_size": 2777,
+          "ratio": 0.4380817163590472,
+          "improvement": 0.056084296397008834
+        },
+        "perl": {
+          "compressed_size": 72,
+          "ratio": 0.012565445026178011,
+          "improvement": 0.9755185311118667
+        },
+        "php": {
+          "compressed_size": 2313,
+          "ratio": 0.38698343650660866,
+          "improvement": 0.14365049981488337
+        },
+        "prolog": {
+          "compressed_size": 2450,
+          "ratio": 0.45177945786465057,
+          "improvement": 0.04891304347826087
+        },
+        "python": {
+          "compressed_size": 1822,
+          "ratio": 0.47846638655462187,
+          "improvement": 0.10024691358024691
+        },
+        "r": {
+          "compressed_size": 1432,
+          "ratio": 0.45605095541401275,
+          "improvement": 0.06952566601689408
+        },
+        "ruby": {
+          "compressed_size": 2559,
+          "ratio": 0.4668856048166393,
+          "improvement": 0.11238293444328824
+        },
+        "rust": {
+          "compressed_size": 4668,
+          "ratio": 0.42424793238207764,
+          "improvement": 0.04812398042414356
+        },
+        "scala": {
+          "compressed_size": 3243,
+          "ratio": 0.46527977044476326,
+          "improvement": 0.058908879860708065
+        },
+        "scheme": {
+          "compressed_size": 2295,
+          "ratio": 0.3911709561956707,
+          "improvement": 0.07608695652173914
+        },
+        "typescript": {
+          "compressed_size": 1522,
+          "ratio": 0.4346087949743004,
+          "improvement": 0.08971291866028708
+        }
+      },
+      "php": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5086,
+          "ratio": 0.363909559244419,
+          "improvement": 0.045241223953444716
+        },
+        "chef": {
+          "compressed_size": 1299,
+          "ratio": 0.2702871410736579,
+          "improvement": 0.019622641509433963
+        },
+        "clojure": {
+          "compressed_size": 3361,
+          "ratio": 0.4632667126119917,
+          "improvement": 0.05854341736694678
+        },
+        "cpp": {
+          "compressed_size": 5009,
+          "ratio": 0.33132689509194335,
+          "improvement": 0.05383452965621458
+        },
+        "csharp": {
+          "compressed_size": 7874,
+          "ratio": 0.30396849907350215,
+          "improvement": 0.03516725891434873
+        },
+        "dart": {
+          "compressed_size": 2639,
+          "ratio": 0.411123227917121,
+          "improvement": 0.0671615411806292
+        },
+        "fortran": {
+          "compressed_size": 4698,
+          "ratio": 0.37350930195579585,
+          "improvement": 0.04220183486238532
+        },
+        "go": {
+          "compressed_size": 4478,
+          "ratio": 0.3854032188656511,
+          "improvement": 0.04723404255319149
+        },
+        "haskell": {
+          "compressed_size": 2771,
+          "ratio": 0.46175637393767704,
+          "improvement": 0.05232558139534884
+        },
+        "java": {
+          "compressed_size": 3304,
+          "ratio": 0.343308395677473,
+          "improvement": 0.08094575799721836
+        },
+        "javascript": {
+          "compressed_size": 2298,
+          "ratio": 0.404648705758056,
+          "improvement": 0.1016419077404222
+        },
+        "julia": {
+          "compressed_size": 2521,
+          "ratio": 0.4703358208955224,
+          "improvement": 0.09835479256080114
+        },
+        "lisp": {
+          "compressed_size": 2661,
+          "ratio": 0.4427620632279534,
+          "improvement": 0.047602004294917684
+        },
+        "lua": {
+          "compressed_size": 3112,
+          "ratio": 0.3659024103468548,
+          "improvement": 0.07380952380952381
+        },
+        "matlab": {
+          "compressed_size": 992,
+          "ratio": 0.41768421052631577,
+          "improvement": 0.12522045855379188
+        },
+        "ocaml": {
+          "compressed_size": 2750,
+          "ratio": 0.4338223694589052,
+          "improvement": 0.06526172671651938
+        },
+        "perl": {
+          "compressed_size": 2563,
+          "ratio": 0.44729493891797556,
+          "improvement": 0.12852771166269977
+        },
+        "php": {
+          "compressed_size": 74,
+          "ratio": 0.012380793039986616,
+          "improvement": 0.9726027397260274
+        },
+        "prolog": {
+          "compressed_size": 2442,
+          "ratio": 0.45030425963488846,
+          "improvement": 0.05201863354037267
+        },
+        "python": {
+          "compressed_size": 1732,
+          "ratio": 0.45483193277310924,
+          "improvement": 0.14469135802469135
+        },
+        "r": {
+          "compressed_size": 1417,
+          "ratio": 0.4512738853503185,
+          "improvement": 0.0792722547108512
+        },
+        "ruby": {
+          "compressed_size": 2541,
+          "ratio": 0.46360153256704983,
+          "improvement": 0.1186264308012487
+        },
+        "rust": {
+          "compressed_size": 4628,
+          "ratio": 0.4206125602108516,
+          "improvement": 0.05628058727569331
+        },
+        "scala": {
+          "compressed_size": 3237,
+          "ratio": 0.4644189383070301,
+          "improvement": 0.06065002901915264
+        },
+        "scheme": {
+          "compressed_size": 2297,
+          "ratio": 0.3915118459178456,
+          "improvement": 0.07528180354267311
+        },
+        "typescript": {
+          "compressed_size": 1509,
+          "ratio": 0.43089663049685895,
+          "improvement": 0.09748803827751196
+        }
+      },
+      "prolog": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5223,
+          "ratio": 0.37371207784773897,
+          "improvement": 0.01952318378073963
+        },
+        "chef": {
+          "compressed_size": 1290,
+          "ratio": 0.26841448189762795,
+          "improvement": 0.026415094339622643
+        },
+        "clojure": {
+          "compressed_size": 3456,
+          "ratio": 0.47636113025499655,
+          "improvement": 0.031932773109243695
+        },
+        "cpp": {
+          "compressed_size": 5155,
+          "ratio": 0.34098425717687525,
+          "improvement": 0.026256139025311674
+        },
+        "csharp": {
+          "compressed_size": 8042,
+          "ratio": 0.3104539839407041,
+          "improvement": 0.014581546379120206
+        },
+        "dart": {
+          "compressed_size": 2728,
+          "ratio": 0.4249883159370618,
+          "improvement": 0.03570166136443973
+        },
+        "fortran": {
+          "compressed_size": 4730,
+          "ratio": 0.37605342661790425,
+          "improvement": 0.03567787971457696
+        },
+        "go": {
+          "compressed_size": 4557,
+          "ratio": 0.3922024270591273,
+          "improvement": 0.030425531914893618
+        },
+        "haskell": {
+          "compressed_size": 2800,
+          "ratio": 0.4665889018496917,
+          "improvement": 0.04240766073871409
+        },
+        "java": {
+          "compressed_size": 3474,
+          "ratio": 0.36097256857855364,
+          "improvement": 0.033657858136300414
+        },
+        "javascript": {
+          "compressed_size": 2475,
+          "ratio": 0.4358161648177496,
+          "improvement": 0.03244722439405786
+        },
+        "julia": {
+          "compressed_size": 2671,
+          "ratio": 0.49832089552238806,
+          "improvement": 0.044706723891273246
+        },
+        "lisp": {
+          "compressed_size": 2687,
+          "ratio": 0.4470881863560732,
+          "improvement": 0.03829634931997137
+        },
+        "lua": {
+          "compressed_size": 3234,
+          "ratio": 0.3802469135802469,
+          "improvement": 0.0375
+        },
+        "matlab": {
+          "compressed_size": 1071,
+          "ratio": 0.45094736842105265,
+          "improvement": 0.05555555555555555
+        },
+        "ocaml": {
+          "compressed_size": 2797,
+          "ratio": 0.4412367881369301,
+          "improvement": 0.049286199864038066
+        },
+        "perl": {
+          "compressed_size": 2818,
+          "ratio": 0.4917975567190227,
+          "improvement": 0.04182250935056103
+        },
+        "php": {
+          "compressed_size": 2570,
+          "ratio": 0.4299815961184541,
+          "improvement": 0.04850055534987042
+        },
+        "prolog": {
+          "compressed_size": 67,
+          "ratio": 0.01235478517425779,
+          "improvement": 0.9739906832298136
+        },
+        "python": {
+          "compressed_size": 1905,
+          "ratio": 0.5002626050420168,
+          "improvement": 0.05925925925925926
+        },
+        "r": {
+          "compressed_size": 1428,
+          "ratio": 0.4547770700636943,
+          "improvement": 0.07212475633528265
+        },
+        "ruby": {
+          "compressed_size": 2743,
+          "ratio": 0.5004561211457763,
+          "improvement": 0.04856052722858134
+        },
+        "rust": {
+          "compressed_size": 4763,
+          "ratio": 0.4328819412887394,
+          "improvement": 0.02875203915171289
+        },
+        "scala": {
+          "compressed_size": 3337,
+          "ratio": 0.4787661406025825,
+          "improvement": 0.03163087637840975
+        },
+        "scheme": {
+          "compressed_size": 2369,
+          "ratio": 0.4037838759161411,
+          "improvement": 0.046296296296296294
+        },
+        "typescript": {
+          "compressed_size": 1587,
+          "ratio": 0.45316961736150774,
+          "improvement": 0.05083732057416268
+        }
+      },
+      "python": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5151,
+          "ratio": 0.3685603892386949,
+          "improvement": 0.03303923409048245
+        },
+        "chef": {
+          "compressed_size": 1277,
+          "ratio": 0.2657095297544736,
+          "improvement": 0.036226415094339624
+        },
+        "clojure": {
+          "compressed_size": 3410,
+          "ratio": 0.47002067539627845,
+          "improvement": 0.04481792717086835
+        },
+        "cpp": {
+          "compressed_size": 5078,
+          "ratio": 0.33589099087180846,
+          "improvement": 0.04080090668681526
+        },
+        "csharp": {
+          "compressed_size": 7931,
+          "ratio": 0.30616893143915996,
+          "improvement": 0.028182820732753338
+        },
+        "dart": {
+          "compressed_size": 2668,
+          "ratio": 0.41564106558653996,
+          "improvement": 0.056910569105691054
+        },
+        "fortran": {
+          "compressed_size": 4727,
+          "ratio": 0.37581491493083163,
+          "improvement": 0.036289500509684
+        },
+        "go": {
+          "compressed_size": 4493,
+          "ratio": 0.38669420776314656,
+          "improvement": 0.044042553191489364
+        },
+        "haskell": {
+          "compressed_size": 2766,
+          "ratio": 0.4609231794700883,
+          "improvement": 0.054035567715458276
+        },
+        "java": {
+          "compressed_size": 3348,
+          "ratio": 0.3478802992518703,
+          "improvement": 0.06870653685674548
+        },
+        "javascript": {
+          "compressed_size": 2376,
+          "ratio": 0.4183835182250396,
+          "improvement": 0.07114933541829555
+        },
+        "julia": {
+          "compressed_size": 2488,
+          "ratio": 0.46417910447761196,
+          "improvement": 0.11015736766809728
+        },
+        "lisp": {
+          "compressed_size": 2656,
+          "ratio": 0.44193011647254576,
+          "improvement": 0.049391553328561204
+        },
+        "lua": {
+          "compressed_size": 3137,
+          "ratio": 0.3688418577307466,
+          "improvement": 0.06636904761904762
+        },
+        "matlab": {
+          "compressed_size": 1047,
+          "ratio": 0.44084210526315787,
+          "improvement": 0.07671957671957672
+        },
+        "ocaml": {
+          "compressed_size": 2773,
+          "ratio": 0.4374507020034706,
+          "improvement": 0.057443915703602993
+        },
+        "perl": {
+          "compressed_size": 2717,
+          "ratio": 0.47417102966841185,
+          "improvement": 0.07616456987419246
+        },
+        "php": {
+          "compressed_size": 2392,
+          "ratio": 0.4002007696168646,
+          "improvement": 0.11440207330618289
+        },
+        "prolog": {
+          "compressed_size": 2452,
+          "ratio": 0.4521482574220911,
+          "improvement": 0.04813664596273292
+        },
+        "python": {
+          "compressed_size": 46,
+          "ratio": 0.01207983193277311,
+          "improvement": 0.9772839506172839
+        },
+        "r": {
+          "compressed_size": 1435,
+          "ratio": 0.4570063694267516,
+          "improvement": 0.06757634827810266
+        },
+        "ruby": {
+          "compressed_size": 2505,
+          "ratio": 0.4570333880678708,
+          "improvement": 0.13111342351716962
+        },
+        "rust": {
+          "compressed_size": 4627,
+          "ratio": 0.4205216759065709,
+          "improvement": 0.056484502446982054
+        },
+        "scala": {
+          "compressed_size": 3235,
+          "ratio": 0.46413199426111906,
+          "improvement": 0.0612304120719675
+        },
+        "scheme": {
+          "compressed_size": 2323,
+          "ratio": 0.39594341230611896,
+          "improvement": 0.06481481481481481
+        },
+        "typescript": {
+          "compressed_size": 1574,
+          "ratio": 0.44945745288406624,
+          "improvement": 0.05861244019138756
+        }
+      },
+      "r": {
+        "brainfuck": {
+          "compressed_size": 278,
+          "ratio": 0.31990794016110474,
+          "improvement": 0.007142857142857143
+        },
+        "c": {
+          "compressed_size": 5216,
+          "ratio": 0.3732112192329708,
+          "improvement": 0.02083724422752018
+        },
+        "chef": {
+          "compressed_size": 1285,
+          "ratio": 0.26737411568872244,
+          "improvement": 0.03018867924528302
+        },
+        "clojure": {
+          "compressed_size": 3474,
+          "ratio": 0.478842177808408,
+          "improvement": 0.02689075630252101
+        },
+        "cpp": {
+          "compressed_size": 5098,
+          "ratio": 0.3372139171848128,
+          "improvement": 0.03702304495655459
+        },
+        "csharp": {
+          "compressed_size": 7999,
+          "ratio": 0.30879400864731316,
+          "improvement": 0.01985050851611322
+        },
+        "dart": {
+          "compressed_size": 2732,
+          "ratio": 0.42561146596043,
+          "improvement": 0.03428773418168964
+        },
+        "fortran": {
+          "compressed_size": 4702,
+          "ratio": 0.3738273175385594,
+          "improvement": 0.04138634046890927
+        },
+        "go": {
+          "compressed_size": 4513,
+          "ratio": 0.3884155262931405,
+          "improvement": 0.039787234042553195
+        },
+        "haskell": {
+          "compressed_size": 2817,
+          "ratio": 0.4694217630394934,
+          "improvement": 0.036593707250342
+        },
+        "java": {
+          "compressed_size": 3462,
+          "ratio": 0.35972568578553615,
+          "improvement": 0.03699582753824757
+        },
+        "javascript": {
+          "compressed_size": 2469,
+          "ratio": 0.43475964078182777,
+          "improvement": 0.034792806880375296
+        },
+        "julia": {
+          "compressed_size": 2622,
+          "ratio": 0.4891791044776119,
+          "improvement": 0.06223175965665236
+        },
+        "lisp": {
+          "compressed_size": 2708,
+          "ratio": 0.4505823627287854,
+          "improvement": 0.030780243378668574
+        },
+        "lua": {
+          "compressed_size": 3232,
+          "ratio": 0.38001175778953555,
+          "improvement": 0.0380952380952381
+        },
+        "matlab": {
+          "compressed_size": 1048,
+          "ratio": 0.44126315789473686,
+          "improvement": 0.07583774250440917
+        },
+        "ocaml": {
+          "compressed_size": 2822,
+          "ratio": 0.4451806278592838,
+          "improvement": 0.04078857919782461
+        },
+        "perl": {
+          "compressed_size": 2800,
+          "ratio": 0.4886561954624782,
+          "improvement": 0.047942876572594356
+        },
+        "php": {
+          "compressed_size": 2562,
+          "ratio": 0.4286431320060231,
+          "improvement": 0.05146242132543503
+        },
+        "prolog": {
+          "compressed_size": 2460,
+          "ratio": 0.4536234556518532,
+          "improvement": 0.04503105590062112
+        },
+        "python": {
+          "compressed_size": 1905,
+          "ratio": 0.5002626050420168,
+          "improvement": 0.05925925925925926
+        },
+        "r": {
+          "compressed_size": 40,
+          "ratio": 0.012738853503184714,
+          "improvement": 0.9740090968161144
+        },
+        "ruby": {
+          "compressed_size": 2706,
+          "ratio": 0.49370552818828684,
+          "improvement": 0.061394380853277836
+        },
+        "rust": {
+          "compressed_size": 4754,
+          "ratio": 0.43206398255021355,
+          "improvement": 0.030587275693311582
+        },
+        "scala": {
+          "compressed_size": 3304,
+          "ratio": 0.47403156384505024,
+          "improvement": 0.0412071967498549
+        },
+        "scheme": {
+          "compressed_size": 2382,
+          "ratio": 0.4059996591102778,
+          "improvement": 0.04106280193236715
+        },
+        "typescript": {
+          "compressed_size": 1556,
+          "ratio": 0.44431753283837805,
+          "improvement": 0.06937799043062201
+        }
+      },
+      "ruby": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5138,
+          "ratio": 0.36763022323983974,
+          "improvement": 0.035479632063074903
+        },
+        "chef": {
+          "compressed_size": 1270,
+          "ratio": 0.2642530170620058,
+          "improvement": 0.04150943396226415
+        },
+        "clojure": {
+          "compressed_size": 3301,
+          "ratio": 0.4549965541006203,
+          "improvement": 0.0753501400560224
+        },
+        "cpp": {
+          "compressed_size": 5002,
+          "ratio": 0.33086387088239183,
+          "improvement": 0.055156781261805815
+        },
+        "csharp": {
+          "compressed_size": 7848,
+          "ratio": 0.30296479308214946,
+          "improvement": 0.03835314299718172
+        },
+        "dart": {
+          "compressed_size": 2633,
+          "ratio": 0.4101885028820689,
+          "improvement": 0.06928243195475434
+        },
+        "fortran": {
+          "compressed_size": 4678,
+          "ratio": 0.3719192240419781,
+          "improvement": 0.04627930682976555
+        },
+        "go": {
+          "compressed_size": 4464,
+          "ratio": 0.3841982958946553,
+          "improvement": 0.05021276595744681
+        },
+        "haskell": {
+          "compressed_size": 2730,
+          "ratio": 0.4549241793034494,
+          "improvement": 0.06634746922024624
+        },
+        "java": {
+          "compressed_size": 3342,
+          "ratio": 0.3472568578553616,
+          "improvement": 0.07037552155771905
+        },
+        "javascript": {
+          "compressed_size": 2325,
+          "ratio": 0.40940306391970416,
+          "improvement": 0.09108678655199375
+        },
+        "julia": {
+          "compressed_size": 2492,
+          "ratio": 0.46492537313432836,
+          "improvement": 0.10872675250357654
+        },
+        "lisp": {
+          "compressed_size": 2607,
+          "ratio": 0.4337770382695508,
+          "improvement": 0.06692913385826772
+        },
+        "lua": {
+          "compressed_size": 3076,
+          "ratio": 0.3616696061140506,
+          "improvement": 0.08452380952380953
+        },
+        "matlab": {
+          "compressed_size": 989,
+          "ratio": 0.41642105263157897,
+          "improvement": 0.12786596119929453
+        },
+        "ocaml": {
+          "compressed_size": 2740,
+          "ratio": 0.43224483356996374,
+          "improvement": 0.06866077498300475
+        },
+        "perl": {
+          "compressed_size": 2613,
+          "ratio": 0.456020942408377,
+          "improvement": 0.11152669160149609
+        },
+        "php": {
+          "compressed_size": 2395,
+          "ratio": 0.4007026936590263,
+          "improvement": 0.11329137356534617
+        },
+        "prolog": {
+          "compressed_size": 2436,
+          "ratio": 0.44919786096256686,
+          "improvement": 0.05434782608695652
+        },
+        "python": {
+          "compressed_size": 1671,
+          "ratio": 0.43881302521008403,
+          "improvement": 0.1748148148148148
+        },
+        "r": {
+          "compressed_size": 1397,
+          "ratio": 0.4449044585987261,
+          "improvement": 0.09226770630279402
+        },
+        "ruby": {
+          "compressed_size": 68,
+          "ratio": 0.012406495165115855,
+          "improvement": 0.9764134582032605
+        },
+        "rust": {
+          "compressed_size": 4625,
+          "ratio": 0.42033990729800963,
+          "improvement": 0.05689233278955955
+        },
+        "scala": {
+          "compressed_size": 3170,
+          "ratio": 0.45480631276901007,
+          "improvement": 0.08009286128845038
+        },
+        "scheme": {
+          "compressed_size": 2291,
+          "ratio": 0.39048917675132094,
+          "improvement": 0.07769726247987117
+        },
+        "typescript": {
+          "compressed_size": 1517,
+          "ratio": 0.4331810394060537,
+          "improvement": 0.09270334928229665
+        }
+      },
+      "rust": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5085,
+          "ratio": 0.36383800801373783,
+          "improvement": 0.045428946874413366
+        },
+        "chef": {
+          "compressed_size": 1274,
+          "ratio": 0.26508531002913027,
+          "improvement": 0.038490566037735846
+        },
+        "clojure": {
+          "compressed_size": 3368,
+          "ratio": 0.4642315644383184,
+          "improvement": 0.05658263305322129
+        },
+        "cpp": {
+          "compressed_size": 4927,
+          "ratio": 0.3259028972086255,
+          "improvement": 0.06932376275028335
+        },
+        "csharp": {
+          "compressed_size": 7813,
+          "ratio": 0.3016136504014824,
+          "improvement": 0.04264183310868766
+        },
+        "dart": {
+          "compressed_size": 2648,
+          "ratio": 0.41252531546969934,
+          "improvement": 0.0639802050194415
+        },
+        "fortran": {
+          "compressed_size": 4615,
+          "ratio": 0.36691047861345205,
+          "improvement": 0.059123343527013254
+        },
+        "go": {
+          "compressed_size": 4440,
+          "ratio": 0.3821327136586625,
+          "improvement": 0.05531914893617021
+        },
+        "haskell": {
+          "compressed_size": 2713,
+          "ratio": 0.4520913181136477,
+          "improvement": 0.07216142270861833
+        },
+        "java": {
+          "compressed_size": 3326,
+          "ratio": 0.34559434746467166,
+          "improvement": 0.07482614742698192
+        },
+        "javascript": {
+          "compressed_size": 2313,
+          "ratio": 0.40729001584786056,
+          "improvement": 0.09577795152462862
+        },
+        "julia": {
+          "compressed_size": 2535,
+          "ratio": 0.47294776119402987,
+          "improvement": 0.09334763948497854
+        },
+        "lisp": {
+          "compressed_size": 2653,
+          "ratio": 0.44143094841930114,
+          "improvement": 0.050465282748747314
+        },
+        "lua": {
+          "compressed_size": 3108,
+          "ratio": 0.3654320987654321,
+          "improvement": 0.075
+        },
+        "matlab": {
+          "compressed_size": 1033,
+          "ratio": 0.43494736842105264,
+          "improvement": 0.0890652557319224
+        },
+        "ocaml": {
+          "compressed_size": 2710,
+          "ratio": 0.4275122259031393,
+          "improvement": 0.07885791978246091
+        },
+        "perl": {
+          "compressed_size": 2688,
+          "ratio": 0.46910994764397906,
+          "improvement": 0.08602516150969058
+        },
+        "php": {
+          "compressed_size": 2421,
+          "ratio": 0.40505270202442695,
+          "improvement": 0.1036653091447612
+        },
+        "prolog": {
+          "compressed_size": 2431,
+          "ratio": 0.4482758620689655,
+          "improvement": 0.0562888198757764
+        },
+        "python": {
+          "compressed_size": 1758,
+          "ratio": 0.46165966386554624,
+          "improvement": 0.13185185185185186
+        },
+        "r": {
+          "compressed_size": 1398,
+          "ratio": 0.44522292993630574,
+          "improvement": 0.09161793372319688
+        },
+        "ruby": {
+          "compressed_size": 2556,
+          "ratio": 0.4663382594417077,
+          "improvement": 0.11342351716961499
+        },
+        "rust": {
+          "compressed_size": 137,
+          "ratio": 0.012451149686449151,
+          "improvement": 0.9720636215334421
+        },
+        "scala": {
+          "compressed_size": 3174,
+          "ratio": 0.45538020086083214,
+          "improvement": 0.07893209518282066
+        },
+        "scheme": {
+          "compressed_size": 2337,
+          "ratio": 0.3983296403613431,
+          "improvement": 0.059178743961352656
+        },
+        "typescript": {
+          "compressed_size": 1483,
+          "ratio": 0.423472301541976,
+          "improvement": 0.11303827751196172
+        }
+      },
+      "scala": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5159,
+          "ratio": 0.36913279908414426,
+          "improvement": 0.03153745072273324
+        },
+        "chef": {
+          "compressed_size": 1285,
+          "ratio": 0.26737411568872244,
+          "improvement": 0.03018867924528302
+        },
+        "clojure": {
+          "compressed_size": 3411,
+          "ratio": 0.47015851137146797,
+          "improvement": 0.04453781512605042
+        },
+        "cpp": {
+          "compressed_size": 5005,
+          "ratio": 0.3310623098293425,
+          "improvement": 0.054590102002266716
+        },
+        "csharp": {
+          "compressed_size": 7856,
+          "ratio": 0.30327362569487337,
+          "improvement": 0.037372870971694644
+        },
+        "dart": {
+          "compressed_size": 2679,
+          "ratio": 0.4173547281508023,
+          "improvement": 0.053022269353128315
+        },
+        "fortran": {
+          "compressed_size": 4673,
+          "ratio": 0.3715217045635236,
+          "improvement": 0.047298674821610605
+        },
+        "go": {
+          "compressed_size": 4474,
+          "ratio": 0.38505895515965227,
+          "improvement": 0.04808510638297872
+        },
+        "haskell": {
+          "compressed_size": 2725,
+          "ratio": 0.4540909848358607,
+          "improvement": 0.06805745554035568
+        },
+        "java": {
+          "compressed_size": 3276,
+          "ratio": 0.3403990024937656,
+          "improvement": 0.08873435326842838
+        },
+        "javascript": {
+          "compressed_size": 2401,
+          "ratio": 0.4227857017080472,
+          "improvement": 0.06137607505863956
+        },
+        "julia": {
+          "compressed_size": 2566,
+          "ratio": 0.4787313432835821,
+          "improvement": 0.08226037195994278
+        },
+        "lisp": {
+          "compressed_size": 2670,
+          "ratio": 0.4442595673876872,
+          "improvement": 0.04438081603435934
+        },
+        "lua": {
+          "compressed_size": 3151,
+          "ratio": 0.37048794826572606,
+          "improvement": 0.06220238095238095
+        },
+        "matlab": {
+          "compressed_size": 1031,
+          "ratio": 0.4341052631578947,
+          "improvement": 0.09082892416225749
+        },
+        "ocaml": {
+          "compressed_size": 2760,
+          "ratio": 0.43539990534784667,
+          "improvement": 0.061862678450033994
+        },
+        "perl": {
+          "compressed_size": 2754,
+          "ratio": 0.4806282722513089,
+          "improvement": 0.06358381502890173
+        },
+        "php": {
+          "compressed_size": 2492,
+          "ratio": 0.416931571022252,
+          "improvement": 0.07737874861162532
+        },
+        "prolog": {
+          "compressed_size": 2466,
+          "ratio": 0.4547298543241748,
+          "improvement": 0.042701863354037264
+        },
+        "python": {
+          "compressed_size": 1815,
+          "ratio": 0.47662815126050423,
+          "improvement": 0.1037037037037037
+        },
+        "r": {
+          "compressed_size": 1394,
+          "ratio": 0.4439490445859873,
+          "improvement": 0.09421702404158544
+        },
+        "ruby": {
+          "compressed_size": 2605,
+          "ratio": 0.47527823389892354,
+          "improvement": 0.09642733263961152
+        },
+        "rust": {
+          "compressed_size": 4632,
+          "ratio": 0.4209760974279742,
+          "improvement": 0.05546492659053834
+        },
+        "scala": {
+          "compressed_size": 86,
+          "ratio": 0.012338593974175036,
+          "improvement": 0.9750435287289612
+        },
+        "scheme": {
+          "compressed_size": 2336,
+          "ratio": 0.3981591955002557,
+          "improvement": 0.05958132045088567
+        },
+        "typescript": {
+          "compressed_size": 1542,
+          "ratio": 0.44031981724728725,
+          "improvement": 0.07775119617224881
+        }
+      },
+      "scheme": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5230,
+          "ratio": 0.37421293646250714,
+          "improvement": 0.018209123333959076
+        },
+        "chef": {
+          "compressed_size": 1293,
+          "ratio": 0.2690387016229713,
+          "improvement": 0.024150943396226414
+        },
+        "clojure": {
+          "compressed_size": 3298,
+          "ratio": 0.4545830461750517,
+          "improvement": 0.0761904761904762
+        },
+        "cpp": {
+          "compressed_size": 5131,
+          "ratio": 0.33939674560127003,
+          "improvement": 0.03078957310162448
+        },
+        "csharp": {
+          "compressed_size": 7972,
+          "ratio": 0.30775169857936996,
+          "improvement": 0.02315892660213209
+        },
+        "dart": {
+          "compressed_size": 2685,
+          "ratio": 0.4182894531858545,
+          "improvement": 0.05090137857900318
+        },
+        "fortran": {
+          "compressed_size": 4772,
+          "ratio": 0.3793925902369216,
+          "improvement": 0.02711518858307849
+        },
+        "go": {
+          "compressed_size": 4578,
+          "ratio": 0.394009811515621,
+          "improvement": 0.02595744680851064
+        },
+        "haskell": {
+          "compressed_size": 2789,
+          "ratio": 0.4647558740209965,
+          "improvement": 0.04616963064295486
+        },
+        "java": {
+          "compressed_size": 3461,
+          "ratio": 0.359621778886118,
+          "improvement": 0.03727399165507649
+        },
+        "javascript": {
+          "compressed_size": 2476,
+          "ratio": 0.4359922521570699,
+          "improvement": 0.03205629397967162
+        },
+        "julia": {
+          "compressed_size": 2609,
+          "ratio": 0.4867537313432836,
+          "improvement": 0.06688125894134478
+        },
+        "lisp": {
+          "compressed_size": 2477,
+          "ratio": 0.41214642262895174,
+          "improvement": 0.11345740873299928
+        },
+        "lua": {
+          "compressed_size": 3207,
+          "ratio": 0.37707231040564376,
+          "improvement": 0.045535714285714284
+        },
+        "matlab": {
+          "compressed_size": 1019,
+          "ratio": 0.42905263157894735,
+          "improvement": 0.10141093474426807
+        },
+        "ocaml": {
+          "compressed_size": 2785,
+          "ratio": 0.43934374507020035,
+          "improvement": 0.05336505778382053
+        },
+        "perl": {
+          "compressed_size": 2751,
+          "ratio": 0.4801047120418848,
+          "improvement": 0.06460387623257395
+        },
+        "php": {
+          "compressed_size": 2513,
+          "ratio": 0.4204450393173833,
+          "improvement": 0.06960385042576823
+        },
+        "prolog": {
+          "compressed_size": 2449,
+          "ratio": 0.4515950580859303,
+          "improvement": 0.04930124223602485
+        },
+        "python": {
+          "compressed_size": 1866,
+          "ratio": 0.4900210084033613,
+          "improvement": 0.07851851851851852
+        },
+        "r": {
+          "compressed_size": 1448,
+          "ratio": 0.46114649681528663,
+          "improvement": 0.05912930474333983
+        },
+        "ruby": {
+          "compressed_size": 2689,
+          "ratio": 0.49060390439700785,
+          "improvement": 0.06729101630246272
+        },
+        "rust": {
+          "compressed_size": 4765,
+          "ratio": 0.43306370989730075,
+          "improvement": 0.0283442088091354
+        },
+        "scala": {
+          "compressed_size": 3307,
+          "ratio": 0.4744619799139168,
+          "improvement": 0.040336622170632615
+        },
+        "scheme": {
+          "compressed_size": 71,
+          "ratio": 0.012101585137208113,
+          "improvement": 0.9714170692431562
+        },
+        "typescript": {
+          "compressed_size": 1563,
+          "ratio": 0.4463163906339235,
+          "improvement": 0.0651913875598086
+        }
+      },
+      "typescript": {
+        "brainfuck": {
+          "compressed_size": 279,
+          "ratio": 0.32105868814729577,
+          "improvement": 0.0035714285714285713
+        },
+        "c": {
+          "compressed_size": 5177,
+          "ratio": 0.3704207212364053,
+          "improvement": 0.028158438145297542
+        },
+        "chef": {
+          "compressed_size": 1295,
+          "ratio": 0.2694548481065335,
+          "improvement": 0.022641509433962263
+        },
+        "clojure": {
+          "compressed_size": 3439,
+          "ratio": 0.4740179186767746,
+          "improvement": 0.03669467787114846
+        },
+        "cpp": {
+          "compressed_size": 5119,
+          "ratio": 0.33860298981346737,
+          "improvement": 0.03305629013978088
+        },
+        "csharp": {
+          "compressed_size": 7975,
+          "ratio": 0.30786751080914143,
+          "improvement": 0.02279132459257444
+        },
+        "dart": {
+          "compressed_size": 2596,
+          "ratio": 0.4044243651659137,
+          "improvement": 0.08236125839519265
+        },
+        "fortran": {
+          "compressed_size": 4762,
+          "ratio": 0.3785975512800127,
+          "improvement": 0.029153924566768602
+        },
+        "go": {
+          "compressed_size": 4553,
+          "ratio": 0.3918581633531285,
+          "improvement": 0.03127659574468085
+        },
+        "haskell": {
+          "compressed_size": 2849,
+          "ratio": 0.47475420763206133,
+          "improvement": 0.025649794801641587
+        },
+        "java": {
+          "compressed_size": 3433,
+          "ratio": 0.35671238570241065,
+          "improvement": 0.04506258692628651
+        },
+        "javascript": {
+          "compressed_size": 2271,
+          "ratio": 0.3998943475964078,
+          "improvement": 0.11219702892885067
+        },
+        "julia": {
+          "compressed_size": 2639,
+          "ratio": 0.4923507462686567,
+          "improvement": 0.0561516452074392
+        },
+        "lisp": {
+          "compressed_size": 2709,
+          "ratio": 0.45074875207986687,
+          "improvement": 0.03042233357193987
+        },
+        "lua": {
+          "compressed_size": 3211,
+          "ratio": 0.37754262198706645,
+          "improvement": 0.0443452380952381
+        },
+        "matlab": {
+          "compressed_size": 1009,
+          "ratio": 0.4248421052631579,
+          "improvement": 0.11022927689594356
+        },
+        "ocaml": {
+          "compressed_size": 2858,
+          "ratio": 0.4508597570594731,
+          "improvement": 0.028552005438477225
+        },
+        "perl": {
+          "compressed_size": 2778,
+          "ratio": 0.4848167539267016,
+          "improvement": 0.05542332539952397
+        },
+        "php": {
+          "compressed_size": 2537,
+          "ratio": 0.4244604316546763,
+          "improvement": 0.060718252499074414
+        },
+        "prolog": {
+          "compressed_size": 2480,
+          "ratio": 0.45731145122625855,
+          "improvement": 0.037267080745341616
+        },
+        "python": {
+          "compressed_size": 1921,
+          "ratio": 0.5044642857142857,
+          "improvement": 0.05135802469135802
+        },
+        "r": {
+          "compressed_size": 1424,
+          "ratio": 0.4535031847133758,
+          "improvement": 0.07472384665367121
+        },
+        "ruby": {
+          "compressed_size": 2717,
+          "ratio": 0.4957124612297026,
+          "improvement": 0.05757891085674644
+        },
+        "rust": {
+          "compressed_size": 4738,
+          "ratio": 0.4306098336817232,
+          "improvement": 0.03384991843393149
+        },
+        "scala": {
+          "compressed_size": 3308,
+          "ratio": 0.4746054519368723,
+          "improvement": 0.04004643064422519
+        },
+        "scheme": {
+          "compressed_size": 2377,
+          "ratio": 0.4051474348048406,
+          "improvement": 0.0430756843800322
+        },
+        "typescript": {
+          "compressed_size": 43,
+          "ratio": 0.012278697886921758,
+          "improvement": 0.9742822966507177
+        }
+      }
+    },
+    "compression_benefits": {
+      "brainfuck": {
+        "brainfuck": 0.9535714285714286,
+        "c": 0.00037544584193730055,
+        "chef": 0.0007547169811320754,
+        "clojure": 0.0008403361344537816,
+        "cpp": 0.00037778617302606723,
+        "csharp": 0.00012253400318588408,
+        "dart": 0.0003534817956875221,
+        "fortran": 0.0006116207951070336,
+        "go": 0.000425531914893617,
+        "haskell": 0.0003419972640218878,
+        "java": 0.0002781641168289291,
+        "javascript": 0.00039093041438623924,
+        "julia": 0.000715307582260372,
+        "lisp": 0.0,
+        "lua": 0.00029761904761904765,
+        "matlab": 0.0008818342151675485,
+        "ocaml": 0.0,
+        "perl": 0.00034002040122407346,
+        "php": 0.0,
+        "prolog": 0.00038819875776397513,
+        "python": 0.0,
+        "r": 0.000649772579597141,
+        "ruby": 0.0,
+        "rust": 0.0,
+        "scala": 0.0005803830528148578,
+        "scheme": 0.00040257648953301127,
+        "typescript": 0.0005980861244019139
+      },
+      "c": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.9669607659095175,
+        "chef": 0.017358490566037735,
+        "clojure": 0.040336134453781515,
+        "cpp": 0.0825462788061957,
+        "csharp": 0.04742065923293714,
+        "dart": 0.06433368681512902,
+        "fortran": 0.043221202854230374,
+        "go": 0.05063829787234043,
+        "haskell": 0.054035567715458276,
+        "java": 0.08539638386648123,
+        "javascript": 0.081704456606724,
+        "julia": 0.07975679542203147,
+        "lisp": 0.04151753758052971,
+        "lua": 0.07232142857142858,
+        "matlab": 0.06613756613756613,
+        "ocaml": 0.08293677770224338,
+        "perl": 0.08534512070724243,
+        "php": 0.09070714550166604,
+        "prolog": 0.046583850931677016,
+        "python": 0.08395061728395062,
+        "r": 0.07992202729044834,
+        "ruby": 0.08428720083246619,
+        "rust": 0.05077487765089723,
+        "scala": 0.054556006964596636,
+        "scheme": 0.04750402576489533,
+        "typescript": 0.0950956937799043
+      },
+      "chef": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.004317627182278956,
+        "chef": 0.9562264150943396,
+        "clojure": 0.01568627450980392,
+        "cpp": 0.01152247827729505,
+        "csharp": 0.009190050238941306,
+        "dart": 0.017320607988688584,
+        "fortran": 0.013047910295616718,
+        "go": 0.00574468085106383,
+        "haskell": 0.019493844049247606,
+        "java": 0.017246175243393603,
+        "javascript": 0.012900703674745896,
+        "julia": 0.021101573676680974,
+        "lisp": 0.02290622763063708,
+        "lua": 0.014285714285714285,
+        "matlab": 0.026455026455026454,
+        "ocaml": 0.011896668932698844,
+        "perl": 0.015980958857531452,
+        "php": 0.017771195853387635,
+        "prolog": 0.011645962732919254,
+        "python": 0.023209876543209877,
+        "r": 0.03313840155945419,
+        "ruby": 0.029136316337148804,
+        "rust": 0.011215334420880914,
+        "scala": 0.014799767846778875,
+        "scheme": 0.016908212560386472,
+        "typescript": 0.01854066985645933
+      },
+      "clojure": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.023653088042049936,
+        "chef": 0.03924528301886793,
+        "clojure": 0.9750700280112045,
+        "cpp": 0.04023422742727616,
+        "csharp": 0.030388432790099253,
+        "dart": 0.06751502297631672,
+        "fortran": 0.03588175331294597,
+        "go": 0.031063829787234043,
+        "haskell": 0.05984952120383037,
+        "java": 0.056189151599443675,
+        "javascript": 0.04495699765441751,
+        "julia": 0.08261802575107297,
+        "lisp": 0.09914101646385111,
+        "lua": 0.06160714285714286,
+        "matlab": 0.09171075837742504,
+        "ocaml": 0.052345343303874914,
+        "perl": 0.07242434546072764,
+        "php": 0.07700851536467974,
+        "prolog": 0.04619565217391304,
+        "python": 0.08296296296296296,
+        "r": 0.06172839506172839,
+        "ruby": 0.098508498092265,
+        "rust": 0.039559543230016314,
+        "scala": 0.049042367962855486,
+        "scheme": 0.0998389694041868,
+        "typescript": 0.08133971291866028
+      },
+      "cpp": {
+        "brainfuck": 0.0,
+        "c": 0.0750891683874601,
+        "chef": 0.040754716981132075,
+        "clojure": 0.06218487394957983,
+        "cpp": 0.9639214204760106,
+        "csharp": 0.05881632152922436,
+        "dart": 0.07069635913750442,
+        "fortran": 0.05708460754332314,
+        "go": 0.05361702127659575,
+        "haskell": 0.07250341997264022,
+        "java": 0.1043115438108484,
+        "javascript": 0.0926505082095387,
+        "julia": 0.0944206008583691,
+        "lisp": 0.06191839656406586,
+        "lua": 0.07351190476190476,
+        "matlab": 0.10846560846560846,
+        "ocaml": 0.0866757307953773,
+        "perl": 0.08432505950357022,
+        "php": 0.10255460940392447,
+        "prolog": 0.05822981366459627,
+        "python": 0.09679012345679013,
+        "r": 0.11695906432748537,
+        "ruby": 0.11238293444328824,
+        "rust": 0.07259380097879282,
+        "scala": 0.08473592571096925,
+        "scheme": 0.06642512077294686,
+        "typescript": 0.10227272727272728
+      },
+      "csharp": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.06814342031162005,
+        "chef": 0.045283018867924525,
+        "clojure": 0.0761904761904762,
+        "cpp": 0.10294673214960333,
+        "csharp": 0.37054282563411345,
+        "dart": 0.11346765641569459,
+        "fortran": 0.06748216106014271,
+        "go": 0.06148936170212766,
+        "haskell": 0.08344733242134063,
+        "java": 0.14714881780250347,
+        "javascript": 0.12197028928850664,
+        "julia": 0.11301859799713877,
+        "lisp": 0.06442376521116679,
+        "lua": 0.09017857142857143,
+        "matlab": 0.15873015873015872,
+        "ocaml": 0.0717199184228416,
+        "perl": 0.10404624277456648,
+        "php": 0.12254720473898556,
+        "prolog": 0.04930124223602485,
+        "python": 0.12049382716049382,
+        "r": 0.10981156595191682,
+        "ruby": 0.12625737079431149,
+        "rust": 0.07911908646003263,
+        "scala": 0.10214741729541497,
+        "scheme": 0.08333333333333333,
+        "typescript": 0.1375598086124402
+      },
+      "dart": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.029660221513046744,
+        "chef": 0.02490566037735849,
+        "clojure": 0.05266106442577031,
+        "cpp": 0.03570079335096336,
+        "csharp": 0.037005268962136996,
+        "dart": 0.9727819017320608,
+        "fortran": 0.031396534148827725,
+        "go": 0.02872340425531915,
+        "haskell": 0.03864569083447333,
+        "java": 0.07426981919332407,
+        "javascript": 0.08835027365129007,
+        "julia": 0.06330472103004292,
+        "lisp": 0.03435934144595562,
+        "lua": 0.05089285714285714,
+        "matlab": 0.12433862433862433,
+        "ocaml": 0.03976886471787899,
+        "perl": 0.06358381502890173,
+        "php": 0.07848944835246205,
+        "prolog": 0.04192546583850932,
+        "python": 0.07901234567901234,
+        "r": 0.07082521117608837,
+        "ruby": 0.07769684356573014,
+        "rust": 0.03711256117455139,
+        "scala": 0.044399303540336624,
+        "scheme": 0.0535426731078905,
+        "typescript": 0.14354066985645933
+      },
+      "fortran": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.03641824666791815,
+        "chef": 0.03547169811320755,
+        "clojure": 0.04873949579831933,
+        "cpp": 0.049678881752927846,
+        "csharp": 0.03247151084425928,
+        "dart": 0.04772004241781548,
+        "fortran": 0.9686034658511723,
+        "go": 0.047446808510638296,
+        "haskell": 0.06429548563611491,
+        "java": 0.05285118219749652,
+        "javascript": 0.06137607505863956,
+        "julia": 0.08261802575107297,
+        "lisp": 0.050465282748747314,
+        "lua": 0.06130952380952381,
+        "matlab": 0.10758377425044091,
+        "ocaml": 0.06254248810333107,
+        "perl": 0.06188371302278137,
+        "php": 0.08108108108108109,
+        "prolog": 0.06133540372670807,
+        "python": 0.08641975308641975,
+        "r": 0.1189083820662768,
+        "ruby": 0.08636836628511967,
+        "rust": 0.052406199021207175,
+        "scala": 0.062100986651189787,
+        "scheme": 0.05636070853462158,
+        "typescript": 0.07834928229665072
+      },
+      "go": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.03829547587760466,
+        "chef": 0.025660377358490565,
+        "clojure": 0.04257703081232493,
+        "cpp": 0.04684548545523234,
+        "csharp": 0.029163092758240413,
+        "dart": 0.0544361965358784,
+        "fortran": 0.05015290519877676,
+        "go": 0.9687234042553191,
+        "haskell": 0.06395348837209303,
+        "java": 0.078442280945758,
+        "javascript": 0.08444096950742767,
+        "julia": 0.11015736766809728,
+        "lisp": 0.04294917680744453,
+        "lua": 0.05744047619047619,
+        "matlab": 0.0855379188712522,
+        "ocaml": 0.06662134602311352,
+        "perl": 0.061543692621557296,
+        "php": 0.0821917808219178,
+        "prolog": 0.052795031055900624,
+        "python": 0.10320987654320987,
+        "r": 0.11630929174788823,
+        "ruby": 0.09399930627818245,
+        "rust": 0.05118270799347471,
+        "scala": 0.0632617527568195,
+        "scheme": 0.05112721417069243,
+        "typescript": 0.08433014354066985
+      },
+      "haskell": {
+        "brainfuck": 0.007142857142857143,
+        "c": 0.026468931856579687,
+        "chef": 0.0369811320754717,
+        "clojure": 0.04481792717086835,
+        "cpp": 0.037211938043067626,
+        "csharp": 0.025609606665849775,
+        "dart": 0.04206433368681513,
+        "fortran": 0.03669724770642202,
+        "go": 0.03425531914893617,
+        "haskell": 0.9743502051983585,
+        "java": 0.04756606397774687,
+        "javascript": 0.05433932759968726,
+        "julia": 0.07224606580829757,
+        "lisp": 0.05583392984967788,
+        "lua": 0.04345238095238095,
+        "matlab": 0.06878306878306878,
+        "ocaml": 0.07104010876954453,
+        "perl": 0.059843590615436926,
+        "php": 0.05960755275823769,
+        "prolog": 0.050854037267080744,
+        "python": 0.0691358024691358,
+        "r": 0.06172839506172839,
+        "ruby": 0.07977800901838362,
+        "rust": 0.040171288743882545,
+        "scala": 0.05165409170052235,
+        "scheme": 0.06038647342995169,
+        "typescript": 0.04665071770334928
+      },
+      "java": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.05519053876478318,
+        "chef": 0.04,
+        "clojure": 0.05574229691876751,
+        "cpp": 0.09010200226671704,
+        "csharp": 0.07045705183188335,
+        "dart": 0.10463061152350654,
+        "fortran": 0.05015290519877676,
+        "go": 0.06680851063829787,
+        "haskell": 0.06224350205198358,
+        "java": 0.9674547983310153,
+        "javascript": 0.11102423768569195,
+        "julia": 0.10050071530758226,
+        "lisp": 0.047602004294917684,
+        "lua": 0.05654761904761905,
+        "matlab": 0.08641975308641975,
+        "ocaml": 0.06696125084976207,
+        "perl": 0.08024481468888134,
+        "php": 0.12439837097371344,
+        "prolog": 0.05434782608695652,
+        "python": 0.1382716049382716,
+        "r": 0.10136452241715399,
+        "ruby": 0.10163024627124523,
+        "rust": 0.05831973898858075,
+        "scala": 0.10591990713871155,
+        "scheme": 0.06763285024154589,
+        "typescript": 0.11303827751196172
+      },
+      "javascript": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.0366059695888868,
+        "chef": 0.017358490566037735,
+        "clojure": 0.02997198879551821,
+        "cpp": 0.04684548545523234,
+        "csharp": 0.03479965690479108,
+        "dart": 0.07917992223400495,
+        "fortran": 0.03302752293577982,
+        "go": 0.044893617021276595,
+        "haskell": 0.045485636114911084,
+        "java": 0.07121001390820585,
+        "javascript": 0.972243940578577,
+        "julia": 0.0740343347639485,
+        "lisp": 0.03937007874015748,
+        "lua": 0.05,
+        "matlab": 0.08994708994708994,
+        "ocaml": 0.0557443915703603,
+        "perl": 0.05474328459707582,
+        "php": 0.08700481303221029,
+        "prolog": 0.03493788819875776,
+        "python": 0.09333333333333334,
+        "r": 0.057179987004548405,
+        "ruby": 0.08255289628858828,
+        "rust": 0.049143556280587274,
+        "scala": 0.047011027278003485,
+        "scheme": 0.03421900161030596,
+        "typescript": 0.1722488038277512
+      },
+      "julia": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.03679369250985545,
+        "chef": 0.026415094339622643,
+        "clojure": 0.058823529411764705,
+        "cpp": 0.04778995088779751,
+        "csharp": 0.03418698688886166,
+        "dart": 0.06115235065394132,
+        "fortran": 0.046483180428134555,
+        "go": 0.05872340425531915,
+        "haskell": 0.0704514363885089,
+        "java": 0.06258692628650904,
+        "javascript": 0.07896794370602032,
+        "julia": 0.9767525035765379,
+        "lisp": 0.06012884753042233,
+        "lua": 0.0875,
+        "matlab": 0.1402116402116402,
+        "ocaml": 0.07273963290278722,
+        "perl": 0.08466507990479429,
+        "php": 0.10070344316919659,
+        "prolog": 0.0531832298136646,
+        "python": 0.14469135802469135,
+        "r": 0.09291747888239116,
+        "ruby": 0.10926118626430802,
+        "rust": 0.04812398042414356,
+        "scala": 0.0652930934416715,
+        "scheme": 0.07447665056360708,
+        "typescript": 0.0867224880382775
+      },
+      "lisp": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.01914773793880233,
+        "chef": 0.04377358490566038,
+        "clojure": 0.0761904761904762,
+        "cpp": 0.03305629013978088,
+        "csharp": 0.02070824653841441,
+        "dart": 0.03782255213856486,
+        "fortran": 0.02874617737003058,
+        "go": 0.02468085106382979,
+        "haskell": 0.04890560875512996,
+        "java": 0.03171070931849791,
+        "javascript": 0.04143862392494136,
+        "julia": 0.06545064377682404,
+        "lisp": 0.9731567644953472,
+        "lua": 0.03363095238095238,
+        "matlab": 0.07848324514991181,
+        "ocaml": 0.04962610469068661,
+        "perl": 0.05270316218973138,
+        "php": 0.04590892262125139,
+        "prolog": 0.04425465838509317,
+        "python": 0.06814814814814815,
+        "r": 0.057179987004548405,
+        "ruby": 0.07041276448144294,
+        "rust": 0.031199021207177813,
+        "scala": 0.0371445153801509,
+        "scheme": 0.11473429951690821,
+        "typescript": 0.05801435406698564
+      },
+      "lua": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.046367561479256615,
+        "chef": 0.03245283018867925,
+        "clojure": 0.06106442577030812,
+        "cpp": 0.048923309406875705,
+        "csharp": 0.03271657885063105,
+        "dart": 0.05973842347119123,
+        "fortran": 0.05056065239551478,
+        "go": 0.04425531914893617,
+        "haskell": 0.056429548563611494,
+        "java": 0.05674547983310153,
+        "javascript": 0.06645817044566067,
+        "julia": 0.10872675250357654,
+        "lisp": 0.045454545454545456,
+        "lua": 0.9696428571428571,
+        "matlab": 0.14814814814814814,
+        "ocaml": 0.08021753908905506,
+        "perl": 0.0768446106766406,
+        "php": 0.09663087745279526,
+        "prolog": 0.04930124223602485,
+        "python": 0.11358024691358025,
+        "r": 0.08836907082521117,
+        "ruby": 0.11064862989941034,
+        "rust": 0.047716150081566065,
+        "scala": 0.0661636680208938,
+        "scheme": 0.07045088566827697,
+        "typescript": 0.08313397129186603
+      },
+      "matlab": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.014266941993617421,
+        "chef": 0.01660377358490566,
+        "clojure": 0.03305322128851541,
+        "cpp": 0.026256139025311674,
+        "csharp": 0.01887023649062615,
+        "dart": 0.05266878755744079,
+        "fortran": 0.026299694189602447,
+        "go": 0.019361702127659575,
+        "haskell": 0.022913816689466484,
+        "java": 0.027816411682892908,
+        "javascript": 0.040265832681782646,
+        "julia": 0.06580829756795423,
+        "lisp": 0.03221188260558339,
+        "lua": 0.049107142857142856,
+        "matlab": 0.9735449735449735,
+        "ocaml": 0.03331067301155676,
+        "perl": 0.046922815368922136,
+        "php": 0.04961125509070714,
+        "prolog": 0.023680124223602484,
+        "python": 0.046419753086419754,
+        "r": 0.06172839506172839,
+        "ruby": 0.05861949358307319,
+        "rust": 0.019779771615008157,
+        "scala": 0.029889727219965176,
+        "scheme": 0.04669887278582931,
+        "typescript": 0.07775119617224881
+      },
+      "ocaml": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.046179838558287965,
+        "chef": 0.02490566037735849,
+        "clojure": 0.04677871148459384,
+        "cpp": 0.05005666792595391,
+        "csharp": 0.02340399460850386,
+        "dart": 0.04736656062212796,
+        "fortran": 0.03873598369011213,
+        "go": 0.03765957446808511,
+        "haskell": 0.07626538987688099,
+        "java": 0.0458970792767733,
+        "javascript": 0.062157935887412044,
+        "julia": 0.08333333333333333,
+        "lisp": 0.0572655690765927,
+        "lua": 0.06845238095238096,
+        "matlab": 0.09171075837742504,
+        "ocaml": 0.9741672331747111,
+        "perl": 0.059503570214212854,
+        "php": 0.06997408367271381,
+        "prolog": 0.059782608695652176,
+        "python": 0.08493827160493828,
+        "r": 0.06432748538011696,
+        "ruby": 0.08324661810613944,
+        "rust": 0.04363784665579119,
+        "scala": 0.056006964596633776,
+        "scheme": 0.06280193236714976,
+        "typescript": 0.05382775119617225
+      },
+      "perl": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.04261310305988361,
+        "chef": 0.020377358490566037,
+        "clojure": 0.058823529411764705,
+        "cpp": 0.049301095579901776,
+        "csharp": 0.03296164685700282,
+        "dart": 0.06539413220219159,
+        "fortran": 0.036289500509684,
+        "go": 0.03659574468085106,
+        "haskell": 0.05984952120383037,
+        "java": 0.0584144645340751,
+        "javascript": 0.06098514464425332,
+        "julia": 0.08690987124463519,
+        "lisp": 0.050465282748747314,
+        "lua": 0.06279761904761905,
+        "matlab": 0.11199294532627865,
+        "ocaml": 0.056084296397008834,
+        "perl": 0.9755185311118667,
+        "php": 0.14365049981488337,
+        "prolog": 0.04891304347826087,
+        "python": 0.10024691358024691,
+        "r": 0.06952566601689408,
+        "ruby": 0.11238293444328824,
+        "rust": 0.04812398042414356,
+        "scala": 0.058908879860708065,
+        "scheme": 0.07608695652173914,
+        "typescript": 0.08971291866028708
+      },
+      "php": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.045241223953444716,
+        "chef": 0.019622641509433963,
+        "clojure": 0.05854341736694678,
+        "cpp": 0.05383452965621458,
+        "csharp": 0.03516725891434873,
+        "dart": 0.0671615411806292,
+        "fortran": 0.04220183486238532,
+        "go": 0.04723404255319149,
+        "haskell": 0.05232558139534884,
+        "java": 0.08094575799721836,
+        "javascript": 0.1016419077404222,
+        "julia": 0.09835479256080114,
+        "lisp": 0.047602004294917684,
+        "lua": 0.07380952380952381,
+        "matlab": 0.12522045855379188,
+        "ocaml": 0.06526172671651938,
+        "perl": 0.12852771166269977,
+        "php": 0.9726027397260274,
+        "prolog": 0.05201863354037267,
+        "python": 0.14469135802469135,
+        "r": 0.0792722547108512,
+        "ruby": 0.1186264308012487,
+        "rust": 0.05628058727569331,
+        "scala": 0.06065002901915264,
+        "scheme": 0.07528180354267311,
+        "typescript": 0.09748803827751196
+      },
+      "prolog": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.01952318378073963,
+        "chef": 0.026415094339622643,
+        "clojure": 0.031932773109243695,
+        "cpp": 0.026256139025311674,
+        "csharp": 0.014581546379120206,
+        "dart": 0.03570166136443973,
+        "fortran": 0.03567787971457696,
+        "go": 0.030425531914893618,
+        "haskell": 0.04240766073871409,
+        "java": 0.033657858136300414,
+        "javascript": 0.03244722439405786,
+        "julia": 0.044706723891273246,
+        "lisp": 0.03829634931997137,
+        "lua": 0.0375,
+        "matlab": 0.05555555555555555,
+        "ocaml": 0.049286199864038066,
+        "perl": 0.04182250935056103,
+        "php": 0.04850055534987042,
+        "prolog": 0.9739906832298136,
+        "python": 0.05925925925925926,
+        "r": 0.07212475633528265,
+        "ruby": 0.04856052722858134,
+        "rust": 0.02875203915171289,
+        "scala": 0.03163087637840975,
+        "scheme": 0.046296296296296294,
+        "typescript": 0.05083732057416268
+      },
+      "python": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.03303923409048245,
+        "chef": 0.036226415094339624,
+        "clojure": 0.04481792717086835,
+        "cpp": 0.04080090668681526,
+        "csharp": 0.028182820732753338,
+        "dart": 0.056910569105691054,
+        "fortran": 0.036289500509684,
+        "go": 0.044042553191489364,
+        "haskell": 0.054035567715458276,
+        "java": 0.06870653685674548,
+        "javascript": 0.07114933541829555,
+        "julia": 0.11015736766809728,
+        "lisp": 0.049391553328561204,
+        "lua": 0.06636904761904762,
+        "matlab": 0.07671957671957672,
+        "ocaml": 0.057443915703602993,
+        "perl": 0.07616456987419246,
+        "php": 0.11440207330618289,
+        "prolog": 0.04813664596273292,
+        "python": 0.9772839506172839,
+        "r": 0.06757634827810266,
+        "ruby": 0.13111342351716962,
+        "rust": 0.056484502446982054,
+        "scala": 0.0612304120719675,
+        "scheme": 0.06481481481481481,
+        "typescript": 0.05861244019138756
+      },
+      "r": {
+        "brainfuck": 0.007142857142857143,
+        "c": 0.02083724422752018,
+        "chef": 0.03018867924528302,
+        "clojure": 0.02689075630252101,
+        "cpp": 0.03702304495655459,
+        "csharp": 0.01985050851611322,
+        "dart": 0.03428773418168964,
+        "fortran": 0.04138634046890927,
+        "go": 0.039787234042553195,
+        "haskell": 0.036593707250342,
+        "java": 0.03699582753824757,
+        "javascript": 0.034792806880375296,
+        "julia": 0.06223175965665236,
+        "lisp": 0.030780243378668574,
+        "lua": 0.0380952380952381,
+        "matlab": 0.07583774250440917,
+        "ocaml": 0.04078857919782461,
+        "perl": 0.047942876572594356,
+        "php": 0.05146242132543503,
+        "prolog": 0.04503105590062112,
+        "python": 0.05925925925925926,
+        "r": 0.9740090968161144,
+        "ruby": 0.061394380853277836,
+        "rust": 0.030587275693311582,
+        "scala": 0.0412071967498549,
+        "scheme": 0.04106280193236715,
+        "typescript": 0.06937799043062201
+      },
+      "ruby": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.035479632063074903,
+        "chef": 0.04150943396226415,
+        "clojure": 0.0753501400560224,
+        "cpp": 0.055156781261805815,
+        "csharp": 0.03835314299718172,
+        "dart": 0.06928243195475434,
+        "fortran": 0.04627930682976555,
+        "go": 0.05021276595744681,
+        "haskell": 0.06634746922024624,
+        "java": 0.07037552155771905,
+        "javascript": 0.09108678655199375,
+        "julia": 0.10872675250357654,
+        "lisp": 0.06692913385826772,
+        "lua": 0.08452380952380953,
+        "matlab": 0.12786596119929453,
+        "ocaml": 0.06866077498300475,
+        "perl": 0.11152669160149609,
+        "php": 0.11329137356534617,
+        "prolog": 0.05434782608695652,
+        "python": 0.1748148148148148,
+        "r": 0.09226770630279402,
+        "ruby": 0.9764134582032605,
+        "rust": 0.05689233278955955,
+        "scala": 0.08009286128845038,
+        "scheme": 0.07769726247987117,
+        "typescript": 0.09270334928229665
+      },
+      "rust": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.045428946874413366,
+        "chef": 0.038490566037735846,
+        "clojure": 0.05658263305322129,
+        "cpp": 0.06932376275028335,
+        "csharp": 0.04264183310868766,
+        "dart": 0.0639802050194415,
+        "fortran": 0.059123343527013254,
+        "go": 0.05531914893617021,
+        "haskell": 0.07216142270861833,
+        "java": 0.07482614742698192,
+        "javascript": 0.09577795152462862,
+        "julia": 0.09334763948497854,
+        "lisp": 0.050465282748747314,
+        "lua": 0.075,
+        "matlab": 0.0890652557319224,
+        "ocaml": 0.07885791978246091,
+        "perl": 0.08602516150969058,
+        "php": 0.1036653091447612,
+        "prolog": 0.0562888198757764,
+        "python": 0.13185185185185186,
+        "r": 0.09161793372319688,
+        "ruby": 0.11342351716961499,
+        "rust": 0.9720636215334421,
+        "scala": 0.07893209518282066,
+        "scheme": 0.059178743961352656,
+        "typescript": 0.11303827751196172
+      },
+      "scala": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.03153745072273324,
+        "chef": 0.03018867924528302,
+        "clojure": 0.04453781512605042,
+        "cpp": 0.054590102002266716,
+        "csharp": 0.037372870971694644,
+        "dart": 0.053022269353128315,
+        "fortran": 0.047298674821610605,
+        "go": 0.04808510638297872,
+        "haskell": 0.06805745554035568,
+        "java": 0.08873435326842838,
+        "javascript": 0.06137607505863956,
+        "julia": 0.08226037195994278,
+        "lisp": 0.04438081603435934,
+        "lua": 0.06220238095238095,
+        "matlab": 0.09082892416225749,
+        "ocaml": 0.061862678450033994,
+        "perl": 0.06358381502890173,
+        "php": 0.07737874861162532,
+        "prolog": 0.042701863354037264,
+        "python": 0.1037037037037037,
+        "r": 0.09421702404158544,
+        "ruby": 0.09642733263961152,
+        "rust": 0.05546492659053834,
+        "scala": 0.9750435287289612,
+        "scheme": 0.05958132045088567,
+        "typescript": 0.07775119617224881
+      },
+      "scheme": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.018209123333959076,
+        "chef": 0.024150943396226414,
+        "clojure": 0.0761904761904762,
+        "cpp": 0.03078957310162448,
+        "csharp": 0.02315892660213209,
+        "dart": 0.05090137857900318,
+        "fortran": 0.02711518858307849,
+        "go": 0.02595744680851064,
+        "haskell": 0.04616963064295486,
+        "java": 0.03727399165507649,
+        "javascript": 0.03205629397967162,
+        "julia": 0.06688125894134478,
+        "lisp": 0.11345740873299928,
+        "lua": 0.045535714285714284,
+        "matlab": 0.10141093474426807,
+        "ocaml": 0.05336505778382053,
+        "perl": 0.06460387623257395,
+        "php": 0.06960385042576823,
+        "prolog": 0.04930124223602485,
+        "python": 0.07851851851851852,
+        "r": 0.05912930474333983,
+        "ruby": 0.06729101630246272,
+        "rust": 0.0283442088091354,
+        "scala": 0.040336622170632615,
+        "scheme": 0.9714170692431562,
+        "typescript": 0.0651913875598086
+      },
+      "typescript": {
+        "brainfuck": 0.0035714285714285713,
+        "c": 0.028158438145297542,
+        "chef": 0.022641509433962263,
+        "clojure": 0.03669467787114846,
+        "cpp": 0.03305629013978088,
+        "csharp": 0.02279132459257444,
+        "dart": 0.08236125839519265,
+        "fortran": 0.029153924566768602,
+        "go": 0.03127659574468085,
+        "haskell": 0.025649794801641587,
+        "java": 0.04506258692628651,
+        "javascript": 0.11219702892885067,
+        "julia": 0.0561516452074392,
+        "lisp": 0.03042233357193987,
+        "lua": 0.0443452380952381,
+        "matlab": 0.11022927689594356,
+        "ocaml": 0.028552005438477225,
+        "perl": 0.05542332539952397,
+        "php": 0.060718252499074414,
+        "prolog": 0.037267080745341616,
+        "python": 0.05135802469135802,
+        "r": 0.07472384665367121,
+        "ruby": 0.05757891085674644,
+        "rust": 0.03384991843393149,
+        "scala": 0.04004643064422519,
+        "scheme": 0.0430756843800322,
+        "typescript": 0.9742822966507177
+      }
+    },
+    "distance_matrix": {
+      "brainfuck": {
+        "brainfuck": 0.0,
+        "c": 0.9901328139665853,
+        "chef": 0.9891846361185983,
+        "clojure": 0.9889705882352942,
+        "cpp": 0.9990555345674348,
+        "csharp": 0.9907650935634638,
+        "dart": 0.9901877240822097,
+        "fortran": 0.989542376583661,
+        "go": 0.9900075987841945,
+        "haskell": 0.9812878639828024,
+        "java": 0.9903760182793562,
+        "javascript": 0.9900941025354629,
+        "julia": 0.9892831596157776,
+        "lisp": 0.9910714285714286,
+        "lua": 0.9903273809523809,
+        "matlab": 0.9888668430335097,
+        "ocaml": 0.9910714285714286,
+        "perl": 0.9902213775683684,
+        "php": 0.9910714285714286,
+        "prolog": 0.9901009316770186,
+        "python": 0.9910714285714286,
+        "r": 0.9805184256938644,
+        "ruby": 0.9910714285714286,
+        "rust": 0.9910714285714286,
+        "scala": 0.9896204709393914,
+        "scheme": 0.990064987347596,
+        "typescript": 0.9895762132604238
+      },
+      "c": {
+        "brainfuck": 0.9901328139665853,
+        "c": 0.0,
+        "chef": 0.9458097056292083,
+        "clojure": 0.8400269437604214,
+        "cpp": 0.6059113820158605,
+        "csharp": 0.7110898011386071,
+        "dart": 0.7650152291795607,
+        "fortran": 0.8009013761946286,
+        "go": 0.7776655656251372,
+        "haskell": 0.7987387510699051,
+        "java": 0.6485326934218391,
+        "javascript": 0.7042239345109731,
+        "julia": 0.7086237801702827,
+        "lisp": 0.8483368112016698,
+        "lua": 0.7032775248732871,
+        "matlab": 0.798988729672041,
+        "ocaml": 0.6772084593486717,
+        "perl": 0.6801044405821849,
+        "php": 0.6601290763622231,
+        "prolog": 0.8347324132189584,
+        "python": 0.7075253715639174,
+        "r": 0.7481018212050787,
+        "ruby": 0.7005829177611473,
+        "rust": 0.7594904386867236,
+        "scala": 0.7847663557816753,
+        "scheme": 0.8357171272528641,
+        "typescript": 0.6918646701869954
+      },
+      "chef": {
+        "brainfuck": 0.9891846361185983,
+        "c": 0.9458097056292083,
+        "chef": 0.0,
+        "clojure": 0.8626711061783204,
+        "cpp": 0.8693070118539322,
+        "csharp": 0.8638173272328354,
+        "dart": 0.8944343290848824,
+        "fortran": 0.8787009789779394,
+        "go": 0.921487354476114,
+        "haskell": 0.8588125596882017,
+        "java": 0.856884561891516,
+        "javascript": 0.9243520143980409,
+        "julia": 0.881208329959241,
+        "lisp": 0.8333004686592564,
+        "lua": 0.8831536388140162,
+        "matlab": 0.8923529999001697,
+        "ocaml": 0.9079941767248567,
+        "perl": 0.9091042066297563,
+        "php": 0.906515406592946,
+        "prolog": 0.9048473573186453,
+        "python": 0.8514092709061263,
+        "r": 0.841682297988157,
+        "ruby": 0.8233856242514677,
+        "rust": 0.8757352488534581,
+        "scala": 0.8875288822698453,
+        "scheme": 0.8973521101084678,
+        "typescript": 0.897044551773946
+      },
+      "clojure": {
+        "brainfuck": 0.9889705882352942,
+        "c": 0.8400269437604214,
+        "chef": 0.8626711061783204,
+        "clojure": 0.0,
+        "cpp": 0.7439522465578601,
+        "csharp": 0.7335527275485614,
+        "dart": 0.6995597814947825,
+        "fortran": 0.7884468772218367,
+        "go": 0.8158978485011026,
+        "haskell": 0.7383313790632533,
+        "java": 0.7201713787044721,
+        "javascript": 0.8126775338751606,
+        "julia": 0.6463961120929058,
+        "lisp": 0.5616712683641818,
+        "lua": 0.6933210784313726,
+        "matlab": 0.6880900508351488,
+        "ocaml": 0.7521898630288281,
+        "perl": 0.6718803128187691,
+        "php": 0.6611201681709338,
+        "prolog": 0.8046789367921081,
+        "python": 0.6805477746654218,
+        "r": 0.7784521215893765,
+        "ruby": 0.5653534046292815,
+        "rust": 0.759644559291906,
+        "scala": 0.7660495422777353,
+        "scheme": 0.5599263860133425,
+        "typescript": 0.7049140230254781
+      },
+      "cpp": {
+        "brainfuck": 0.9990555345674348,
+        "c": 0.6059113820158605,
+        "chef": 0.8693070118539322,
+        "clojure": 0.7439522465578601,
+        "cpp": 0.0,
+        "csharp": 0.5955923658029307,
+        "dart": 0.7340071187788306,
+        "fortran": 0.7330912767593725,
+        "go": 0.7488437331704298,
+        "haskell": 0.7257116049607304,
+        "java": 0.5139661348060864,
+        "javascript": 0.6512600158380724,
+        "julia": 0.6444736206345835,
+        "lisp": 0.7625632832403831,
+        "lua": 0.6939119645780489,
+        "matlab": 0.6631956312726996,
+        "ocaml": 0.658169003196672,
+        "perl": 0.66593461229132,
+        "php": 0.6090271523496524,
+        "prolog": 0.7887851182752301,
+        "python": 0.6560224246409865,
+        "r": 0.6150447267899001,
+        "ruby": 0.5811507107372649,
+        "rust": 0.6452060906773096,
+        "scala": 0.6516849307169101,
+        "scheme": 0.7569632653135717,
+        "typescript": 0.6616774564687296
+      },
+      "csharp": {
+        "brainfuck": 0.9907650935634638,
+        "c": 0.7110898011386071,
+        "chef": 0.8638173272328354,
+        "clojure": 0.7335527275485614,
+        "cpp": 0.5955923658029307,
+        "csharp": 0.0,
+        "dart": 0.623817686555421,
+        "fortran": 0.750115820238995,
+        "go": 0.7733688638490799,
+        "haskell": 0.727357652282024,
+        "java": 0.45598532591403296,
+        "javascript": 0.6080751345167557,
+        "julia": 0.631986037784999,
+        "lisp": 0.7871699706260471,
+        "lua": 0.6927621243019939,
+        "matlab": 0.5559990119480378,
+        "ocaml": 0.7621902174216364,
+        "perl": 0.6574802759210767,
+        "php": 0.6057138408666642,
+        "prolog": 0.8402930284621374,
+        "python": 0.6283083802668821,
+        "r": 0.6758448138299249,
+        "ruby": 0.588473715521267,
+        "rust": 0.6955977010781993,
+        "scala": 0.651199279332226,
+        "scheme": 0.7337693501613365,
+        "typescript": 0.5991221669874635
+      },
+      "dart": {
+        "brainfuck": 0.9901877240822097,
+        "c": 0.7650152291795607,
+        "chef": 0.8944343290848824,
+        "clojure": 0.6995597814947825,
+        "cpp": 0.7340071187788306,
+        "csharp": 0.623817686555421,
+        "dart": 0.0,
+        "fortran": 0.802208558583392,
+        "go": 0.7921009980220062,
+        "haskell": 0.7982249386967789,
+        "java": 0.5527489232079235,
+        "javascript": 0.5811745102867625,
+        "julia": 0.6888573207900395,
+        "lisp": 0.8195452660386988,
+        "lua": 0.7234217984648791,
+        "matlab": 0.5574814702598372,
+        "ocaml": 0.7821614366499826,
+        "perl": 0.6775551319222667,
+        "php": 0.635872526167272,
+        "prolog": 0.8059321819926274,
+        "python": 0.6601927130382415,
+        "r": 0.737217636605555,
+        "ruby": 0.6325518111987888,
+        "rust": 0.7472680845150178,
+        "scala": 0.7564460677663376,
+        "scheme": 0.7388898707827658,
+        "typescript": 0.43524517937087004
+      },
+      "fortran": {
+        "brainfuck": 0.989542376583661,
+        "c": 0.8009013761946286,
+        "chef": 0.8787009789779394,
+        "clojure": 0.7884468772218367,
+        "cpp": 0.7330912767593725,
+        "csharp": 0.750115820238995,
+        "dart": 0.802208558583392,
+        "fortran": 0.0,
+        "go": 0.7560007157264623,
+        "haskell": 0.7475181666436577,
+        "java": 0.7424897815093168,
+        "javascript": 0.7639910050139516,
+        "julia": 0.6772469845519813,
+        "lisp": 0.8019713497030553,
+        "lua": 0.7203245594874035,
+        "matlab": 0.6652913288998916,
+        "ocaml": 0.746803820516392,
+        "perl": 0.7545669661688366,
+        "php": 0.6917927101413339,
+        "prolog": 0.7574667913967874,
+        "python": 0.6932268660097407,
+        "r": 0.5992631936620348,
+        "ruby": 0.668380817212787,
+        "rust": 0.721176143629449,
+        "scala": 0.726500846317999,
+        "scheme": 0.7913102572057499,
+        "typescript": 0.7312419828414517
+      },
+      "go": {
+        "brainfuck": 0.9900075987841945,
+        "c": 0.7776655656251372,
+        "chef": 0.921487354476114,
+        "clojure": 0.8158978485011026,
+        "cpp": 0.7488437331704298,
+        "csharp": 0.7733688638490799,
+        "dart": 0.7921009980220062,
+        "fortran": 0.7560007157264623,
+        "go": 0.0,
+        "haskell": 0.754477981197427,
+        "java": 0.6368730210398603,
+        "javascript": 0.6766635336782394,
+        "julia": 0.5777980701914589,
+        "lisp": 0.8309249303218142,
+        "lua": 0.7457605116514692,
+        "matlab": 0.7377509475027206,
+        "ocaml": 0.7392976987720035,
+        "perl": 0.7546514067439791,
+        "php": 0.6764354415622268,
+        "prolog": 0.7919485925730144,
+        "python": 0.6318689256632519,
+        "r": 0.6097586855238964,
+        "ruby": 0.6394698194109268,
+        "rust": 0.7337453576758877,
+        "scala": 0.7216328521505044,
+        "scheme": 0.8072883475519923,
+        "typescript": 0.7109831517866232
+      },
+      "haskell": {
+        "brainfuck": 0.9812878639828024,
+        "c": 0.7987387510699051,
+        "chef": 0.8588125596882017,
+        "clojure": 0.7383313790632533,
+        "cpp": 0.7257116049607304,
+        "csharp": 0.727357652282024,
+        "dart": 0.7982249386967789,
+        "fortran": 0.7475181666436577,
+        "go": 0.754477981197427,
+        "haskell": 0.0,
+        "java": 0.7254760849256738,
+        "javascript": 0.7504375907135041,
+        "julia": 0.6432562445079839,
+        "lisp": 0.7381511534879803,
+        "lua": 0.750295176210019,
+        "matlab": 0.7707577863186619,
+        "ocaml": 0.6317362533839362,
+        "perl": 0.7007672204518318,
+        "php": 0.7201671646160337,
+        "prolog": 0.7668457549855129,
+        "python": 0.6920715745385149,
+        "r": 0.754194744219824,
+        "ruby": 0.6346863044034253,
+        "rust": 0.7191682213687478,
+        "scala": 0.700721131897805,
+        "scheme": 0.7336097398177337,
+        "typescript": 0.8192487187375228
+      },
+      "java": {
+        "brainfuck": 0.9903760182793562,
+        "c": 0.6485326934218391,
+        "chef": 0.856884561891516,
+        "clojure": 0.7201713787044721,
+        "cpp": 0.5139661348060864,
+        "csharp": 0.45598532591403296,
+        "dart": 0.5527489232079235,
+        "fortran": 0.7424897815093168,
+        "go": 0.6368730210398603,
+        "haskell": 0.7254760849256738,
+        "java": 0.0,
+        "javascript": 0.5444143710152556,
+        "julia": 0.5922808960147719,
+        "lisp": 0.8017182159664611,
+        "lua": 0.7167672527981985,
+        "matlab": 0.7144095880767184,
+        "ocaml": 0.7178541746836615,
+        "perl": 0.653351801942609,
+        "php": 0.48663967757267057,
+        "prolog": 0.7799857894418576,
+        "python": 0.48255464551245736,
+        "r": 0.654099125111496,
+        "ruby": 0.5699855804275893,
+        "rust": 0.6671352839610933,
+        "scala": 0.5133643489821502,
+        "scheme": 0.7377328952584441,
+        "typescript": 0.6047478389043794
+      },
+      "javascript": {
+        "brainfuck": 0.9900941025354629,
+        "c": 0.7042239345109731,
+        "chef": 0.9243520143980409,
+        "clojure": 0.8126775338751606,
+        "cpp": 0.6512600158380724,
+        "csharp": 0.6080751345167557,
+        "dart": 0.5811745102867625,
+        "fortran": 0.7639910050139516,
+        "go": 0.6766635336782394,
+        "haskell": 0.7504375907135041,
+        "java": 0.5444143710152556,
+        "javascript": 0.0,
+        "julia": 0.617494303825078,
+        "lisp": 0.7979782433372529,
+        "lua": 0.7088545738858483,
+        "matlab": 0.6744676934278185,
+        "ocaml": 0.7052441813555692,
+        "perl": 0.7106789268966772,
+        "php": 0.5283831980684188,
+        "prolog": 0.831537218517961,
+        "python": 0.5887933281209279,
+        "r": 0.7700680152876908,
+        "ruby": 0.5659007928985449,
+        "rust": 0.6376962304869603,
+        "scala": 0.7290322441583924,
+        "scheme": 0.8343117610250561,
+        "typescript": 0.28888541810849533
+      },
+      "julia": {
+        "brainfuck": 0.9892831596157776,
+        "c": 0.7086237801702827,
+        "chef": 0.881208329959241,
+        "clojure": 0.6463961120929058,
+        "cpp": 0.6444736206345835,
+        "csharp": 0.631986037784999,
+        "dart": 0.6888573207900395,
+        "fortran": 0.6772469845519813,
+        "go": 0.5777980701914589,
+        "haskell": 0.6432562445079839,
+        "java": 0.5922808960147719,
+        "javascript": 0.617494303825078,
+        "julia": 0.0,
+        "lisp": 0.6860512717318841,
+        "lua": 0.5094331187410587,
+        "matlab": 0.48495015555101395,
+        "ocaml": 0.6098175844096987,
+        "perl": 0.5710626221264263,
+        "php": 0.5023544106750057,
+        "prolog": 0.7552751157376554,
+        "python": 0.36287818576802844,
+        "r": 0.6121269036523912,
+        "ruby": 0.45503015308028866,
+        "rust": 0.6463209502271947,
+        "scala": 0.6311163364959643,
+        "scheme": 0.6466052262376203,
+        "typescript": 0.6428146668857083
+      },
+      "lisp": {
+        "brainfuck": 0.9910714285714286,
+        "c": 0.8483368112016698,
+        "chef": 0.8333004686592564,
+        "clojure": 0.5616712683641818,
+        "cpp": 0.7625632832403831,
+        "csharp": 0.7871699706260471,
+        "dart": 0.8195452660386988,
+        "fortran": 0.8019713497030553,
+        "go": 0.8309249303218142,
+        "haskell": 0.7381511534879803,
+        "java": 0.8017182159664611,
+        "javascript": 0.7979782433372529,
+        "julia": 0.6860512717318841,
+        "lisp": 0.0,
+        "lua": 0.8022862554112554,
+        "matlab": 0.723262180611262,
+        "ocaml": 0.7327708155818018,
+        "perl": 0.7420788876538034,
+        "php": 0.7662226827095773,
+        "prolog": 0.7936224807373387,
+        "python": 0.7061507463082266,
+        "r": 0.7800994240419575,
+        "ruby": 0.6566452541507233,
+        "rust": 0.7958392401101873,
+        "scala": 0.7961866714637245,
+        "scheme": 0.4295207293752313,
+        "typescript": 0.7789082809026862
+      },
+      "lua": {
+        "brainfuck": 0.9903273809523809,
+        "c": 0.7032775248732871,
+        "chef": 0.8831536388140162,
+        "clojure": 0.6933210784313726,
+        "cpp": 0.6939119645780489,
+        "csharp": 0.6927621243019939,
+        "dart": 0.7234217984648791,
+        "fortran": 0.7203245594874035,
+        "go": 0.7457605116514692,
+        "haskell": 0.750295176210019,
+        "java": 0.7167672527981985,
+        "javascript": 0.7088545738858483,
+        "julia": 0.5094331187410587,
+        "lisp": 0.8022862554112554,
+        "lua": 0.0,
+        "matlab": 0.5068617724867726,
+        "ocaml": 0.6283251998964099,
+        "perl": 0.650894425689351,
+        "php": 0.5738989968442023,
+        "prolog": 0.7829968944099379,
+        "python": 0.5501267636684304,
+        "r": 0.6838392276988768,
+        "ruby": 0.5120689014419504,
+        "rust": 0.6932096247960848,
+        "scala": 0.6790848775668131,
+        "scheme": 0.7100335001150219,
+        "typescript": 0.6813019765322397
+      },
+      "matlab": {
+        "brainfuck": 0.9888668430335097,
+        "c": 0.798988729672041,
+        "chef": 0.8923529999001697,
+        "clojure": 0.6880900508351488,
+        "cpp": 0.6631956312726996,
+        "csharp": 0.5559990119480378,
+        "dart": 0.5574814702598372,
+        "fortran": 0.6652913288998916,
+        "go": 0.7377509475027206,
+        "haskell": 0.7707577863186619,
+        "java": 0.7144095880767184,
+        "javascript": 0.6744676934278185,
+        "julia": 0.48495015555101395,
+        "lisp": 0.723262180611262,
+        "lua": 0.5068617724867726,
+        "matlab": 0.0,
+        "ocaml": 0.6874464215275455,
+        "perl": 0.602710598261998,
+        "php": 0.5629207158887525,
+        "prolog": 0.801910800552105,
+        "python": 0.6921516754850089,
+        "r": 0.656084656084656,
+        "ruby": 0.5337863630440807,
+        "rust": 0.7278874316326737,
+        "scala": 0.6982033715444433,
+        "scheme": 0.6297254811747566,
+        "typescript": 0.5300488173295191
+      },
+      "ocaml": {
+        "brainfuck": 0.9910714285714286,
+        "c": 0.6772084593486717,
+        "chef": 0.9079941767248567,
+        "clojure": 0.7521898630288281,
+        "cpp": 0.658169003196672,
+        "csharp": 0.7621902174216364,
+        "dart": 0.7821614366499826,
+        "fortran": 0.746803820516392,
+        "go": 0.7392976987720035,
+        "haskell": 0.6317362533839362,
+        "java": 0.7178541746836615,
+        "javascript": 0.7052441813555692,
+        "julia": 0.6098175844096987,
+        "lisp": 0.7327708155818018,
+        "lua": 0.6283251998964099,
+        "matlab": 0.6874464215275455,
+        "ocaml": 0.0,
+        "perl": 0.7110303334719458,
+        "php": 0.661910474026917,
+        "prolog": 0.7273279786007745,
+        "python": 0.6440445317286468,
+        "r": 0.737209838555146,
+        "ruby": 0.6202315172771395,
+        "rust": 0.6937605839043698,
+        "scala": 0.7053258923833305,
+        "scheme": 0.7095825246225742,
+        "typescript": 0.7940506084133763
+      },
+      "perl": {
+        "brainfuck": 0.9902213775683684,
+        "c": 0.6801044405821849,
+        "chef": 0.9091042066297563,
+        "clojure": 0.6718803128187691,
+        "cpp": 0.66593461229132,
+        "csharp": 0.6574802759210767,
+        "dart": 0.6775551319222667,
+        "fortran": 0.7545669661688366,
+        "go": 0.7546514067439791,
+        "haskell": 0.7007672204518318,
+        "java": 0.653351801942609,
+        "javascript": 0.7106789268966772,
+        "julia": 0.5710626221264263,
+        "lisp": 0.7420788876538034,
+        "lua": 0.650894425689351,
+        "matlab": 0.602710598261998,
+        "ocaml": 0.7110303334719458,
+        "perl": 0.0,
+        "php": 0.3195544713060422,
+        "prolog": 0.7731611179279452,
+        "python": 0.5589712913639016,
+        "r": 0.7063286435262789,
+        "ruby": 0.4402259348880392,
+        "rust": 0.6646271451654147,
+        "scala": 0.6937682627759755,
+        "scheme": 0.6482729181142173,
+        "typescript": 0.6371593898504724
+      },
+      "php": {
+        "brainfuck": 0.9910714285714286,
+        "c": 0.6601290763622231,
+        "chef": 0.906515406592946,
+        "clojure": 0.6611201681709338,
+        "cpp": 0.6090271523496524,
+        "csharp": 0.6057138408666642,
+        "dart": 0.635872526167272,
+        "fortran": 0.6917927101413339,
+        "go": 0.6764354415622268,
+        "haskell": 0.7201671646160337,
+        "java": 0.48663967757267057,
+        "javascript": 0.5283831980684188,
+        "julia": 0.5023544106750057,
+        "lisp": 0.7662226827095773,
+        "lua": 0.5738989968442023,
+        "matlab": 0.5629207158887525,
+        "ocaml": 0.661910474026917,
+        "perl": 0.3195544713060422,
+        "php": 0.0,
+        "prolog": 0.7487020277743923,
+        "python": 0.3522664216728144,
+        "r": 0.6731633099092844,
+        "ruby": 0.42020548908351285,
+        "rust": 0.6001352589488638,
+        "scala": 0.6549280559230551,
+        "scheme": 0.6377858650788966,
+        "typescript": 0.604484273058534
+      },
+      "prolog": {
+        "brainfuck": 0.9901009316770186,
+        "c": 0.8347324132189584,
+        "chef": 0.9048473573186453,
+        "clojure": 0.8046789367921081,
+        "cpp": 0.7887851182752301,
+        "csharp": 0.8402930284621374,
+        "dart": 0.8059321819926274,
+        "fortran": 0.7574667913967874,
+        "go": 0.7919485925730144,
+        "haskell": 0.7668457549855129,
+        "java": 0.7799857894418576,
+        "javascript": 0.831537218517961,
+        "julia": 0.7552751157376554,
+        "lisp": 0.7936224807373387,
+        "lua": 0.7829968944099379,
+        "matlab": 0.801910800552105,
+        "ocaml": 0.7273279786007745,
+        "perl": 0.7731611179279452,
+        "php": 0.7487020277743923,
+        "prolog": 0.0,
+        "python": 0.7315102369450196,
+        "r": 0.7071104694102406,
+        "ruby": 0.7427291167111554,
+        "rust": 0.7873978524312768,
+        "scala": 0.8141681506688825,
+        "scheme": 0.7610061536691972,
+        "typescript": 0.7797389967012393
+      },
+      "python": {
+        "brainfuck": 0.9910714285714286,
+        "c": 0.7075253715639174,
+        "chef": 0.8514092709061263,
+        "clojure": 0.6805477746654218,
+        "cpp": 0.6560224246409865,
+        "csharp": 0.6283083802668821,
+        "dart": 0.6601927130382415,
+        "fortran": 0.6932268660097407,
+        "go": 0.6318689256632519,
+        "haskell": 0.6920715745385149,
+        "java": 0.48255464551245736,
+        "javascript": 0.5887933281209279,
+        "julia": 0.36287818576802844,
+        "lisp": 0.7061507463082266,
+        "lua": 0.5501267636684304,
+        "matlab": 0.6921516754850089,
+        "ocaml": 0.6440445317286468,
+        "perl": 0.5589712913639016,
+        "php": 0.3522664216728144,
+        "prolog": 0.7315102369450196,
+        "python": 0.0,
+        "r": 0.6829109811565952,
+        "ruby": 0.23517940417003896,
+        "rust": 0.5291591142529153,
+        "scala": 0.5876647105608219,
+        "scheme": 0.6416666666666667,
+        "typescript": 0.7250738377931361
+      },
+      "r": {
+        "brainfuck": 0.9805184256938644,
+        "c": 0.7481018212050787,
+        "chef": 0.841682297988157,
+        "clojure": 0.7784521215893765,
+        "cpp": 0.6150447267899001,
+        "csharp": 0.6758448138299249,
+        "dart": 0.737217636605555,
+        "fortran": 0.5992631936620348,
+        "go": 0.6097586855238964,
+        "haskell": 0.754194744219824,
+        "java": 0.654099125111496,
+        "javascript": 0.7700680152876908,
+        "julia": 0.6121269036523912,
+        "lisp": 0.7800994240419575,
+        "lua": 0.6838392276988768,
+        "matlab": 0.656084656084656,
+        "ocaml": 0.737209838555146,
+        "perl": 0.7063286435262789,
+        "php": 0.6731633099092844,
+        "prolog": 0.7071104694102406,
+        "python": 0.6829109811565952,
+        "r": 0.0,
+        "ruby": 0.6158447821098203,
+        "rust": 0.6944869764587289,
+        "scala": 0.6614394480213992,
+        "scheme": 0.7495197333107325,
+        "typescript": 0.639745407289267
+      },
+      "ruby": {
+        "brainfuck": 0.9910714285714286,
+        "c": 0.7005829177611473,
+        "chef": 0.8233856242514677,
+        "clojure": 0.5653534046292815,
+        "cpp": 0.5811507107372649,
+        "csharp": 0.588473715521267,
+        "dart": 0.6325518111987888,
+        "fortran": 0.668380817212787,
+        "go": 0.6394698194109268,
+        "haskell": 0.6346863044034253,
+        "java": 0.5699855804275893,
+        "javascript": 0.5659007928985449,
+        "julia": 0.45503015308028866,
+        "lisp": 0.6566452541507233,
+        "lua": 0.5120689014419504,
+        "matlab": 0.5337863630440807,
+        "ocaml": 0.6202315172771395,
+        "perl": 0.4402259348880392,
+        "php": 0.42020548908351285,
+        "prolog": 0.7427291167111554,
+        "python": 0.23517940417003896,
+        "r": 0.6158447821098203,
+        "ruby": 0.0,
+        "rust": 0.5742103751020637,
+        "scala": 0.5586995151798453,
+        "scheme": 0.6375293030441653,
+        "typescript": 0.6242943496523923
+      },
+      "rust": {
+        "brainfuck": 0.9910714285714286,
+        "c": 0.7594904386867236,
+        "chef": 0.8757352488534581,
+        "clojure": 0.759644559291906,
+        "cpp": 0.6452060906773096,
+        "csharp": 0.6955977010781993,
+        "dart": 0.7472680845150178,
+        "fortran": 0.721176143629449,
+        "go": 0.7337453576758877,
+        "haskell": 0.7191682213687478,
+        "java": 0.6671352839610933,
+        "javascript": 0.6376962304869603,
+        "julia": 0.6463209502271947,
+        "lisp": 0.7958392401101873,
+        "lua": 0.6932096247960848,
+        "matlab": 0.7278874316326737,
+        "ocaml": 0.6937605839043698,
+        "perl": 0.6646271451654147,
+        "php": 0.6001352589488638,
+        "prolog": 0.7873978524312768,
+        "python": 0.5291591142529153,
+        "r": 0.6944869764587289,
+        "ruby": 0.5742103751020637,
+        "rust": 0.0,
+        "scala": 0.6640074455666025,
+        "scheme": 0.7811926180737798,
+        "typescript": 0.632779510135267
+      },
+      "scala": {
+        "brainfuck": 0.9896204709393914,
+        "c": 0.7847663557816753,
+        "chef": 0.8875288822698453,
+        "clojure": 0.7660495422777353,
+        "cpp": 0.6516849307169101,
+        "csharp": 0.651199279332226,
+        "dart": 0.7564460677663376,
+        "fortran": 0.726500846317999,
+        "go": 0.7216328521505044,
+        "haskell": 0.700721131897805,
+        "java": 0.5133643489821502,
+        "javascript": 0.7290322441583924,
+        "julia": 0.6311163364959643,
+        "lisp": 0.7961866714637245,
+        "lua": 0.6790848775668131,
+        "matlab": 0.6982033715444433,
+        "ocaml": 0.7053258923833305,
+        "perl": 0.6937682627759755,
+        "php": 0.6549280559230551,
+        "prolog": 0.8141681506688825,
+        "python": 0.5876647105608219,
+        "r": 0.6614394480213992,
+        "ruby": 0.5586995151798453,
+        "rust": 0.6640074455666025,
+        "scala": 0.0,
+        "scheme": 0.7502051434462043,
+        "typescript": 0.705505932958815
+      },
+      "scheme": {
+        "brainfuck": 0.990064987347596,
+        "c": 0.8357171272528641,
+        "chef": 0.8973521101084678,
+        "clojure": 0.5599263860133425,
+        "cpp": 0.7569632653135717,
+        "csharp": 0.7337693501613365,
+        "dart": 0.7388898707827658,
+        "fortran": 0.7913102572057499,
+        "go": 0.8072883475519923,
+        "haskell": 0.7336097398177337,
+        "java": 0.7377328952584441,
+        "javascript": 0.8343117610250561,
+        "julia": 0.6466052262376203,
+        "lisp": 0.4295207293752313,
+        "lua": 0.7100335001150219,
+        "matlab": 0.6297254811747566,
+        "ocaml": 0.7095825246225742,
+        "perl": 0.6482729181142173,
+        "php": 0.6377858650788966,
+        "prolog": 0.7610061536691972,
+        "python": 0.6416666666666667,
+        "r": 0.7495197333107325,
+        "ruby": 0.6375293030441653,
+        "rust": 0.7811926180737798,
+        "scala": 0.7502051434462043,
+        "scheme": 0.0,
+        "typescript": 0.7293323201503981
+      },
+      "typescript": {
+        "brainfuck": 0.9895762132604238,
+        "c": 0.6918646701869954,
+        "chef": 0.897044551773946,
+        "clojure": 0.7049140230254781,
+        "cpp": 0.6616774564687296,
+        "csharp": 0.5991221669874635,
+        "dart": 0.43524517937087004,
+        "fortran": 0.7312419828414517,
+        "go": 0.7109831517866232,
+        "haskell": 0.8192487187375228,
+        "java": 0.6047478389043794,
+        "javascript": 0.28888541810849533,
+        "julia": 0.6428146668857083,
+        "lisp": 0.7789082809026862,
+        "lua": 0.6813019765322397,
+        "matlab": 0.5300488173295191,
+        "ocaml": 0.7940506084133763,
+        "perl": 0.6371593898504724,
+        "php": 0.604484273058534,
+        "prolog": 0.7797389967012393,
+        "python": 0.7250738377931361,
+        "r": 0.639745407289267,
+        "ruby": 0.6242943496523923,
+        "rust": 0.632779510135267,
+        "scala": 0.705505932958815,
+        "scheme": 0.7293323201503981,
+        "typescript": 0.0
+      }
+    }
+  }
+}
