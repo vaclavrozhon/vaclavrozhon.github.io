@@ -36,48 +36,14 @@
 </script>
 {% endif %}
 
-<style>
-.author__avatar img {
-  position: relative;
-}
-
-.author__avatar::before {
-  content: "© Tomáš Princ, MFF UK";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  z-index: 10;
-}
-
-.author__avatar::after {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: rgba(0, 0, 0, 0.8);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-  z-index: 10;
-}
-
-.author__avatar:hover::before,
-.author__avatar:hover::after {
-  opacity: 1;
-}
-</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const avatar = document.querySelector('.author__avatar img');
+  if (avatar) {
+    avatar.setAttribute('title', '© Tomáš Princ, MFF UK');
+  }
+});
+</script>
 
 <!-- Google tag (gtag.js) -->
 <script
