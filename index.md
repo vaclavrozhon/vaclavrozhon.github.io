@@ -23,6 +23,14 @@ I greatly enjoy creating algorithmic videos together with the [amazing Polylog t
 ![survey](/assets/images/astar.webp "Thumbnail of one of our videos")
 ](/polylog/)
 
+## Bayes, bits & brains
+
+I wrote a website about information theory behind machine learning. Check it out!
+
+[
+![Bayes, bits & brains](/assets/images/bbb_thumb.png "Bayes, bits & brains")
+](https://bayesbitsbrains.github.io/)
+
 ## News
 
 _March 2025:_ Check out our [latest Polylog video](https://www.youtube.com/watch?v=Otvcbw6k4eo&t=1s) about zero-knowledge proofs!
@@ -31,7 +39,4 @@ _January 2025:_ I started working at Charles University. [A short interview in C
 
 _November 2024:_ Our paper about Dijkstra's algorithm has won the best paper award at FOCS 2024 and was featured by the excellent [Quanta Magazine](https://www.quantamagazine.org/computer-scientists-establish-the-best-way-to-traverse-a-graph-20241025/) and [Wired](https://www.wired.com/story/scientists-establish-the-best-algorithm-for-traversing-a-map/)!
 
-<small>Credits: photo by Tomáš Princ, MFF UK</small>
-<a href='https://clustrmaps.com/site/1bmo6'  title='Visit tracker'>
-<img width="3px" src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=n&d=9aXYg_RgDaFX-gpCSUfu2XgbYVYCPqAAv6pkRFMlbTU'/>
-</a>
+<img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=n&d=9aXYg_RgDaFX-gpCSUfu2XgbYVYCPqAAv6pkRFMlbTU' style="display:none"/>
