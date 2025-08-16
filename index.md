@@ -33,6 +33,8 @@ I wrote a website about information theory behind machine learning. Check it out
 
 ## News
 
+_August 2025:_ Check out our [latest Polylog video](https://www.youtube.com/watch?v=Y95a-8oNqps) about radix sort! More about it [here](polylog/radixsort). 
+
 _March 2025:_ Check out our [latest Polylog video](https://www.youtube.com/watch?v=Otvcbw6k4eo&t=1s) about zero-knowledge proofs!
 
 _January 2025:_ I started working at Charles University. [A short interview in Czech](https://www.matfyz.cz/clanky/vaclav-rozhon-veda-je-socialni-proces).
