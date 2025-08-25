@@ -8,6 +8,10 @@ header:
 ---
 
 
+# Fall 2025
+
+[Seminar in Probability and Algorithms](teaching/2025/probability-algorithms-seminar.md)
+
 # Spring 2025
 
 [Probabilistic lenses](teaching/2025/lenses.md)
