@@ -15,6 +15,8 @@ katex: true
 
 # Bookkeeping
 
+**Instructors:** Václav Rozhoň, [Jan Hladký](https://www.cs.cas.cz/~hladky/)
+
 TBD
 
 # Topics
