@@ -11,12 +11,14 @@ This seminar focuses on developing skills in algorithmic problem solving. We wil
 
 # Bookkeeping
 
-**Instructor:** Michal Koucký, Václav Rozhoň, Pavel Veselý
+**Instructors:** Michal Koucký, Václav Rozhoň, Pavel Veselý
 
 **Time:** Monday 15:40, on the [3rd floor corridor](https://harrypotter.fandom.com/wiki/Third-floor_corridor)
 
-__important: We start only the second week of semester, i.e., October 6th.__
 
-# Topics
+
+__IMPORTANT!!! We start only the second week of semester, i.e., October 6th.__
+
+# Topics / links
 
 TBD
