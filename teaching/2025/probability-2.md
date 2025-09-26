@@ -13,6 +13,8 @@ Advanced topics in probability theory.
 
 **Instructors:** Václav Rozhoň, Robert Šámal
 
+**Time:** Wednesday 14:00 in S3
+
 **Previous run:** [https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/)
 
 # Topics
