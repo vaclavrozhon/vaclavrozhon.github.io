@@ -16,8 +16,6 @@ Check out the [previous run](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/).
 
 **Time:** Wednesday 14:00 in S3
 
-**Previous run:** 
-
 # Topics
 
 TBD
