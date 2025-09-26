@@ -25,9 +25,12 @@ const int DEFAULT_ITERATIONS = 3;
 class StreamingENWikiPageRank {
 public:
     std::unordered_map<int, int> wiki_id_to_our_id;
+    std::vector<int> our_id_to_wiki_id; // Reverse mapping for O(1) lookups
     std::vector<int> outdegree;
+    std::vector<int> indegree;
     std::vector<double> probability;
     std::vector<double> new_probability;
+    std::vector<double> iteration_1_probability; // Store probabilities after iteration 1
     std::unordered_set<int> needed_wiki_ids; // IDs we need titles for
     std::unordered_map<int, std::string> wiki_id_to_title;
     int N; // Number of unique nodes
@@ -123,9 +126,12 @@ public:
 
         // Build compact mapping: wiki_id -> our_id (0 to N-1)
         std::cout << "   🔗 Creating compact ID mapping..." << std::endl;
+        our_id_to_wiki_id.resize(N); // Initialize reverse mapping vector
         int our_id = 0;
         for (int wiki_id : unique_ids) {
-            wiki_id_to_our_id[wiki_id] = our_id++;
+            wiki_id_to_our_id[wiki_id] = our_id;
+            our_id_to_wiki_id[our_id] = wiki_id; // Build reverse mapping
+            our_id++;
         }
 
         // Memory calculation
@@ -273,7 +279,7 @@ public:
 
         // Calculate in-degree distribution by streaming through the CSV
         std::cout << "   🔍 Computing in-degree distribution..." << std::endl;
-        std::vector<int> indegree(N, 0);
+        indegree.resize(N, 0);
         std::ifstream file(csv_filename);
         if (!file.is_open()) {
             throw std::runtime_error("Cannot open file: " + csv_filename);
@@ -374,7 +380,7 @@ public:
         std::cout << "💾 Current year saved to public/current_year.txt: " << year << std::endl;
     }
 
-    void runPageRank(double alpha = 0.9, int iterations = DEFAULT_ITERATIONS, int year = DEFAULT_YEAR) {
+    void runPageRank(double alpha = 0.9, int iterations = DEFAULT_ITERATIONS, int year = DEFAULT_YEAR, bool update_current_year = false) {
         if (N == 0) {
             std::cerr << "❌ No nodes in graph. Cannot run PageRank." << std::endl;
             return;
@@ -421,12 +427,22 @@ public:
                       << "L1Δ=" << std::scientific << std::setprecision(2) << l1_change << std::endl;
 
             saveIteration(iter, probability, year);
+
+            // Store probabilities after iteration 1 for change analysis
+            if (iter == 1) {
+                iteration_1_probability = probability;
+                std::cout << "   💾 Stored iteration 1 probabilities for change analysis" << std::endl;
+            }
+
             std::cout << "   ✅ Iteration " << iter << " completed" << std::endl;
         }
 
         std::cout << "✅ PageRank computation complete!" << std::endl;
 
-        // Final pass to lookup titles for all tracked IDs
+        // Calculate and save biggest PageRank changes (this adds more IDs to needed_wiki_ids)
+        saveBiggestChanges(year, iterations);
+
+        // Final pass to lookup titles for all tracked IDs (including new ones from biggest changes)
         lookupTitlesForNeededIds();
 
         // Re-save all iterations with titles
@@ -434,6 +450,9 @@ public:
 
         // Save metadata including year
         saveMetadata(year, iterations);
+
+        // Save titles to separate file for UI to combine with scores
+        saveTitles(year);
 
         showFinalResults(25);
     }
@@ -536,7 +555,6 @@ private:
                     wiki_id_to_title.find(from_id) == wiki_id_to_title.end()) {
                     wiki_id_to_title[from_id] = fields[1]; // page_title_from
                     found_count++;
-                    std::cout << "     🔍 Found title for ID " << from_id << ": " << fields[1].substr(0, 50) << std::endl;
                 }
 
                 // Check if we need the to_id title
@@ -544,7 +562,6 @@ private:
                     wiki_id_to_title.find(to_id) == wiki_id_to_title.end()) {
                     wiki_id_to_title[to_id] = fields[3]; // page_title_to
                     found_count++;
-                    std::cout << "     🔍 Found title for ID " << to_id << ": " << fields[3].substr(0, 50) << std::endl;
                 }
 
                 processed++;
@@ -579,7 +596,6 @@ private:
             }
             check_file.close();
 
-            std::cout << "   📝 Re-saving iteration " << iter << " with titles..." << std::endl;
             saveIterationWithTitles(iter, year);
         }
         std::cout << "✅ All iterations re-saved with titles" << std::endl;
@@ -599,71 +615,190 @@ private:
     }
 
     void saveIterationWithTitles(int iteration, int year) {
-        // Read the existing JSON file to get the results
-        std::ostringstream old_filename;
-        old_filename << getYearDirectory(year) << "pagerank_iter_" << std::setfill('0') << std::setw(2) << iteration << ".json";
+        // DISABLE this function - it overwrites correct scores with wrong ones!
+        // The original saveIteration() calls during the algorithm already save the correct scores
+        // This function was trying to add titles but accidentally overwrites scores with final iteration values
+        return;
+    }
 
-        // For simplicity, we'll recreate based on current probability vector if iteration > 0
-        // or use uniform distribution for iteration 0
-        std::vector<double> ranks_to_use;
-        if (iteration == 0) {
-            ranks_to_use.assign(N, 1.0 / N);
-        } else {
-            ranks_to_use = probability; // Use current state (this is approximate for old iterations)
-        }
-
+    void saveTitles(int year) {
         std::ostringstream filename;
-        filename << getYearDirectory(year) << "pagerank_iter_" << std::setfill('0') << std::setw(2) << iteration << ".json";
+        filename << getYearDirectory(year) << "titles.json";
 
         std::ofstream file(filename.str());
         file << "{\n";
-        file << "  \"iteration\": " << iteration << ",\n";
-        file << "  \"l1_distance\": " << l1_distances[iteration] << ",\n";
-        file << "  \"dataset_stats\": {\n";
-        file << "    \"total_articles\": " << N << ",\n";
-        file << "    \"total_edges\": " << total_edges << "\n";
-        file << "  },\n";
-        file << "  \"top_results\": [\n";
+        bool first = true;
 
-        std::vector<int> top_indices = getTopK(100, ranks_to_use);
-        for (int i = 0; i < top_indices.size(); i++) {
-            int our_idx = top_indices[i];
-            int wiki_id = getWikiIdFromOurId(our_idx);
-            std::string title = "Unknown";
-            auto title_it = wiki_id_to_title.find(wiki_id);
-            if (title_it != wiki_id_to_title.end()) {
-                title = title_it->second;
-                std::replace(title.begin(), title.end(), '_', ' ');
-            }
+        for (const auto& pair : wiki_id_to_title) {
+            if (!first) file << ",\n";
+            first = false;
+
+            std::string title = pair.second;
+            std::replace(title.begin(), title.end(), '_', ' ');
+
+            file << "  \"" << pair.first << "\": \"" << escapeJSON(title) << "\"";
+        }
+
+        file << "\n}\n";
+        file.close();
+        std::cout << "💾 Titles saved to " << getYearDirectory(year) << "titles.json (" << wiki_id_to_title.size() << " titles)" << std::endl;
+    }
+
+    void saveBiggestChanges(int year, int iterations) {
+        if (iteration_1_probability.empty()) {
+            std::cout << "⚠️  No iteration 1 data available for change analysis" << std::endl;
+            return;
+        }
+
+        std::cout << "📊 Analyzing biggest PageRank changes between iteration 1 and " << iterations << "..." << std::endl;
+
+        // Calculate ratios for all nodes
+        std::vector<std::pair<int, double>> ratios; // pair of (our_id, ratio)
+        for (int i = 0; i < N; i++) {
+            double iter1_score = iteration_1_probability[i];
+            double final_score = probability[i];
+
+            // Avoid division by zero - use a very small minimum value
+            double ratio = final_score / std::max(iter1_score, 1e-15);
+            ratios.push_back({i, ratio});
+        }
+
+        // Sort by ratio (descending for increases - highest multipliers first)
+        std::partial_sort(ratios.begin(), ratios.begin() + std::min(25, N), ratios.end(),
+                         [](const std::pair<int, double>& a, const std::pair<int, double>& b) {
+                             return a.second > b.second; // Highest ratios first
+                         });
+
+        // Sort by ratio (ascending for decreases - lowest ratios first)
+        std::vector<std::pair<int, double>> decreases = ratios;
+        std::partial_sort(decreases.begin(), decreases.begin() + std::min(25, N), decreases.end(),
+                         [](const std::pair<int, double>& a, const std::pair<int, double>& b) {
+                             return a.second < b.second; // Lowest ratios first
+                         });
+
+        // Calculate indegree/pagerank ratios for all nodes
+        std::vector<std::pair<int, double>> indegree_ratios; // pair of (our_id, indegree/pagerank)
+        for (int i = 0; i < N; i++) {
+            double final_score = probability[i];
+            int node_indegree = indegree[i];
+
+            // Avoid division by zero - use a very small minimum value
+            double indegree_ratio = node_indegree / std::max(final_score, 1e-15);
+            indegree_ratios.push_back({i, indegree_ratio});
+        }
+
+        // Sort by indegree/pagerank ratio (descending - high indegree, low pagerank first)
+        std::partial_sort(indegree_ratios.begin(), indegree_ratios.begin() + std::min(25, N), indegree_ratios.end(),
+                         [](const std::pair<int, double>& a, const std::pair<int, double>& b) {
+                             return a.second > b.second; // Highest indegree/pagerank ratios first
+                         });
+
+        // Sort by indegree/pagerank ratio (ascending - low indegree, high pagerank first)
+        std::vector<std::pair<int, double>> low_indegree_ratios = indegree_ratios;
+        std::sort(low_indegree_ratios.begin(), low_indegree_ratios.end(),
+                  [](const std::pair<int, double>& a, const std::pair<int, double>& b) {
+                      return a.second < b.second; // Lowest indegree/pagerank ratios first
+                  });
+
+        // Save to JSON
+        std::ostringstream filename;
+        filename << getYearDirectory(year) << "biggest_changes.json";
+        std::ofstream file(filename.str());
+        file << "{\n";
+        file << "  \"analysis\": {\n";
+        file << "    \"from_iteration\": 1,\n";
+        file << "    \"to_iteration\": " << iterations << ",\n";
+        file << "    \"total_nodes\": " << N << "\n";
+        file << "  },\n";
+
+        // Top 25 increases (highest ratios)
+        file << "  \"biggest_increases\": [\n";
+        for (int i = 0; i < std::min(25, N); i++) {
+            int our_id = ratios[i].first;
+            int wiki_id = getWikiIdFromOurId(our_id);
+            double ratio = ratios[i].second;
+            double iter1_score = iteration_1_probability[our_id];
+            double final_score = probability[our_id];
+            double change = final_score - iter1_score;
+
+            needed_wiki_ids.insert(wiki_id); // Track this ID for title lookup
 
             if (i > 0) file << ",\n";
             file << "    {\"rank\": " << (i + 1) << ", \"wiki_id\": " << wiki_id
-                 << ", \"title\": \"" << escapeJSON(title) << "\""
-                 << ", \"score\": " << std::scientific << std::setprecision(6) << ranks_to_use[our_idx] << "}";
+                 << ", \"ratio\": " << std::scientific << std::setprecision(6) << ratio
+                 << ", \"change\": " << std::scientific << std::setprecision(6) << change
+                 << ", \"iter1_score\": " << std::scientific << std::setprecision(6) << iter1_score
+                 << ", \"final_score\": " << std::scientific << std::setprecision(6) << final_score << "}";
         }
-
         file << "\n  ],\n";
-        file << "  \"bottom_results\": [\n";
 
-        std::vector<int> bottom_indices = getBottomK(100, ranks_to_use);
-        for (int i = 0; i < bottom_indices.size(); i++) {
-            int our_idx = bottom_indices[i];
-            int wiki_id = getWikiIdFromOurId(our_idx);
-            std::string title = "Unknown";
-            auto title_it = wiki_id_to_title.find(wiki_id);
-            if (title_it != wiki_id_to_title.end()) {
-                title = title_it->second;
-                std::replace(title.begin(), title.end(), '_', ' ');
-            }
+        // Top 25 decreases (lowest ratios)
+        file << "  \"biggest_decreases\": [\n";
+        for (int i = 0; i < std::min(25, N); i++) {
+            int our_id = decreases[i].first;
+            int wiki_id = getWikiIdFromOurId(our_id);
+            double ratio = decreases[i].second;
+            double iter1_score = iteration_1_probability[our_id];
+            double final_score = probability[our_id];
+            double change = final_score - iter1_score;
+
+            needed_wiki_ids.insert(wiki_id); // Track this ID for title lookup
 
             if (i > 0) file << ",\n";
-            file << "    {\"rank\": " << (N - bottom_indices.size() + i + 1) << ", \"wiki_id\": " << wiki_id
-                 << ", \"title\": \"" << escapeJSON(title) << "\""
-                 << ", \"score\": " << std::scientific << std::setprecision(6) << ranks_to_use[our_idx] << "}";
+            file << "    {\"rank\": " << (i + 1) << ", \"wiki_id\": " << wiki_id
+                 << ", \"ratio\": " << std::scientific << std::setprecision(6) << ratio
+                 << ", \"change\": " << std::scientific << std::setprecision(6) << change
+                 << ", \"iter1_score\": " << std::scientific << std::setprecision(6) << iter1_score
+                 << ", \"final_score\": " << std::scientific << std::setprecision(6) << final_score << "}";
         }
+        file << "\n  ],\n";
 
+        // Top 25 underperformers (high indegree, low pagerank)
+        file << "  \"underperformers\": [\n";
+        for (int i = 0; i < std::min(25, N); i++) {
+            int our_id = indegree_ratios[i].first;
+            int wiki_id = getWikiIdFromOurId(our_id);
+            double indegree_ratio = indegree_ratios[i].second;
+            int node_indegree = indegree[our_id];
+            double final_score = probability[our_id];
+
+            needed_wiki_ids.insert(wiki_id); // Track this ID for title lookup
+
+            if (i > 0) file << ",\n";
+            file << "    {\"rank\": " << (i + 1) << ", \"wiki_id\": " << wiki_id
+                 << ", \"indegree_ratio\": " << std::scientific << std::setprecision(6) << indegree_ratio
+                 << ", \"indegree\": " << node_indegree
+                 << ", \"final_score\": " << std::scientific << std::setprecision(6) << final_score << "}";
+        }
+        file << "\n  ],\n";
+
+        // Top 25 overperformers (low indegree, high pagerank) - only for nodes with indegree >= 1
+        file << "  \"overperformers\": [\n";
+        int overperformer_count = 0;
+        for (int i = 0; i < N && overperformer_count < 25; i++) {
+            int our_id = low_indegree_ratios[i].first;
+            int node_indegree = indegree[our_id];
+
+            // Only include nodes with indegree >= 1
+            if (node_indegree >= 1) {
+                int wiki_id = getWikiIdFromOurId(our_id);
+                double indegree_ratio = low_indegree_ratios[i].second;
+                double final_score = probability[our_id];
+
+                needed_wiki_ids.insert(wiki_id); // Track this ID for title lookup
+
+                if (overperformer_count > 0) file << ",\n";
+                file << "    {\"rank\": " << (overperformer_count + 1) << ", \"wiki_id\": " << wiki_id
+                     << ", \"indegree_ratio\": " << std::scientific << std::setprecision(6) << indegree_ratio
+                     << ", \"indegree\": " << node_indegree
+                     << ", \"final_score\": " << std::scientific << std::setprecision(6) << final_score << "}";
+                overperformer_count++;
+            }
+        }
         file << "\n  ]\n}\n";
         file.close();
+
+        std::cout << "💾 Biggest changes saved to " << getYearDirectory(year) << "biggest_changes.json" << std::endl;
     }
 
 public:
@@ -676,8 +811,17 @@ public:
         std::iota(indices.begin(), indices.end(), 0);
 
         std::partial_sort(indices.begin(), indices.begin() + std::min(k, N),
-                         indices.end(), [&rank_values](int a, int b) {
-            return rank_values[a] > rank_values[b];
+                         indices.end(), [&rank_values, this](int a, int b) {
+            // Primary sort: by rank value (descending)
+            if (rank_values[a] != rank_values[b]) {
+                return rank_values[a] > rank_values[b];
+            }
+            // Secondary sort: by wiki_id (ascending) when ranks are equal
+            // Note: Titles aren't loaded yet during sorting, so we use wiki_id for deterministic results
+            int wiki_id_a = getWikiIdFromOurId(a);
+            int wiki_id_b = getWikiIdFromOurId(b);
+
+            return wiki_id_a < wiki_id_b;
         });
 
         indices.resize(std::min(k, N));
@@ -693,8 +837,17 @@ public:
         std::iota(indices.begin(), indices.end(), 0);
 
         std::partial_sort(indices.begin(), indices.begin() + std::min(k, N),
-                         indices.end(), [&rank_values](int a, int b) {
-            return rank_values[a] < rank_values[b];  // Reverse comparison for bottom K
+                         indices.end(), [&rank_values, this](int a, int b) {
+            // Primary sort: by rank value (ascending for bottom K)
+            if (rank_values[a] != rank_values[b]) {
+                return rank_values[a] < rank_values[b];
+            }
+            // Secondary sort: by wiki_id (descending for bottom K to get different results from top K)
+            // Note: Titles aren't loaded yet during sorting, so we use wiki_id for deterministic results
+            int wiki_id_a = getWikiIdFromOurId(a);
+            int wiki_id_b = getWikiIdFromOurId(b);
+
+            return wiki_id_a > wiki_id_b;  // Descending to get different results from top K
         });
 
         indices.resize(std::min(k, N));
@@ -750,10 +903,8 @@ public:
 
 private:
     int getWikiIdFromOurId(int our_id) {
-        for (const auto& pair : wiki_id_to_our_id) {
-            if (pair.second == our_id) {
-                return pair.first;
-            }
+        if (our_id >= 0 && our_id < N) {
+            return our_id_to_wiki_id[our_id]; // O(1) lookup
         }
         return -1; // Should never happen
     }
@@ -775,25 +926,30 @@ private:
 };
 
 int main(int argc, char* argv[]) {
-    int YEAR = DEFAULT_YEAR;
+    double ALPHA = 0.9;
     int ITERATIONS = DEFAULT_ITERATIONS;
+    int YEAR = DEFAULT_YEAR;
 
     if (argc > 1) {
-        YEAR = std::atoi(argv[1]);
+        ALPHA = std::atof(argv[1]);
     }
     if (argc > 2) {
         ITERATIONS = std::atoi(argv[2]);
+    }
+    if (argc > 3) {
+        YEAR = std::atoi(argv[3]);
     }
 
     const std::string ZENODO_BASE = "https://zenodo.org/records/2539424/files";
     const std::string FNAME = "enwiki.wikilink_graph." + std::to_string(YEAR) + "-03-01.csv.gz";
     const std::string URL = ZENODO_BASE + "/" + FNAME;
-    const double ALPHA = 0.9;
 
     try {
         std::cout << "🌐 WikiLinkGraphs English Wikipedia " << YEAR << " PageRank Demo (C++)" << std::endl;
         std::cout << "📥 Dataset: " << FNAME << std::endl;
-        std::cout << "💡 Usage: ./enwiki_pagerank [year] [iterations] (defaults: " << DEFAULT_YEAR << ", " << DEFAULT_ITERATIONS << ")" << std::endl;
+        std::cout << "💡 Usage: ./enwiki_pagerank [alpha] [iterations] [year] [--update-year]" << std::endl;
+        std::cout << "   Defaults: alpha=0.9, iterations=" << DEFAULT_ITERATIONS << ", year=" << DEFAULT_YEAR << std::endl;
+        std::cout << "   --update-year: Update public/current_year.txt (default: no)" << std::endl;
 
         auto start = std::chrono::high_resolution_clock::now();
 
@@ -826,7 +982,9 @@ int main(int argc, char* argv[]) {
 
         // Setup year-specific directory and save degree distributions
         pagerank.ensureYearDirectoryExists(YEAR);
-        pagerank.saveCurrentYear(YEAR);
+        if (argc > 4 && std::string(argv[4]) == "--update-year") {
+            pagerank.saveCurrentYear(YEAR);
+        }
         pagerank.saveDegreeDistributions(YEAR);
 
         // Run PageRank

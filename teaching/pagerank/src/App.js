@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import {
+  BarChart, Bar, ScatterChart, Scatter, LineChart, Line,
+  XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer
+} from 'recharts';
 
 const App = () => {
   const [iterationData, setIterationData] = useState({});
@@ -9,16 +14,76 @@ const App = () => {
   const [showBottom, setShowBottom] = useState(false);
   const [degreeData, setDegreeData] = useState(null);
   const [metadata, setMetadata] = useState(null);
+  const [currentYear, setCurrentYear] = useState(null);
+  const [titles, setTitles] = useState({});
+  const [titlesLoaded, setTitlesLoaded] = useState(false);
+  const [biggestChanges, setBiggestChanges] = useState(null);
+  const [inDegreeLogX, setInDegreeLogX] = useState(false);
+  const [inDegreeLogY, setInDegreeLogY] = useState(false);
+  const [outDegreeLogX, setOutDegreeLogX] = useState(false);
+  const [outDegreeLogY, setOutDegreeLogY] = useState(false);
+  const [outDegreeFilterGte2, setOutDegreeFilterGte2] = useState(false);
+  const [convergenceLogY, setConvergenceLogY] = useState(false);
 
   useEffect(() => {
-    loadAllIterations();
-    loadDegreeDistribution();
-    loadMetadata();
+    loadCurrentYear();
   }, []);
+
+  useEffect(() => {
+    if (currentYear) {
+      loadTitles();
+      loadDegreeDistribution();
+      loadMetadata();
+      loadBiggestChanges();
+    }
+  }, [currentYear]);
+
+  useEffect(() => {
+    if (currentYear && titlesLoaded) {
+      loadAllIterations();
+    }
+  }, [currentYear, titlesLoaded]);
+
+  const loadCurrentYear = async () => {
+    try {
+      const response = await fetch('/current_year.txt');
+      if (response.ok) {
+        const year = await response.text();
+        const yearNumber = parseInt(year.trim());
+        setCurrentYear(yearNumber);
+        console.log('✓ Current year loaded:', yearNumber);
+      } else {
+        console.log('✗ Current year file not found, defaulting to 2003');
+        setCurrentYear(2003);
+      }
+    } catch (err) {
+      console.error('Error loading current year:', err);
+      setCurrentYear(2003); // fallback to 2003
+    }
+  };
+
+  const loadTitles = async () => {
+    try {
+      const response = await fetch(`/${currentYear}/titles.json`);
+      if (response.ok) {
+        const titlesData = await response.json();
+        setTitles(titlesData);
+        console.log('✓ Titles loaded:', Object.keys(titlesData).length, 'titles');
+      } else {
+        console.log('✗ Titles file not found');
+        setTitles({});
+      }
+    } catch (err) {
+      console.error('Error loading titles:', err);
+      setTitles({});
+    } finally {
+      setTitlesLoaded(true);
+    }
+  };
 
   const loadDegreeDistribution = async () => {
     try {
-      const response = await fetch('/degree_distributions.json');
+      const response = await fetch(`/${currentYear}/degree_distributions.json`);
       if (response.ok) {
         const data = await response.json();
         setDegreeData(data);
@@ -33,7 +98,7 @@ const App = () => {
 
   const loadMetadata = async () => {
     try {
-      const response = await fetch('/metadata.json');
+      const response = await fetch(`/${currentYear}/metadata.json`);
       if (response.ok) {
         const data = await response.json();
         setMetadata(data);
@@ -44,6 +109,51 @@ const App = () => {
     } catch (err) {
       console.error('Error loading metadata:', err);
     }
+  };
+
+  const loadBiggestChanges = async () => {
+    try {
+      const response = await fetch(`/${currentYear}/biggest_changes.json`);
+      if (response.ok) {
+        const data = await response.json();
+        setBiggestChanges(data);
+        console.log('✓ Biggest changes loaded:', data);
+      } else {
+        console.log('✗ Biggest changes file not found');
+      }
+    } catch (err) {
+      console.error('Error loading biggest changes:', err);
+    }
+  };
+
+  const enrichWithTitles = (data) => {
+    const enrichedData = { ...data };
+
+    // Enrich top_results if they exist
+    if (enrichedData.top_results) {
+      enrichedData.top_results = enrichedData.top_results.map(item => ({
+        ...item,
+        title: titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`
+      }));
+    }
+
+    // Enrich bottom_results if they exist
+    if (enrichedData.bottom_results) {
+      enrichedData.bottom_results = enrichedData.bottom_results.map(item => ({
+        ...item,
+        title: titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`
+      }));
+    }
+
+    // Handle old format (results) for backward compatibility
+    if (enrichedData.results) {
+      enrichedData.results = enrichedData.results.map(item => ({
+        ...item,
+        title: titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`
+      }));
+    }
+
+    return enrichedData;
   };
 
   const loadAllIterations = async () => {
@@ -59,7 +169,7 @@ const App = () => {
       // Try to load iterations 0-20 (adjust as needed)
       for (let i = 0; i <= 20; i++) {
         try {
-          const filename = `/pagerank_iter_${i.toString().padStart(2, '0')}.json`;
+          const filename = `/${currentYear}/pagerank_iter_${i.toString().padStart(2, '0')}.json`;
           console.log(`Attempting to fetch: ${filename}`);
           const response = await fetch(filename);
           console.log(`Response for ${filename}: status=${response.status}, ok=${response.ok}`);
@@ -84,7 +194,9 @@ const App = () => {
               // Handle both old format (results) and new format (top_results/bottom_results)
               if (data.top_results || data.results) {
                 console.log(`✓ Valid data found for iteration ${i}`);
-                iterations[i] = data;
+                // Enrich data with titles
+                const enrichedData = enrichWithTitles(data);
+                iterations[i] = enrichedData;
                 available.push(i);
               } else {
                 console.log(`✗ No valid results in iteration ${i} data`);
@@ -179,7 +291,7 @@ const App = () => {
     <div className="app">
       <div className="header">
         <h1>🔍 PageRank Viewer</h1>
-        <p>English Wikipedia ({metadata?.year || '2003'}) PageRank Visualization</p>
+        <p>English Wikipedia ({currentYear || metadata?.year || '2003'}) PageRank Visualization</p>
         {metadata && (
           <p style={{fontSize: '0.9em', opacity: 0.8}}>
             Dataset: {metadata.dataset} • {metadata.total_nodes.toLocaleString()} nodes • {metadata.total_edges.toLocaleString()} edges
@@ -222,177 +334,250 @@ const App = () => {
               </div>
             </div>
 
+            {/* Chart Options */}
+            <div className="chart-controls" style={{margin: '1rem 0', padding: '1rem', background: 'rgba(255,255,255,0.1)', borderRadius: '8px'}}>
+              <h4>Chart Options</h4>
+              <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem'}}>
+                <div>
+                  <h5 style={{color: '#667eea', margin: '0 0 0.5rem 0'}}>In-Degree Chart</h5>
+                  <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white', marginBottom: '0.5rem'}}>
+                    <input
+                      type="checkbox"
+                      checked={inDegreeLogX}
+                      onChange={(e) => setInDegreeLogX(e.target.checked)}
+                    />
+                    X-axis (degree) log scale
+                  </label>
+                  <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white'}}>
+                    <input
+                      type="checkbox"
+                      checked={inDegreeLogY}
+                      onChange={(e) => setInDegreeLogY(e.target.checked)}
+                    />
+                    Y-axis (count) log scale
+                  </label>
+                </div>
+                <div>
+                  <h5 style={{color: '#764ba2', margin: '0 0 0.5rem 0'}}>Out-Degree Chart</h5>
+                  <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white', marginBottom: '0.5rem'}}>
+                    <input
+                      type="checkbox"
+                      checked={outDegreeLogX}
+                      onChange={(e) => setOutDegreeLogX(e.target.checked)}
+                    />
+                    X-axis (degree) log scale
+                  </label>
+                  <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white', marginBottom: '0.5rem'}}>
+                    <input
+                      type="checkbox"
+                      checked={outDegreeLogY}
+                      onChange={(e) => setOutDegreeLogY(e.target.checked)}
+                    />
+                    Y-axis (count) log scale
+                  </label>
+                  <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white'}}>
+                    <input
+                      type="checkbox"
+                      checked={outDegreeFilterGte2}
+                      onChange={(e) => setOutDegreeFilterGte2(e.target.checked)}
+                    />
+                    Show only degree ≥ 2
+                  </label>
+                </div>
+                <div>
+                  <h5 style={{color: '#10b981', margin: '0 0 0.5rem 0'}}>Convergence Chart</h5>
+                  <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white'}}>
+                    <input
+                      type="checkbox"
+                      checked={convergenceLogY}
+                      onChange={(e) => setConvergenceLogY(e.target.checked)}
+                    />
+                    Y-axis (L1 distance) log scale
+                  </label>
+                </div>
+              </div>
+            </div>
+
             <div className="degree-charts">
               <div className="degree-chart">
-                <h4>📈 In-Degree Distribution</h4>
-                <svg width="500" height="300" className="chart">
-                  <g>
-                    {/* Plot bars for degrees up to 50 */}
-                    {(() => {
-                      const data = degreeData?.in_degree_distribution || [];
-                      const maxDegree = Math.min(50, Math.max(...data.map(d => d.degree), 0));
-                      const maxCount = Math.max(...data.map(d => d.count), 1);
+                <h4>📈 In-Degree Distribution {inDegreeLogX && inDegreeLogY ? '(Log-Log)' : inDegreeLogX ? '(Log-X)' : inDegreeLogY ? '(Log-Y)' : ''}</h4>
+                {(() => {
+                  const data = degreeData?.in_degree_distribution || [];
 
-                      return data.filter(item => item.degree <= maxDegree).map((item) => {
-                        const x = 60 + (item.degree * 380) / maxDegree;
-                        const barHeight = Math.max(1, (item.count / maxCount) * 200);
-                        const y = 240 - barHeight;
+                  // Filter data based on log scale requirements
+                  let filteredData = data;
+                  if (inDegreeLogX || inDegreeLogY) {
+                    filteredData = data.filter(item => item.degree > 0 && item.count > 0);
+                  } else {
+                    filteredData = data.filter(item => item.degree <= 50);
+                  }
 
-                        return (
-                          <g key={`in-${item.degree}`}>
-                            <rect
-                              x={x}
-                              y={y}
-                              width={Math.max(2, 380 / maxDegree * 0.8)}
-                              height={barHeight}
-                              fill="#667eea"
-                              opacity="0.8"
-                            />
-                          </g>
-                        );
-                      });
-                    })()}
+                  if (filteredData.length === 0) {
+                    return <div style={{color: 'white', padding: '20px'}}>No data to display</div>;
+                  }
 
-                    {/* X-axis */}
-                    <line x1="50" y1="240" x2="450" y2="240" stroke="#ffffff" strokeWidth="1" opacity="0.5" />
-                    {/* Y-axis */}
-                    <line x1="50" y1="40" x2="50" y2="240" stroke="#ffffff" strokeWidth="1" opacity="0.5" />
+                  const isScatter = inDegreeLogX || inDegreeLogY;
+                  const chartData = filteredData.map(item => ({
+                    degree: item.degree,
+                    count: item.count
+                  }));
 
-                    {/* X-axis labels */}
-                    {(() => {
-                      const data = degreeData?.in_degree_distribution || [];
-                      const maxDegree = Math.min(50, Math.max(...data.map(d => d.degree), 0));
-                      const stepSize = Math.max(1, Math.ceil(maxDegree / 10));
-                      const labels = [];
-                      for (let i = 0; i <= maxDegree; i += stepSize) {
-                        labels.push(i);
-                      }
-                      if (labels[labels.length - 1] !== maxDegree) {
-                        labels.push(maxDegree);
-                      }
-
-                      return labels.map(degree => {
-                        const x = 60 + (degree * 380) / maxDegree;
-                        return (
-                          <g key={`x-label-in-${degree}`}>
-                            <line x1={x} y1="240" x2={x} y2="245" stroke="#ffffff" strokeWidth="1" opacity="0.5" />
-                            <text x={x} y="260" textAnchor="middle" fill="white" fontSize="10">
-                              {degree}
-                            </text>
-                          </g>
-                        );
-                      });
-                    })()}
-
-                    {/* Y-axis labels */}
-                    {(() => {
-                      const data = degreeData?.in_degree_distribution || [];
-                      const maxCount = Math.max(...data.map(d => d.count), 1);
-                      const steps = [0, Math.floor(maxCount * 0.25), Math.floor(maxCount * 0.5), Math.floor(maxCount * 0.75), maxCount];
-                      return steps.map(count => {
-                        const y = 240 - (count / maxCount) * 200;
-                        return (
-                          <g key={`y-label-in-${count}`}>
-                            <line x1="45" y1={y} x2="50" y2={y} stroke="#ffffff" strokeWidth="1" opacity="0.5" />
-                            <text x="40" y={y + 3} textAnchor="end" fill="white" fontSize="9">
-                              {count.toLocaleString()}
-                            </text>
-                          </g>
-                        );
-                      });
-                    })()}
-
-                    {/* Axis titles */}
-                    <text x="250" y="285" textAnchor="middle" fill="white" fontSize="12">In-Degree</text>
-                    <text x="20" y="140" textAnchor="middle" fill="white" fontSize="12" transform="rotate(-90, 20, 140)">Count</text>
-                  </g>
-                </svg>
+                  return (
+                    <ResponsiveContainer width={500} height={300}>
+                      {isScatter ? (
+                        <ScatterChart data={chartData} margin={{ top: 20, right: 20, bottom: 40, left: 60 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                          <XAxis
+                            dataKey="degree"
+                            scale={inDegreeLogX ? "log" : "linear"}
+                            domain={inDegreeLogX ? ['dataMin', 'dataMax'] : ['auto', 'auto']}
+                            type="number"
+                            label={{
+                              value: `In-Degree${inDegreeLogX ? ' (log)' : ''}`,
+                              position: 'insideBottom',
+                              offset: -10,
+                              fill: 'white'
+                            }}
+                            stroke="white"
+                            tick={{ fill: 'white' }}
+                          />
+                          <YAxis
+                            dataKey="count"
+                            scale={inDegreeLogY ? "log" : "linear"}
+                            domain={inDegreeLogY ? ['dataMin', 'dataMax'] : ['auto', 'auto']}
+                            type="number"
+                            label={{
+                              value: `Count${inDegreeLogY ? ' (log)' : ''}`,
+                              angle: -90,
+                              position: 'insideLeft',
+                              fill: 'white'
+                            }}
+                            stroke="white"
+                            tick={{ fill: 'white' }}
+                          />
+                          <Tooltip
+                            formatter={(value) => value.toLocaleString()}
+                            contentStyle={{ backgroundColor: '#333', border: '1px solid #667eea' }}
+                            labelFormatter={(label) => `Degree: ${label}`}
+                          />
+                          <Scatter dataKey="count" fill="#667eea" />
+                        </ScatterChart>
+                      ) : (
+                        <BarChart data={chartData} margin={{ top: 20, right: 20, bottom: 40, left: 60 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                          <XAxis
+                            dataKey="degree"
+                            label={{ value: 'In-Degree', position: 'insideBottom', offset: -10, fill: 'white' }}
+                            stroke="white"
+                            tick={{ fill: 'white' }}
+                          />
+                          <YAxis
+                            label={{ value: 'Count', angle: -90, position: 'insideLeft', fill: 'white' }}
+                            stroke="white"
+                            tick={{ fill: 'white' }}
+                          />
+                          <Tooltip
+                            contentStyle={{ backgroundColor: '#333', border: '1px solid #667eea' }}
+                          />
+                          <Bar dataKey="count" fill="#667eea" />
+                        </BarChart>
+                      )}
+                    </ResponsiveContainer>
+                  );
+                })()}
               </div>
 
               <div className="degree-chart">
-                <h4>📉 Out-Degree Distribution</h4>
-                <svg width="500" height="300" className="chart">
-                  <g>
-                    {/* Plot bars for degrees up to 50 */}
-                    {(() => {
-                      const data = degreeData?.out_degree_distribution || [];
-                      const maxDegree = Math.min(50, Math.max(...data.map(d => d.degree), 0));
-                      const maxCount = Math.max(...data.map(d => d.count), 1);
+                <h4>📉 Out-Degree Distribution {outDegreeLogX && outDegreeLogY ? '(Log-Log)' : outDegreeLogX ? '(Log-X)' : outDegreeLogY ? '(Log-Y)' : ''} {outDegreeFilterGte2 ? '(≥ 2)' : ''}</h4>
+                {(() => {
+                  const data = degreeData?.out_degree_distribution || [];
 
-                      return data.filter(item => item.degree <= maxDegree).map((item) => {
-                        const x = 60 + (item.degree * 380) / maxDegree;
-                        const barHeight = Math.max(1, (item.count / maxCount) * 200);
-                        const y = 240 - barHeight;
+                  // Apply >= 2 filter if enabled
+                  let filteredData = data;
+                  if (outDegreeFilterGte2) {
+                    filteredData = filteredData.filter(item => item.degree >= 2);
+                  }
 
-                        return (
-                          <g key={`out-${item.degree}`}>
-                            <rect
-                              x={x}
-                              y={y}
-                              width={Math.max(2, 380 / maxDegree * 0.8)}
-                              height={barHeight}
-                              fill="#764ba2"
-                              opacity="0.8"
-                            />
-                          </g>
-                        );
-                      });
-                    })()}
+                  // Filter data based on log scale requirements
+                  if (outDegreeLogX || outDegreeLogY) {
+                    filteredData = filteredData.filter(item => item.degree > 0 && item.count > 0);
+                  } else {
+                    filteredData = filteredData.filter(item => item.degree <= 50);
+                  }
 
-                    {/* X-axis */}
-                    <line x1="50" y1="240" x2="450" y2="240" stroke="#ffffff" strokeWidth="1" opacity="0.5" />
-                    {/* Y-axis */}
-                    <line x1="50" y1="40" x2="50" y2="240" stroke="#ffffff" strokeWidth="1" opacity="0.5" />
+                  if (filteredData.length === 0) {
+                    return <div style={{color: 'white', padding: '20px'}}>No data to display</div>;
+                  }
 
-                    {/* X-axis labels */}
-                    {(() => {
-                      const data = degreeData?.out_degree_distribution || [];
-                      const maxDegree = Math.min(50, Math.max(...data.map(d => d.degree), 0));
-                      const stepSize = Math.max(1, Math.ceil(maxDegree / 10));
-                      const labels = [];
-                      for (let i = 0; i <= maxDegree; i += stepSize) {
-                        labels.push(i);
-                      }
-                      if (labels[labels.length - 1] !== maxDegree) {
-                        labels.push(maxDegree);
-                      }
+                  const isScatter = outDegreeLogX || outDegreeLogY;
+                  const chartData = filteredData.map(item => ({
+                    degree: item.degree,
+                    count: item.count
+                  }));
 
-                      return labels.map(degree => {
-                        const x = 60 + (degree * 380) / maxDegree;
-                        return (
-                          <g key={`x-label-out-${degree}`}>
-                            <line x1={x} y1="240" x2={x} y2="245" stroke="#ffffff" strokeWidth="1" opacity="0.5" />
-                            <text x={x} y="260" textAnchor="middle" fill="white" fontSize="10">
-                              {degree}
-                            </text>
-                          </g>
-                        );
-                      });
-                    })()}
-
-                    {/* Y-axis labels */}
-                    {(() => {
-                      const data = degreeData?.out_degree_distribution || [];
-                      const maxCount = Math.max(...data.map(d => d.count), 1);
-                      const steps = [0, Math.floor(maxCount * 0.25), Math.floor(maxCount * 0.5), Math.floor(maxCount * 0.75), maxCount];
-                      return steps.map(count => {
-                        const y = 240 - (count / maxCount) * 200;
-                        return (
-                          <g key={`y-label-out-${count}`}>
-                            <line x1="45" y1={y} x2="50" y2={y} stroke="#ffffff" strokeWidth="1" opacity="0.5" />
-                            <text x="40" y={y + 3} textAnchor="end" fill="white" fontSize="9">
-                              {count.toLocaleString()}
-                            </text>
-                          </g>
-                        );
-                      });
-                    })()}
-
-                    {/* Axis titles */}
-                    <text x="250" y="285" textAnchor="middle" fill="white" fontSize="12">Out-Degree</text>
-                    <text x="20" y="140" textAnchor="middle" fill="white" fontSize="12" transform="rotate(-90, 20, 140)">Count</text>
-                  </g>
-                </svg>
+                  return (
+                    <ResponsiveContainer width={500} height={300}>
+                      {isScatter ? (
+                        <ScatterChart data={chartData} margin={{ top: 20, right: 20, bottom: 40, left: 60 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                          <XAxis
+                            dataKey="degree"
+                            scale={outDegreeLogX ? "log" : "linear"}
+                            domain={outDegreeLogX ? ['dataMin', 'dataMax'] : ['auto', 'auto']}
+                            type="number"
+                            label={{
+                              value: `Out-Degree${outDegreeLogX ? ' (log)' : ''}`,
+                              position: 'insideBottom',
+                              offset: -10,
+                              fill: 'white'
+                            }}
+                            stroke="white"
+                            tick={{ fill: 'white' }}
+                          />
+                          <YAxis
+                            dataKey="count"
+                            scale={outDegreeLogY ? "log" : "linear"}
+                            domain={outDegreeLogY ? ['dataMin', 'dataMax'] : ['auto', 'auto']}
+                            type="number"
+                            label={{
+                              value: `Count${outDegreeLogY ? ' (log)' : ''}`,
+                              angle: -90,
+                              position: 'insideLeft',
+                              fill: 'white'
+                            }}
+                            stroke="white"
+                            tick={{ fill: 'white' }}
+                          />
+                          <Tooltip
+                            formatter={(value) => value.toLocaleString()}
+                            contentStyle={{ backgroundColor: '#333', border: '1px solid #764ba2' }}
+                            labelFormatter={(label) => `Degree: ${label}`}
+                          />
+                          <Scatter dataKey="count" fill="#764ba2" />
+                        </ScatterChart>
+                      ) : (
+                        <BarChart data={chartData} margin={{ top: 20, right: 20, bottom: 40, left: 60 }}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                          <XAxis
+                            dataKey="degree"
+                            label={{ value: 'Out-Degree', position: 'insideBottom', offset: -10, fill: 'white' }}
+                            stroke="white"
+                            tick={{ fill: 'white' }}
+                          />
+                          <YAxis
+                            label={{ value: 'Count', angle: -90, position: 'insideLeft', fill: 'white' }}
+                            stroke="white"
+                            tick={{ fill: 'white' }}
+                          />
+                          <Tooltip
+                            contentStyle={{ backgroundColor: '#333', border: '1px solid #764ba2' }}
+                          />
+                          <Bar dataKey="count" fill="#764ba2" />
+                        </BarChart>
+                      )}
+                    </ResponsiveContainer>
+                  );
+                })()}
               </div>
             </div>
           </div>
@@ -400,88 +585,94 @@ const App = () => {
 
         {/* L1 Convergence Graph - Always Shown */}
         <div className="convergence-graph">
-          <h3>📊 Convergence Graph</h3>
+          <h3>📊 Convergence Graph {convergenceLogY ? '(Log Y-axis)' : ''}</h3>
           <p>L1 distance between consecutive iterations (lower = more converged)</p>
-          <svg width="600" height="200" className="chart">
-            <g>
-              {(availableIterations || []).slice(1).map((iter, index) => {
+          {(() => {
+            const convergenceData = (availableIterations || []).slice(1)
+              .map(iter => {
                 const data = iterationData[iter];
                 if (!data || data.l1_distance === undefined) return null;
+                return {
+                  iteration: iter,
+                  l1_distance: data.l1_distance,
+                  isSelected: selectedIteration === iter
+                };
+              })
+              .filter(item => item !== null);
 
-                const x = 50 + (index * 500) / Math.max(1, availableIterations.length - 2);
-                const maxL1 = Math.max(...(availableIterations || []).slice(1).map(i => iterationData[i]?.l1_distance || 0));
-                const y = 180 - (data.l1_distance / maxL1) * 140;
+            if (convergenceData.length === 0) {
+              return <div style={{color: 'white', padding: '20px'}}>No convergence data available</div>;
+            }
 
-                return (
-                  <g key={iter}>
-                    <circle
-                      cx={x}
-                      cy={y}
-                      r="4"
-                      fill={selectedIteration === iter ? "#ffd700" : "#ffffff"}
-                      stroke="#667eea"
-                      strokeWidth="2"
-                      className="chart-point"
-                      onClick={() => setSelectedIteration(iter)}
-                    />
-                    <text
-                      x={x}
-                      y={195}
-                      textAnchor="middle"
-                      fill="white"
-                      fontSize="12"
-                    >
-                      {iter}
-                    </text>
-                    <text
-                      x={x}
-                      y={y - 10}
-                      textAnchor="middle"
-                      fill="#b8c5ff"
-                      fontSize="10"
-                    >
-                      {data.l1_distance.toExponential(1)}
-                    </text>
-                  </g>
-                );
-              })}
-
-              {(availableIterations || []).slice(1).length > 1 && (availableIterations || []).slice(1).map((iter, index) => {
-                if (index === 0) return null;
-                const prevIter = availableIterations[index];
-                const currData = iterationData[iter];
-                const prevData = iterationData[prevIter];
-
-                if (!currData || !prevData || currData.l1_distance === undefined || prevData.l1_distance === undefined) return null;
-
-                const maxL1 = Math.max(...(availableIterations || []).slice(1).map(i => iterationData[i]?.l1_distance || 0));
-                const x1 = 50 + ((index - 1) * 500) / Math.max(1, availableIterations.length - 2);
-                const y1 = 180 - (prevData.l1_distance / maxL1) * 140;
-                const x2 = 50 + (index * 500) / Math.max(1, availableIterations.length - 2);
-                const y2 = 180 - (currData.l1_distance / maxL1) * 140;
-
-                return (
-                  <line
-                    key={`line-${iter}`}
-                    x1={x1}
-                    y1={y1}
-                    x2={x2}
-                    y2={y2}
-                    stroke="#667eea"
-                    strokeWidth="2"
-                    opacity="0.7"
+            return (
+              <ResponsiveContainer width={600} height={250}>
+                <LineChart
+                  data={convergenceData}
+                  margin={{ top: 20, right: 30, left: 60, bottom: 40 }}
+                  onClick={(data) => {
+                    if (data && data.activeLabel) {
+                      setSelectedIteration(parseInt(data.activeLabel));
+                    }
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+                  <XAxis
+                    dataKey="iteration"
+                    type="number"
+                    domain={['dataMin', 'dataMax']}
+                    label={{
+                      value: 'Iteration',
+                      position: 'insideBottom',
+                      offset: -10,
+                      fill: 'white'
+                    }}
+                    stroke="white"
+                    tick={{ fill: 'white' }}
                   />
-                );
-              })}
-
-              <line x1="40" y1="40" x2="40" y2="180" stroke="#ffffff" strokeWidth="1" opacity="0.3" />
-              <line x1="40" y1="180" x2="560" y2="180" stroke="#ffffff" strokeWidth="1" opacity="0.3" />
-
-              <text x="25" y="45" fill="white" fontSize="10" textAnchor="middle">High</text>
-              <text x="25" y="180" fill="white" fontSize="10" textAnchor="middle">Low</text>
-              <text x="300" y="215" fill="white" fontSize="12" textAnchor="middle">Iteration</text>
-            </g>
-          </svg>
+                  <YAxis
+                    dataKey="l1_distance"
+                    scale={convergenceLogY ? "log" : "linear"}
+                    domain={convergenceLogY ? ['auto', 'auto'] : [0, 'dataMax']}
+                    label={{
+                      value: `L1 Distance${convergenceLogY ? ' (log)' : ''}`,
+                      angle: -90,
+                      position: 'insideLeft',
+                      fill: 'white'
+                    }}
+                    stroke="white"
+                    tick={{ fill: 'white' }}
+                    tickFormatter={(value) => value.toExponential(1)}
+                  />
+                  <Tooltip
+                    formatter={(value) => [value.toExponential(3), 'L1 Distance']}
+                    labelFormatter={(label) => `Iteration: ${label}`}
+                    contentStyle={{
+                      backgroundColor: '#333',
+                      border: '1px solid #10b981',
+                      borderRadius: '4px'
+                    }}
+                  />
+                  <Line
+                    dataKey="l1_distance"
+                    stroke="#10b981"
+                    strokeWidth={3}
+                    dot={{
+                      fill: '#10b981',
+                      strokeWidth: 2,
+                      r: 5,
+                      stroke: '#fff'
+                    }}
+                    activeDot={{
+                      r: 8,
+                      fill: '#ffd700',
+                      stroke: '#10b981',
+                      strokeWidth: 2
+                    }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            );
+          })()}
         </div>
 
         {/* Top/Bottom 100 Section - Shown Below Global Data */}
@@ -571,9 +762,146 @@ const App = () => {
           </div>
         </div>
 
+        {/* Biggest Changes Section */}
+        {biggestChanges && (
+          <div className="changes-section" style={{marginTop: '3rem'}}>
+            <h2 style={{textAlign: 'center', marginBottom: '2rem'}}>📈 Biggest PageRank Changes</h2>
+            <p style={{textAlign: 'center', marginBottom: '1.5rem', opacity: 0.8}}>
+              Changes between iteration {biggestChanges.analysis.from_iteration} and {biggestChanges.analysis.to_iteration}
+            </p>
+
+            <div style={{display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+              {/* Biggest Increases */}
+              <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
+                <h3 style={{color: '#4ade80', textAlign: 'center', marginBottom: '1rem'}}>🚀 Top 25 Increases</h3>
+                <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
+                  <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
+                    <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
+                      <tr>
+                        <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#4ade80'}}>Rank</th>
+                        <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#4ade80'}}>Title</th>
+                        <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#4ade80'}}>Change</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {biggestChanges.biggest_increases.map((item, index) => (
+                        <tr key={`inc-${index}`} style={{borderBottom: '1px solid #374151'}}>
+                          <td style={{padding: '0.5rem', textAlign: 'center'}}>#{item.rank}</td>
+                          <td style={{padding: '0.5rem'}}>{titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`}</td>
+                          <td style={{padding: '0.5rem', textAlign: 'right', color: '#4ade80'}}>
+                            {formatScore(item.iter1_score)} → {formatScore(item.final_score)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Biggest Decreases */}
+              <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
+                <h3 style={{color: '#f87171', textAlign: 'center', marginBottom: '1rem'}}>📉 Top 25 Decreases</h3>
+                <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
+                  <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
+                    <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
+                      <tr>
+                        <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f87171'}}>Rank</th>
+                        <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f87171'}}>Title</th>
+                        <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f87171'}}>Change</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {biggestChanges.biggest_decreases.map((item, index) => (
+                        <tr key={`dec-${index}`} style={{borderBottom: '1px solid #374151'}}>
+                          <td style={{padding: '0.5rem', textAlign: 'center'}}>#{item.rank}</td>
+                          <td style={{padding: '0.5rem'}}>{titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`}</td>
+                          <td style={{padding: '0.5rem', textAlign: 'right', color: '#f87171'}}>
+                            {formatScore(item.iter1_score)} → {formatScore(item.final_score)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            {/* Indegree vs PageRank Analysis */}
+            <div style={{marginTop: '2rem'}}>
+              <h3 style={{textAlign: 'center', marginBottom: '1.5rem'}}>📊 Indegree vs PageRank Analysis</h3>
+
+              <div style={{display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+                {/* Overperformers */}
+                {biggestChanges.overperformers && (
+                  <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
+                    <h3 style={{color: '#8b5cf6', textAlign: 'center', marginBottom: '1rem'}}>🎯 Top 25 Overperformers</h3>
+                    <p style={{textAlign: 'center', fontSize: '0.8rem', marginBottom: '1rem', opacity: 0.7}}>
+                      Low indegree, high PageRank
+                    </p>
+                    <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
+                      <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
+                        <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
+                          <tr>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Rank</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Title</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Indegree</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>PageRank</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {biggestChanges.overperformers.map((item, index) => (
+                            <tr key={`over-${index}`} style={{borderBottom: '1px solid #374151'}}>
+                              <td style={{padding: '0.5rem', textAlign: 'center'}}>#{item.rank}</td>
+                              <td style={{padding: '0.5rem'}}>{titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`}</td>
+                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{item.indegree}</td>
+                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{formatScore(item.final_score)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
+                {/* Underperformers */}
+                {biggestChanges.underperformers && (
+                  <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
+                    <h3 style={{color: '#f59e0b', textAlign: 'center', marginBottom: '1rem'}}>📊 Top 25 Underperformers</h3>
+                    <p style={{textAlign: 'center', fontSize: '0.8rem', marginBottom: '1rem', opacity: 0.7}}>
+                      High indegree, low PageRank
+                    </p>
+                    <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
+                      <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
+                        <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
+                          <tr>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Rank</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Title</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Indegree</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>PageRank</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {biggestChanges.underperformers.map((item, index) => (
+                            <tr key={`under-${index}`} style={{borderBottom: '1px solid #374151'}}>
+                              <td style={{padding: '0.5rem', textAlign: 'center'}}>#{item.rank}</td>
+                              <td style={{padding: '0.5rem'}}>{titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`}</td>
+                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{item.indegree}</td>
+                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{formatScore(item.final_score)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
         <div style={{textAlign: 'center', marginTop: '2rem', opacity: 0.7}}>
           <p>
-            📊 Showing results from English Wikipedia (2010) PageRank algorithm
+            📊 Showing results from English Wikipedia ({currentYear || metadata?.year || '2003'}) PageRank algorithm
             {availableIterations.length > 1 && ` (${availableIterations.length} iterations available)`}
           </p>
         </div>

@@ -12,6 +12,10 @@ header:
 
 [Seminar in Probability and Algorithms](teaching/2025/probability-algorithms-seminar.md)
 
+[Using AI for Math](teaching/2025/using-ai-for-math.md)
+
+[Algorithmic Problem Solving Seminar](teaching/2025/algorithmic-problem-solving-seminar.md)
+
 # Spring 2025
 
 [Probabilistic lenses](teaching/2025/lenses.md)

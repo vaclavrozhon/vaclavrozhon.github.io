@@ -17,7 +17,7 @@ katex: true
 
 **Instructors:** Václav Rozhoň, [Jan Hladký](https://www.cs.cas.cz/~hladky/)
 
-TBD
+**Time:** Thursday 10:40 in S124
 
 # Topics
 

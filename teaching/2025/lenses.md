@@ -17,8 +17,7 @@ katex: true
 
 # Bookkeeping
 
-The lecture takes place on Thursday, 15:40 in S5. 
-In SIS, it is registered as Chapters from complexity theory II. It is for 4 credits. 
+The lecture takes place on Thursday, 10:40 in my office S124. 
 
 # Lectures
 
