@@ -17,7 +17,7 @@ This seminar focuses on developing skills in algorithmic problem solving. We wil
 
 
 
-__IMPORTANT!!! We start only the second week of semester, i.e., October 6th.__
+__IMPORTANT!!!:__ We start on the second week of semester, i.e., October 6th.
 
 # Topics / links
 
