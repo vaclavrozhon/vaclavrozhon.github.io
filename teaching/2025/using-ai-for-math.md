@@ -7,18 +7,13 @@ katex: true
 
 # Abstract
 
-🔭 This course explores how to effectively use artificial intelligence tools for mathematical work.
-
-📐 We'll cover practical applications of AI in mathematical problem-solving, proof assistance, computation, and research. Topics include using AI for theorem proving, mathematical writing, computational assistance, and understanding the limitations and best practices when working with AI tools in mathematics.
-
-📚 A basic understanding of mathematics and some familiarity with AI tools is helpful but not required.
+We will test problem-solving skills of AI. 
 
 # Bookkeeping
 
-**Instructor:** Václav Rozhoň
+**Instructor:** Václav Rozhoň, Robert Šámal
 
 **Time:** Thursday 14:00 in S221
 
 # Topics
 
-TBD
