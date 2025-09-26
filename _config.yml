@@ -44,7 +44,7 @@ site.locale: en-GB
 author:
   name: Václav Rozhoň
   avatar: "/assets/images/photos/photo_small.jpg"
-  bio: "I'm a theoretical computer scientist. "
+  bio: "I'm a computer scientist. "
   location: Prague, Czech Republic
   links:
     - label: "[name][surname]@gmail.com"
