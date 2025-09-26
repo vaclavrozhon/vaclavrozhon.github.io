@@ -7,7 +7,8 @@ katex: true
 
 # Abstract
 
-Advanced topics in probability theory.
+More advanced topics in probability theory.
+Check out the [previous run](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/). 
 
 # Bookkeeping
 
@@ -15,7 +16,7 @@ Advanced topics in probability theory.
 
 **Time:** Wednesday 14:00 in S3
 
-**Previous run:** [https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/)
+**Previous run:** 
 
 # Topics
 
