@@ -293,8 +293,8 @@ class MarkovChain {
                     ctx.fillStyle = '#666';
                     ctx.font = '11px Arial';
                     ctx.textAlign = 'center';
-                    ctx.fillText(this.transitionMatrix[i][j].toFixed(2), cp1x, cp1y - 3);
-                    ctx.fillText(this.transitionMatrix[j][i].toFixed(2), cp2x, cp2y - 3);
+                    ctx.fillText(this.transitionMatrix[i][j].toFixed(2), cpF.x, cpF.y - 3);
+                    ctx.fillText(this.transitionMatrix[j][i].toFixed(2), cpB.x, cpB.y - 3);
                     }
 
                 } else if (hasForward) {
@@ -333,7 +333,7 @@ class MarkovChain {
                             ctx.fillStyle = highlighted ? '#ff5722' : '#666';
                             ctx.font = '12px Arial';
                             ctx.textAlign = 'center';
-                            ctx.fillText(this.transitionMatrix[i][j].toFixed(2), cpX, cpY - 5);
+                            ctx.fillText(this.transitionMatrix[i][j].toFixed(2), cpF.x, cpF.y - 5);
                         }
                     } else {
                         const highlighted = hoveredIndex === i;
@@ -348,7 +348,7 @@ class MarkovChain {
                         ctx.lineTo(seg.b.x, seg.b.y);
                         ctx.stroke();
 
-                        const { tip, angle } = this._placeArrowOnStraight(from, to, r, pad);
+                        const { tip, angle } = this._placeArrowOnStraight(seg.a, seg.b, 0, 0);
                         ctx.save();
                         ctx.translate(tip.x, tip.y);
                         ctx.rotate(angle);
@@ -406,7 +406,7 @@ class MarkovChain {
                             ctx.fillStyle = highlighted ? '#ff5722' : '#666';
                             ctx.font = '12px Arial';
                             ctx.textAlign = 'center';
-                            ctx.fillText(this.transitionMatrix[j][i].toFixed(2), cpX, cpY - 5);
+                            ctx.fillText(this.transitionMatrix[j][i].toFixed(2), cpB.x, cpB.y - 5);
                         }
                     } else {
                         const highlighted = hoveredIndex === j;
@@ -421,7 +421,7 @@ class MarkovChain {
                         ctx.lineTo(seg.b.x, seg.b.y);
                         ctx.stroke();
 
-                        const { tip, angle } = this._placeArrowOnStraight(to, from, r, pad);
+                        const { tip, angle } = this._placeArrowOnStraight(seg.a, seg.b, 0, 0);
                         ctx.save();
                         ctx.translate(tip.x, tip.y);
                         ctx.rotate(angle);
