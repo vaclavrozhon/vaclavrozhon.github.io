@@ -46,7 +46,7 @@ const App = () => {
 
   const loadCurrentYear = async () => {
     try {
-      const response = await fetch('/current_year.txt');
+      const response = await fetch('./current_year.txt');
       if (response.ok) {
         const year = await response.text();
         const yearNumber = parseInt(year.trim());
@@ -64,7 +64,7 @@ const App = () => {
 
   const loadTitles = async () => {
     try {
-      const response = await fetch(`/${currentYear}/titles.json`);
+      const response = await fetch(`./${currentYear}/titles.json`);
       if (response.ok) {
         const titlesData = await response.json();
         setTitles(titlesData);
@@ -83,7 +83,7 @@ const App = () => {
 
   const loadDegreeDistribution = async () => {
     try {
-      const response = await fetch(`/${currentYear}/degree_distributions.json`);
+      const response = await fetch(`./${currentYear}/degree_distributions.json`);
       if (response.ok) {
         const data = await response.json();
         setDegreeData(data);
@@ -98,7 +98,7 @@ const App = () => {
 
   const loadMetadata = async () => {
     try {
-      const response = await fetch(`/${currentYear}/metadata.json`);
+      const response = await fetch(`./${currentYear}/metadata.json`);
       if (response.ok) {
         const data = await response.json();
         setMetadata(data);
@@ -113,7 +113,7 @@ const App = () => {
 
   const loadBiggestChanges = async () => {
     try {
-      const response = await fetch(`/${currentYear}/biggest_changes.json`);
+      const response = await fetch(`./${currentYear}/biggest_changes.json`);
       if (response.ok) {
         const data = await response.json();
         setBiggestChanges(data);
@@ -169,7 +169,7 @@ const App = () => {
       // Try to load iterations 0-20 (adjust as needed)
       for (let i = 0; i <= 20; i++) {
         try {
-          const filename = `/${currentYear}/pagerank_iter_${i.toString().padStart(2, '0')}.json`;
+          const filename = `./${currentYear}/pagerank_iter_${i.toString().padStart(2, '0')}.json`;
           console.log(`Attempting to fetch: ${filename}`);
           const response = await fetch(filename);
           console.log(`Response for ${filename}: status=${response.status}, ok=${response.ok}`);
@@ -765,9 +765,13 @@ const App = () => {
         {/* Biggest Changes Section */}
         {biggestChanges && (
           <div className="changes-section" style={{marginTop: '3rem'}}>
-            <h2 style={{textAlign: 'center', marginBottom: '2rem'}}>📈 Biggest PageRank Changes</h2>
+            <h2 style={{textAlign: 'center', marginBottom: '0.5rem'}}>📈 Biggest PageRank Changes</h2>
             <p style={{textAlign: 'center', marginBottom: '1.5rem', opacity: 0.8}}>
               Changes between iteration {biggestChanges.analysis.from_iteration} and {biggestChanges.analysis.to_iteration}
+            </p>
+            <p style={{textAlign: 'center', marginTop: '-0.5rem', marginBottom: '1.5rem', opacity: 0.7}}>
+              We highlight articles whose PageRank changed the most between the first and last iteration
+              (ratio of final to initial score).
             </p>
 
             <div style={{display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap'}}>
@@ -826,76 +830,7 @@ const App = () => {
               </div>
             </div>
 
-            {/* Indegree vs PageRank Analysis */}
-            <div style={{marginTop: '2rem'}}>
-              <h3 style={{textAlign: 'center', marginBottom: '1.5rem'}}>📊 Indegree vs PageRank Analysis</h3>
-
-              <div style={{display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap'}}>
-                {/* Overperformers */}
-                {biggestChanges.overperformers && (
-                  <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
-                    <h3 style={{color: '#8b5cf6', textAlign: 'center', marginBottom: '1rem'}}>🎯 Top 25 Overperformers</h3>
-                    <p style={{textAlign: 'center', fontSize: '0.8rem', marginBottom: '1rem', opacity: 0.7}}>
-                      Low indegree, high PageRank
-                    </p>
-                    <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
-                      <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
-                        <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
-                          <tr>
-                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Rank</th>
-                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Title</th>
-                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Indegree</th>
-                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>PageRank</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {biggestChanges.overperformers.map((item, index) => (
-                            <tr key={`over-${index}`} style={{borderBottom: '1px solid #374151'}}>
-                              <td style={{padding: '0.5rem', textAlign: 'center'}}>#{item.rank}</td>
-                              <td style={{padding: '0.5rem'}}>{titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`}</td>
-                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{item.indegree}</td>
-                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{formatScore(item.final_score)}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-
-                {/* Underperformers */}
-                {biggestChanges.underperformers && (
-                  <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
-                    <h3 style={{color: '#f59e0b', textAlign: 'center', marginBottom: '1rem'}}>📊 Top 25 Underperformers</h3>
-                    <p style={{textAlign: 'center', fontSize: '0.8rem', marginBottom: '1rem', opacity: 0.7}}>
-                      High indegree, low PageRank
-                    </p>
-                    <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
-                      <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
-                        <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
-                          <tr>
-                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Rank</th>
-                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Title</th>
-                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Indegree</th>
-                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>PageRank</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {biggestChanges.underperformers.map((item, index) => (
-                            <tr key={`under-${index}`} style={{borderBottom: '1px solid #374151'}}>
-                              <td style={{padding: '0.5rem', textAlign: 'center'}}>#{item.rank}</td>
-                              <td style={{padding: '0.5rem'}}>{titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`}</td>
-                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{item.indegree}</td>
-                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{formatScore(item.final_score)}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+            {/* Dropped the Indegree vs PageRank Analysis section per request */}
           </div>
         )}
 
