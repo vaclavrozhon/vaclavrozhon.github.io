@@ -776,8 +776,9 @@ class MarkovChain {
     // Blending function for arrow path following
     // Returns weight for curved path (0 at endpoints, peak at middle)
     _getArrowPathWeight(t) {
-        // Sine-based function: 0 at t=0 and t=1, peak of 1/3 at t=0.5
-        return (1/3) * Math.sin(Math.PI * t);
+        // Sine-based function: 0 at t=0 and t=1, peak of 0.6 at t=0.5
+        // Increased from 1/3 to 0.6 for more noticeable effect
+        return 0.6 * Math.sin(Math.PI * t);
     }
 
     // Check if there's a bidirectional edge between two states
@@ -794,33 +795,31 @@ class MarkovChain {
 
         const i = Math.min(fromState, toState);
         const j = Math.max(fromState, toState);
-        const from = fromState < toState ? fromPos : toPos;
-        const to = fromState < toState ? toPos : fromPos;
 
         // Check if edge should be curved
         const mode = this.getEdgeRenderMode();
         const isBidirectional = this._isBidirectional(i, j);
 
         if (mode === 'curved_all' || isBidirectional) {
-            // Calculate curved path control point
-            const dx = to.x - from.x;
-            const dy = to.y - from.y;
+            // Calculate curved path control point using actual from/to positions
+            const dx = toPos.x - fromPos.x;
+            const dy = toPos.y - fromPos.y;
             const perpX = -dy * 0.15;
             const perpY = dx * 0.15;
 
             let cp;
             if (isBidirectional) {
-                // Use appropriate curve direction
-                if (fromState === i) {
-                    // Forward direction
-                    cp = { x: from.x + dx * 0.5 + perpX, y: from.y + dy * 0.5 + perpY };
+                // Use appropriate curve direction based on actual direction of travel
+                if (fromState < toState) {
+                    // Forward direction (i -> j)
+                    cp = { x: fromPos.x + dx * 0.5 + perpX, y: fromPos.y + dy * 0.5 + perpY };
                 } else {
-                    // Backward direction
-                    cp = { x: from.x + dx * 0.5 - perpX, y: from.y + dy * 0.5 - perpY };
+                    // Backward direction (j -> i)
+                    cp = { x: fromPos.x + dx * 0.5 - perpX, y: fromPos.y + dy * 0.5 - perpY };
                 }
             } else {
-                // Single curved edge
-                cp = { x: from.x + dx * 0.5 + perpX, y: from.y + dy * 0.5 + perpY };
+                // Single curved edge - always use the same curve direction
+                cp = { x: fromPos.x + dx * 0.5 + perpX, y: fromPos.y + dy * 0.5 + perpY };
             }
 
             // Calculate position on quadratic Bezier curve
