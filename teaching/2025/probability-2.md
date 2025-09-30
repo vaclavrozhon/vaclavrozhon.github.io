@@ -20,3 +20,8 @@ Check out the [previous run](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/).
 
 TBD
 
+# Demos
+
+- [Markov chains](/teaching/markov_chains/)
+- [PageRank for Wikipedia](/teaching/pagerank/public/)
+
