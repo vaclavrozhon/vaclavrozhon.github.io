@@ -1,5 +1,5 @@
 class RandomWalk extends MarkovChain {
-    constructor(p = 0.5) {
+    constructor(p = 0.5, startPos = 4) {
         const q = 1 - p;
         const numStates = 11;
 
@@ -27,9 +27,10 @@ class RandomWalk extends MarkovChain {
             transitionMatrix.push(row);
         }
 
-        // Start at state 4 (instead of 5)
+        // Start at configurable position
         const initialDistribution = new Array(numStates).fill(0);
-        initialDistribution[4] = 1.0;
+        const clampedStart = Math.max(0, Math.min(numStates - 1, Math.round(startPos)));
+        initialDistribution[clampedStart] = 1.0;
 
         super({
             name: "Random Walk",
@@ -42,6 +43,7 @@ class RandomWalk extends MarkovChain {
 
         this.p = p;
         this.q = q;
+        this.startPos = clampedStart;
 
         // Absorption tracking - TWO absorbing states (0 and 10)
         this.absorbingStates = [0, numStates - 1]; // States 0 and 10
@@ -102,8 +104,8 @@ class RandomWalk extends MarkovChain {
     }
 
     getTheoreticalSteadyState() {
-        // For random walk with absorbing boundaries starting at position 4
-        const startPos = 4;
+        // For random walk with absorbing boundaries starting at position this.startPos
+        const startPos = this.startPos;
         const maxPos = 10;
         const steadyState = new Array(11).fill(0);
 
@@ -133,15 +135,26 @@ class RandomWalk extends MarkovChain {
     }
 
     getCustomControls() {
-        return {
-            type: 'probability',
-            label: 'Right probability (p)',
-            value: this.p,
-            min: 0.1,
-            max: 0.9,
-            step: 0.1,
-            onChange: (value) => this.updateProbability(value)
-        };
+        return [
+            {
+                type: 'probability',
+                label: 'Right probability (p)',
+                value: this.p,
+                min: 0.1,
+                max: 0.9,
+                step: 0.1,
+                onChange: (value) => this.updateProbability(value)
+            },
+            {
+                type: 'slider',
+                label: 'Start position',
+                value: this.startPos,
+                min: 0,
+                max: 10,
+                step: 1,
+                onChange: (value) => this.updateStartPosition(Math.round(value))
+            }
+        ];
     }
 
     isRunComplete() {
@@ -150,6 +163,16 @@ class RandomWalk extends MarkovChain {
 
     getHistogramData() {
         return this.dotArrivalSteps ? this.dotArrivalSteps.filter(v => Number.isFinite(v)) : [];
+    }
+
+    updateStartPosition(newStart) {
+        const numStates = 11;
+        const clamped = Math.max(0, Math.min(numStates - 1, Math.round(newStart)));
+        this.startPos = clamped;
+        // Rebuild initial distribution and reset dots so change takes effect
+        this.initialDistribution = new Array(numStates).fill(0);
+        this.initialDistribution[clamped] = 1.0;
+        this.reset();
     }
 
     reset() {

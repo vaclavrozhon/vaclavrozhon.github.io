@@ -28,7 +28,11 @@ const Toolbar = ({ chain, isRunning, numDots, speed, onDotsChange, onSpeedChange
     const controls = [];
     if (chain && chain.getCustomControls) {
         const c = chain.getCustomControls();
-        controls.push({ ...c, id: 'custom' });
+        if (Array.isArray(c)) {
+            c.forEach((ctrl, idx) => controls.push({ ...ctrl, id: `custom-${idx}` }));
+        } else if (c) {
+            controls.push({ ...c, id: 'custom' });
+        }
     }
     const editors = chain && chain.getEditors ? chain.getEditors() : [];
 
@@ -73,9 +77,9 @@ const Toolbar = ({ chain, isRunning, numDots, speed, onDotsChange, onSpeedChange
                         max={ctrl.max}
                         step={ctrl.step}
                         value={ctrl.value}
-                        onChange={(e) => onControlChange(ctrl, parseFloat(e.target.value))}
+                        onChange={(e) => onControlChange(ctrl, ctrl.step >= 1 ? parseInt(e.target.value) : parseFloat(e.target.value))}
                     />
-                    <span>{ctrl.value?.toFixed ? ctrl.value.toFixed(1) : ctrl.value}</span>
+                    <span>{Number.isFinite(ctrl.value) ? (ctrl.step >= 1 ? Math.round(ctrl.value) : ctrl.value.toFixed(1)) : ctrl.value}</span>
                 </div>
             ))}
 
@@ -118,64 +122,51 @@ const Histogram = ({ data }) => {
 
     console.log('[Histogram] DEBUG: received data:', data);
 
-    // Handle both old object format {times: [...]} and new array format [...]
-    let times;
+    // Normalize data shape to an array of times
+    let times = [];
     if (Array.isArray(data)) {
         times = data;
     } else if (data && Array.isArray(data.times)) {
         times = data.times;
-    } else {
-        console.log('[Histogram] DEBUG: returning null - no valid data format');
-        return null;
     }
 
-    if (times.length === 0) {
-        console.log('[Histogram] DEBUG: returning null - empty times array');
-        return null;
-    }
-
-    console.log('[Histogram] DEBUG: using times array with length:', times.length);
-
-    // Count occurrences of each unique time value
+    // Build points and stats even if empty to keep hooks stable
     const timeCounts = {};
     for (const t of times) {
         timeCounts[t] = (timeCounts[t] || 0) + 1;
     }
-
-    // Get all unique times and sort them
     const uniqueTimes = Object.keys(timeCounts).map(Number).sort((a, b) => a - b);
-
-    // Fill in gaps - create points for ALL times from min to max
-    const minTime = Math.min(...uniqueTimes);
-    const maxTime = Math.max(...uniqueTimes);
-    const total = times.length;
-
+    const total = times.length || 1;
+    const minTime = uniqueTimes.length > 0 ? Math.min(...uniqueTimes) : 0;
+    const maxTime = uniqueTimes.length > 0 ? Math.max(...uniqueTimes) : 0;
     const points = [];
-    for (let t = minTime; t <= maxTime; t++) {
-        points.push({
-            x: t,
-            y: timeCounts[t] ? timeCounts[t] / total : 0
-        });
+    if (uniqueTimes.length > 0) {
+        for (let t = minTime; t <= maxTime; t++) {
+            points.push({ x: t, y: timeCounts[t] ? timeCounts[t] / total : 0 });
+        }
     }
-
-    // Calculate mean and std from raw data
-    const mean = times.reduce((a, b) => a + b, 0) / total;
-    const variance = times.reduce((a, b) => a + (b - mean) * (b - mean), 0) / total;
+    const mean = times.length > 0 ? (times.reduce((a, b) => a + b, 0) / times.length) : 0;
+    const variance = times.length > 0 ? (times.reduce((a, b) => a + (b - mean) * (b - mean), 0) / times.length) : 0;
     const std = Math.sqrt(variance);
-
-    // Find max Y for scaling
-    const maxFreq = Math.max(...points.map(p => p.y));
-    const maxY = maxFreq * 1.1;
+    const maxFreq = points.length > 0 ? Math.max(...points.map(p => p.y)) : 1;
+    const maxY = (maxFreq || 1) * 1.1;
 
     useEffect(() => {
         if (!canvasRef.current) return;
         const ctx = canvasRef.current.getContext('2d');
+
+        // If no data, destroy chart if exists and exit effect
+        if (points.length === 0) {
+            if (chartRef.current) {
+                chartRef.current.destroy();
+                chartRef.current = null;
+            }
+            return;
+        }
+
         if (chartRef.current) {
-            // Update data and options reactively
             chartRef.current.data.datasets[0].data = points;
             chartRef.current.options.scales.y.max = maxY;
-
-            // Update annotation lines
             if (chartRef.current.options.plugins?.annotation?.annotations && mean > 0) {
                 const ann = chartRef.current.options.plugins.annotation.annotations;
                 ann.meanLine.xMin = ann.meanLine.xMax = mean;
@@ -187,10 +178,10 @@ const Histogram = ({ data }) => {
                     ann.sigmaRight.xMin = ann.sigmaRight.xMax = mean + std;
                 }
             }
-
             chartRef.current.update();
             return;
         }
+
         // Register annotation plugin if available
         if (window['chartjs-plugin-annotation']) {
             Chart.register(window['chartjs-plugin-annotation']);
@@ -212,59 +203,38 @@ const Histogram = ({ data }) => {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                interaction: {
-                    mode: 'index',
-                    intersect: false
-                },
+                interaction: { mode: 'index', intersect: false },
                 scales: {
                     x: {
                         title: { display: true, text: 'Absorption Time (steps)' },
-                        type: 'linear',
-                        position: 'bottom',
-                        ticks: {
-                            stepSize: 1,
-                            maxTicksLimit: Math.min(50, points.length),
-                            autoSkip: true
-                        },
+                        type: 'linear', position: 'bottom',
+                        ticks: { stepSize: 1, maxTicksLimit: Math.min(50, points.length), autoSkip: true },
                         grid: { display: false }
                     },
                     y: {
-                        title: { display: true, text: 'Proportion' },
-                        beginAtZero: true,
-                        max: maxY,
+                        title: { display: true, text: 'Proportion' }, beginAtZero: true, max: maxY,
                         grid: { color: 'rgba(0,0,0,0.1)' }
                     }
                 },
                 plugins: {
-                    legend: { display: false },
-                    tooltip: { enabled: true },
+                    legend: { display: false }, tooltip: { enabled: true },
                     annotation: mean > 0 ? {
                         annotations: {
-                            meanLine: {
-                                type: 'line',
-                                xMin: mean,
-                                xMax: mean,
-                                borderColor: '#f44336',
-                                borderWidth: 2,
-                                label: { enabled: true, content: `μ=${mean.toFixed(1)}`, position: 'start', backgroundColor: 'rgba(244,67,54,0.1)', color: '#f44336' }
-                            },
-                            sigmaLeft: std > 0 ? {
-                                type: 'line', xMin: mean - std, xMax: mean - std,
-                                borderColor: '#ff9800', borderWidth: 1, borderDash: [4,4],
-                                label: { enabled: true, content: 'μ-σ', position: 'start', backgroundColor: 'rgba(255,152,0,0.1)', color: '#ff9800' }
-                            } : null,
-                            sigmaRight: std > 0 ? {
-                                type: 'line', xMin: mean + std, xMax: mean + std,
-                                borderColor: '#ff9800', borderWidth: 1, borderDash: [4,4],
-                                label: { enabled: true, content: 'μ+σ', position: 'start', backgroundColor: 'rgba(255,152,0,0.1)', color: '#ff9800' }
-                            } : null
+                            meanLine: { type: 'line', xMin: mean, xMax: mean, borderColor: '#f44336', borderWidth: 2,
+                                label: { enabled: true, content: `μ=${mean.toFixed(1)}`, position: 'start', backgroundColor: 'rgba(244,67,54,0.1)', color: '#f44336' } },
+                            sigmaLeft: std > 0 ? { type: 'line', xMin: mean - std, xMax: mean - std, borderColor: '#ff9800', borderWidth: 1, borderDash: [4,4],
+                                label: { enabled: true, content: 'μ-σ', position: 'start', backgroundColor: 'rgba(255,152,0,0.1)', color: '#ff9800' } } : null,
+                            sigmaRight: std > 0 ? { type: 'line', xMin: mean + std, xMax: mean + std, borderColor: '#ff9800', borderWidth: 1, borderDash: [4,4],
+                                label: { enabled: true, content: 'μ+σ', position: 'start', backgroundColor: 'rgba(255,152,0,0.1)', color: '#ff9800' } } : null
                         }
                     } : { annotations: {} }
                 }
             }
         });
         return () => { if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; } };
-    }, [points.length, mean, std, maxY]); // React to all changes, not just length
+    }, [points.length, mean, std, maxY]);
+
+    if (points.length === 0) return null;
 
     return (
         <div className="info-panel">
@@ -401,6 +371,7 @@ const MarkovChainVisualization = () => {
     const [isPanning, setIsPanning] = useState(false);
     const lastPosRef = useRef({ x: 0, y: 0 });
     const [tooltip, setTooltip] = useState(null);
+    const [showMatrix, setShowMatrix] = useState(false);
 
     useEffect(() => {
         if (chainModules.length > 0) {
@@ -698,15 +669,8 @@ const MarkovChainVisualization = () => {
                                 return <Histogram data={histData} />;
                             })()}
 
-                            {/* Distribution Evolution Table for all chains */}
-                            <div style={{ margin: '10px 0' }}>
-                                <button onClick={() => setShowDistTable(v => !v)}>
-                                    {showDistTable ? 'Hide Distribution Evolution' : 'Show Distribution Evolution'}
-                                </button>
-                            </div>
-                            {showDistTable && chain && (
-                                <DistributionTable chain={chain} />
-                            )}
+                            {/* Distribution Evolution Table: always shown when chain supports it */}
+                            <DistributionTable chain={chain} />
 
                             {/* Generated words display for English chains */}
                             {(chain.name.includes('English') && chain.getGeneratedWords) && (
@@ -754,36 +718,49 @@ const MarkovChainVisualization = () => {
                                 })()
                             )}
 
-                            {(chain.getRenderConfig && chain.getRenderConfig().showTransitionMatrix) && (
-                            <div className="transition-matrix">
-                                <h3>Transition Matrix</h3>
-
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>From \\ To</th>
-                                            {chain.stateNames.map((name, i) => (
-                                                <th key={i}>{name}</th>
-                                            ))}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {chain.transitionMatrix.map((row, i) => (
-                                            <tr key={i}>
-                                                <th>{chain.stateNames[i]}</th>
-                                                {row.map((prob, j) => (
-                                                    <td key={j}>
-                                                        {prob.toFixed(3)}
-                                                    </td>
-                                                ))}
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-
-                                {/* Distribution Evolution Table always visible after transition matrix */}
-                                <DistributionTable chain={chain} />
+                            {/* Full Transition Matrix: hidden behind a global toggle for all chains */}
+                            <div style={{ margin: '10px 0' }}>
+                                <button onClick={() => setShowMatrix(v => !v)}>
+                                    {showMatrix ? 'Hide full transition matrix' : 'Show full transition matrix'}
+                                </button>
                             </div>
+                            {showMatrix && chain && (
+                                <div className="transition-matrix">
+                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
+                                        <h3>Transition Matrix</h3>
+                                        {/* Editing disabled */}
+                                    </div>
+                                    {false && matrixError && (
+                                        <div style={{color: '#f44336', marginBottom: '10px', fontSize: '14px'}}>
+                                            {matrixError}
+                                        </div>
+                                    )}
+                                    <div style={{ overflow: 'auto', maxHeight: '400px', border: '1px solid #eee' }}>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>From \\ To</th>
+                                                    {chain.stateNames.map((name, i) => (
+                                                        <th key={i}>{name}</th>
+                                                    ))}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {chain.transitionMatrix.map((row, i) => (
+                                                    <tr key={i}>
+                                                        <th>{chain.stateNames[i]}</th>
+                                                        {row.map((prob, j) => (
+                                                            <td key={j}>
+                                                        {prob.toFixed(3)}
+                                                            </td>
+                                                        ))}
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {/* Editing guidance hidden since editing is disabled */}
+                                </div>
                             )}
                         </>
                     )}

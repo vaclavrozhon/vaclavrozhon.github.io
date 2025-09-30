@@ -310,10 +310,10 @@ class MarkovChain {
                         ctx.lineWidth = highlighted ? 3 : 2;
                         const { r, pad } = this._getNodeRadiusWithPad();
                         const cpF = { x: from.x + dx * 0.5 + perpX, y: from.y + dy * 0.5 + perpY };
-                        ctx.beginPath();
-                        ctx.moveTo(from.x, from.y);
+                    ctx.beginPath();
+                    ctx.moveTo(from.x, from.y);
                         ctx.quadraticCurveTo(cpF.x, cpF.y, to.x, to.y);
-                        ctx.stroke();
+                    ctx.stroke();
 
                         const { tip, angle } = this._placeArrowOnQuadratic(from, cpF, to, to, r, pad);
                         ctx.save();
@@ -349,17 +349,17 @@ class MarkovChain {
                         ctx.stroke();
 
                         const { tip, angle } = this._placeArrowOnStraight(seg.a, seg.b, 0, 0);
-                        ctx.save();
+                    ctx.save();
                         ctx.translate(tip.x, tip.y);
-                        ctx.rotate(angle);
-                        ctx.beginPath();
-                        ctx.moveTo(0, 0);
-                        ctx.lineTo(-10, -5);
-                        ctx.lineTo(-10, 5);
-                        ctx.closePath();
+                    ctx.rotate(angle);
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.lineTo(-10, -5);
+                    ctx.lineTo(-10, 5);
+                    ctx.closePath();
                         ctx.fillStyle = highlighted ? '#ff5722' : '#666';
-                        ctx.fill();
-                        ctx.restore();
+                    ctx.fill();
+                    ctx.restore();
 
                     const midX = (from.x + to.x) / 2;
                     const midY = (from.y + to.y) / 2;
