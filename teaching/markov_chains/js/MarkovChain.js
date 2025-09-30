@@ -469,41 +469,13 @@ class MarkovChain {
                 const nextPos = positions[dot.nextState];
                 const progress = this.easeInOutQuad(dot.animationProgress);
 
-                // Calculate straight-line position (current behavior)
-                const straightX = currentPos.x + (nextPos.x - currentPos.x) * progress;
-                const straightY = currentPos.y + (nextPos.y - currentPos.y) * progress;
+                const stateX = currentPos.x + (nextPos.x - currentPos.x) * progress;
+                const stateY = currentPos.y + (nextPos.y - currentPos.y) * progress;
 
-                // Add offset for dot position within state
-                const straightDotX = straightX + dot.x + (dot.targetX - dot.x) * progress;
-                const straightDotY = straightY + dot.y + (dot.targetY - dot.y) * progress;
-
-                // Calculate curved arrow path position if applicable
-                const arrowPos = this._getArrowPathPosition(
-                    dot.currentState,
-                    dot.nextState,
-                    currentPos,
-                    nextPos,
-                    progress
-                );
-
-                if (arrowPos) {
-                    // Blend between straight and curved paths
-                    const alpha = this._getArrowPathWeight(progress);
-
-                    // Add dot offset to arrow position
-                    const arrowDotX = arrowPos.x + dot.x + (dot.targetX - dot.x) * progress;
-                    const arrowDotY = arrowPos.y + dot.y + (dot.targetY - dot.y) * progress;
-
-                    // Weighted average: alpha * arrow + (1-alpha) * straight
-                    dotX = alpha * arrowDotX + (1 - alpha) * straightDotX;
-                    dotY = alpha * arrowDotY + (1 - alpha) * straightDotY;
-                } else {
-                    // No curved path, use straight line
-                    dotX = straightDotX;
-                    dotY = straightDotY;
-                }
+                dotX = stateX + dot.x + (dot.targetX - dot.x) * progress;
+                dotY = stateY + dot.y + (dot.targetY - dot.y) * progress;
             } else {
-                // Dot is in a single state or moving within same state
+                // Dot is in a single state
                 const state = positions[dot.currentState];
                 dotX = state.x + dot.x;
                 dotY = state.y + dot.y;
@@ -771,67 +743,6 @@ class MarkovChain {
 
     easeInOutQuad(t) {
         return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-    }
-
-    // Blending function for arrow path following
-    // Returns weight for curved path (0 at endpoints, peak at middle)
-    _getArrowPathWeight(t) {
-        // Sine-based function: 0 at t=0 and t=1, peak of 0.6 at t=0.5
-        // Increased from 1/3 to 0.6 for more noticeable effect
-        return 0.6 * Math.sin(Math.PI * t);
-    }
-
-    // Check if there's a bidirectional edge between two states
-    _isBidirectional(i, j) {
-        return this.transitionMatrix[i][j] > 0 && this.transitionMatrix[j][i] > 0;
-    }
-
-    // Calculate position along arrow path for dot animation
-    _getArrowPathPosition(fromState, toState, fromPos, toPos, t) {
-        if (fromState === toState) {
-            // Self-loop - for now just use straight line within state
-            return null;
-        }
-
-        const i = Math.min(fromState, toState);
-        const j = Math.max(fromState, toState);
-
-        // Check if edge should be curved
-        const mode = this.getEdgeRenderMode();
-        const isBidirectional = this._isBidirectional(i, j);
-
-        if (mode === 'curved_all' || isBidirectional) {
-            // Calculate curved path control point using actual from/to positions
-            const dx = toPos.x - fromPos.x;
-            const dy = toPos.y - fromPos.y;
-            const perpX = -dy * 0.15;
-            const perpY = dx * 0.15;
-
-            let cp;
-            if (isBidirectional) {
-                // Use appropriate curve direction based on actual direction of travel
-                if (fromState < toState) {
-                    // Forward direction (i -> j)
-                    cp = { x: fromPos.x + dx * 0.5 + perpX, y: fromPos.y + dy * 0.5 + perpY };
-                } else {
-                    // Backward direction (j -> i)
-                    cp = { x: fromPos.x + dx * 0.5 - perpX, y: fromPos.y + dy * 0.5 - perpY };
-                }
-            } else {
-                // Single curved edge - always use the same curve direction
-                cp = { x: fromPos.x + dx * 0.5 + perpX, y: fromPos.y + dy * 0.5 + perpY };
-            }
-
-            // Calculate position on quadratic Bezier curve
-            const mt = 1 - t;
-            return {
-                x: mt * mt * fromPos.x + 2 * mt * t * cp.x + t * t * toPos.x,
-                y: mt * mt * fromPos.y + 2 * mt * t * cp.y + t * t * toPos.y
-            };
-        }
-
-        // Straight edge - no curved path needed
-        return null;
     }
 
     getTheoreticalSteadyState() {
