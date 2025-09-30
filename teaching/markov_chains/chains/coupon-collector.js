@@ -34,26 +34,37 @@ class CouponCollector extends MarkovChain {
         });
 
         this.numCoupons = numCoupons;
+
+        // Absorption tracking
+        this.absorbingState = numCoupons; // Complete collection state
+        this.dotArrivalSteps = new Array(this.numDots).fill(NaN);
+        this._absorbed = new Array(this.numDots).fill(false);
+        this.absorbedCount = 0;
+        this.onArrival = (dotIndex, state) => {
+            if (state === this.absorbingState && !this._absorbed[dotIndex]) {
+                this._absorbed[dotIndex] = true;
+                this.absorbedCount++;
+                const dot = this.dots[dotIndex];
+                const transitions = dot.history ? dot.history.length - 1 : 0;
+                this.dotArrivalSteps[dotIndex] = transitions;
+            }
+        };
     }
 
-    getNodePositions(centerX, centerY, radius) {
-        // Arrange nodes in a grid formation
-        const cols = 4;
-        const rows = Math.ceil(this.states.length / cols);
-        const spacingX = 140;
-        const spacingY = 100;
+    getNodePositions(centerX, centerY, radius, canvasWidth = 800) {
+        // Arrange ALL states on a single horizontal row, evenly spaced
+        const count = this.states.length;
+        if (count === 0) return [];
 
-        const startX = centerX - (cols - 1) * spacingX / 2;
-        const startY = centerY - (rows - 1) * spacingY / 2;
+        const nodeRadius = this.getNodeRadius ? this.getNodeRadius() : 30;
+        const margin = Math.max(2 * nodeRadius, 40);
+        const available = Math.max(canvasWidth - 2 * margin, count > 1 ? 1 : 0);
+        const step = count > 1 ? available / (count - 1) : 0;
 
-        return this.states.map((_, i) => {
-            const col = i % cols;
-            const row = Math.floor(i / cols);
-            return {
-                x: startX + col * spacingX,
-                y: startY + row * spacingY
-            };
-        });
+        return this.states.map((_, i) => ({
+            x: centerX - available / 2 + i * step,
+            y: centerY
+        }));
     }
 
     getTheoreticalSteadyState() {
@@ -67,13 +78,35 @@ class CouponCollector extends MarkovChain {
         return {
             canvasHeight: 500,
             showStats: true,
-            showTransitionMatrix: false,  // Too large to display nicely
-            showEdgeLabels: false         // Too cluttered with many transitions
+            showTransitionMatrix: true,
+            showEdgeLabels: false
         };
     }
 
     getEdgeRenderMode() {
         return 'mixed'; // Use straight edges for cleaner look with many states
+    }
+
+    isRunComplete() {
+        return this.absorbedCount === this.numDots;
+    }
+
+    getHistogramData() {
+        return this.dotArrivalSteps ? this.dotArrivalSteps.filter(v => Number.isFinite(v)) : [];
+    }
+
+    reset() {
+        super.reset();
+        this.dotArrivalSteps = new Array(this.numDots).fill(NaN);
+        this._absorbed = new Array(this.numDots).fill(false);
+        this.absorbedCount = 0;
+    }
+
+    setNumDots(num) {
+        super.setNumDots(num);
+        this.dotArrivalSteps = new Array(num).fill(NaN);
+        this._absorbed = new Array(num).fill(false);
+        this.absorbedCount = 0;
     }
 }
 

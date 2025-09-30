@@ -11,6 +11,21 @@ class WaitingForSix extends MarkovChain {
             ],
             initialDistribution: [1.0, 0.0]  // Start in Rolling state
         });
+
+        // Absorption tracking
+        this.absorbingState = 1; // Success state
+        this.dotArrivalSteps = new Array(this.numDots).fill(NaN);
+        this._absorbed = new Array(this.numDots).fill(false);
+        this.absorbedCount = 0;
+        this.onArrival = (dotIndex, state) => {
+            if (state === this.absorbingState && !this._absorbed[dotIndex]) {
+                this._absorbed[dotIndex] = true;
+                this.absorbedCount++;
+                const dot = this.dots[dotIndex];
+                const transitions = dot.history ? dot.history.length - 1 : 0;
+                this.dotArrivalSteps[dotIndex] = transitions;
+            }
+        };
     }
 
     getNodePositions(centerX, centerY, radius) {
@@ -34,6 +49,28 @@ class WaitingForSix extends MarkovChain {
             showTransitionMatrix: true,
             showEdgeLabels: true
         };
+    }
+
+    isRunComplete() {
+        return this.absorbedCount === this.numDots;
+    }
+
+    getHistogramData() {
+        return this.dotArrivalSteps ? this.dotArrivalSteps.filter(v => Number.isFinite(v)) : [];
+    }
+
+    reset() {
+        super.reset();
+        this.dotArrivalSteps = new Array(this.numDots).fill(NaN);
+        this._absorbed = new Array(this.numDots).fill(false);
+        this.absorbedCount = 0;
+    }
+
+    setNumDots(num) {
+        super.setNumDots(num);
+        this.dotArrivalSteps = new Array(num).fill(NaN);
+        this._absorbed = new Array(num).fill(false);
+        this.absorbedCount = 0;
     }
 }
 

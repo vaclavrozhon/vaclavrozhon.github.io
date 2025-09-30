@@ -679,8 +679,13 @@ const MarkovChainVisualization = () => {
                                 </div>
                             </div>
 
-                            {/* Absorption distribution toggle for Snakes & Ladders */}
-                            {chain.name === 'Snakes & Ladders' && (
+                            {/* Absorption distribution toggle for chains with absorption */}
+                            {(chain.name === 'Snakes & Ladders' ||
+                              chain.name === 'Waiting for Six' ||
+                              chain.name === 'Random Walk' ||
+                              chain.name === 'Coupon Collector' ||
+                              chain.name === 'English 1-mer (Full)' ||
+                              chain.name === 'English 2-mer (Bigrams)') && (
                                 (() => {
                                     const histData = chain.getHistogramData ? chain.getHistogramData() : null;
                                     return (
