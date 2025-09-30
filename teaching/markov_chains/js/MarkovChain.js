@@ -749,6 +749,33 @@ class MarkovChain {
         return null;
     }
 
+    // Compute distribution evolution over n steps
+    getDistributionEvolution(steps = 10) {
+        const n = this.states.length;
+        const evolution = [];
+
+        // Start with initial distribution
+        let currentDist = [...this.initialDistribution];
+        evolution.push([...currentDist]);
+
+        // Compute distribution at each step
+        for (let step = 1; step <= steps; step++) {
+            const nextDist = new Array(n).fill(0);
+
+            // Matrix multiplication: nextDist = currentDist * transitionMatrix
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j < n; j++) {
+                    nextDist[j] += currentDist[i] * this.transitionMatrix[i][j];
+                }
+            }
+
+            evolution.push([...nextDist]);
+            currentDist = nextDist;
+        }
+
+        return evolution;
+    }
+
     // Default render configuration; chains can override
     getRenderConfig() {
         return {

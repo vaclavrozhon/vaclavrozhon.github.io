@@ -281,6 +281,63 @@ const Histogram = ({ data }) => {
     );
 };
 
+const DistributionTable = ({ chain }) => {
+    if (!chain || !chain.getDistributionEvolution) return null;
+
+    const evolution = chain.getDistributionEvolution(10);
+    const stateNames = chain.stateNames || chain.states.map((_, i) => `S${i}`);
+
+    return (
+        <div className="info-panel" style={{ marginTop: '10px' }}>
+            <h4>Distribution Evolution (Steps 0-10)</h4>
+            <div style={{ overflowX: 'auto', maxHeight: '400px', overflowY: 'auto' }}>
+                <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse' }}>
+                    <thead>
+                        <tr style={{ backgroundColor: '#f5f5f5' }}>
+                            <th style={{ padding: '8px', textAlign: 'left', position: 'sticky', left: 0, backgroundColor: '#f5f5f5', borderRight: '1px solid #e0e0e0' }}>State</th>
+                            {[...Array(11)].map((_, i) => (
+                                <th key={i} style={{ padding: '8px', textAlign: 'center', minWidth: '60px' }}>
+                                    t={i}
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {stateNames.map((name, stateIdx) => (
+                            <tr key={stateIdx} style={{ borderBottom: '1px solid #e0e0e0' }}>
+                                <td style={{
+                                    padding: '8px',
+                                    fontWeight: 'bold',
+                                    position: 'sticky',
+                                    left: 0,
+                                    backgroundColor: 'white',
+                                    borderRight: '1px solid #e0e0e0'
+                                }}>
+                                    {name}
+                                </td>
+                                {evolution.map((dist, step) => {
+                                    const value = dist[stateIdx];
+                                    const formattedValue = value < 0.0001 ? '0' : value.toFixed(4);
+                                    const intensity = Math.min(value, 1) * 0.3;
+                                    return (
+                                        <td key={step} style={{
+                                            padding: '8px',
+                                            textAlign: 'center',
+                                            backgroundColor: value > 0.01 ? `rgba(76, 175, 80, ${intensity})` : 'transparent'
+                                        }}>
+                                            {formattedValue}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+};
+
 const MappingEditor = ({ editor, onSave }) => {
     const [rows, setRows] = useState(() => {
         const map = editor.value || {};
@@ -346,6 +403,7 @@ const MarkovChainVisualization = () => {
     const [editingMatrix, setEditingMatrix] = useState(false);
     const [matrixError, setMatrixError] = useState('');
     const [showAbsorbPlot, setShowAbsorbPlot] = useState(false);
+    const [showDistTable, setShowDistTable] = useState(false);
     const [tooltip, setTooltip] = useState(null);
 
     useEffect(() => {
@@ -701,6 +759,16 @@ const MarkovChainVisualization = () => {
                                         </>
                                     );
                                 })()
+                            )}
+
+                            {/* Distribution Evolution Table for all chains */}
+                            <div style={{ margin: '10px 0' }}>
+                                <button onClick={() => setShowDistTable(v => !v)}>
+                                    {showDistTable ? 'Hide Distribution Evolution' : 'Show Distribution Evolution'}
+                                </button>
+                            </div>
+                            {showDistTable && chain && (
+                                <DistributionTable chain={chain} />
                             )}
 
                             {/* Generated words display for English chains */}

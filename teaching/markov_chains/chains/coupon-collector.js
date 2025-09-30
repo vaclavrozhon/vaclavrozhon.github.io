@@ -3,7 +3,7 @@ class CouponCollector extends MarkovChain {
         // States represent number of distinct coupons collected (0 to 10)
         const numCoupons = 10;
         const states = Array.from({length: numCoupons + 1}, (_, i) => i);
-        const stateNames = states.map(i => i === numCoupons ? `${i} (Complete!)` : i.toString());
+        const stateNames = states.map(i => i.toString());
 
         // Create transition matrix
         const transitionMatrix = [];
@@ -51,6 +51,45 @@ class CouponCollector extends MarkovChain {
         };
     }
 
+    // Draw self-loops above nodes (vertical arc over the node)
+    drawSelfLoop(ctx, position, stateIndex, probability, centerX, centerY, hoveredIndex = null) {
+        const highlighted = hoveredIndex === stateIndex;
+        const { r, pad } = this._getNodeRadiusWithPad();
+
+        // Geometry: small arc above the node, control point higher than endpoints
+        const p0 = { x: position.x - 20, y: position.y - (r + 10) };
+        const cp = { x: position.x, y: position.y - (r + 70) };
+        const p2 = { x: position.x + 20, y: position.y - (r + 10) };
+
+        ctx.strokeStyle = highlighted ? '#ff5722' : '#999';
+        ctx.lineWidth = highlighted ? 3 : 2;
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.quadraticCurveTo(cp.x, cp.y, p2.x, p2.y);
+        ctx.stroke();
+
+        // Arrowhead at circle boundary toward the node
+        const { tip, angle } = this._placeArrowOnQuadratic(p0, cp, p2, position, r, pad);
+        ctx.save();
+        ctx.translate(tip.x, tip.y);
+        ctx.rotate(angle);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(-8, -4);
+        ctx.lineTo(-8, 4);
+        ctx.closePath();
+        ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+        ctx.fill();
+        ctx.restore();
+
+        if (this.getRenderConfig().showEdgeLabels) {
+            ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+            ctx.font = '11px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(probability.toFixed(2), cp.x, cp.y - 3);
+        }
+    }
+
     getNodePositions(centerX, centerY, radius, canvasWidth = 800) {
         // Arrange ALL states on a single horizontal row, evenly spaced
         const count = this.states.length;
@@ -79,7 +118,7 @@ class CouponCollector extends MarkovChain {
             canvasHeight: 500,
             showStats: true,
             showTransitionMatrix: true,
-            showEdgeLabels: false
+            showEdgeLabels: true
         };
     }
 

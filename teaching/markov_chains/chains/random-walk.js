@@ -27,9 +27,9 @@ class RandomWalk extends MarkovChain {
             transitionMatrix.push(row);
         }
 
-        // Start in the middle (state 5)
+        // Start at state 4 (instead of 5)
         const initialDistribution = new Array(numStates).fill(0);
-        initialDistribution[5] = 1.0;
+        initialDistribution[4] = 1.0;
 
         super({
             name: "Random Walk",
@@ -102,15 +102,15 @@ class RandomWalk extends MarkovChain {
     }
 
     getTheoreticalSteadyState() {
-        // For random walk with absorbing boundaries starting at position 5 (middle of 0-10)
-        const startPos = 5;
+        // For random walk with absorbing boundaries starting at position 4
+        const startPos = 4;
         const maxPos = 10;
         const steadyState = new Array(11).fill(0);
 
         if (this.p === 0.5) {
             // Symmetric case: probability of absorption at 0 vs 10 depends on starting position
-            const prob0 = 1 - startPos / maxPos; // 5/10 = 0.5
-            const prob10 = startPos / maxPos;    // 5/10 = 0.5
+            const prob0 = 1 - startPos / maxPos; // 6/10 = 0.6
+            const prob10 = startPos / maxPos;    // 4/10 = 0.4
             steadyState[0] = prob0;
             steadyState[10] = prob10;
         } else {
