@@ -400,10 +400,6 @@ const MarkovChainVisualization = () => {
     const [pan, setPan] = useState({ x: 0, y: 0 });
     const [isPanning, setIsPanning] = useState(false);
     const lastPosRef = useRef({ x: 0, y: 0 });
-    const [editingMatrix, setEditingMatrix] = useState(false);
-    const [matrixError, setMatrixError] = useState('');
-    const [showAbsorbPlot, setShowAbsorbPlot] = useState(false);
-    const [showDistTable, setShowDistTable] = useState(false);
     const [tooltip, setTooltip] = useState(null);
 
     useEffect(() => {
@@ -516,7 +512,6 @@ const MarkovChainVisualization = () => {
         setIsRunning(false);
         setZoom(1.0);
         setPan({ x: 0, y: 0 });
-        setShowAbsorbPlot(false);
         setUpdateTrigger(prev => prev + 1);
     };
 
@@ -527,47 +522,8 @@ const MarkovChainVisualization = () => {
     const handleChainSelect = (index) => {
         setSelectedChainIndex(index);
         setIsRunning(false);
-        setEditingMatrix(false);
-        setMatrixError('');
     };
 
-    const handleMatrixCellChange = (i, j, value) => {
-        const newValue = parseFloat(value);
-        if (isNaN(newValue) || newValue < 0 || newValue > 1) {
-            setMatrixError('Values must be between 0 and 1');
-            return;
-        }
-
-        // Clear error first to allow intermediate invalid states during editing
-        setMatrixError('');
-
-        const newMatrix = chain.transitionMatrix.map(row => [...row]);
-        newMatrix[i][j] = newValue;
-
-        // Just update the matrix without validation during editing
-        chain.transitionMatrix = newMatrix;
-        setUpdateTrigger(prev => prev + 1);
-    };
-
-    const normalizeMatrixRow = (rowIndex) => {
-        const newMatrix = chain.transitionMatrix.map(row => [...row]);
-        const row = newMatrix[rowIndex];
-        const sum = row.reduce((s, val) => s + val, 0);
-
-        if (sum > 0) {
-            for (let j = 0; j < row.length; j++) {
-                row[j] = row[j] / sum;
-            }
-        }
-
-        try {
-            chain.updateTransitionMatrix(newMatrix);
-            setMatrixError('');
-            setUpdateTrigger(prev => prev + 1);
-        } catch (error) {
-            setMatrixError(error.message);
-        }
-    };
 
     const hoverIndexRef = useRef(null);
 
@@ -667,7 +623,6 @@ const MarkovChainVisualization = () => {
                                 onDotsChange={(v) => {
                                     setNumDots(v);
                                     setIsRunning(false); // Stop simulation when dots change
-                                    setShowAbsorbPlot(false); // Reset absorption plot when dots change
                                     if (chain) {
                                         chain.setNumDots(v); // This already resets internally
                                         setUpdateTrigger(prev => prev + 1);
@@ -737,29 +692,11 @@ const MarkovChainVisualization = () => {
                                 </div>
                             </div>
 
-                            {/* Absorption distribution toggle for chains with absorption */}
-                            {(chain.name === 'Snakes & Ladders' ||
-                              chain.name === 'Waiting for Six' ||
-                              chain.name === 'Random Walk' ||
-                              chain.name === 'Coupon Collector' ||
-                              chain.name === 'English 1-mer (Full)' ||
-                              chain.name === 'English 2-mer (Bigrams)') && (
-                                (() => {
-                                    const histData = chain.getHistogramData ? chain.getHistogramData() : null;
-                                    return (
-                                        <>
-                                            <div style={{ margin: '10px 0' }}>
-                                                <button onClick={() => setShowAbsorbPlot(v => !v)}>
-                                                    {showAbsorbPlot ? 'Hide absorption distribution' : 'Show absorption distribution'}
-                                                </button>
-                                            </div>
-                                            {showAbsorbPlot && histData && (
-                                                <Histogram data={histData} />
-                                            )}
-                                        </>
-                                    );
-                                })()
-                            )}
+                            {/* Absorption distribution: always show when data is available (all chains) */}
+                            {chain && chain.getHistogramData && (() => {
+                                const histData = chain.getHistogramData();
+                                return <Histogram data={histData} />;
+                            })()}
 
                             {/* Distribution Evolution Table for all chains */}
                             <div style={{ margin: '10px 0' }}>
@@ -819,37 +756,7 @@ const MarkovChainVisualization = () => {
 
                             {(chain.getRenderConfig && chain.getRenderConfig().showTransitionMatrix) && (
                             <div className="transition-matrix">
-                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px'}}>
-                                    <h3>Transition Matrix</h3>
-                                    {chain.name === 'Weather Model' && (
-                                        <button
-                                            onClick={() => {
-                                                if (editingMatrix) {
-                                                    // Validate matrix when finishing editing
-                                                    try {
-                                                        chain.updateTransitionMatrix(chain.transitionMatrix);
-                                                        setMatrixError('');
-                                                        setEditingMatrix(false);
-                                                    } catch (error) {
-                                                        setMatrixError(error.message + ' - Please fix before finishing');
-                                                        return;
-                                                    }
-                                                } else {
-                                                    setEditingMatrix(true);
-                                                }
-                                            }}
-                                            className={editingMatrix ? 'danger' : 'secondary'}
-                                        >
-                                            {editingMatrix ? 'Done Editing' : 'Edit Matrix'}
-                                        </button>
-                                    )}
-                                </div>
-
-                                {matrixError && (
-                                    <div style={{color: '#f44336', marginBottom: '10px', fontSize: '14px'}}>
-                                        {matrixError}
-                                    </div>
-                                )}
+                                <h3>Transition Matrix</h3>
 
                                 <table>
                                     <thead>
@@ -858,7 +765,6 @@ const MarkovChainVisualization = () => {
                                             {chain.stateNames.map((name, i) => (
                                                 <th key={i}>{name}</th>
                                             ))}
-                                            {editingMatrix && chain.name === 'Weather Model' && <th>Actions</th>}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -867,57 +773,16 @@ const MarkovChainVisualization = () => {
                                                 <th>{chain.stateNames[i]}</th>
                                                 {row.map((prob, j) => (
                                                     <td key={j}>
-                                                        {editingMatrix && chain.name === 'Weather Model' ? (
-                                                            <input
-                                                                type="number"
-                                                                min="0"
-                                                                max="1"
-                                                                step="0.01"
-                                                                value={prob}
-                                                                onChange={(e) => handleMatrixCellChange(i, j, e.target.value)}
-                                                                style={{
-                                                                    width: '60px',
-                                                                    padding: '2px',
-                                                                    border: '1px solid #ddd',
-                                                                    borderRadius: '3px',
-                                                                    textAlign: 'center'
-                                                                }}
-                                                            />
-                                                        ) : (
-                                                            prob.toFixed(3)
-                                                        )}
+                                                        {prob.toFixed(3)}
                                                     </td>
                                                 ))}
-                                                {editingMatrix && chain.name === 'Weather Model' && (
-                                                    <td>
-                                                        <button
-                                                            onClick={() => normalizeMatrixRow(i)}
-                                                            style={{
-                                                                fontSize: '11px',
-                                                                padding: '2px 6px',
-                                                                background: '#4CAF50',
-                                                                color: 'white',
-                                                                border: 'none',
-                                                                borderRadius: '3px',
-                                                                cursor: 'pointer'
-                                                            }}
-                                                        >
-                                                            Normalize
-                                                        </button>
-                                                    </td>
-                                                )}
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
 
-                                {editingMatrix && chain.name === 'Weather Model' && (
-                                    <div style={{marginTop: '10px', fontSize: '12px', color: '#666'}}>
-                                        <p>• Each row must sum to 1.0</p>
-                                        <p>• Click "Normalize" to automatically adjust a row to sum to 1.0</p>
-                                        <p>• Values must be between 0 and 1</p>
-                                    </div>
-                                )}
+                                {/* Distribution Evolution Table always visible after transition matrix */}
+                                <DistributionTable chain={chain} />
                             </div>
                             )}
                         </>
