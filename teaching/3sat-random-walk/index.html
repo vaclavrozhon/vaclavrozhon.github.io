@@ -181,7 +181,6 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.2); 
   </div>
 
   <div class="controls-row">
-    <button id="btnParse" class="btn-primary">Load instance</button>
     <button id="btnStep">Step</button>
     <button id="btnPlay">Play</button>
     <button id="btnRestart" class="btn-ghost">Restart random</button>
@@ -306,7 +305,6 @@ const elProb = document.getElementById('probLabel');
 const svg = document.getElementById('chainSvg');
 const elProg = document.getElementById('satProgress');
 
-const btnParse = document.getElementById('btnParse');
 const btnStep = document.getElementById('btnStep');
 const btnPlay = document.getElementById('btnPlay');
 const btnRestart = document.getElementById('btnRestart');
@@ -593,7 +591,8 @@ function playLoop(){
 }
 
 // ---------- Events ----------
-btnParse.addEventListener('click', loadInstance);
+// Apply edits when closing the editor
+btnDone.addEventListener('click', ()=>{ loadInstance(); editorPanel.classList.add('hidden'); });
 btnStep.addEventListener('click', doStep);
 btnPlay.addEventListener('click', ()=>{
   if (!fixed) return;
@@ -608,7 +607,7 @@ btnDone.addEventListener('click', ()=>{ editorPanel.classList.add('hidden'); });
 function markDirty(){
   dirty=true;
   if (playing){ playing=false; btnPlay.textContent='Play'; if (timer){ clearTimeout(timer); timer=null; } }
-  btnStep.disabled=true; btnPlay.disabled=true; setPendingMessage();
+  btnStep.disabled=true; btnPlay.disabled=true; setPendingMessage(); editorPanel.classList.remove('hidden');
 }
 elCNF.addEventListener('input', markDirty);
 elFixed.addEventListener('input', markDirty);
