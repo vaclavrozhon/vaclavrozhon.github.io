@@ -40,8 +40,16 @@ author_profile: false
   }
 }
 
+/* Expand content similar to other demos (pagerank, markov_chains) */
+.page, .page__inner, .page__content, .initial-content, .wrap {
+  max-width: none !important;
+  width: 100% !important;
+}
+.wrap { padding-left: 0 !important; padding-right: 0 !important; }
+.page { margin: 0 !important; }
+
 .three-sat-container {
-  max-width: 1100px; margin: 0 auto; color: var(--text);
+  max-width: 1600px; width: 100%; margin: 0 auto; color: var(--text); padding: 0 24px;
 }
 
 .hero {
@@ -293,6 +301,34 @@ function parseFixedAssignment(text,n){
     else return null;
   }
   return arr;
+}
+
+// Generate a random satisfiable 3-CNF for given n,m by first sampling a random
+// satisfying assignment and then sampling random 3-clauses that are compatible with it
+function generateRandomSatisfiableCNF(n=10, m=40){
+  const fixed = new Array(n).fill(false).map(()=>Math.random()<0.5);
+  const clauses = [];
+  const pickTriple = () => {
+    const pool = Array.from({length:n}, (_,i)=>i);
+    for (let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+    return pool.slice(0,3).sort((a,b)=>a-b);
+  };
+  for (let c=0;c<m;c++){
+    const idxs = pickTriple();
+    // random signs
+    let lits = idxs.map(i=> (Math.random()<0.5 ? (i+1) : -(i+1)) );
+    // ensure clause is satisfied by fixed
+    const sat = (lit)=>{ const vi=Math.abs(lit)-1; return (lit>0? fixed[vi]: !fixed[vi]); };
+    if (!lits.some(sat)){
+      // flip one randomly to make it true
+      const k = Math.floor(Math.random()*3);
+      lits[k] = -lits[k];
+    }
+    clauses.push(lits);
+  }
+  let txt = `c Random satisfiable 3-CNF\n` + `p cnf ${n} ${m}\n`;
+  for (const cl of clauses){ txt += `${cl[0]} ${cl[1]} ${cl[2]} 0\n`; }
+  return txt;
 }
 
 // ---------- DOM ----------
@@ -572,15 +608,29 @@ function loadInstance(){
     setStatus('<span class="warn">Invalid or too large instance. Require 1 ≤ n ≤ 20.</span>', false);
     return;
   }
+
+  // Only accept manual fixed assignment if it actually satisfies the CNF
   const manual = parseFixedAssignment(elFixed.value, n);
-  fixed = manual || solveSAT(n, clauses);
+  if (manual && evalFormula(clauses, manual)) {
+    fixed = manual;
+  } else {
+    if (manual && !evalFormula(clauses, manual)) {
+      setStatus('<span class="warn">Provided fixed assignment does not satisfy the CNF. Using auto-solved assignment.</span>');
+    }
+    fixed = solveSAT(n, clauses);
+  }
+
   if (!fixed){
-    setStatus('<span class="warn">Instance appears UNSAT for n ≤ 20 (no fixed solution found).</span>', false);
+    setStatus('<span class="warn">Instance appears UNSAT for n ≤ 20 (no satisfying assignment found).</span>', false);
     fixed=null; working=null; renderClauses(); renderAssignments(); renderChain();
     btnStep.disabled=true; btnPlay.disabled=true; updateBadges(); updateProgressBar(); return;
   }
-  setSeedDefault(); restartWorkingAssignment(true); dirty=false;
-  btnStep.disabled=false; btnPlay.disabled=false; updateBadges(); updateProgressBar();
+
+  setSeedDefault();
+  restartWorkingAssignment(true);
+  dirty=false;
+  btnStep.disabled=false; btnPlay.disabled=false;
+  updateBadges(); updateProgressBar();
 }
 
 function playLoop(){
@@ -615,54 +665,8 @@ elFixed.addEventListener('input', markDirty);
 editorPanel.classList.add('hidden');
 
 // ---------- Default instance ----------
-const defaultCNF =
-`c Instance A (10 vars, 43 clauses) — satisfiable
-p cnf 10 43
--3 5 -8 0
-7 8 -10 0
-6 8 -10 0
--1 -6 -7 0
--4 -6 -8 0
--1 -6 7 0
--2 4 -5 0
--1 4 10 0
--6 -7 -10 0
--4 6 -10 0
--1 -5 9 0
--1 -6 -8 0
--4 -7 8 0
--5 6 9 0
-2 7 -8 0
--2 5 -7 0
--1 -2 7 0
--1 2 -3 0
-1 3 -10 0
--5 6 -8 0
--1 2 5 0
--3 6 -8 0
--4 5 8 0
--1 -2 6 0
--2 6 -7 0
--2 6 -8 0
--2 -3 10 0
--1 -5 8 0
--4 -7 10 0
--1 3 -6 0
--5 7 -8 0
--1 4 -6 0
-3 -7 -8 0
-1 -7 -10 0
--1 -3 -7 0
--4 -7 -9 0
-1 -4 -8 0
--2 5 10 0
--5 7 10 0
-2 -3 8 0
--4 6 7 0
--2 -5 -8 0
--4 5 -9 0
-`;
+const defaultCNF = generateRandomSatisfiableCNF(10, 40);
 document.getElementById('cnfInput').value = defaultCNF;
-document.getElementById('fixedInput').value = '0 0 1 0 0 0 0 1 0 0';
+document.getElementById('fixedInput').value = '';
 loadInstance();
 </script>
