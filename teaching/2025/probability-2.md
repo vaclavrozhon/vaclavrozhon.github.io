@@ -24,4 +24,5 @@ TBD
 
 - [Markov chains](/teaching/markov_chains/)
 - [PageRank for Wikipedia](/teaching/pagerank/public/)
+ - [Random walk on 3SAT (Markov chain)](/teaching/3sat-random-walk/)
 
