@@ -1,12 +1,10 @@
----
-layout: single
-title: Random Walk for 3SAT — Markov Chain Demo
-permalink: "/teaching/3sat-random-walk/"
-katex: false
-author_profile: false
----
-
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Walk for 3SAT — Demo</title>
+  <style>
 :root{
   /* Light as default to match other demos */
   --bg: #f6f8ff;
@@ -40,9 +38,8 @@ author_profile: false
   }
 }
 
-.three-sat-container {
-  max-width: 1100px; margin: 0 auto; color: var(--text);
-}
+body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+.three-sat-container { max-width: 1100px; margin: 0 auto; color: var(--text); padding: 16px; }
 
 .hero {
   background: radial-gradient(1200px 400px at 20% -10%, rgba(122,162,255,.12), transparent),
@@ -52,174 +49,116 @@ author_profile: false
   border-radius: 16px; padding: 24px; margin-bottom: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,.15);
 }
-
 .hero h2 { margin: 0 0 6px; letter-spacing: .2px; }
 .hero p  { margin: 0; color: var(--muted); }
-
 .badges { display:none; gap:8px; flex-wrap: wrap; margin-top: 12px; }
 .badge { font-size:.85rem; padding:4px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--chip-border); color:var(--muted); }
 
-.controls {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 0.75rem;
-}
-.controls textarea {
-  width: 100%; min-height: 140px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: .9rem; line-height: 1.35; color: var(--text); background: var(--panel);
-  border: 1px solid var(--chip-border); border-radius: 12px; padding: 10px 12px;
-  outline: none; box-shadow: inset 0 0 0 2px transparent;
-}
+.controls { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 0.75rem; }
+.controls textarea { width: 100%; min-height: 140px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size: .9rem; line-height: 1.35; color: var(--text); background: var(--panel); border: 1px solid var(--chip-border); border-radius: 12px; padding: 10px 12px; outline: none; box-shadow: inset 0 0 0 2px transparent; }
 .controls textarea:focus { box-shadow: inset 0 0 0 2px var(--ring); }
-
 .field label { font-weight: 600; margin-bottom: 6px; color: var(--muted); }
+.controls-row { display:flex; align-items:center; gap:10px; flex-wrap: wrap; margin-top: 6px; }
 
-.controls-row {
-  display:flex; align-items:center; gap:10px; flex-wrap: wrap; margin-top: 6px;
-}
-
-button {
-  appearance: none; border:1px solid var(--chip-border); background: linear-gradient(180deg, var(--panel), rgba(0,0,0,.02));
-  color: var(--text); padding: 8px 12px; border-radius: 10px; font-weight:600; letter-spacing:.2px;
-  transition: transform .05s ease, box-shadow .2s ease, border-color .2s ease;
-  box-shadow: 0 2px 0 rgba(0,0,0,.12);
-}
+button { appearance: none; border:1px solid var(--chip-border); background: linear-gradient(180deg, var(--panel), rgba(0,0,0,.02)); color: var(--text); padding: 8px 12px; border-radius: 10px; font-weight:600; letter-spacing:.2px; transition: transform .05s ease, box-shadow .2s ease, border-color .2s ease; box-shadow: 0 2px 0 rgba(0,0,0,.12); cursor: pointer; }
 button:hover { border-color: var(--ring); box-shadow: 0 4px 16px rgba(0,0,0,.15), 0 0 0 4px var(--ring); }
 button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.2); }
-
 .btn-primary { background: linear-gradient(180deg, var(--accent), #5d87ff); color:#fff; border-color: transparent; }
 .btn-ghost  { background: transparent; }
-
-.input-inline{
-  display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid var(--chip-border);
-  border-radius:10px; background:var(--panel); color:var(--muted);
-}
+.input-inline{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid var(--chip-border); border-radius:10px; background:var(--panel); color:var(--muted); }
 .input-inline input[type="text"]{ border:none; outline:none; background:transparent; color:var(--text); width:8rem; }
-
 .status { margin: 8px 0 12px; font-size: .95rem; color: var(--muted); }
 .status .ok    { color: var(--good); font-weight:600; }
 .status .warn  { color: var(--bad);  font-weight:600; }
 .status.pending { color: var(--warn); font-weight:600; }
 
-.card {
-  border: 1px solid var(--chip-border); border-radius: 16px; padding: 14px 16px; background: var(--panel);
-}
-
-.hidden { display: none; }
-
-/* Hide site chrome to make this a standalone demo */
-.masthead, .page__footer, .page__meta, .author__sidebar, .sidebar, .breadcrumbs, .page__hero { display: none !important; }
-.initial-content { padding-top: 0 !important; }
-
+.card { border: 1px solid var(--chip-border); border-radius: 16px; padding: 14px 16px; background: var(--panel); }
 .viz .section-title{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
-.progress {
-  height: 6px; background: var(--chip); border: 1px solid var(--chip-border);
-  border-radius: 999px; overflow: hidden;
-}
+.progress { height: 6px; background: var(--chip); border: 1px solid var(--chip-border); border-radius: 999px; overflow: hidden; }
 .progress > div { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width: 0%; transition: width .35s ease; }
 
 .clauses { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px; margin-top: 8px; max-height: 260px; overflow: auto; }
-.clause {
-  padding: 6px 8px; border-radius: 10px; border: 1px solid var(--chip-border);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  background: var(--chip); position: relative; font-size: .85rem;
-}
-.clause .dot{
-  position:absolute; top:10px; right:10px; width:10px; height:10px; border-radius:50%;
-  box-shadow: 0 0 0 4px rgba(0,0,0,.04);
-}
+.clause { padding: 6px 8px; border-radius: 10px; border: 1px solid var(--chip-border); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: var(--chip); position: relative; font-size: .85rem; }
+.clause .dot{ position:absolute; top:10px; right:10px; width:10px; height:10px; border-radius:50%; box-shadow: 0 0 0 4px rgba(0,0,0,.04); }
 .clause.sat   { background: rgba(46, 204, 113, .09); border-color: rgba(46, 204, 113, .35); }
-.clause.sat .dot{ background: var(--good); }
 .clause.unsat { background: rgba(255, 107, 107, .08); border-color: rgba(255, 107, 107, .35); }
-.clause.unsat .dot{ background: var(--bad); }
-.clause.selected { font-weight: 700; border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring), 0 6px 16px rgba(0,0,0,.12); }
+.clause.selected { outline: 3px solid var(--ring); }
 
 .assignments { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; margin-top: 10px; }
-.assignment {
-  padding: 6px 8px; border: 1px solid var(--chip-border); border-radius: 10px; background: var(--chip);
-  display:flex; align-items:center; gap:8px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:.9rem;
-}
-.assignment .status-dot{ width:8px; height:8px; border-radius:50%; box-shadow: 0 0 0 3px rgba(0,0,0,.04); border: 1px solid rgba(0,0,0,.1); }
-.assignment .status-dot.match{ background: #2ecc71; }
-.assignment .status-dot.mismatch{ background: #ff6b6b; }
+.assignment { padding: 6px 8px; border: 1px solid var(--chip-border); border-radius: 10px; background: var(--chip); display:flex; align-items:center; gap:8px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:.9rem; }
+.assignment .status-dot{ width:8px; height:8px; border-radius:50%; box-shadow: 0 0 0 3px rgba(0,0,0,.04); }
+.assignment .status-dot.match{ background: var(--accent-2); }
+.assignment .status-dot.mismatch{ background: var(--accent); }
 
 .chain { margin-top: 16px; }
 .chain svg { width: 100%; height: 170px; }
 .legend { font-size: .9rem; color: var(--muted); margin-top: 8px; }
-
 .small { font-size: .9rem; color: var(--muted); }
 .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: var(--chip); border: 1px solid var(--chip-border); padding: 2px 6px; border-radius: 6px; }
-
-.footer-note{
-  margin-top: 18px; padding: 14px 16px; border-left: 4px solid var(--accent); background: linear-gradient(90deg, rgba(122,162,255,.06), transparent);
-  border-radius: 12px; color: var(--muted);
-}
-</style>
-
-<div class="three-sat-container">
-  <div class="hero">
-    <h2>Random Walk for 3SAT</h2>
-    <p>At each step: pick a uniformly random unsatisfied clause, then flip a uniformly random variable from it. Track the Hamming agreement with a fixed satisfying assignment, visualized as a 1-D Markov chain on states <span class="kbd">0..n</span>.</p>
-    <div class="badges">
-      <span class="badge" id="badgeN">n = –</span>
-      <span class="badge" id="badgeM">m = –</span>
-      <span class="badge" id="badgeAgree">agreement h = –/–</span>
-      <span class="badge" id="badgeSteps">steps = 0</span>
-    </div>
-  </div>
-
-  <div class="controls hidden" id="editorPanel">
-    <div class="field">
-      <label for="cnfInput">DIMACS CNF <span class="small">(≤ 20 variables)</span></label>
-      <textarea id="cnfInput"></textarea>
-    </div>
-    <div class="field">
-      <label for="fixedInput">Fixed satisfying assignment <span class="small">(optional; 0/1 or ±1, space-separated). Leave empty to auto-solve.</span></label>
-      <textarea id="fixedInput" placeholder="e.g. 1 0 1 1 0"></textarea>
-    </div>
-    <div class="controls-row">
-      <button id="btnDone" class="btn-ghost">Done</button>
-    </div>
-  </div>
-
-  <div class="controls-row">
-    <button id="btnParse" class="btn-primary">Load instance</button>
-    <button id="btnStep">Step</button>
-    <button id="btnPlay">Play</button>
-    <button id="btnRestart" class="btn-ghost">Restart random</button>
-    <button id="btnToggleControls" class="btn-ghost" title="Show/Hide instance editor">Change instance</button>
-    <span class="input-inline">Speed <input id="speedInput" type="range" min="40" max="1000" step="20" value="240"></span>
-  </div>
-
-  <div class="status" id="status"></div>
-
-  <div class="card viz">
-    <div class="section-title">
-      <div><strong>Clauses</strong></div>
-      <div style="flex:1; margin-left:12px;">
-        <div class="progress" title="Fraction of satisfied clauses under current working assignment">
-          <div id="satProgress" style="width:0%"></div>
-        </div>
+  </style>
+</head>
+<body>
+  <div class="three-sat-container">
+    <div class="hero">
+      <h2>Random Walk for 3SAT</h2>
+      <p>At each step: pick a uniformly random unsatisfied clause, then flip a uniformly random variable from it. Track the Hamming agreement with a fixed satisfying assignment, visualized as a 1-D Markov chain on states <span class="kbd">0..n</span>.</p>
+      <div class="badges">
+        <span class="badge" id="badgeN">n = –</span>
+        <span class="badge" id="badgeM">m = –</span>
+        <span class="badge" id="badgeAgree">agreement h = –/–</span>
+        <span class="badge" id="badgeSteps">steps = 0</span>
       </div>
     </div>
-    <div class="clauses" id="clauses"></div>
-    <div class="assignments" id="assignments"></div>
-  </div>
 
-  <div class="card viz chain">
-    <div class="section-title">
-      <div><strong>Agreement with fixed assignment</strong> <span class="small">nodes 0..n</span></div>
-      <div class="small" id="probLabel"></div>
+    <div class="controls hidden" id="editorPanel">
+      <div class="field">
+        <label for="cnfInput">DIMACS CNF <span class="small">(≤ 20 variables)</span></label>
+        <textarea id="cnfInput"></textarea>
+      </div>
+      <div class="field">
+        <label for="fixedInput">Fixed satisfying assignment <span class="small">(optional; 0/1 or ±1, space-separated). Leave empty to auto-solve.</span></label>
+        <textarea id="fixedInput" placeholder="e.g. 1 0 1 1 0"></textarea>
+      </div>
+      <div class="controls-row">
+        <button id="btnDone" class="btn-ghost">Done</button>
+      </div>
     </div>
-    <svg id="chainSvg" viewBox="0 0 1000 170" preserveAspectRatio="xMidYMid meet" aria-label="Hamming agreement chain"></svg>
-    <div class="legend">After selecting a clause with <span class="kbd">k</span> literals matching the fixed assignment, the step goes “towards” the fixed solution with probability <span class="kbd">(3−k)/3</span> and “away” with probability <span class="kbd">k/3</span>.</div>
+
+    <div class="controls-row">
+      <button id="btnParse" class="btn-primary">Load instance</button>
+      <button id="btnStep">Step</button>
+      <button id="btnPlay">Play</button>
+      <button id="btnRestart" class="btn-ghost">Restart random</button>
+      <button id="btnToggleControls" class="btn-ghost" title="Show/Hide instance editor">Change instance</button>
+      <span class="input-inline">Speed <input id="speedInput" type="range" min="40" max="1000" step="20" value="240"></span>
+    </div>
+
+    <div class="status" id="status"></div>
+
+    <div class="card viz">
+      <div class="section-title">
+        <div><strong>Clauses</strong></div>
+        <div style="flex:1; margin-left:12px;">
+          <div class="progress" title="Fraction of satisfied clauses under current working assignment">
+            <div id="satProgress" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clauses" id="clauses"></div>
+      <div class="assignments" id="assignments"></div>
+    </div>
+
+    <div class="card viz chain">
+      <div class="section-title">
+        <div><strong>Agreement with fixed assignment</strong> <span class="small">nodes 0..n</span></div>
+        <div class="small" id="probLabel"></div>
+      </div>
+      <svg id="chainSvg" viewBox="0 0 1000 170" preserveAspectRatio="xMidYMid meet" aria-label="Hamming agreement chain"></svg>
+      <div class="legend">After selecting a clause with <span class="kbd">k</span> literals matching the fixed assignment, the step goes “towards” the fixed solution with probability <span class="kbd">(3−k)/3</span> and “away” with probability <span class="kbd">k/3</span>.</div>
+    </div>
   </div>
 
-  <div class="footer-note">
-    <strong>Context.</strong> This walk is the core move used in local-search SAT solvers (e.g. WalkSAT) and also appears in theoretical algorithms. A classic example is <em>Schöning’s algorithm</em> for 3-SAT, which repeatedly performs short random walks on the Hamming cube and achieves a running time of the form \(c^n\) with \(c&lt;1.5\) (details in the article). For current best asymptotic bounds (e.g. PPSZ-type refinements), see the references therein.  
-    <br/>Learn more on Wikipedia: <a href="https://en.wikipedia.org/wiki/Sch%C3%B6ning%27s_algorithm">Schöning’s algorithm</a> and the overview at <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">Boolean satisfiability problem</a>.
-  </div>
-</div>
-
-<script>
+  <script>
 // ---------- Utilities ----------
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}}
 function hashStringToSeed(str){let h=2166136261>>>0;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
@@ -312,8 +251,8 @@ const btnPlay = document.getElementById('btnPlay');
 const btnRestart = document.getElementById('btnRestart');
 const btnToggleControls = document.getElementById('btnToggleControls');
 const editorPanel = document.getElementById('editorPanel');
-const elSpeed = document.getElementById('speedInput');
 const btnDone = document.getElementById('btnDone');
+const elSpeed = document.getElementById('speedInput');
 
 const badgeN = document.getElementById('badgeN');
 const badgeM = document.getElementById('badgeM');
@@ -355,13 +294,14 @@ function renderAssignments(){
   for (let i=0;i<n;i++){
     const row = document.createElement('div');
     row.className = 'assignment';
-    const dot = document.createElement('span');
+    const emoji = document.createElement('span');
     const isMatch = (working[i]===fixed[i]);
-    dot.className = 'status-dot ' + (isMatch ? 'match' : 'mismatch');
-    dot.title = isMatch ? 'matches fixed' : 'differs from fixed';
+    emoji.className = 'status-emoji';
+    emoji.textContent = isMatch ? '✅' : '❌';
+    emoji.title = isMatch ? 'matches fixed' : 'differs from fixed';
     const text = document.createElement('span');
     text.innerHTML = `x${i+1} = <b>${working[i]?1:0}</b>`;
-    row.appendChild(dot);
+    row.appendChild(emoji);
     row.appendChild(text);
     elAssignments.appendChild(row);
   }
@@ -396,7 +336,6 @@ function renderChain(){
 
   for (let i=0;i<nodeCount;i++){
     const cx = padX + i*stepX;
-    // connectors
     if (i<nodeCount-1){
       const seg = document.createElementNS('http://www.w3.org/2000/svg','line');
       seg.setAttribute('x1', cx+R); seg.setAttribute('y1', y);
@@ -404,7 +343,6 @@ function renderChain(){
       seg.setAttribute('stroke', '#3a4561'); seg.setAttribute('stroke-width','2');
       svg.appendChild(seg);
     }
-    // node
     const g = document.createElementNS('http://www.w3.org/2000/svg','g');
     const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
     circle.setAttribute('cx', cx); circle.setAttribute('cy', y); circle.setAttribute('r', R);
@@ -422,105 +360,22 @@ function renderChain(){
     svg.appendChild(g);
   }
 
-  // defs for gradient
   const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
   const grad = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
   grad.setAttribute('id','gradActive'); grad.setAttribute('x1','0'); grad.setAttribute('x2','1');
   const s1 = document.createElementNS('http://www.w3.org/2000/svg','stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color','#7aa2ff');
   const s2 = document.createElementNS('http://www.w3.org/2000/svg','stop'); s2.setAttribute('offset','100%'); s2.setAttribute('stop-color','#9bdeac');
   grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad); svg.appendChild(defs);
-
-  // arrowhead marker for probability arrows
-  const marker = document.createElementNS('http://www.w3.org/2000/svg','marker');
-  marker.setAttribute('id','arrowHead');
-  marker.setAttribute('markerWidth','8');
-  marker.setAttribute('markerHeight','8');
-  marker.setAttribute('refX','8');
-  marker.setAttribute('refY','4');
-  marker.setAttribute('orient','auto');
-  marker.setAttribute('markerUnits','strokeWidth');
-  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-  path.setAttribute('d','M0,0 L8,4 L0,8 Z');
-  path.setAttribute('fill','#2c6dff');
-  marker.appendChild(path);
-  defs.appendChild(marker);
 }
 
 function updateProbLabel(k){
-  // Draw probability arrows above adjacent edges; clear when k is null
-  const existing = svg.querySelector('#probArrows');
-  if (existing) existing.remove();
-  if (k==null || !fixed) { elProb.textContent = ''; return; }
-  elProb.textContent = '';
-
-  const width = svg.viewBox.baseVal.width;
-  const padX = 40, y = 86, R = 15;
-  const nodeCount = n + 1;
-  const usable = width - 2*padX;
-  const stepX = nodeCount>1 ? usable/(nodeCount-1) : 0;
-
-  const g = document.createElementNS('http://www.w3.org/2000/svg','g');
-  g.setAttribute('id','probArrows');
-
-  const arrowY = y - 26;
-  const labelY = arrowY - 6;
-  const color = '#2c6dff';
-
-  // left edge: away = k/3
-  if (hammingAgree > 0){
-    const x1 = padX + (hammingAgree-1)*stepX + R;
-    const x2 = padX + hammingAgree*stepX - R;
-    const mid = (x1 + x2) / 2;
-    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
-    line.setAttribute('x1', (mid+18));
-    line.setAttribute('y1', arrowY);
-    line.setAttribute('x2', (mid-18));
-    line.setAttribute('y2', arrowY);
-    line.setAttribute('stroke', color);
-    line.setAttribute('stroke-width','2');
-    line.setAttribute('marker-end','url(#arrowHead)');
-    g.appendChild(line);
-    const text = document.createElementNS('http://www.w3.org/2000/svg','text');
-    text.setAttribute('x', mid);
-    text.setAttribute('y', labelY);
-    text.setAttribute('text-anchor','middle');
-    text.setAttribute('font-size','12');
-    text.setAttribute('fill', color);
-    text.textContent = `${k}/3`;
-    g.appendChild(text);
-  }
-
-  // right edge: toward = (3-k)/3
-  if (hammingAgree < n){
-    const x1 = padX + hammingAgree*stepX + R;
-    const x2 = padX + (hammingAgree+1)*stepX - R;
-    const mid = (x1 + x2) / 2;
-    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
-    line.setAttribute('x1', (mid-18));
-    line.setAttribute('y1', arrowY);
-    line.setAttribute('x2', (mid+18));
-    line.setAttribute('y2', arrowY);
-    line.setAttribute('stroke', color);
-    line.setAttribute('stroke-width','2');
-    line.setAttribute('marker-end','url(#arrowHead)');
-    g.appendChild(line);
-    const text = document.createElementNS('http://www.w3.org/2000/svg','text');
-    text.setAttribute('x', mid);
-    text.setAttribute('y', labelY);
-    text.setAttribute('text-anchor','middle');
-    text.setAttribute('font-size','12');
-    text.setAttribute('fill', color);
-    text.textContent = `${3-k}/3`;
-    g.appendChild(text);
-  }
-
-  svg.appendChild(g);
+  elProb.textContent = (k==null) ? '' : `Probabilities: toward = ${k}/3, away = ${(3-k)}/3`;
 }
 
 function selectUnsatisfiedClause(){
   const unsat=[]; for (let i=0;i<clauses.length;i++) if(!evalClause(clauses[i],working)) unsat.push(i);
   if (!unsat.length) return -1;
-  return unsat[Math.floor(rng()*unsat.length)];
+  return unsat[Math.floor(Math.random()*unsat.length)];
 }
 
 function substepSelectClause(){
@@ -542,7 +397,7 @@ function substepSelectClause(){
 function substepFlipVariable(){
   if (selectedClauseIndex<0) return;
   const clause = clauses[selectedClauseIndex];
-  const pick = clause[Math.floor(rng()*clause.length)];
+  const pick = clause[Math.floor(Math.random()*clause.length)];
   const v = Math.abs(pick)-1;
   const before = (working[v]===fixed[v]);
   working[v] = !working[v];
@@ -559,7 +414,7 @@ function setSeedDefault(){ rng = Math.random; }
 
 function restartWorkingAssignment(randomize=true){
   if (!fixed) return;
-  if (randomize){ working = new Array(n).fill(false).map(()=>rng()<.5); }
+  if (randomize){ working = new Array(n).fill(false).map(()=>Math.random()<.5); }
   else { working = fixed.slice(); }
   hammingAgree = countAgree(working, fixed);
   substep=0; selectedClauseIndex=-1; stepCount=0;
@@ -570,10 +425,7 @@ function restartWorkingAssignment(randomize=true){
 function loadInstance(){
   const parsed = parseDimacs(elCNF.value);
   n = parsed.n; clauses = parsed.clauses;
-  if (n<=0 || n>20){
-    setStatus('<span class="warn">Invalid or too large instance. Require 1 ≤ n ≤ 20.</span>', false);
-    return;
-  }
+  if (n<=0 || n>20){ setStatus('<span class="warn">Invalid or too large instance. Require 1 ≤ n ≤ 20.</span>', false); return; }
   const manual = parseFixedAssignment(elFixed.value, n);
   fixed = manual || solveSAT(n, clauses);
   if (!fixed){
@@ -585,34 +437,19 @@ function loadInstance(){
   btnStep.disabled=false; btnPlay.disabled=false; updateBadges(); updateProgressBar();
 }
 
-function playLoop(){
-  if (!playing) return;
-  doStep();
-  const delay = parseInt(elSpeed.value,10)||240;
-  timer = setTimeout(playLoop, delay);
-}
+function playLoop(){ if (!playing) return; doStep(); const delay = parseInt(elSpeed.value,10)||240; timer = setTimeout(playLoop, delay); }
 
 // ---------- Events ----------
 btnParse.addEventListener('click', loadInstance);
 btnStep.addEventListener('click', doStep);
-btnPlay.addEventListener('click', ()=>{
-  if (!fixed) return;
-  playing = !playing;
-  btnPlay.textContent = playing ? 'Pause' : 'Play';
-  if (playing) playLoop();
-});
+btnPlay.addEventListener('click', ()=>{ if (!fixed) return; playing = !playing; btnPlay.textContent = playing ? 'Pause' : 'Play'; if (playing) playLoop(); });
 btnRestart.addEventListener('click', ()=>{ setSeedDefault(); restartWorkingAssignment(true); });
 btnToggleControls.addEventListener('click', ()=>{ editorPanel.classList.toggle('hidden'); });
 btnDone.addEventListener('click', ()=>{ editorPanel.classList.add('hidden'); });
 
-function markDirty(){
-  dirty=true;
-  if (playing){ playing=false; btnPlay.textContent='Play'; if (timer){ clearTimeout(timer); timer=null; } }
-  btnStep.disabled=true; btnPlay.disabled=true; setPendingMessage();
-}
+function markDirty(){ dirty=true; if (playing){ playing=false; btnPlay.textContent='Play'; if (timer){ clearTimeout(timer); timer=null; } } btnStep.disabled=true; btnPlay.disabled=true; setPendingMessage(); }
 elCNF.addEventListener('input', markDirty);
 elFixed.addEventListener('input', markDirty);
-// Hide editor by default
 editorPanel.classList.add('hidden');
 
 // ---------- Default instance ----------
@@ -666,4 +503,8 @@ p cnf 10 43
 document.getElementById('cnfInput').value = defaultCNF;
 document.getElementById('fixedInput').value = '0 0 1 0 0 0 0 1 0 0';
 loadInstance();
-</script>
+  </script>
+</body>
+</html>
+
+
