@@ -476,14 +476,14 @@ function renderChain(){
   // arrowhead marker for probability arrows
   const marker = document.createElementNS('http://www.w3.org/2000/svg','marker');
   marker.setAttribute('id','arrowHead');
-  marker.setAttribute('markerWidth','8');
-  marker.setAttribute('markerHeight','8');
-  marker.setAttribute('refX','8');
-  marker.setAttribute('refY','4');
+  marker.setAttribute('markerWidth','14');
+  marker.setAttribute('markerHeight','10');
+  marker.setAttribute('refX','10');
+  marker.setAttribute('refY','5');
   marker.setAttribute('orient','auto');
   marker.setAttribute('markerUnits','strokeWidth');
   const path = document.createElementNS('http://www.w3.org/2000/svg','path');
-  path.setAttribute('d','M0,0 L8,4 L0,8 Z');
+  path.setAttribute('d','M0,0 L10,5 L0,10 Z');
   path.setAttribute('fill','#2c6dff');
   marker.appendChild(path);
   defs.appendChild(marker);
@@ -505,8 +505,8 @@ function updateProbLabel(k){
   const g = document.createElementNS('http://www.w3.org/2000/svg','g');
   g.setAttribute('id','probArrows');
 
-  const arrowY = y - 26;
-  const labelY = arrowY - 6;
+  const arrowY = y - 38;
+  const labelY = arrowY - 12;
   const color = '#2c6dff';
 
   // left edge: away = k/3
@@ -515,19 +515,19 @@ function updateProbLabel(k){
     const x2 = padX + hammingAgree*stepX - R;
     const mid = (x1 + x2) / 2;
     const line = document.createElementNS('http://www.w3.org/2000/svg','line');
-    line.setAttribute('x1', (mid+18));
+    line.setAttribute('x1', (mid+30));
     line.setAttribute('y1', arrowY);
-    line.setAttribute('x2', (mid-18));
+    line.setAttribute('x2', (mid-30));
     line.setAttribute('y2', arrowY);
     line.setAttribute('stroke', color);
-    line.setAttribute('stroke-width','2');
+    line.setAttribute('stroke-width','3');
     line.setAttribute('marker-end','url(#arrowHead)');
     g.appendChild(line);
     const text = document.createElementNS('http://www.w3.org/2000/svg','text');
     text.setAttribute('x', mid);
     text.setAttribute('y', labelY);
     text.setAttribute('text-anchor','middle');
-    text.setAttribute('font-size','12');
+    text.setAttribute('font-size','18');
     text.setAttribute('fill', color);
     text.textContent = `${k}/3`;
     g.appendChild(text);
@@ -539,19 +539,19 @@ function updateProbLabel(k){
     const x2 = padX + (hammingAgree+1)*stepX - R;
     const mid = (x1 + x2) / 2;
     const line = document.createElementNS('http://www.w3.org/2000/svg','line');
-    line.setAttribute('x1', (mid-18));
+    line.setAttribute('x1', (mid-30));
     line.setAttribute('y1', arrowY);
-    line.setAttribute('x2', (mid+18));
+    line.setAttribute('x2', (mid+30));
     line.setAttribute('y2', arrowY);
     line.setAttribute('stroke', color);
-    line.setAttribute('stroke-width','2');
+    line.setAttribute('stroke-width','3');
     line.setAttribute('marker-end','url(#arrowHead)');
     g.appendChild(line);
     const text = document.createElementNS('http://www.w3.org/2000/svg','text');
     text.setAttribute('x', mid);
     text.setAttribute('y', labelY);
     text.setAttribute('text-anchor','middle');
-    text.setAttribute('font-size','12');
+    text.setAttribute('font-size','18');
     text.setAttribute('fill', color);
     text.textContent = `${3-k}/3`;
     g.appendChild(text);
