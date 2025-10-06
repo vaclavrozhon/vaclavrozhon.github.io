@@ -331,6 +331,15 @@ function generateRandomSatisfiableCNF(n=10, m=40){
   return txt;
 }
 
+// Serialize current CNF and assignment to editable textareas
+function serializeCNF(n, clauses) {
+  let out = `c Current instance\n` + `p cnf ${n} ${clauses.length}\n`;
+  for (const cl of clauses) {
+    out += `${cl.join(' ')} 0\n`;
+  }
+  return out;
+}
+
 // ---------- DOM ----------
 const elCNF = document.getElementById('cnfInput');
 const elFixed = document.getElementById('fixedInput');
@@ -651,7 +660,15 @@ btnPlay.addEventListener('click', ()=>{
   if (playing) playLoop();
 });
 btnRestart.addEventListener('click', ()=>{ setSeedDefault(); restartWorkingAssignment(true); });
-btnToggleControls.addEventListener('click', ()=>{ editorPanel.classList.toggle('hidden'); });
+btnToggleControls.addEventListener('click', ()=>{
+  const willShow = editorPanel.classList.contains('hidden');
+  if (willShow) {
+    // Populate editors with the current instance and fixed assignment
+    elCNF.value = serializeCNF(n, clauses);
+    elFixed.value = fixed ? fixed.map(v => v ? '1' : '0').join(' ') : '';
+  }
+  editorPanel.classList.toggle('hidden');
+});
 btnDone.addEventListener('click', ()=>{ editorPanel.classList.add('hidden'); });
 
 function markDirty(){
