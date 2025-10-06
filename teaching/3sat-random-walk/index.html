@@ -54,7 +54,7 @@ katex: false
 .hero h2 { margin: 0 0 6px; letter-spacing: .2px; }
 .hero p  { margin: 0; color: var(--muted); }
 
-.badges { display:flex; gap:8px; flex-wrap: wrap; margin-top: 12px; }
+.badges { display:none; gap:8px; flex-wrap: wrap; margin-top: 12px; }
 .badge { font-size:.85rem; padding:4px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--chip-border); color:var(--muted); }
 
 .controls {
@@ -100,6 +100,8 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.2); 
 .card {
   border: 1px solid var(--chip-border); border-radius: 16px; padding: 14px 16px; background: var(--panel);
 }
+
+.hidden { display: none; }
 
 .viz .section-title{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
 .progress {
@@ -158,7 +160,7 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.2); 
     </div>
   </div>
 
-  <div class="controls">
+  <div class="controls hidden" id="editorPanel">
     <div class="field">
       <label for="cnfInput">DIMACS CNF <span class="small">(≤ 20 variables)</span></label>
       <textarea id="cnfInput"></textarea>
@@ -174,10 +176,8 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.2); 
     <button id="btnStep">Step</button>
     <button id="btnPlay">Play</button>
     <button id="btnRestart" class="btn-ghost">Restart random</button>
-    <button id="btnResetToFixed" class="btn-ghost">Reset to fixed</button>
-    <span class="input-inline">Seed <input id="seedInput" type="text" value=""></span>
+    <button id="btnToggleControls" class="btn-ghost" title="Show/Hide instance editor">Change instance</button>
     <span class="input-inline">Speed <input id="speedInput" type="range" min="40" max="1000" step="20" value="240"></span>
-    <button id="btnRandomSeed" title="Randomize seed">🎲</button>
   </div>
 
   <div class="status" id="status"></div>
@@ -301,9 +301,8 @@ const btnParse = document.getElementById('btnParse');
 const btnStep = document.getElementById('btnStep');
 const btnPlay = document.getElementById('btnPlay');
 const btnRestart = document.getElementById('btnRestart');
-const btnResetToFixed = document.getElementById('btnResetToFixed');
-const btnRandomSeed = document.getElementById('btnRandomSeed');
-const elSeed = document.getElementById('seedInput');
+const btnToggleControls = document.getElementById('btnToggleControls');
+const editorPanel = document.getElementById('editorPanel');
 const elSpeed = document.getElementById('speedInput');
 
 const badgeN = document.getElementById('badgeN');
@@ -465,12 +464,7 @@ function substepFlipVariable(){
 
 function doStep(){ if (substep===0){ substepSelectClause(); substep=1; } else { substepFlipVariable(); substep=0; } }
 
-function setSeedFromInput(){
-  const val = elSeed.value.trim();
-  if (!val){ rng = Math.random; return; }
-  const seed = /^\d+$/.test(val) ? parseInt(val,10) : hashStringToSeed(val);
-  rng = mulberry32(seed);
-}
+function setSeedDefault(){ rng = Math.random; }
 
 function restartWorkingAssignment(randomize=true){
   if (!fixed) return;
@@ -479,7 +473,7 @@ function restartWorkingAssignment(randomize=true){
   hammingAgree = countAgree(working, fixed);
   substep=0; selectedClauseIndex=-1; stepCount=0;
   renderAssignments(); renderClauses(); renderChain(); updateBadges();
-  setStatus(`Loaded n=${n}, m=${clauses.length}. Agreement h=${hammingAgree}/${n}.`, true);
+  setStatus(`number of variables = ${n}, number of clauses = ${clauses.length}`, true);
 }
 
 function loadInstance(){
@@ -496,7 +490,7 @@ function loadInstance(){
     fixed=null; working=null; renderClauses(); renderAssignments(); renderChain();
     btnStep.disabled=true; btnPlay.disabled=true; updateBadges(); updateProgressBar(); return;
   }
-  setSeedFromInput(); restartWorkingAssignment(true); dirty=false;
+  setSeedDefault(); restartWorkingAssignment(true); dirty=false;
   btnStep.disabled=false; btnPlay.disabled=false; updateBadges(); updateProgressBar();
 }
 
@@ -516,13 +510,8 @@ btnPlay.addEventListener('click', ()=>{
   btnPlay.textContent = playing ? 'Pause' : 'Play';
   if (playing) playLoop();
 });
-btnRestart.addEventListener('click', ()=>{ setSeedFromInput(); restartWorkingAssignment(true); });
-btnResetToFixed.addEventListener('click', ()=>{ restartWorkingAssignment(false); });
-btnRandomSeed.addEventListener('click', ()=>{
-  elSeed.value = Math.floor(Math.random()*2**31).toString();
-  setSeedFromInput();
-  if (fixed) restartWorkingAssignment(true);
-});
+btnRestart.addEventListener('click', ()=>{ setSeedDefault(); restartWorkingAssignment(true); });
+btnToggleControls.addEventListener('click', ()=>{ editorPanel.classList.toggle('hidden'); });
 
 function markDirty(){
   dirty=true;
@@ -531,6 +520,8 @@ function markDirty(){
 }
 elCNF.addEventListener('input', markDirty);
 elFixed.addEventListener('input', markDirty);
+// Hide editor by default
+editorPanel.classList.add('hidden');
 
 // ---------- Default instance ----------
 const defaultCNF =
