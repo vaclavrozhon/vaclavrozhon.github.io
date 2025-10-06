@@ -6,188 +6,288 @@ katex: false
 ---
 
 <style>
-.three-sat-container { max-width: 1000px; margin: 0 auto; }
-.controls { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-.controls textarea { width: 100%; min-height: 120px; font-family: monospace; }
-.controls .field { display: flex; flex-direction: column; }
-.status { margin: 0.5rem 0 1rem; font-size: 0.95rem; }
-.status .ok { color: #2e7d32; }
-.status .warn { color: #c62828; }
-.status.pending { color: #6a1b9a; }
-.viz { border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin-top: 12px; }
-.clauses { display: flex; flex-wrap: wrap; gap: 8px; }
-.clause { padding: 8px 10px; border-radius: 8px; border: 1px solid #ccc; font-family: monospace; }
-.clause.sat { background:#e8f5e9; border-color:#a5d6a7; }
-.clause.unsat { background:#ffebee; border-color:#ef9a9a; }
-.clause.selected { box-shadow: 0 0 0 3px #ffd54f inset; }
-.assignments { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; font-family: monospace; }
-.assignment { padding: 4px 8px; border: 1px solid #ccc; border-radius: 6px; }
-.assignment.fixed { background:#e3f2fd; border-color:#90caf9; }
-.assignment.working { background:#f3e5f5; border-color:#ce93d8; }
+:root{
+  --bg: #0b0d12;
+  --panel: #121621;
+  --muted: #8b93a7;
+  --text: #e7ebff;
+  --accent: #7aa2ff;
+  --accent-2:#9bdeac;
+  --good: #2ecc71;
+  --bad:  #ff6b6b;
+  --warn: #ffd166;
+  --chip: #1b2233;
+  --chip-border: #2a3347;
+  --ring: rgba(122,162,255,.25);
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg: #f6f8ff;
+    --panel: #ffffff;
+    --muted: #5b6477;
+    --text: #0c1020;
+    --accent: #2c6dff;
+    --accent-2:#1a936f;
+    --good: #1f8a4c;
+    --bad:  #c0392b;
+    --warn: #b8860b;
+    --chip: #f3f6ff;
+    --chip-border: #e4e9ff;
+    --ring: rgba(44,109,255,.18);
+  }
+}
+
+.three-sat-container {
+  max-width: 1100px; margin: 0 auto; color: var(--text);
+}
+
+.hero {
+  background: radial-gradient(1200px 400px at 20% -10%, rgba(122,162,255,.12), transparent),
+              radial-gradient(800px 300px at 90% 10%, rgba(155,222,172,.12), transparent);
+  border: 1px solid var(--chip-border);
+  background-color: var(--panel);
+  border-radius: 16px; padding: 24px; margin-bottom: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.hero h2 { margin: 0 0 6px; letter-spacing: .2px; }
+.hero p  { margin: 0; color: var(--muted); }
+
+.badges { display:flex; gap:8px; flex-wrap: wrap; margin-top: 12px; }
+.badge { font-size:.85rem; padding:4px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--chip-border); color:var(--muted); }
+
+.controls {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 0.75rem;
+}
+.controls textarea {
+  width: 100%; min-height: 140px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: .9rem; line-height: 1.35; color: var(--text); background: var(--panel);
+  border: 1px solid var(--chip-border); border-radius: 12px; padding: 10px 12px;
+  outline: none; box-shadow: inset 0 0 0 2px transparent;
+}
+.controls textarea:focus { box-shadow: inset 0 0 0 2px var(--ring); }
+
+.field label { font-weight: 600; margin-bottom: 6px; color: var(--muted); }
+
+.controls-row {
+  display:flex; align-items:center; gap:10px; flex-wrap: wrap; margin-top: 6px;
+}
+
+button {
+  appearance: none; border:1px solid var(--chip-border); background: linear-gradient(180deg, var(--panel), rgba(0,0,0,.02));
+  color: var(--text); padding: 8px 12px; border-radius: 10px; font-weight:600; letter-spacing:.2px;
+  transition: transform .05s ease, box-shadow .2s ease, border-color .2s ease;
+  box-shadow: 0 2px 0 rgba(0,0,0,.12);
+}
+button:hover { border-color: var(--ring); box-shadow: 0 4px 16px rgba(0,0,0,.15), 0 0 0 4px var(--ring); }
+button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.2); }
+
+.btn-primary { background: linear-gradient(180deg, var(--accent), #5d87ff); color:#fff; border-color: transparent; }
+.btn-ghost  { background: transparent; }
+
+.input-inline{
+  display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px solid var(--chip-border);
+  border-radius:10px; background:var(--panel); color:var(--muted);
+}
+.input-inline input[type="text"]{ border:none; outline:none; background:transparent; color:var(--text); width:8rem; }
+
+.status { margin: 8px 0 12px; font-size: .95rem; color: var(--muted); }
+.status .ok    { color: var(--good); font-weight:600; }
+.status .warn  { color: var(--bad);  font-weight:600; }
+.status.pending { color: var(--warn); font-weight:600; }
+
+.card {
+  border: 1px solid var(--chip-border); border-radius: 16px; padding: 14px 16px; background: var(--panel);
+}
+
+.viz .section-title{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
+.progress {
+  height: 6px; background: var(--chip); border: 1px solid var(--chip-border);
+  border-radius: 999px; overflow: hidden;
+}
+.progress > div { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width: 0%; transition: width .35s ease; }
+
+.clauses { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; margin-top: 10px; }
+.clause {
+  padding: 10px 12px; border-radius: 12px; border: 1px solid var(--chip-border);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  background: var(--chip); position: relative;
+}
+.clause .dot{
+  position:absolute; top:10px; right:10px; width:10px; height:10px; border-radius:50%;
+  box-shadow: 0 0 0 4px rgba(0,0,0,.04);
+}
+.clause.sat   { background: rgba(46, 204, 113, .09); border-color: rgba(46, 204, 113, .35); }
+.clause.sat .dot{ background: var(--good); }
+.clause.unsat { background: rgba(255, 107, 107, .08); border-color: rgba(255, 107, 107, .35); }
+.clause.unsat .dot{ background: var(--bad); }
+.clause.selected { outline: 3px solid var(--ring); }
+
+.assignments { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-top: 12px; }
+.assignment {
+  padding: 8px 10px; border: 1px solid var(--chip-border); border-radius: 10px; background: var(--chip);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.assignment .tag{ font-size:.75rem; padding:2px 8px; border-radius:999px; }
+.assignment.fixed   .tag{ background: rgba(122,162,255,.18); color: var(--accent); }
+.assignment.working .tag{ background: rgba(155,222,172,.18); color: var(--accent-2); }
+
 .chain { margin-top: 16px; }
-.chain svg { width: 100%; height: 140px; }
-.controls-row { display:flex; align-items:center; gap:10px; flex-wrap: wrap; margin-top: 8px; }
-.prob-label { font-size: 0.9rem; color: #555; }
-.legend { font-size: 0.9rem; color: #555; margin-top: 8px; }
-.small { font-size: 0.85rem; color: #666; }
-button { cursor: pointer; }
+.chain svg { width: 100%; height: 170px; }
+.legend { font-size: .9rem; color: var(--muted); margin-top: 8px; }
+
+.small { font-size: .9rem; color: var(--muted); }
+.kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: var(--chip); border: 1px solid var(--chip-border); padding: 2px 6px; border-radius: 6px; }
+
+.footer-note{
+  margin-top: 18px; padding: 14px 16px; border-left: 4px solid var(--accent); background: linear-gradient(90deg, rgba(122,162,255,.06), transparent);
+  border-radius: 12px; color: var(--muted);
+}
 </style>
 
 <div class="three-sat-container">
-  <h2>Random Walk for 3SAT</h2>
-  <p class="small">Pick a random unsatisfied clause, then flip a uniformly random variable from it. Track agreement with a fixed satisfying assignment.</p>
+  <div class="hero">
+    <h2>Random Walk for 3SAT</h2>
+    <p>At each step: pick a uniformly random unsatisfied clause, then flip a uniformly random variable from it. Track the Hamming agreement with a fixed satisfying assignment, visualized as a 1-D Markov chain on states <span class="kbd">0..n</span>.</p>
+    <div class="badges">
+      <span class="badge" id="badgeN">n = –</span>
+      <span class="badge" id="badgeM">m = –</span>
+      <span class="badge" id="badgeAgree">agreement h = –/–</span>
+      <span class="badge" id="badgeSteps">steps = 0</span>
+    </div>
+  </div>
 
   <div class="controls">
     <div class="field">
-      <label for="cnfInput"><strong>DIMACS CNF</strong> (≤ 20 variables)</label>
+      <label for="cnfInput">DIMACS CNF <span class="small">(≤ 20 variables)</span></label>
       <textarea id="cnfInput"></textarea>
     </div>
     <div class="field">
-      <label for="fixedInput"><strong>Fixed satisfying assignment</strong> (optional; 0/1 or ±1, space-separated). Leave empty to auto-solve.</label>
+      <label for="fixedInput">Fixed satisfying assignment <span class="small">(optional; 0/1 or ±1, space-separated). Leave empty to auto-solve.</span></label>
       <textarea id="fixedInput" placeholder="e.g. 1 0 1 1 0"></textarea>
     </div>
   </div>
 
   <div class="controls-row">
-    <button id="btnParse">Load instance</button>
+    <button id="btnParse" class="btn-primary">Load instance</button>
     <button id="btnStep">Step</button>
     <button id="btnPlay">Play</button>
-    <button id="btnRestart">Restart</button>
-    <button id="btnResetToFixed">Reset to fixed</button>
-    <label class="small">Seed <input id="seedInput" type="text" value="" style="width:8rem"></label>
-    <label class="small">Speed <input id="speedInput" type="range" min="50" max="1000" step="50" value="300"></label>
+    <button id="btnRestart" class="btn-ghost">Restart random</button>
+    <button id="btnResetToFixed" class="btn-ghost">Reset to fixed</button>
+    <span class="input-inline">Seed <input id="seedInput" type="text" value=""></span>
+    <span class="input-inline">Speed <input id="speedInput" type="range" min="40" max="1000" step="20" value="240"></span>
+    <button id="btnRandomSeed" title="Randomize seed">🎲</button>
   </div>
 
   <div class="status" id="status"></div>
 
-  <div class="viz">
-    <div><strong>Clauses</strong></div>
+  <div class="card viz">
+    <div class="section-title">
+      <div><strong>Clauses</strong></div>
+      <div style="flex:1; margin-left:12px;">
+        <div class="progress" title="Fraction of satisfied clauses under current working assignment">
+          <div id="satProgress" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
     <div class="clauses" id="clauses"></div>
     <div class="assignments" id="assignments"></div>
   </div>
 
-  <div class="viz chain">
-    <div><strong>Agreement with fixed assignment</strong> (nodes 0..n)</div>
-    <div class="prob-label" id="probLabel"></div>
-    <svg id="chainSvg" viewBox="0 0 1000 140" preserveAspectRatio="none"></svg>
-    <div class="legend small">After selecting a clause: left probability = k/3, right = (3−k)/3, where k is the number of literals in the chosen clause currently matching the fixed assignment.</div>
+  <div class="card viz chain">
+    <div class="section-title">
+      <div><strong>Agreement with fixed assignment</strong> <span class="small">nodes 0..n</span></div>
+      <div class="small" id="probLabel"></div>
+    </div>
+    <svg id="chainSvg" viewBox="0 0 1000 170" preserveAspectRatio="none" aria-label="Hamming agreement chain"></svg>
+    <div class="legend">After selecting a clause with <span class="kbd">k</span> literals matching the fixed assignment, the step goes “towards” the fixed solution with probability <span class="kbd">k/3</span> and “away” with probability <span class="kbd">(3−k)/3</span>.</div>
+  </div>
+
+  <div class="footer-note">
+    <strong>Context.</strong> This walk is the core move used in local-search SAT solvers (e.g. WalkSAT) and also appears in theoretical algorithms. A classic example is <em>Schöning’s algorithm</em> for 3-SAT, which repeatedly performs short random walks on the Hamming cube and achieves a running time of the form \(c^n\) with \(c&lt;1.5\) (details in the article). For current best asymptotic bounds (e.g. PPSZ-type refinements), see the references therein.  
+    <br/>Learn more on Wikipedia: <a href="https://en.wikipedia.org/wiki/Sch%C3%B6ning%27s_algorithm">Schöning’s algorithm</a> and the overview at <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">Boolean satisfiability problem</a>.
   </div>
 </div>
 
 <script>
-// Utility: simple seeded RNG (Mulberry32)
-function mulberry32(a) {
-  return function() {
-    a |= 0; a = a + 0x6D2B79F5 | 0;
-    let t = Math.imul(a ^ a >>> 15, 1 | a);
-    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-    return ((t ^ t >>> 14) >>> 0) / 4294967296;
-  };
-}
+// ---------- Utilities ----------
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}}
+function hashStringToSeed(str){let h=2166136261>>>0;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
 
-function hashStringToSeed(str) {
-  let h = 2166136261 >>> 0;
-  for (let i = 0; i < str.length; i++) {
-    h ^= str.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
-}
-
-// DIMACS parser (supports comments, p cnf n m, clauses ending with 0)
-function parseDimacs(text) {
+// ---------- DIMACS parsing & SAT eval ----------
+function parseDimacs(text){
   const lines = text.split(/\r?\n/);
   const clauses = [];
   let declaredN = null, declaredM = null;
-  for (const raw of lines) {
+  for (const raw of lines){
     const line = raw.trim();
     if (!line || line.startsWith('c')) continue;
-    if (line.startsWith('p')) {
+    if (line.startsWith('p')){
       const parts = line.split(/\s+/);
-      if (parts.length >= 4 && parts[1].toLowerCase() === 'cnf') {
-        declaredN = parseInt(parts[2], 10);
-        declaredM = parseInt(parts[3], 10);
+      if (parts.length>=4 && parts[1].toLowerCase()==='cnf'){
+        declaredN = parseInt(parts[2],10);
+        declaredM = parseInt(parts[3],10);
       }
       continue;
     }
-    const nums = line.split(/\s+/).map(x => parseInt(x, 10)).filter(x => !Number.isNaN(x));
+    const nums = line.split(/\s+/).map(x=>parseInt(x,10)).filter(x=>!Number.isNaN(x));
     let clause = [];
-    for (const v of nums) {
-      if (v === 0) break;
-      clause.push(v);
-    }
-    if (clause.length > 0) clauses.push(clause);
+    for (const v of nums){ if (v===0) break; clause.push(v); }
+    if (clause.length>0) clauses.push(clause);
   }
-  // Infer n from largest var index in absolute value
-  let n = 0;
-  for (const c of clauses) for (const lit of c) n = Math.max(n, Math.abs(lit));
-  if (declaredN !== null && declaredN !== n) n = Math.max(n, declaredN);
-  if (declaredM !== null && declaredM !== clauses.length) {
-    // not fatal; ignore count mismatch
-  }
+  let n=0; for (const c of clauses) for (const lit of c) n=Math.max(n,Math.abs(lit));
+  if (declaredN!==null) n = Math.max(n, declaredN);
   return { n, clauses };
 }
-
-// Evaluate clause and formula under assignment (assignment is array of booleans length n)
-function evalClause(clause, assignment) {
-  for (const lit of clause) {
-    const idx = Math.abs(lit) - 1;
-    const isPos = lit > 0;
-    const val = assignment[idx];
-    if ((isPos && val) || (!isPos && !val)) return true;
+function evalClause(clause, a){
+  for (const lit of clause){
+    const i = Math.abs(lit)-1, isPos = lit>0;
+    const v = a[i];
+    if ((isPos && v) || (!isPos && !v)) return true;
   }
   return false;
 }
+function evalFormula(clauses, a){ return clauses.every(c=>evalClause(c,a)); }
 
-function evalFormula(clauses, assignment) {
-  return clauses.every(c => evalClause(c, assignment));
-}
-
-// Small backtracking SAT solver for n <= 20
-function solveSAT(n, clauses) {
-  const assignment = new Array(n).fill(false);
-  function dfs(i) {
-    if (i === n) return evalFormula(clauses, assignment) ? assignment.slice() : null;
-    // simple unit-style pruning: if any clause becomes impossible (all literals false), prune
-    for (let choice = 0; choice < 2; choice++) {
-      assignment[i] = choice === 1;
+// Small backtracking solver (n ≤ 20)
+function solveSAT(n, clauses){
+  const a = new Array(n).fill(false);
+  function dfs(i){
+    if (i===n) return evalFormula(clauses,a) ? a.slice() : null;
+    for (let bit=0; bit<2; bit++){
+      a[i] = !!bit;
       let ok = true;
-      for (const cl of clauses) {
-        let canBeTrue = false;
-        for (const lit of cl) {
-          const idx = Math.abs(lit) - 1;
-          const isPos = lit > 0;
-          const val = idx < i ? assignment[idx] : null; // unknown for idx >= i
-          if (idx > i) { canBeTrue = true; break; }
-          if ((isPos && val) || (!isPos && !val)) { canBeTrue = true; break; }
+      for (const cl of clauses){
+        let canTrue = false;
+        for (const lit of cl){
+          const idx = Math.abs(lit)-1, isPos = lit>0;
+          if (idx>i){ canTrue=true; break; }
+          if ((isPos && a[idx]) || (!isPos && !a[idx])){ canTrue=true; break; }
         }
-        if (!canBeTrue) { ok = false; break; }
+        if (!canTrue){ ok=false; break; }
       }
-      if (ok) {
-        const res = dfs(i + 1);
-        if (res) return res;
-      }
+      if (ok){ const r = dfs(i+1); if (r) return r; }
     }
     return null;
   }
   return dfs(0);
 }
-
-function parseFixedAssignment(text, n) {
+function parseFixedAssignment(text,n){
   if (!text || !text.trim()) return null;
-  const toks = text.trim().split(/\s+/);
-  if (toks.length < n) return null;
-  const arr = [];
-  for (let i = 0; i < n; i++) {
-    const t = toks[i];
-    if (t === '1' || t === '+1' || t === '+') arr.push(true);
-    else if (t === '0' || t === '-1' || t === '-') arr.push(false);
+  const t = text.trim().split(/\s+/);
+  if (t.length<n) return null;
+  const arr=[];
+  for (let i=0;i<n;i++){
+    const s=t[i];
+    if (s==='1'||s==='+1'||s==='+') arr.push(true);
+    else if (s==='0'||s==='-1'||s==='-') arr.push(false);
     else return null;
   }
   return arr;
 }
 
-// Visualization and state
+// ---------- DOM ----------
 const elCNF = document.getElementById('cnfInput');
 const elFixed = document.getElementById('fixedInput');
 const elStatus = document.getElementById('status');
@@ -195,293 +295,292 @@ const elClauses = document.getElementById('clauses');
 const elAssignments = document.getElementById('assignments');
 const elProb = document.getElementById('probLabel');
 const svg = document.getElementById('chainSvg');
+const elProg = document.getElementById('satProgress');
 
 const btnParse = document.getElementById('btnParse');
 const btnStep = document.getElementById('btnStep');
 const btnPlay = document.getElementById('btnPlay');
 const btnRestart = document.getElementById('btnRestart');
 const btnResetToFixed = document.getElementById('btnResetToFixed');
+const btnRandomSeed = document.getElementById('btnRandomSeed');
 const elSeed = document.getElementById('seedInput');
 const elSpeed = document.getElementById('speedInput');
 
-let n = 0;
-let clauses = [];
-let fixed = null; // boolean[]
-let working = null; // boolean[]
-let rng = Math.random;
-let playing = false;
-let timer = null;
-let substep = 0; // 0 = select clause, 1 = flip var
-let selectedClauseIndex = -1;
-let hammingAgree = 0; // number of variables matching fixed
-let stepCount = 0;
-let dirty = false; // inputs edited but not loaded
+const badgeN = document.getElementById('badgeN');
+const badgeM = document.getElementById('badgeM');
+const badgeAgree = document.getElementById('badgeAgree');
+const badgeSteps = document.getElementById('badgeSteps');
 
-function setStatus(html, isOk) {
+// ---------- State ----------
+let n=0, clauses=[], fixed=null, working=null;
+let rng = Math.random, playing=false, timer=null, substep=0;
+let selectedClauseIndex = -1, hammingAgree=0, stepCount=0, dirty=false;
+
+// ---------- Helpers ----------
+function setStatus(html, okState){
   elStatus.innerHTML = html;
-  elStatus.className = 'status ' + (isOk ? 'ok' : 'warn');
+  elStatus.className = 'status ' + (okState===true ? 'ok' : okState===false ? 'warn' : '');
 }
-
-function setPendingMessage() {
-  elStatus.innerHTML = 'Changes pending. Click "Load instance" to apply.';
+function setPendingMessage(){
+  elStatus.innerHTML = 'Changes pending. Click <b>Load instance</b> to apply.';
   elStatus.className = 'status pending';
 }
-
-function countAgree(a, b) {
-  let h = 0; for (let i = 0; i < a.length; i++) if (a[i] === b[i]) h++; return h;
+function countAgree(a,b){ let h=0; for(let i=0;i<a.length;i++) if(a[i]===b[i]) h++; return h; }
+function updateBadges(){
+  badgeN.textContent = `n = ${n||'–'}`;
+  badgeM.textContent = `m = ${clauses.length||'–'}`;
+  badgeAgree.textContent = fixed ? `agreement h = ${hammingAgree}/${n}` : 'agreement h = –/–';
+  badgeSteps.textContent = `steps = ${stepCount}`;
+}
+function updateProgressBar(){
+  if (!working) { elProg.style.width='0%'; return; }
+  const sat = clauses.reduce((s,c)=>s+(evalClause(c,working)?1:0),0);
+  const pct = clauses.length? Math.round(100*sat/clauses.length):0;
+  elProg.style.width = pct + '%';
+  elProg.title = `${sat}/${clauses.length} clauses satisfied`;
 }
 
-function renderAssignments() {
+function renderAssignments(){
   elAssignments.innerHTML = '';
   if (!fixed || !working) return;
-  for (let i = 0; i < n; i++) {
+  for (let i=0;i<n;i++){
     const f = document.createElement('div');
     f.className = 'assignment fixed';
-    f.textContent = `x${i+1}=${fixed[i]?1:0}`;
+    f.innerHTML = `x${i+1} = <b>${fixed[i]?1:0}</b> <span class="tag">fixed</span>`;
     elAssignments.appendChild(f);
   }
-  for (let i = 0; i < n; i++) {
+  for (let i=0;i<n;i++){
     const w = document.createElement('div');
     w.className = 'assignment working';
-    w.textContent = `x${i+1}=${working[i]?1:0}`;
+    const match = (working[i]===fixed[i]);
+    w.style.outline = match ? '0' : '2px solid var(--ring)';
+    w.innerHTML = `x${i+1} = <b>${working[i]?1:0}</b> <span class="tag">working</span>`;
     elAssignments.appendChild(w);
   }
 }
 
-function renderClauses() {
+function renderClauses(){
   elClauses.innerHTML = '';
-  const unsatisfied = [];
-  for (let i = 0; i < clauses.length; i++) {
+  const unsat=[];
+  for (let i=0;i<clauses.length;i++){
     const sat = evalClause(clauses[i], working);
-    if (!sat) unsatisfied.push(i);
+    if (!sat) unsat.push(i);
     const d = document.createElement('div');
-    d.className = 'clause ' + (sat ? 'sat' : 'unsat') + (i === selectedClauseIndex ? ' selected' : '');
-    d.textContent = '(' + clauses[i].map(l => l > 0 ? `x${l}` : `¬x${-l}`).join(' ∨ ') + ')';
+    d.className = 'clause ' + (sat?'sat':'unsat') + (i===selectedClauseIndex?' selected':'');
+    d.innerHTML = '(' + clauses[i].map(l=> l>0? `x${l}` : `¬x${-l}`).join(' ∨ ') + ')<span class="dot"></span>';
     elClauses.appendChild(d);
   }
-  return unsatisfied;
+  updateProgressBar();
+  return unsat;
 }
 
-function renderChain() {
+function renderChain(){
   svg.innerHTML = '';
   if (!fixed) return;
-  const width = svg.viewBox.baseVal.width;
-  const height = svg.viewBox.baseVal.height;
-  const padding = 40;
-  const nodeCount = n + 1;
-  const usable = width - 2 * padding;
-  const stepX = nodeCount > 1 ? usable / (nodeCount - 1) : 0;
+  const width = svg.viewBox.baseVal.width, height = svg.viewBox.baseVal.height;
+  const padX = 40, y = 86, R = 15, nodeCount = n+1, usable = width - 2*padX, stepX = nodeCount>1 ? usable/(nodeCount-1) : 0;
 
-  // draw axis
-  const axis = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-  axis.setAttribute('x1', padding);
-  axis.setAttribute('y1', 70);
-  axis.setAttribute('x2', width - padding);
-  axis.setAttribute('y2', 70);
-  axis.setAttribute('stroke', '#999');
+  const axis = document.createElementNS('http://www.w3.org/2000/svg','line');
+  axis.setAttribute('x1', padX); axis.setAttribute('y1', y);
+  axis.setAttribute('x2', width-padX); axis.setAttribute('y2', y);
+  axis.setAttribute('stroke', '#3a4561'); axis.setAttribute('stroke-width','2');
   svg.appendChild(axis);
 
-  for (let i = 0; i < nodeCount; i++) {
-    const cx = padding + i * stepX;
-    const cy = 70;
-    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    circle.setAttribute('cx', cx);
-    circle.setAttribute('cy', cy);
-    circle.setAttribute('r', 14);
-    circle.setAttribute('fill', i === hammingAgree ? '#1976d2' : '#eee');
-    circle.setAttribute('stroke', '#666');
-    svg.appendChild(circle);
+  for (let i=0;i<nodeCount;i++){
+    const cx = padX + i*stepX;
+    // connectors
+    if (i<nodeCount-1){
+      const seg = document.createElementNS('http://www.w3.org/2000/svg','line');
+      seg.setAttribute('x1', cx+R); seg.setAttribute('y1', y);
+      seg.setAttribute('x2', cx+stepX-R); seg.setAttribute('y2', y);
+      seg.setAttribute('stroke', '#3a4561'); seg.setAttribute('stroke-width','2');
+      svg.appendChild(seg);
+    }
+    // node
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx', cx); circle.setAttribute('cy', y); circle.setAttribute('r', R);
+    circle.setAttribute('fill', i===hammingAgree ? 'url(#gradActive)' : '#1b2233');
+    circle.setAttribute('stroke', i===hammingAgree ? '#89a7ff' : '#2a3347');
+    circle.setAttribute('stroke-width', i===hammingAgree ? '2.5' : '1.5');
+    g.appendChild(circle);
 
-    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    label.setAttribute('x', cx);
-    label.setAttribute('y', cy + 32);
-    label.setAttribute('text-anchor', 'middle');
-    label.setAttribute('font-size', '12');
-    label.textContent = i;
-    svg.appendChild(label);
+    const label = document.createElementNS('http://www.w3.org/2000/svg','text');
+    label.setAttribute('x', cx); label.setAttribute('y', y+33);
+    label.setAttribute('text-anchor','middle'); label.setAttribute('font-size','12');
+    label.setAttribute('fill','#8b93a7'); label.textContent = i;
+    g.appendChild(label);
+
+    svg.appendChild(g);
   }
+
+  // defs for gradient
+  const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+  const grad = document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+  grad.setAttribute('id','gradActive'); grad.setAttribute('x1','0'); grad.setAttribute('x2','1');
+  const s1 = document.createElementNS('http://www.w3.org/2000/svg','stop'); s1.setAttribute('offset','0%'); s1.setAttribute('stop-color','#7aa2ff');
+  const s2 = document.createElementNS('http://www.w3.org/2000/svg','stop'); s2.setAttribute('offset','100%'); s2.setAttribute('stop-color','#9bdeac');
+  grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad); svg.appendChild(defs);
 }
 
-function updateProbLabel(k) {
-  if (k == null) { elProb.textContent = ''; return; }
-  const left = `${k}/3 left`;
-  const right = `${3 - k}/3 right`;
-  elProb.textContent = `Transition probabilities: ${left}, ${right}`;
+function updateProbLabel(k){
+  elProb.textContent = (k==null) ? '' : `Probabilities: toward = ${k}/3, away = ${(3-k)}/3`;
 }
 
-function selectUnsatisfiedClause() {
-  const unsat = [];
-  for (let i = 0; i < clauses.length; i++) if (!evalClause(clauses[i], working)) unsat.push(i);
-  if (unsat.length === 0) return -1;
-  const idx = Math.floor(rng() * unsat.length);
-  return unsat[idx];
+function selectUnsatisfiedClause(){
+  const unsat=[]; for (let i=0;i<clauses.length;i++) if(!evalClause(clauses[i],working)) unsat.push(i);
+  if (!unsat.length) return -1;
+  return unsat[Math.floor(rng()*unsat.length)];
 }
 
-function substepSelectClause() {
+function substepSelectClause(){
   selectedClauseIndex = selectUnsatisfiedClause();
-  if (selectedClauseIndex === -1) {
-    setStatus('All clauses are satisfied. Reached a solution.', true);
-    playing = false; btnPlay.textContent = 'Play';
-    updateProbLabel(null);
-    return;
+  if (selectedClauseIndex===-1){
+    setStatus('<span class="ok">All clauses satisfied — solution reached.</span>', true);
+    playing=false; btnPlay.textContent='Play'; updateProbLabel(null); return;
   }
   const clause = clauses[selectedClauseIndex];
-  let k = 0;
-  for (const lit of clause) {
-    const idx = Math.abs(lit) - 1;
-    const matchesFixed = working[idx] === fixed[idx];
-    if (matchesFixed) k++;
+  let k=0;
+  for (const lit of clause){
+    const idx = Math.abs(lit)-1;
+    if (working[idx]===fixed[idx]) k++;
   }
   updateProbLabel(k);
   renderClauses();
 }
 
-function substepFlipVariable() {
-  if (selectedClauseIndex < 0) return;
+function substepFlipVariable(){
+  if (selectedClauseIndex<0) return;
   const clause = clauses[selectedClauseIndex];
-  const pick = clause[Math.floor(rng() * clause.length)];
-  const vIdx = Math.abs(pick) - 1;
-  const beforeMatch = working[vIdx] === fixed[vIdx];
-  working[vIdx] = !working[vIdx];
-  const afterMatch = working[vIdx] === fixed[vIdx];
-  if (beforeMatch && !afterMatch) hammingAgree--;
-  else if (!beforeMatch && afterMatch) hammingAgree++;
-  stepCount++;
-  selectedClauseIndex = -1;
-  updateProbLabel(null);
-  renderClauses();
-  renderAssignments();
-  renderChain();
+  const pick = clause[Math.floor(rng()*clause.length)];
+  const v = Math.abs(pick)-1;
+  const before = (working[v]===fixed[v]);
+  working[v] = !working[v];
+  const after = (working[v]===fixed[v]);
+  if (before && !after) hammingAgree--;
+  else if (!before && after) hammingAgree++;
+  stepCount++; selectedClauseIndex=-1; updateProbLabel(null);
+  renderClauses(); renderAssignments(); renderChain(); updateBadges();
 }
 
-function doStep() {
-  if (substep === 0) { substepSelectClause(); substep = 1; }
-  else { substepFlipVariable(); substep = 0; }
-}
+function doStep(){ if (substep===0){ substepSelectClause(); substep=1; } else { substepFlipVariable(); substep=0; } }
 
-function setSeedFromInput() {
+function setSeedFromInput(){
   const val = elSeed.value.trim();
-  if (!val) { rng = Math.random; return; }
-  const seed = /^\d+$/.test(val) ? parseInt(val, 10) : hashStringToSeed(val);
+  if (!val){ rng = Math.random; return; }
+  const seed = /^\d+$/.test(val) ? parseInt(val,10) : hashStringToSeed(val);
   rng = mulberry32(seed);
 }
 
-function restartWorkingAssignment(randomize = true) {
+function restartWorkingAssignment(randomize=true){
   if (!fixed) return;
-  if (randomize) {
-    working = new Array(n).fill(false).map(() => rng() < 0.5);
-  } else {
-    working = fixed.slice();
-  }
+  if (randomize){ working = new Array(n).fill(false).map(()=>rng()<.5); }
+  else { working = fixed.slice(); }
   hammingAgree = countAgree(working, fixed);
-  substep = 0; selectedClauseIndex = -1; stepCount = 0;
-  renderAssignments();
-  renderClauses();
-  renderChain();
-  setStatus(`Loaded n=${n}, clauses=${clauses.length}. Agreement h=${hammingAgree}/${n}.`, true);
+  substep=0; selectedClauseIndex=-1; stepCount=0;
+  renderAssignments(); renderClauses(); renderChain(); updateBadges();
+  setStatus(`Loaded n=${n}, m=${clauses.length}. Agreement h=${hammingAgree}/${n}.`, true);
 }
 
-function loadInstance() {
+function loadInstance(){
   const parsed = parseDimacs(elCNF.value);
   n = parsed.n; clauses = parsed.clauses;
-  if (n <= 0 || n > 20) {
-    setStatus('Invalid or too large instance. Require 1 ≤ n ≤ 20.', false);
+  if (n<=0 || n>20){
+    setStatus('<span class="warn">Invalid or too large instance. Require 1 ≤ n ≤ 20.</span>', false);
     return;
   }
-  // try fixed from textarea first
   const manual = parseFixedAssignment(elFixed.value, n);
-  if (manual) fixed = manual; else fixed = solveSAT(n, clauses);
-  if (!fixed) {
-    setStatus('Instance appears UNSAT for n ≤ 20 (no fixed solution found).', false);
-    fixed = null; working = null;
-    renderClauses(); renderAssignments(); renderChain();
-    btnStep.disabled = true; btnPlay.disabled = true;
-    return;
+  fixed = manual || solveSAT(n, clauses);
+  if (!fixed){
+    setStatus('<span class="warn">Instance appears UNSAT for n ≤ 20 (no fixed solution found).</span>', false);
+    fixed=null; working=null; renderClauses(); renderAssignments(); renderChain();
+    btnStep.disabled=true; btnPlay.disabled=true; updateBadges(); updateProgressBar(); return;
   }
-  setSeedFromInput();
-  restartWorkingAssignment(true);
-  dirty = false;
-  btnStep.disabled = false; btnPlay.disabled = false;
+  setSeedFromInput(); restartWorkingAssignment(true); dirty=false;
+  btnStep.disabled=false; btnPlay.disabled=false; updateBadges(); updateProgressBar();
 }
 
-function playLoop() {
+function playLoop(){
   if (!playing) return;
   doStep();
-  const delay = parseInt(elSpeed.value, 10) || 300;
+  const delay = parseInt(elSpeed.value,10)||240;
   timer = setTimeout(playLoop, delay);
 }
 
-btnParse.addEventListener('click', () => { loadInstance(); });
-btnStep.addEventListener('click', () => { doStep(); });
-btnPlay.addEventListener('click', () => {
+// ---------- Events ----------
+btnParse.addEventListener('click', loadInstance);
+btnStep.addEventListener('click', doStep);
+btnPlay.addEventListener('click', ()=>{
   if (!fixed) return;
   playing = !playing;
   btnPlay.textContent = playing ? 'Pause' : 'Play';
   if (playing) playLoop();
 });
-btnRestart.addEventListener('click', () => { setSeedFromInput(); restartWorkingAssignment(true); });
-btnResetToFixed.addEventListener('click', () => { restartWorkingAssignment(false); });
+btnRestart.addEventListener('click', ()=>{ setSeedFromInput(); restartWorkingAssignment(true); });
+btnResetToFixed.addEventListener('click', ()=>{ restartWorkingAssignment(false); });
+btnRandomSeed.addEventListener('click', ()=>{
+  elSeed.value = Math.floor(Math.random()*2**31).toString();
+  setSeedFromInput();
+  if (fixed) restartWorkingAssignment(true);
+});
 
-// Mark inputs as dirty; require explicit Load to apply
-function markDirty() {
-  dirty = true;
-  if (playing) { playing = false; btnPlay.textContent = 'Play'; if (timer) { clearTimeout(timer); timer = null; } }
-  btnStep.disabled = true;
-  btnPlay.disabled = true;
-  setPendingMessage();
+function markDirty(){
+  dirty=true;
+  if (playing){ playing=false; btnPlay.textContent='Play'; if (timer){ clearTimeout(timer); timer=null; } }
+  btnStep.disabled=true; btnPlay.disabled=true; setPendingMessage();
 }
 elCNF.addEventListener('input', markDirty);
 elFixed.addEventListener('input', markDirty);
 
-// Provide a small default instance
-const defaultCNF = `c Instance A (10 vars, 43 clauses) — satisfiable\n`+
-`p cnf 10 43\n`+
-`-3 5 -8 0\n`+
-`7 8 -10 0\n`+
-`6 8 -10 0\n`+
-`-1 -6 -7 0\n`+
-`-4 -6 -8 0\n`+
-`-1 -6 7 0\n`+
-`-2 4 -5 0\n`+
-`-1 4 10 0\n`+
-`-6 -7 -10 0\n`+
-`-4 6 -10 0\n`+
-`-1 -5 9 0\n`+
-`-1 -6 -8 0\n`+
-`-4 -7 8 0\n`+
-`-5 6 9 0\n`+
-`2 7 -8 0\n`+
-`-2 5 -7 0\n`+
-`-1 -2 7 0\n`+
-`-1 2 -3 0\n`+
-`1 3 -10 0\n`+
-`-5 6 -8 0\n`+
-`-1 2 5 0\n`+
-`-3 6 -8 0\n`+
-`-4 5 8 0\n`+
-`-1 -2 6 0\n`+
-`-2 6 -7 0\n`+
-`-2 6 -8 0\n`+
-`-2 -3 10 0\n`+
-`-1 -5 8 0\n`+
-`-4 -7 10 0\n`+
-`-1 3 -6 0\n`+
-`-5 7 -8 0\n`+
-`-1 4 -6 0\n`+
-`3 -7 -8 0\n`+
-`1 -7 -10 0\n`+
-`-1 -3 -7 0\n`+
-`-4 -7 -9 0\n`+
-`1 -4 -8 0\n`+
-`-2 5 10 0\n`+
-`-5 7 10 0\n`+
-`2 -3 8 0\n`+
-`-4 6 7 0\n`+
-`-2 -5 -8 0\n`+
-`-4 5 -9 0\n`;
-elCNF.value = defaultCNF;
-elFixed.value = '0 0 1 0 0 0 0 1 0 0';
+// ---------- Default instance ----------
+const defaultCNF =
+`c Instance A (10 vars, 43 clauses) — satisfiable
+p cnf 10 43
+-3 5 -8 0
+7 8 -10 0
+6 8 -10 0
+-1 -6 -7 0
+-4 -6 -8 0
+-1 -6 7 0
+-2 4 -5 0
+-1 4 10 0
+-6 -7 -10 0
+-4 6 -10 0
+-1 -5 9 0
+-1 -6 -8 0
+-4 -7 8 0
+-5 6 9 0
+2 7 -8 0
+-2 5 -7 0
+-1 -2 7 0
+-1 2 -3 0
+1 3 -10 0
+-5 6 -8 0
+-1 2 5 0
+-3 6 -8 0
+-4 5 8 0
+-1 -2 6 0
+-2 6 -7 0
+-2 6 -8 0
+-2 -3 10 0
+-1 -5 8 0
+-4 -7 10 0
+-1 3 -6 0
+-5 7 -8 0
+-1 4 -6 0
+3 -7 -8 0
+1 -7 -10 0
+-1 -3 -7 0
+-4 -7 -9 0
+1 -4 -8 0
+-2 5 10 0
+-5 7 10 0
+2 -3 8 0
+-4 6 7 0
+-2 -5 -8 0
+-4 5 -9 0
+`;
+document.getElementById('cnfInput').value = defaultCNF;
+document.getElementById('fixedInput').value = '0 0 1 0 0 0 0 1 0 0';
 loadInstance();
 </script>
-
-
