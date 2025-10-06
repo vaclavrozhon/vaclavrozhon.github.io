@@ -3,38 +3,40 @@ layout: single
 title: Random Walk for 3SAT — Markov Chain Demo
 permalink: "/teaching/3sat-random-walk/"
 katex: false
+author_profile: false
 ---
 
 <style>
 :root{
-  --bg: #0b0d12;
-  --panel: #121621;
-  --muted: #8b93a7;
-  --text: #e7ebff;
-  --accent: #7aa2ff;
-  --accent-2:#9bdeac;
-  --good: #2ecc71;
-  --bad:  #ff6b6b;
-  --warn: #ffd166;
-  --chip: #1b2233;
-  --chip-border: #2a3347;
-  --ring: rgba(122,162,255,.25);
+  /* Light as default to match other demos */
+  --bg: #f6f8ff;
+  --panel: #ffffff;
+  --muted: #5b6477;
+  --text: #0c1020;
+  --accent: #2c6dff;
+  --accent-2:#1a936f;
+  --good: #1f8a4c;
+  --bad:  #c0392b;
+  --warn: #b8860b;
+  --chip: #f3f6ff;
+  --chip-border: #e4e9ff;
+  --ring: rgba(44,109,255,.18);
 }
 
-@media (prefers-color-scheme: light){
+@media (prefers-color-scheme: dark){
   :root{
-    --bg: #f6f8ff;
-    --panel: #ffffff;
-    --muted: #5b6477;
-    --text: #0c1020;
-    --accent: #2c6dff;
-    --accent-2:#1a936f;
-    --good: #1f8a4c;
-    --bad:  #c0392b;
-    --warn: #b8860b;
-    --chip: #f3f6ff;
-    --chip-border: #e4e9ff;
-    --ring: rgba(44,109,255,.18);
+    --bg: #0b0d12;
+    --panel: #121621;
+    --muted: #8b93a7;
+    --text: #e7ebff;
+    --accent: #7aa2ff;
+    --accent-2:#9bdeac;
+    --good: #2ecc71;
+    --bad:  #ff6b6b;
+    --warn: #ffd166;
+    --chip: #1b2233;
+    --chip-border: #2a3347;
+    --ring: rgba(122,162,255,.25);
   }
 }
 
@@ -103,6 +105,10 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.2); 
 
 .hidden { display: none; }
 
+/* Hide site chrome to make this a standalone demo */
+.masthead, .page__footer, .page__meta, .author__sidebar, .sidebar, .breadcrumbs, .page__hero { display: none !important; }
+.initial-content { padding-top: 0 !important; }
+
 .viz .section-title{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; }
 .progress {
   height: 6px; background: var(--chip); border: 1px solid var(--chip-border);
@@ -110,11 +116,11 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.2); 
 }
 .progress > div { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); width: 0%; transition: width .35s ease; }
 
-.clauses { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; margin-top: 10px; }
+.clauses { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px; margin-top: 8px; max-height: 260px; overflow: auto; }
 .clause {
-  padding: 10px 12px; border-radius: 12px; border: 1px solid var(--chip-border);
+  padding: 6px 8px; border-radius: 10px; border: 1px solid var(--chip-border);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  background: var(--chip); position: relative;
+  background: var(--chip); position: relative; font-size: .85rem;
 }
 .clause .dot{
   position:absolute; top:10px; right:10px; width:10px; height:10px; border-radius:50%;
