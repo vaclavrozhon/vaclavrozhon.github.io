@@ -18,7 +18,7 @@ Check out the [previous run](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/).
 
 # Topics
 
-TBD
+[Lecture notes](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/LN.pdf)
 
 # Demos
 
@@ -28,5 +28,6 @@ TBD
 
 # Lecture Recordings
 
-- [Lecture 2025-10-01](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-01.mp4)
+- [Lecture 2025-10-01](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-01.mp4) - Quiz + Markov chain examples
+- [Lecture 2025-10-08](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-08.mp4) - Beginning of lecture notes through section 1.3
 
