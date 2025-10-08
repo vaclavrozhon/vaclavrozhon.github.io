@@ -28,5 +28,5 @@ TBD
 
 # Lecture Recordings
 
-- [Lecture 2025-10-01](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-01.mkv)
+- [Lecture 2025-10-01](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-01.mp4)
 
