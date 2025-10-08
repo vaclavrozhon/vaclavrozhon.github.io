@@ -7,7 +7,7 @@ This document contains instructions for uploading lecture videos to the KAM serv
 - **Server**: kam.mff.cuni.cz
 - **Username**: vasek
 - **Archive Path**: /nfs/archive/vasek/prednasky/
-- **Web Path**: ~/public_html/video/
+- **Web Path**: ~/WWW/video/ (NOTE: WWW in uppercase, not public_html!)
 - **Base URL**: https://kam.mff.cuni.cz/~vasek/video/
 
 ## Steps
@@ -35,10 +35,10 @@ Replace:
 
 ```bash
 sshpass -p 'PASSWORD' ssh vasek@kam.mff.cuni.cz '
-  mkdir -p ~/public_html/video/SEMESTER &&
+  mkdir -p ~/WWW/video/SEMESTER &&
   ln -sf /nfs/archive/vasek/prednasky/SEMESTER/OUTPUT_NAME.mkv \
-         ~/public_html/video/SEMESTER/OUTPUT_NAME.mkv &&
-  chmod 755 ~ ~/public_html ~/public_html/video ~/public_html/video/SEMESTER &&
+         ~/WWW/video/SEMESTER/OUTPUT_NAME.mkv &&
+  chmod 755 ~ ~/WWW ~/WWW/video ~/WWW/video/SEMESTER &&
   chmod 644 /nfs/archive/vasek/prednasky/SEMESTER/OUTPUT_NAME.mkv
 '
 ```
@@ -48,7 +48,7 @@ sshpass -p 'PASSWORD' ssh vasek@kam.mff.cuni.cz '
 ```bash
 sshpass -p 'PASSWORD' ssh vasek@kam.mff.cuni.cz '
   ls -lh /nfs/archive/vasek/prednasky/SEMESTER/OUTPUT_NAME.mkv &&
-  ls -l ~/public_html/video/SEMESTER/
+  ls -l ~/WWW/video/SEMESTER/
 '
 ```
 
