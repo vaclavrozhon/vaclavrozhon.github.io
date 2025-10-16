@@ -25,9 +25,11 @@ Check out the [previous run](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/).
 - [Markov chains](/teaching/markov_chains/)
 - [PageRank for Wikipedia](/teaching/pagerank/public/)
  - [Random walk on 3SAT (Markov chain)](/teaching/3sat-random-walk/)
+ - [Landscape sampling (Metropolis)](/teaching/landscape-demo/build/)
 
 # Lecture Recordings
 
 - [Lecture 2025-10-01](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-01.mp4) - Quiz + Markov chain examples
 - [Lecture 2025-10-08](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-08.mp4) - Beginning of lecture notes through section 1.3
+- [Lecture 2025-10-15](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-15.mp4) - Convergence of Markov chains, section 1.5 in lecture notes
 
