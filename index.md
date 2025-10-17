@@ -31,6 +31,10 @@ I wrote a website about information theory behind machine learning. Check it out
 ![Bayes, bits & brains](/assets/images/bbb_thumb.png "Bayes, bits & brains")
 ](https://bayesbitsbrains.github.io/)
 
+## Demos
+
+- [Landscape sampling (Metropolis)](/teaching/landscape-demo/build/)
+
 ## News
 
 _August 2025:_ Check out our [latest Polylog video](https://www.youtube.com/watch?v=Y95a-8oNqps) about radix sort! More about it [here](polylog/radixsort). 
