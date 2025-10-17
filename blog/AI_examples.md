@@ -23,24 +23,24 @@ Note: I don't know of other people showcasing examples of this exact kind. There
 
 ## Tightness of a recent paper on 2D tiling
 
-There was a [recent very nice paper](https://arxiv.org/pdf/2408.02151) about tiling the plane \(\mathbb{R}^2\) with polygonal tiles. One of the results in that paper is that every tiling of the plane with polygonal tiles is _weakly periodic_: it can be partitioned into finitely many pieces, each of them periodic.
+There was a [recent nice paper](https://arxiv.org/pdf/2408.02151) about tiling the plane $\mathbb{R}^2$ with polygonal tiles. One of the results in that paper is that every tiling of the plane with polygonal tiles is _weakly periodic_: it can be partitioned into finitely many pieces, each of them periodic.
 
 Can this theorem be improved? Can we prove that every polygonal tiling is simply _periodic_? It turns out that the answer is no. AI can find a specific example of a polygonal tiling that is weakly periodic but not periodic.
 
-The example is [here](/assets/documents/tiling_solution.pdf).<footnote>The question asked to the model is the one formulated in the first section of the paper and asks for an example in a slightly different space than \(\mathbb{R}^2\), but it extends to \(\mathbb{R}^2\).</footnote>
+The example is [here](/assets/documents/tiling_solution.pdf).<footnote>The question asked to the model is the one formulated in the first section of the paper and asks for an example in a slightly different space than $\mathbb{R}^2$, but it extends to $\mathbb{R}^2$.</footnote>
 
 ## A counterexample to a problem about functions
 
 Here's a cool fact about functions that has applications in graph theory.<footnote>First proven <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jgt.10146">here</a>.</footnote>
 
-Consider two functions \(f\) and \(g\) from a set \(E\) into a set \(F\) such that \(f(x) \neq g(x)\) for every \(x \in E\). Suppose that there exists a positive integer \(n\) such that for any element \(z \in F\), either \(|f^{-1}(z)| \le n\) or \(|g^{-1}(z)| \le n\).
+Consider two functions $f$ and $g$ from a set $E$ into a set $F$ such that $f(x) \neq g(x)$ for every $x \in E$. Suppose that there exists a positive integer $n$ such that for any element $z \in F$, either $\lvert f^{-1}(z) \rvert \le n$ or $\lvert g^{-1}(z) \rvert \le n$.
 
-Then \(E\) can be partitioned into \(2n + 1\) subsets \(E_1, E_2, \dots, E_{2n+1}\) such that \(f(E_i) \cap g(E_i) = \emptyset\) for each \(1 \le i \le 2n + 1\).
+Then $E$ can be partitioned into $2n + 1$ subsets $E_1, E_2, \dots, E_{2n+1}$ such that $f(E_i) \cap g(E_i) = \emptyset$ for each $1 \le i \le 2n + 1$.
 
-Can we generalize this theorem to more functions? It is unclear how many sets would be needed in the partition if we generalize from \(2\) functions to \(k\) functions.
+Can we generalize this theorem to more functions? It is unclear how many sets would be needed in the partition if we generalize from $2$ functions to $k$ functions.
 
-A particularly brave question was asked at KAMAK, the yearly retreat of combinatorics researchers from Charles University (first problem in [this booklet](https://kam.mff.cuni.cz/~kamak/static/problems/2020.pdf)). Maybe \(2n+1\) sets is _still_ enough?
+A particularly brave question was asked at KAMAK, the yearly retreat of combinatorics researchers from Charles University (first problem in [this booklet](https://kam.mff.cuni.cz/~kamak/static/problems/2020.pdf)). Maybe $2n+1$ sets is _still_ enough?
 
-This turns out to be too optimistic. Given this problem, AI came up with a straightforward construction showing that if you generalize the problem to \(k\) functions, you need to partition into at least \(kn\) subsets.
+This turns out to be too optimistic. Given this problem, AI came up with a straightforward construction showing that if you generalize the problem to $k$ functions, you need to partition into at least $kn$ subsets.
 
 [Here's the short proof](/assets/documents/feghali_solution.pdf) (fully AI-written).
