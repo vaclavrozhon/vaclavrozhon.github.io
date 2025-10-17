@@ -36,7 +36,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease, visibility 0.2s ease;
-    pointer-events: none;
+    pointer-events: auto; /* allow hovering and clicking inside */
   }
 
   .footnote-tooltip::after {
@@ -54,7 +54,8 @@
   }
 
   .footnote-ref:hover .footnote-tooltip,
-  .footnote-ref:focus .footnote-tooltip {
+  .footnote-ref:focus .footnote-tooltip,
+  .footnote-tooltip:hover {
     opacity: 1;
     visibility: visible;
   }
@@ -78,6 +79,15 @@
   /* Ensure tooltips near edges don't go off-screen */
   .footnote-ref {
     position: relative;
+  }
+  
+  /* Link styling inside tooltip */
+  .footnote-tooltip a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  .footnote-tooltip a:hover {
+    color: #1e3a8a;
   }
   
   /* For numbered footnotes at the bottom of the page */
@@ -115,7 +125,8 @@
     // Process all <footnote> custom tags
     const footnoteElements = document.querySelectorAll('footnote');
     footnoteElements.forEach(function(footnoteEl) {
-      const footnoteText = footnoteEl.textContent || footnoteEl.innerHTML;
+      // Prefer innerHTML so links and formatting are preserved; fallback to textContent
+      const footnoteText = (footnoteEl.innerHTML && footnoteEl.innerHTML.trim()) || footnoteEl.textContent;
       const footnoteId = footnoteEl.getAttribute('id') || footnoteEl.getAttribute('mark');
       
       // Determine the footnote mark (custom or auto-numbered)
@@ -188,23 +199,31 @@
     
     // Adjust tooltip position for edge cases
     document.querySelectorAll('.footnote-ref').forEach(function(ref) {
-      ref.addEventListener('mouseenter', function() {
-        const tooltip = ref.querySelector('.footnote-tooltip');
-        if (tooltip) {
-          const rect = tooltip.getBoundingClientRect();
-          const viewportWidth = window.innerWidth;
-          
-          // Adjust horizontal position if tooltip goes off-screen
-          if (rect.left < 10) {
-            tooltip.style.left = '0';
-            tooltip.style.transform = 'translateX(0) translateY(-8px)';
-          } else if (rect.right > viewportWidth - 10) {
-            tooltip.style.left = 'auto';
-            tooltip.style.right = '0';
-            tooltip.style.transform = 'translateX(0) translateY(-8px)';
-          }
+      const tooltip = ref.querySelector('.footnote-tooltip');
+      if (!tooltip) return;
+
+      const adjustPosition = function() {
+        const rect = tooltip.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        
+        // Reset any previous adjustments
+        tooltip.style.left = '';
+        tooltip.style.right = '';
+        tooltip.style.transform = 'translateX(-50%) translateY(-8px)';
+
+        // Adjust horizontal position if tooltip goes off-screen
+        if (rect.left < 10) {
+          tooltip.style.left = '0';
+          tooltip.style.transform = 'translateX(0) translateY(-8px)';
+        } else if (rect.right > viewportWidth - 10) {
+          tooltip.style.left = 'auto';
+          tooltip.style.right = '0';
+          tooltip.style.transform = 'translateX(0) translateY(-8px)';
         }
-      });
+      };
+
+      ref.addEventListener('mouseenter', adjustPosition);
+      window.addEventListener('resize', adjustPosition);
     });
   });
 </script>
