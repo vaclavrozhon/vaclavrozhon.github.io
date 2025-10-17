@@ -7,47 +7,54 @@ katex: true
 
 {% include footnotes.html %}
 
-## What is the current mathematical level of AI?
+## What mathematical level are current AIs at?
 
-Current AI models have seemingly extremely impressive math capabilities, both Google and OpenAI won the IMO gold medal today. But are they actually useful in math research? That's still [under discussion](https://x.com/g_leech_/status/1974165458283860198). 
+Modern large models can do surprisingly non-trivial mathematics—both OpenAI and Google have reported IMO gold-level results on curated benchmarks. Are they already useful for research, though? That’s still [debated](https://x.com/g_leech_/status/1974165458283860198).
 
-I want to contribute to this discussion with the following clear-cut experiment. I want to find a clearly defined open problem in mathematics and an AI model. The only input to the model is the problem itself, possibly with some generic prompting ("You are a research mathematician..."). Can AI already solve such open problems?
+Here is a deliberately simple experiment: pick a clearly stated open question and give it *as is* to an AI system (no context besides a generic system prompt like “You are a research mathematician…”). Can the model produce a correct solution?
 
-It can. What follows are two simple examples of this that I found using GPT-5 (though Gemini and Claude would likely solve them too). Modulo the problem statement, this is 100% AI; including writing down the solution. 
+Sometimes—yes. Below are two small cases I obtained with GPT-5 (I expect Claude and Gemini could manage similar ones). Apart from the problem statements, the write-ups are 100% AI-generated.
 
-It should be said that these two problems can only barely be called "open problems". They are not well-known and not even conjectured in a peer-reviewed article. Yet, these are questions a concrete person wondered about and did not know the solution to. Let me make it clear -- I believe that if a human researcher thought about these problems, they would likely solve them quickly.
+These are not famous problems; they weren’t conjectured in peer-reviewed venues. They *are* genuine questions real people asked and didn’t immediately know how to solve. A competent human likely would have cracked them quickly. That’s the point: early progress often looks like “obvious in hindsight.” When the first chess engines scored notable wins, critics could fairly say the human blundered. Expect similar reactions here—yet the direction of travel is clear.
 
-Beginnings always look like this. Take [the first program that beat a chess grandmaster](https://en.wikipedia.org/wiki/HiTech). The legitimate reaction to this event was that the grandmaster was "badly off form". A similar reaction is sensible for the following examples. Nevertheless, I expect that in the coming months, we will see examples that look more and more legitimate.
-
-Note: I don't know of other people showcasing examples of this kind. There are many recent examples of using AI to do math, but they typically involve more interactive processes or additional context beyond just the problem statement.
+*(If you know other “single-shot” examples—model solves a posed problem without interactive steering—please send them.)*
 
 
-## Tightness of a recent paper on 2D tiling
+## Example 1 — Tightness in 2D tilings
 
-There was a [recent very nice paper](https://arxiv.org/pdf/2408.02151) about tiling the plane $$\mathbb{R}^2$$ with polygonal tiles. One of the results shown in that paper was that every tiling of the plane with polygonal tiles is _weakly periodic_: it can be partitioned into finitely many pieces, each of them periodic.
+A recent paper studies tilings of \(\mathbb{R}^2\) by polygonal tiles and proves that **every such tiling is weakly periodic**: you can partition the plane into finitely many regions so that each region’s tiling is periodic.
 
-Can this theorem be improved? Can we prove that every polygonal tiling is simply _periodic_? It turns out that the answer is no. AI can find a specific example of a polygonal tiling that is weakly periodic but not periodic.
+> **Question.** Can we strengthen this to “every polygonal tiling is (globally) periodic”?
 
-The example is [here](/assets/documents/tiling_solution.pdf).<footnote>The question asked to the model is the question formulated in the first section of the paper and asks for example in a bit different space than $$\mathbb{R}^2$$, but it can be extended to $$\mathbb{R}^2$$.</footnote>  
+No. The model produced a concrete polygonal tiling that is weakly periodic but **not** periodic. In other words, the weak periodicity theorem is essentially tight for polygonal tilings.
 
+- **PDF:** [Construction and argument](/assets/documents/tiling_solution.pdf).  
+<footnote>The prompt mirrors the first question in the paper and initially considers a related product space; the example extends to \(\mathbb{R}^2\).</footnote>
 
-## A counterexample to a problem about functions
-
-Here's a cool fact about functions that has applications in graph theory.<footnote>First proven <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jgt.10146">here</a>.</footnote>
-
-Consider two functions $$f$$ and $$g$$ from a set $$E$$ into a set $$F$$ such that $$f(x) \not= g(x)$$ for every $$x \in E$$. Suppose that there exists a positive integer $$n$$ such that for any element $$z \in F$$, either $$|f^{-1}(z)| \le n$$ or $$|g^{-1}(z)| \le n$$.
-
-Then $$E$$ can be partitioned into $$2n + 1$$ subsets $$E_1, E_2, \dots, E_{2n+1}$$ such that $$f(E_i) \cap g(E_i) = \emptyset$$ for each $$1 \le i \le 2n + 1$$.
-
-Can we generalize this theorem to more functions? It is unclear how many sets would need to be in the partition if we generalize from $$2$$ functions to $$k$$ functions.
-
-A particularly brave question was asked at KAMAK, the yearly retreat of combinatorics researchers from Charles University (first problem in [this booklet](https://kam.mff.cuni.cz/~kamak/static/problems/2020.pdf)). Maybe $$2n+1$$ sets is _still_ enough?
-
-This turns out to be too optimistic. Given this problem, AI came up with a straightforward construction showing that if you generalize the problem to $$k$$ functions, you need to partition into at least $$kn$$ subsets.
-
-[Here's the short proof](/assets/documents/feghali_solution.pdf) (fully AI-written).
+**Intuition (one paragraph).** “Weakly periodic” allows stitching together a bounded number of periodic patterns along non-periodic boundaries; global periodicity forbids that. The construction encodes a finite set of periods on disjoint bands and arranges them so that no single global translation preserves the entire tiling, while each band remains periodic on its own. That separation is exactly what the theorem can’t rule out.
 
 
+## Example 2 — How many parts do you need for \(k\) functions?
+
+Here is a classical two-function fact with graph-theoretic applications.<footnote>First proven <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jgt.10146">here</a>.</footnote>
+
+Let \(f,g: E \to F\) with \(f(x)\neq g(x)\) for all \(x\in E\). Suppose there is an integer \(n\ge 1\) such that for every \(z\in F\), either \(|f^{-1}(z)|\le n\) or \(|g^{-1}(z)|\le n\). Then there is a partition
+\[
+E = E_1 \sqcup \cdots \sqcup E_{2n+1}
+\]
+such that \(f(E_i)\cap g(E_i)=\varnothing\) for each \(i\).
+
+> **Question.** What happens for \(k\) functions? Is \(2n+1\) parts still enough?
+
+No. The model gave a simple family showing that, in general, you need at least **\(kn\)** parts when you go from \(2\) to \(k\) functions.
+
+- **PDF:** [One-page counterexample](/assets/documents/feghali_solution.pdf) (AI-written).
+
+**Intuition (one paragraph).** Think of each function \(f_j\) creating “conflict points” where many elements of \(E\) want to map to the same \(z\in F\). The hypothesis caps how bad any *one* function’s congestion can be, but with \(k\) functions you can arrange \(k\) independent congestion centers. To keep \(f_j(E_i)\) and \(f_\ell(E_i)\) disjoint inside each part, the partition must isolate each congestion center at least \(n\) times—forcing \(\ge kn\) parts in the worst case.
 
 
+## Why this matters (and what it doesn’t)
 
+These are tiny results, not breakthroughs. But they *do* demonstrate the following: with a clean prompt and no iterative steering, current models can sometimes find correct constructions/counterexamples that settle small, well-posed questions. That’s qualitatively different from “assistant-mode” tutoring or proof-sketching with heavy human guidance.
+
+If you try to reproduce: I include the PDFs; for serious claims one should also share prompts, model/version, temperature/seed, and transcripts. See suggestions below.
