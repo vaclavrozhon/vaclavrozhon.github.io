@@ -5,6 +5,8 @@ permalink: "/blog/ai-examples/"
 katex: true
 ---
 
+{% include footnotes.html %}
+
 ## What is the current mathematical level of AI?
 
 
@@ -23,16 +25,12 @@ There was a [recent very nice paper](https://arxiv.org/pdf/2408.02151) about til
 
 Can this theorem be improved? Can we prove that every polygonal tiling is simply _periodic_? It turns out that the answer is no. AI can find a specific example of a polygonal tiling that is weakly periodic but not periodic.
 
-The example is [here](/assets/documents/tiling_solution.pdf).[^1]
-
-[^1]: The question asked to the model is the question formulated in the first section of the paper and asks for example in a bit different space than $\mathbb{R}^2$, but it can be extended to $\mathbb{R}^2$.  
+The example is [here](/assets/documents/tiling_solution.pdf).<footnote>The question asked to the model is the question formulated in the first section of the paper and asks for example in a bit different space than $$\mathbb{R}^2$$, but it can be extended to $$\mathbb{R}^2$$.</footnote>  
 
 
 ## A counterexample to a problem about functions
 
-Here's a cool fact about functions that has applications in graph theory.[^2]
-
-[^2]: First proven [here](https://onlinelibrary.wiley.com/doi/abs/10.1002/jgt.10146).
+Here's a cool fact about functions that has applications in graph theory.<footnote>First proven <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/jgt.10146">here</a>.</footnote>
 
 Consider two functions $$f$$ and $$g$$ from a set $$E$$ into a set $$F$$ such that $$f(x) \not= g(x)$$ for every $$x \in E$$. Suppose that there exists a positive integer $$n$$ such that for any element $$z \in F$$, either $$|f^{-1}(z)| \le n$$ or $$|g^{-1}(z)| \le n$$.
 
