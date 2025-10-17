@@ -1,13 +1,11 @@
 ---
 layout: single
-title: AI Examples in Mathematics
+title: What is the current mathematical level of AI?
 permalink: "/blog/ai-examples/"
 katex: true
 ---
 
 {% include footnotes.html %}
-
-## What is the current mathematical level of AI?
 
 Current AI models have seemingly impressive math capabilities—both Google and OpenAI won the IMO gold medal this year. But are they actually useful in math research? That's still [debated](https://x.com/g_leech_/status/1974165458283860198).
 
@@ -19,7 +17,10 @@ It should be said that the following two questions can only barely be called "op
 
 But look: beginnings always look like this. Take [the first program that beat a chess grandmaster](https://en.wikipedia.org/wiki/HiTech). The legitimate reaction to this event was that the grandmaster was “badly off form.” Yet, Kasparov has been beaten less than 10 years later. Similarly, I expect that in the coming months we will see examples that look more and more legitimate and get dominated in <10 years from now (and maybe much sooner). 
 
-Note: I don't know of other people showcasing examples of this exact kind. There are many recent examples of using AI to do math, but they typically involve more interactive processes or additional context beyond just the problem statement. See the [discussion here](https://x.com/g_leech_/status/1974165458283860198) or [here](https://mathstodon.xyz/@tao/115306424727150237). 
+Note: I don't know of other people showcasing examples of this exact kind. There are benchmarks like [FrontierMath](https://epoch.ai/frontiermath) and [Humanity's last exam](https://agi.safe.ai/). At this point in time, they remain unsaturated and thus very useful benchmarks. 
+
+But these are still not problems that one would write a paper about if they solved it (otherwise, the relevant researchers would write that paper and submit it to the benchmark). I think we will soon see results that are paper-worthy and this exploration is about how far from that we are now. 
+Of course, many mathematicians use AI in their work, but it is typically hard to disentangle what part of the work is done by human and what part by the AI.<footnote>See [discussion here](https://x.com/g_leech_/status/1974165458283860198) or [here](https://mathstodon.xyz/@tao/115306424727150237). </footnote>
 
 ## Tightness of a recent paper on 2D tiling
 
