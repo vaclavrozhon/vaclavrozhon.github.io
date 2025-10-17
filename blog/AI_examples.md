@@ -9,10 +9,13 @@ katex: true
 
 ## What is the current mathematical level of AI?
 
+Current AI models have seemingly extremely impressive math capabilities, both Google and OpenAI won the IMO gold medal today. But are they actually useful in math research? That's still [under discussion](https://x.com/g_leech_/status/1974165458283860198). 
 
-I am interested in a clear-cut experiment. We have a clearly defined open problem in mathematics and an AI model. The only input to the model is the problem itself, possibly with some generic prompting ("You are a research mathematician..."). Can AI already solve such open problems?
+I want to contribute to this discussion with the following clear-cut experiment. I want to find a clearly defined open problem in mathematics and an AI model. The only input to the model is the problem itself, possibly with some generic prompting ("You are a research mathematician..."). Can AI already solve such open problems?
 
-It can. Here are two examples I found using GPT-5 (though Gemini and Claude would likely solve them too). The attached papers are also fully AI-written. It should be said that these two problems can only barely be called "open problems". They are not well-known and not even conjectured in a peer-reviewed article. Yet, these are questions a concrete person wondered about and did not know the solution to. Let me make it clear -- I believe that if a human researcher thought about these problems, they would likely solve them quickly.
+It can. What follows are two simple examples of this that I found using GPT-5 (though Gemini and Claude would likely solve them too). Modulo the problem statement, this is 100% AI; including writing down the solution. 
+
+It should be said that these two problems can only barely be called "open problems". They are not well-known and not even conjectured in a peer-reviewed article. Yet, these are questions a concrete person wondered about and did not know the solution to. Let me make it clear -- I believe that if a human researcher thought about these problems, they would likely solve them quickly.
 
 Beginnings always look like this. Take [the first program that beat a chess grandmaster](https://en.wikipedia.org/wiki/HiTech). The legitimate reaction to this event was that the grandmaster was "badly off form". A similar reaction is sensible for the following examples. Nevertheless, I expect that in the coming months, we will see examples that look more and more legitimate.
 
