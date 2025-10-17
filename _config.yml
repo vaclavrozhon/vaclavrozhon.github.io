@@ -95,6 +95,8 @@ atom_feed:
 #
 exclude:
   - teaching/pagerank/node_modules/
+  - teaching/metropolis-demo/
+  - teaching/landscape-demo/node_modules/
 
 footer:
   content: " Powered by Jekyll & Minimal Mistakes. Photo © Tomáš Princ, MFF UK"
