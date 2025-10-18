@@ -137,12 +137,12 @@ export default function ViewerCreator() {
 
         {/* Legend */}
         <g>
-          <rect x="10" y="232" width="12" height="4" fill={femaleColor} opacity="0.8" />
-          <text x="28" y="236" fontSize="11" fill="#666">female → female</text>
-          <rect x="150" y="232" width="12" height="4" fill={crossColor} opacity="0.8" />
-          <text x="168" y="236" fontSize="11" fill="#666">cross-gender</text>
-          <rect x="270" y="232" width="12" height="4" fill={maleColor} opacity="0.8" />
-          <text x="288" y="236" fontSize="11" fill="#666">male → male</text>
+          <rect x="10" y="232" width="14" height="5" fill={femaleColor} opacity="0.9" />
+          <text x="30" y="241" fontSize="16" fill="#555">female → female</text>
+          <rect x="190" y="232" width="14" height="5" fill={crossColor} opacity="0.9" />
+          <text x="210" y="241" fontSize="16" fill="#555">cross-gender</text>
+          <rect x="325" y="232" width="14" height="5" fill={maleColor} opacity="0.9" />
+          <text x="345" y="241" fontSize="16" fill="#555">male → male</text>
         </g>
       </svg>
     </div>

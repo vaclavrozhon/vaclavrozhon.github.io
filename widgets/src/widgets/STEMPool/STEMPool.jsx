@@ -6,25 +6,34 @@ import React from 'react';
  */
 export default function STEMPool() {
   const totalWidth = 560;
-  const poolHeight = 140;
-  const chartTop = 30;
+  const poolHeight = 150;
+  const chartTop = 20;
   const chartHeight = 300;
   const maleWidth = totalWidth * 0.8;
   const femaleWidth = totalWidth * 0.2;
   const pMen = 0.6; // illustrative share among men
   const pWomen = 0.4; // illustrative share among women
+  const innerPadding = 6;
+  const maleInnerX = innerPadding;
+  const maleInnerWidth = maleWidth - innerPadding * 2;
+  const maleInnerHeight = Math.round((poolHeight * 2) / 3);
+  const maleInnerY = chartTop + (poolHeight - maleInnerHeight) / 2;
+  const femaleInnerX = maleWidth + innerPadding;
+  const femaleInnerWidth = femaleWidth - innerPadding * 2;
+  const femaleInnerHeight = Math.round(poolHeight / 3);
+  const femaleInnerY = chartTop + (poolHeight - femaleInnerHeight) / 2;
 
   return (
     <div style={{
-      maxWidth: '600px',
-      margin: '2rem auto',
-      padding: '1.5rem',
+      maxWidth: '720px',
+      margin: '1rem auto',
+      padding: '1rem',
       fontFamily: 'system-ui, -apple-system, sans-serif',
     }}>
       <div style={{
-        fontSize: '0.95rem',
+        fontSize: '1.05rem',
         color: '#666',
-        marginBottom: '1.5rem',
+        marginBottom: '1rem',
         textAlign: 'center',
       }}>
         Pool of STEM-loving people (80% men, 20% women)
@@ -56,9 +65,9 @@ export default function STEMPool() {
         />
         <text
           x={maleWidth / 2}
-          y={chartTop + poolHeight / 2}
+          y={chartTop - 10}
           textAnchor="middle"
-          fontSize="16"
+          fontSize="18"
           fontWeight="600"
           fill="#1976d2"
         >
@@ -67,25 +76,26 @@ export default function STEMPool() {
 
         {/* Highlight p_men portion */}
         <rect
-          x="10"
-          y={chartTop + 10}
-          width={maleWidth * pMen}
-          height={poolHeight - 20}
+          x={maleInnerX}
+          y={maleInnerY}
+          width={maleInnerWidth}
+          height={maleInnerHeight}
           fill="#4a90e2"
           opacity={0.8}
           rx="10"
           ry="10"
         />
         <text
-          x={Math.max(18, maleWidth * pMen * 0.5 + 10)}
-          y={chartTop + poolHeight + 30}
+          x={maleInnerX + maleInnerWidth / 2}
+          y={maleInnerY + maleInnerHeight / 2}
           textAnchor="middle"
-          fontSize="14"
+          dominantBaseline="middle"
+          fontSize="15"
           fontStyle="italic"
           fill="#1976d2"
         >
           {"p"}
-          <tspan baselineShift="-30%" fontSize="10">men</tspan>
+          <tspan baselineShift="-30%" fontSize="11">men</tspan>
           {" watch YouTube"}
         </text>
 
@@ -104,63 +114,45 @@ export default function STEMPool() {
         />
         <text
           x={maleWidth + femaleWidth / 2}
-          y={chartTop + poolHeight / 2 - 8}
+          y={chartTop - 10}
           textAnchor="middle"
-          fontSize="16"
+          fontSize="18"
           fontWeight="600"
           fill="#c2185b"
         >
-          Women
-        </text>
-        <text
-          x={maleWidth + femaleWidth / 2}
-          y={chartTop + poolHeight / 2 + 12}
-          textAnchor="middle"
-          fontSize="14"
-          fontWeight="600"
-          fill="#c2185b"
-        >
-          (20%)
+          Women (20%)
         </text>
 
         {/* Highlight p_women portion */}
         <rect
-          x={maleWidth + 5}
-          y={chartTop + 10}
-          width={femaleWidth * pWomen}
-          height={poolHeight - 20}
+          x={femaleInnerX}
+          y={femaleInnerY}
+          width={femaleInnerWidth}
+          height={femaleInnerHeight}
           fill="#e91e63"
           opacity={0.85}
           rx="10"
           ry="10"
         />
         <text
-          x={maleWidth + Math.max(18, femaleWidth * pWomen * 0.5 + 5)}
-          y={chartTop + poolHeight + 30}
+          x={femaleInnerX + femaleInnerWidth / 2}
+          y={femaleInnerY + femaleInnerHeight / 2}
           textAnchor="middle"
-          fontSize="12"
+          dominantBaseline="middle"
+          fontSize="14"
           fontStyle="italic"
           fill="#c2185b"
         >
           {"p"}
-          <tspan baselineShift="-30%" fontSize="9.5">women</tspan>
-        </text>
-        <text
-          x={maleWidth + Math.max(18, femaleWidth * pWomen * 0.5 + 5)}
-          y={chartTop + poolHeight + 48}
-          textAnchor="middle"
-          fontSize="12"
-          fontStyle="italic"
-          fill="#c2185b"
-        >
-          watch YT
+          <tspan baselineShift="-30%" fontSize="10.5">women</tspan>
+          {" watch YT"}
         </text>
       </svg>
 
       <div style={{
-        fontSize: '0.95rem',
+        fontSize: '1.05rem',
         color: '#4b5563',
-        marginTop: '1.25rem',
+        marginTop: '1rem',
         textAlign: 'center',
       }}>
         Question: Is
