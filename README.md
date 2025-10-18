@@ -382,7 +382,7 @@ Animated eyes that follow the cursor around the screen.
 
 ### Automated GitHub Actions Workflow
 
-**Widgets are built automatically on push to `main` branch** via GitHub Actions workflow (`.github/workflows/jekyll.yml`).
+**Widgets are built automatically on push to `main` branch** via GitHub Actions workflow (`.github/workflows/build-and-deploy.yml`).
 
 The workflow:
 1. Checks out the code
@@ -505,7 +505,7 @@ exclude:
 
 ### GitHub Actions Workflow
 
-The deployment workflow is in `.github/workflows/jekyll.yml`. Key points:
+The deployment workflow is in `.github/workflows/build-and-deploy.yml`. Key points:
 
 - **Triggers**: Runs on push to `main` or manual trigger
 - **Node version**: Currently set to Node 20
@@ -513,7 +513,7 @@ The deployment workflow is in `.github/workflows/jekyll.yml`. Key points:
 - **Cache**: Uses npm cache based on `widgets/package-lock.json`
 
 If you need to modify the workflow (e.g., change Node version, add build steps):
-1. Edit `.github/workflows/jekyll.yml`
+1. Edit `.github/workflows/build-and-deploy.yml`
 2. Test locally first: `cd widgets && npm run build`
 3. Commit and push - workflow runs automatically
 4. Check Actions tab on GitHub for build status

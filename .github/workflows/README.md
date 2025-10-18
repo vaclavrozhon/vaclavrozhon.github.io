@@ -2,7 +2,7 @@
 
 ## Jekyll Deployment with Widgets
 
-**File**: `jekyll.yml`
+**File**: `build-and-deploy.yml`
 
 This workflow automatically builds React widgets and deploys the Jekyll site to GitHub Pages.
 
@@ -39,7 +39,7 @@ To use this workflow, ensure:
 
 ### Customization
 
-Edit `jekyll.yml` to:
+Edit `build-and-deploy.yml` to:
 - Change Node/Ruby versions
 - Add additional build steps
 - Modify deployment settings

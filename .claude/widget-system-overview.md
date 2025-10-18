@@ -24,7 +24,7 @@ This file provides a quick overview for AI assistants. All details, best practic
 │   ├── public/         # Static data (JSON/CSV)
 │   ├── preview.html    # Dev preview (loads from src/)
 │   └── package.json    # npm dependencies
-├── .github/workflows/jekyll.yml  # Auto-builds widgets + Jekyll
+├── .github/workflows/build-and-deploy.yml  # Auto-builds widgets + Jekyll
 └── README.md           # COMPLETE DOCUMENTATION (read this!)
 ```
 
@@ -110,7 +110,7 @@ bundle exec jekyll serve  # localhost:4000
 
 ## Deployment (GitHub Actions)
 
-### Workflow: `.github/workflows/jekyll.yml`
+### Workflow: `.github/workflows/build-and-deploy.yml`
 
 **On push to `main`:**
 1. Install Node.js dependencies (`npm install` in widgets/)
@@ -263,7 +263,7 @@ GitHub Actions explicitly builds Jekyll
 - **`widgets/vite.config.js`** - Widget build config, entry points
 - **`widgets/package.json`** - npm dependencies and scripts
 - **`_config.yml`** - Jekyll config (exclusions, theme, plugins)
-- **`.github/workflows/jekyll.yml`** - Build and deploy workflow
+- **`.github/workflows/build-and-deploy.yml`** - Build and deploy workflow
 - **`widgets/.gitignore`** - Ignores `dist/` and `node_modules/`
 - **`.gitignore`** - Ignores `/_site` and `/widgets/dist/`
 
