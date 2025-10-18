@@ -8,7 +8,7 @@ katex: true
 
 {% include footnotes.html %}
 
-I am writing scripts for a medium-sized YouTube channel Polylog about algorithms. Here's a riddle: What share of viewers are male versus female? Before I spoil the answer, try to guess it yourself!
+Polylog is a mid-sized algorithms channel. Riddle: what share of viewers are male vs. female? Make a guess before you go on.
 
 <div id="gender-guess-root" data-answer="97.5"></div>
 <script type="module" src="/widgets/dist/gender-guess.js"></script>
