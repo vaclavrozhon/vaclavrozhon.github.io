@@ -2,7 +2,7 @@
 layout: single
 title: "Interactive Widgets Demo"
 date: 2025-01-18 10:00:00 +0100
-categories: demo interactive
+categories: blog
 ---
 
 This post demonstrates how to embed interactive React widgets into Jekyll blog posts. The widgets are built separately and loaded as standalone JavaScript modules.

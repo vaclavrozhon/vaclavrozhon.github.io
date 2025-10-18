@@ -386,7 +386,7 @@ Animated eyes that follow the cursor around the screen.
 
 The workflow:
 1. Checks out the code
-2. Installs Node.js dependencies (`npm ci` in `widgets/`)
+2. Installs Node.js dependencies (`npm install` in `widgets/`)
 3. Builds widgets (`npm run build`)
 4. Installs Ruby/Jekyll dependencies
 5. Builds Jekyll site (which includes the built `widgets/dist/`)
@@ -444,6 +444,27 @@ The site is deployed via GitHub Pages with GitHub Actions. The workflow:
 - `widgets/.gitignore` also excludes `dist/` and `node_modules/`
 - Both `dist/` exclusions ensure build artifacts aren't committed
 
+### Repository Setup Steps
+
+To enable the automated workflow on a new repository:
+
+1. **Set GitHub Pages source to "GitHub Actions"**:
+   - Go to repository Settings → Pages
+   - Under "Build and deployment" → Source
+   - Select **"GitHub Actions"** (NOT "Deploy from a branch")
+   - This disables the automatic legacy Jekyll workflow
+
+2. **Verify Actions permissions**:
+   - Settings → Actions → General
+   - Workflow permissions → "Read and write permissions"
+
+3. **Push to `main` branch**:
+   - The workflow will trigger automatically
+   - Check Actions tab to monitor build progress
+   - Look for "Deploy Jekyll site with widgets to Pages" workflow
+
+**Why this matters**: GitHub's default "Deploy from a branch" setting runs Jekyll automatically but doesn't know about our widgets build step. Our custom workflow handles both widget building and Jekyll in the correct order.
+
 ---
 
 ## Critical Technical Details
@@ -497,7 +518,7 @@ If you need to modify the workflow (e.g., change Node version, add build steps):
 3. Commit and push - workflow runs automatically
 4. Check Actions tab on GitHub for build status
 
-**Important**: The workflow uses `npm ci` (not `npm install`) for reproducible builds. Keep `package-lock.json` committed.
+**Important**: The workflow uses `npm install` to avoid stale lockfile issues. The `package-lock.json` file is still useful for local development consistency.
 
 ### Multiple Widget Instances
 

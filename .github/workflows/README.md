@@ -27,11 +27,15 @@ This workflow automatically builds React widgets and deploys the Jekyll site to 
 
 To use this workflow, ensure:
 
-1. **GitHub Pages is enabled** in repository settings
+1. **GitHub Pages source is set to "GitHub Actions"**:
+   - Go to Settings → Pages → Source
+   - Select "GitHub Actions" (NOT "Deploy from a branch")
+   - This disables the default GitHub Pages Jekyll workflow
+
 2. **GitHub Actions permissions** are set correctly:
-   - Settings → Actions → General → Workflow permissions → Read and write
-3. **Pages source** is set to "GitHub Actions":
-   - Settings → Pages → Source → GitHub Actions
+   - Settings → Actions → General → Workflow permissions → Read and write permissions
+
+**Important**: Setting source to "GitHub Actions" automatically disables any legacy "pages-build-deployment" workflow that GitHub creates for branch-based deployment.
 
 ### Customization
 

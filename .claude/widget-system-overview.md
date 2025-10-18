@@ -113,16 +113,21 @@ bundle exec jekyll serve  # localhost:4000
 ### Workflow: `.github/workflows/jekyll.yml`
 
 **On push to `main`:**
-1. Install Node.js dependencies
+1. Install Node.js dependencies (`npm install` in widgets/)
 2. Build widgets (`npm run build` in widgets/)
 3. Install Ruby/Jekyll dependencies
 4. Build Jekyll site (includes widgets/dist/)
 5. Deploy to GitHub Pages
 
 **Important:**
+- Uses `npm install` (not `npm ci`) to avoid stale lockfile issues
 - DO NOT commit `widgets/dist/` - built fresh every deployment
 - Only commit `widgets/src/` source code
 - Build artifacts ignored in both `.gitignore` files
+
+**Repository Setup:**
+- GitHub Pages source must be set to "GitHub Actions" (not "Deploy from a branch")
+- This disables the default Pages Jekyll workflow in favor of our custom one
 
 ---
 
