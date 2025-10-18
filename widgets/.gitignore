@@ -1,8 +1,8 @@
 # Dependencies
 node_modules/
 
-# Build output (we'll commit dist/ for Jekyll to serve)
-# dist/
+# Build output (built automatically by GitHub Actions)
+dist/
 
 # Development
 .vite/

@@ -47,3 +47,17 @@ Some directories with node_modules are excluded from Jekyll builds to avoid Liqu
 - `teaching/pagerank/node_modules/`
 - `teaching/metropolis-demo/`
 - `teaching/landscape-demo/node_modules/`
+- `widgets/node_modules/`, `widgets/src/`, etc. (see widget system docs)
+
+## React Widget System
+
+This site has an embedded React widget system. See:
+- **[widget-system-overview.md](widget-system-overview.md)** - Quick reference for AI assistants
+- **[../README.md](../README.md)** - Complete documentation (Deployment section and Widget System Architecture)
+
+Key points:
+- Widgets are independent React components built with Vite
+- Live in `widgets/src/widgets/`
+- Build to `widgets/dist/*.js` (built by GitHub Actions, not committed)
+- Embedded in Jekyll posts with `<div>` + `<script>` tags
+- Must use absolute paths (`/widgets/data.json`) not relative paths

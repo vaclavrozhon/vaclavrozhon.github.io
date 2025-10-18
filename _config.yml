@@ -107,9 +107,6 @@ exclude:
   - widgets/preview.html
   - widgets/preview-dist.html
   - widgets/README.md
-  - widgets/EXAMPLE.md
-  - widgets/QUICKSTART.md
-  - widgets/WIDGETS.md
   - widgets/charts.js
   - widgets/helpers.js
   - widgets/index.html
