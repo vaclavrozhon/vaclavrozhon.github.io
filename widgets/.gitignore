@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build output (we'll commit dist/ for Jekyll to serve)
+# dist/
+
+# Development
+.vite/
+*.log
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
