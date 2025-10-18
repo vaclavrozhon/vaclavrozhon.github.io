@@ -117,6 +117,26 @@
         <div id="following-eyes-widget-root"></div>
       </div>
     </div>
+
+    <h2>Gender Guess Quiz Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Interactive quiz widget with a slider to guess gender distribution statistics.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="gender-guess-root" data-answer="97.5"></div>
+      </div>
+    </div>
+
+    <h2>Gender Table Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Displays gender distribution data for various channels with visual bars.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="gender-table-root" data-channels='[{"name":"MrBeast","host":"Male","topic":"Entertainment","malePercent":74},{"name":"Physics Girl","host":"Female","topic":"Physics","malePercent":80}]'></div>
+      </div>
+    </div>
   </div>
 
   <!-- Load from built dist/ folder - same as production -->
@@ -124,5 +144,7 @@
   <script type="module" src="/dist/geography-charts.js"></script>
   <script type="module" src="/dist/counter-widget.js"></script>
   <script type="module" src="/dist/following-eyes-widget.js"></script>
+  <script type="module" src="/dist/gender-guess.js"></script>
+  <script type="module" src="/dist/gender-table.js"></script>
 </body>
 </html>

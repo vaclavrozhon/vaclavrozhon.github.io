@@ -78,6 +78,21 @@
       </ol>
     </div>
 
+    <h2>STEM Pool Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Visualizes the pool of STEM-loving people (80% men, 20% women) and highlights
+        fractions <code>p<sub>men</sub></code> and <code>p<sub>women</sub></code> who watch YouTube STEM videos.
+      </p>
+      <div class="component-wrapper">
+        <div id="stem-pool-root"></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="stem-pool-root"&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/stem-pool.js"&gt;&lt;/script&gt;</code>
+      </p>
+    </div>
+
     <h2>Population Chart</h2>
     <div class="component-card">
       <p class="description">
@@ -139,6 +154,38 @@
       </p>
     </div>
 
+    <h2>Gender Guess Quiz Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Interactive quiz widget with a slider to guess gender distribution statistics.
+        Users submit their answer and get immediate feedback with the correct answer.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="gender-guess-root" data-answer="97.5"></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="gender-guess-root" data-answer="97.5"&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/gender-guess.js"&gt;&lt;/script&gt;</code><br>
+        <em>Note: Use data-answer attribute to configure the correct answer.</em>
+      </p>
+    </div>
+
+    <h2>Gender Table Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Displays gender distribution data for various channels with visual bars.
+        Configurable via JSON data attribute.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="gender-table-root" data-channels='[{"name":"MrBeast","host":"Male","topic":"Entertainment","malePercent":74},{"name":"Physics Girl","host":"Female","topic":"Physics","malePercent":80}]'></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="gender-table-root" data-channels='[...]'&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/gender-table.js"&gt;&lt;/script&gt;</code><br>
+        <em>Note: Pass channel data as JSON array via data-channels attribute.</em>
+      </p>
+    </div>
+
     <div class="info-box" style="background: #fff3e0; border-left-color: #ff9800;">
       <h3>📝 Adding to Blog Posts</h3>
       <p>After building (<code>npm run build</code>), copy the embedding code shown above into any Jekyll markdown file.</p>
@@ -150,5 +197,8 @@
   <script type="module" src="/src/widgets/GeographyCharts/index.jsx"></script>
   <script type="module" src="/src/widgets/Counter/index.jsx"></script>
   <script type="module" src="/src/widgets/FollowingEyes/index.jsx"></script>
+  <script type="module" src="/src/widgets/GenderGuess/index.jsx"></script>
+  <script type="module" src="/src/widgets/GenderTable/index.jsx"></script>
+  <script type="module" src="/src/widgets/STEMPool/index.jsx"></script>
 </body>
 </html>

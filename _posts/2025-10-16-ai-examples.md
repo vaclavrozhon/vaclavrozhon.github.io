@@ -1,7 +1,8 @@
 ---
 layout: single
 title: What is the current mathematical level of AI?
-permalink: "/blog/ai-examples/"
+date: 2025-10-16 10:00:00 +0100
+categories: blog math ai
 katex: true
 ---
 

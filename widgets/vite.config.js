@@ -16,6 +16,11 @@ export default defineConfig({
         'geography-charts': resolve(__dirname, 'src/widgets/GeographyCharts/index.jsx'),
         'counter-widget': resolve(__dirname, 'src/widgets/Counter/index.jsx'),
         'following-eyes-widget': resolve(__dirname, 'src/widgets/FollowingEyes/index.jsx'),
+        'gender-guess': resolve(__dirname, 'src/widgets/GenderGuess/index.jsx'),
+        'gender-table': resolve(__dirname, 'src/widgets/GenderTable/index.jsx'),
+        'bias-breakdown': resolve(__dirname, 'src/widgets/BiasBreakdown/index.jsx'),
+        'stem-pool': resolve(__dirname, 'src/widgets/STEMPool/index.jsx'),
+        'viewer-creator': resolve(__dirname, 'src/widgets/ViewerCreator/index.jsx'),
       },
       output: {
         // Predictable names without hashes for easy embedding

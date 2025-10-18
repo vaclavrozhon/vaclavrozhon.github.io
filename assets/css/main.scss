@@ -14,3 +14,13 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+// Increase main content width by 25%
+.page {
+    @media (min-width: 80em) {
+        max-width: 1250px; // 1000px * 1.25
+    }
+    @media (min-width: 64em) and (max-width: 80em) {
+        max-width: 1000px; // 800px * 1.25
+    }
+}
