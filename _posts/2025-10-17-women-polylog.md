@@ -15,15 +15,15 @@ Polylog is a mid-sized algorithms channel. Riddle: what share of viewers are mal
 
 <div id="revealed-content" style="filter: blur(8px); pointer-events: none; user-select: none; transition: filter 0.5s ease;" markdown="1">
 
-Yeah. When I started working on Polylog, I had some pretty high hopes about this media being a nice way of "democratizing" computer science (CS) education. In my experience, many students first encounter math / computer science at math camps / competitions, but this "beat others at math" approach feels very male-oriented! Maybe videos can do much better! 
+Yeah. When I started working on Polylog, I had high hopes about videos being a nice way of democratizing computer science (CS) education. This could mean accessibility to people from third-world countries. But also to women: In my experience, many students first encounter math or computer science at math competitions, but these are tailored to boys. "Beat others at math" simply isn't the best motivation for everybody. Maybe videos can do much better! 
 
-It seems that I have been mistaken. 
+It seems that I have been mistaken, at least in the gender aspect. 
 
-This post is not about finding mistakes in our presentation or lamenting on the state of the world. This should be done at some point, but first, I would like to understand where is this huge discrepancy coming from. Can we split it into several understandable factors? 
+This post is not about finding mistakes in our work or lamenting on the state of the world. Self-reflection is in order, but first, I would like to understand where is this huge discrepancy coming from. Can we split it into several understandable factors? 
 
-Here's the best answer I got. Before we start: I will take this number at face value -- it's possible that women are more likely to not disclose / lie about their gender, but I don't have reason to believe so. <footnote>Also, maybe YouTube has an algorithm that tries to guess the gender of users who don't disclose it. Again, I don't have strong reason to believe this since I could not find creators outside of CS ranting about this data being fake. Also, the share of women viewers is so low (and share of trans people in tech so high) that the share of nonbinary / trans people may be relevant. Youtube classifies around 1% of viewers as  </footnote>
+Here's the best answer I got. First things first: I’ll take YouTube’s gender field of 2.5% female at face value as a correct number.<footnote>Is it clear this number is correct? Maybe it's possible that women are more likely to not disclose / lie about their gender? Maybe YouTube algorithm tries to guess the gender of users who don't disclose it and does a bad job? Maybe the share of women viewers is so low (and share of trans people in tech so high) that the share of nonbinary / trans viewers changes the interpretation of the number substantially? I don't consider any of this. </footnote> 
 
-Before we start, 97.5% corresponds to odds 39 : 1. $\log_2(39)$ is about $5.3$ so we have to explain around $5$ bits of discrepancy with respect to the $1:1$ baseline in population.
+Before we start, 97.5% corresponds to odds 39 : 1 male to female ratio. It turns out that $\log_2(39)$ is about $5.3$ so I think of our task as explaining around $5$ bits of discrepancy with respect to the $1:1$ baseline in population.
 
 
 ## Biased baseline
