@@ -94,6 +94,10 @@ atom_feed:
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - vendor/
+  - .bundle/
+  - Gemfile
+  - Gemfile.lock
   - teaching/pagerank/node_modules/
   - teaching/metropolis-demo/
   - teaching/landscape-demo/node_modules/

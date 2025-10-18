@@ -230,6 +230,9 @@ Must stay `/widgets/` to match directory structure
 ## Jekyll Configuration Notes
 
 ### Excluded from Jekyll Build
+- `vendor/` ← **CRITICAL**: Prevents Jekyll from processing gem files (causes "Invalid date" errors)
+- `.bundle/`
+- `Gemfile`, `Gemfile.lock`
 - `widgets/node_modules/`
 - `widgets/src/`
 - `widgets/public/`

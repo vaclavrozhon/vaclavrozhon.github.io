@@ -493,13 +493,22 @@ fetch('/widgets/geography-data.csv')
 
 ### Jekyll Exclusions
 
-If you add new directories/files to `widgets/`, update `_config.yml` exclusions:
+The `_config.yml` excludes several directories from Jekyll processing:
 ```yaml
 exclude:
+  - vendor/          # Bundler gem installations (CRITICAL - prevents build errors)
+  - .bundle/         # Bundler config
+  - Gemfile          # Ruby dependencies
+  - Gemfile.lock     # Ruby lockfile
   - widgets/node_modules/
   - widgets/src/
-  - widgets/newfile.txt  # Add new files here
+  - widgets/public/
+  # ... and other widget dev files
 ```
+
+**Critical**: The `vendor/` exclusion prevents Jekyll from trying to process gem source files, which causes build errors like "Invalid date" errors from gem template files.
+
+If you add new directories/files to `widgets/`, update the exclusions accordingly.
 
 **Only `widgets/dist/` should be included** in Jekyll builds.
 
