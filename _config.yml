@@ -114,7 +114,10 @@ exclude:
   - widgets/helpers.js
   - widgets/index.html
   - widgets/geography.html
-  - widgets/*.json
+
+# Serve entire widgets build output (data + assets)
+include:
+  - widgets/dist/
 
 footer:
   content: " Powered by Jekyll & Minimal Mistakes. Photo © Tomáš Princ, MFF UK"

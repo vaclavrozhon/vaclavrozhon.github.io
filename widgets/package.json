@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && python3 scripts/convert_wiki_csv.py && python3 scripts/extract_gdp_ppp.py && python3 scripts/merge_data.py",
+    "fetch-wiki": "python3 scripts/convert_wiki_csv.py && python3 scripts/extract_gdp_ppp.py && python3 scripts/merge_data.py",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "serve": "serve -l 8080"

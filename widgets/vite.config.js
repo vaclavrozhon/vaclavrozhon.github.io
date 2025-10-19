@@ -14,6 +14,7 @@ export default defineConfig({
         // All widgets/embeddable components
         'population-chart': resolve(__dirname, 'src/widgets/PopulationChart/index.jsx'),
         'geography-charts': resolve(__dirname, 'src/widgets/GeographyCharts/index.jsx'),
+        'analytics-page': resolve(__dirname, 'src/widgets/AnalyticsPage/index.jsx'),
         'counter-widget': resolve(__dirname, 'src/widgets/Counter/index.jsx'),
         'following-eyes-widget': resolve(__dirname, 'src/widgets/FollowingEyes/index.jsx'),
         'gender-guess': resolve(__dirname, 'src/widgets/GenderGuess/index.jsx'),
@@ -21,6 +22,7 @@ export default defineConfig({
         'bias-breakdown': resolve(__dirname, 'src/widgets/BiasBreakdown/index.jsx'),
         'stem-pool': resolve(__dirname, 'src/widgets/STEMPool/index.jsx'),
         'viewer-creator': resolve(__dirname, 'src/widgets/ViewerCreator/index.jsx'),
+        'country-scatter': resolve(__dirname, 'src/widgets/CountryScatter/index.jsx'),
       },
       output: {
         // Predictable names without hashes for easy embedding

@@ -3,6 +3,6 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-entries_layout: list
+entries_layout: grid
 show_excerpts: true
 ---
