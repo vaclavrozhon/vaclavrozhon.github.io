@@ -53,9 +53,6 @@ author:
     - label: "YouTube – Polylog"
       icon: "fab fa-fw fa-youtube"
       url: "https://www.youtube.com/@polylogcs"
-    - label: "Polyblog"
-      icon: "fas fa-fw fa-pen-nib"
-      url: "https://vasekrozhon.wordpress.com/"
 
 date_format: "%B %Y"
 
