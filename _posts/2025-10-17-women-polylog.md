@@ -3,6 +3,7 @@ layout: single
 title: Polylog gender studies
 date: 2025-10-17 10:00:00 +0100
 categories: blog polylog youtube
+tags: [polylog-meta]
 katex: true
 header:
   teaser: /assets/images/thumbs/polylog_gender_thumb.png
@@ -23,9 +24,10 @@ It seems that I have been mistaken, at least in the gender aspect.
 
 This post is not about finding mistakes in our work or lamenting on the state of the world. Self-reflection is in order, but first, I would like to understand where this huge discrepancy comes from. Can we break it down into several understandable factors?
 
-Here's the best answer I got. First things first: I’ll take YouTube’s gender field of 2.5% female at face value as a correct number.<footnote>Is it clear this number is correct? It is possible that women are more likely not to disclose or may misreport their gender. It is also possible that YouTube's algorithm tries to infer the gender of users who don't disclose it and does a poor job. And because the share of women viewers is so low (and the share of trans people in tech relatively high), the share of nonbinary/trans viewers could change the interpretation of the number substantially. I do not consider any of this here.</footnote>
+Below is the best answer I got. 
 
-Before we start, 97.5% corresponds to odds of 39:1. It turns out that $\log_2(39)$ is about $5.3$, so I think of our task as explaining around $5$ bits of discrepancy with respect to the $1:1$ baseline in the population.
+First things first: I’ll take YouTube’s gender field of 2.5% female at face value as a correct number.<footnote>Is it clear this number is correct? It is possible that women are more likely not to disclose or may misreport their gender. It is also possible that YouTube's algorithm tries to infer the gender of users who don't disclose it and does a poor job. And because the share of women viewers is so low (and the share of trans people in tech relatively high), the share of nonbinary/trans viewers could change the interpretation of the number substantially. I do not consider any of this here.</footnote>
+Also, 97.5% corresponds to odds of 39:1. It turns out that $\log_2(39)$ is about $5.3$, so I think of our task as explaining around $5$ bits of discrepancy with respect to the $1:1$ baseline in the population.
 
 
 ## Biased baseline
