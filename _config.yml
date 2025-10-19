@@ -66,6 +66,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+      classes: wide
       # read_time: true
       # comments: true
       # share: true
@@ -79,6 +80,7 @@ defaults:
     values:
       layout: single
       author_profile: true
+      classes: wide
 
 atom_feed:
   hide: true

@@ -4,6 +4,8 @@ title: Polylog gender studies
 date: 2025-10-17 10:00:00 +0100
 categories: blog polylog youtube
 katex: true
+header:
+  teaser: /assets/images/thumbs/polylog_gender_thumb.png
 ---
 
 {% include footnotes.html %}
