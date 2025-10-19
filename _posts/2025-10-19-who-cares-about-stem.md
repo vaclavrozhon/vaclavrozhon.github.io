@@ -4,6 +4,8 @@ title: "Who cares about STEM?"
 date: 2025-10-19 22:00:00 +0100
 categories: blog polylog data-analysis
 tags: [polylog-meta, data-viz]
+header:
+  teaser: /assets/images/thumbs/who_cares_stem_thumb.png
 ---
 
 {% include footnotes.html %}
