@@ -6,8 +6,8 @@ import csv
 import json
 from pathlib import Path
 
-# Read the CSV from Downloads
-csv_path = Path.home() / 'Downloads' / 'undefined.csv'
+# Read the CSV from data directory
+csv_path = Path(__file__).parent.parent / 'data' / 'wikipedia_country_pageviews.csv'
 output_dir = Path(__file__).parent.parent / 'dist'
 output_dir.mkdir(exist_ok=True)
 output_path = output_dir / 'wikipedia_country_pageviews.json'

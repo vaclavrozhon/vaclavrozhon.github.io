@@ -6,6 +6,7 @@ from pathlib import Path
 # Set paths relative to script location
 base_dir = Path(__file__).parent.parent
 dist_dir = base_dir / 'dist'
+data_dir = base_dir / 'data'
 public_dir = base_dir / 'public'
 
 # Load all JSON files from dist
@@ -42,7 +43,7 @@ if gdp_path.exists():
 # Load YouTube CSV and convert ISO codes to country names
 youtube_data = {}
 iso2_to_name = name_map['iso2ToName']
-csv_path = dist_dir / 'Geography 2021-08-22_2025-10-17 Polylog' / 'Table data.csv'
+csv_path = data_dir / 'Geography 2021-08-22_2025-10-17 Polylog' / 'Table data.csv'
 with open(csv_path, 'r') as f:
     reader = csv.DictReader(f)
     for row in reader:
