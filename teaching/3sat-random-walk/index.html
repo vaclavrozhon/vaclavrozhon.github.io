@@ -193,28 +193,53 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.15);
 .clause.selected { font-weight:700; border-color: var(--accent); box-shadow: 0 0 0 4px var(--ring), 0 6px 16px rgba(0,0,0,.12); }
 
 .assignments{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
-  gap: 6px;
   margin-top: 10px;
 }
-.assignment{
-  padding: 6px 8px;
-  border: 1px solid var(--chip-border);
-  border-radius: 10px;
-  background: var(--chip);
-  display:flex; align-items:center; gap:8px;
+.assignments table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
   font-size:.9rem;
+}
+.assignments td{
+  padding: 4px 10px;
+  border: 1px solid var(--chip-border);
+  border-radius: 8px;
+  background: var(--chip);
+  white-space: nowrap;
+  text-align: center;
+}
+.assignments td.highlighted{
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 2px var(--ring);
+}
+.assignments td.comparison{
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  padding: 2px;
+}
+.assignments td.comparison.highlighted{
+  box-shadow: none;
+}
+.assignments .label-row td{
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  color: var(--muted);
+  text-align: left;
+  padding: 8px 6px 4px;
 }
 .assignment .status-dot{ width:8px; height:8px; border-radius:50%; box-shadow: 0 0 0 3px rgba(0,0,0,.04); border: 1px solid rgba(0,0,0,.1); }
 .assignment .status-dot.match{ background: #2ecc71; }
 .assignment .status-dot.mismatch{ background: #ff6b6b; }
 
 /* Chain */
-.chain { margin-top: 16px; }
-.chain svg { width: 100%; height: 180px; }
-.legend { font-size: .9rem; color: var(--muted); margin-top: 8px; }
+.chain { margin-top: 10px; }
+.chain svg { width: 100%; height: 160px; }
+.legend { font-size: .9rem; color: var(--muted); margin-top: 6px; }
+.chain .section-title { margin-bottom: 6px; }
 
 .kbd{
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
@@ -234,7 +259,7 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.15);
 <div class="three-sat-container">
   <div class="hero">
     <h2>Random Walk for 3SAT</h2>
-    <p>At each step: pick a uniformly random unsatisfied clause, then flip a uniformly random variable from it. Track the Hamming agreement with a fixed satisfying assignment, visualized as a 1-D Markov chain on states <span class="kbd">0..n</span>.</p>
+    <p>At each step: pick a uniformly random variable from an arbitrary unsatisfied clause. Track the Hamming agreement with a fixed satisfying assignment, visualized as a 1-D Markov chain on states <span class="kbd">0..n</span>.</p>
   </div>
 
   <!-- Sticky toolbar -->
@@ -266,11 +291,6 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.15);
   <div class="card viz">
     <div class="section-title">
       <div><strong>Clauses</strong></div>
-      <div style="flex:1; margin-left:12px;">
-        <div class="progress" title="Fraction of satisfied clauses under current working assignment">
-          <div id="satProgress" style="width:0%"></div>
-        </div>
-      </div>
     </div>
     <div class="clauses" id="clauses"></div>
     <div class="assignments" id="assignments"></div>
@@ -282,7 +302,7 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.15);
       <div class="small" id="probLabel"></div>
     </div>
     <svg id="chainSvg" viewBox="0 0 1000 180" preserveAspectRatio="xMidYMid meet" aria-label="Hamming agreement chain"></svg>
-    <div class="legend">After selecting a clause with <span class="kbd">k</span> literals matching the fixed assignment, the step goes “towards” the fixed solution with probability <span class="kbd">(3−k)/3</span> and “away” with probability <span class="kbd">k/3</span>.</div>
+    <div class="legend">After selecting a clause that we don't satisfy, we move towards the fixed solution with probability at least <span class="kbd">1/3</span>.</div>
   </div>
 
   <div class="footer-note">
@@ -374,6 +394,7 @@ let selectedClauseIndex=-1, hammingAgree=0, stepCount=0;
 function setStatus(html,ok){ elStatus.innerHTML=html; elStatus.className='status '+(ok===true?'ok':ok===false?'warn':''); }
 function countAgree(a,b){ let h=0; for(let i=0;i<a.length;i++) if(a[i]===b[i]) h++; return h; }
 function updateProgressBar(){
+  if(!elProg) return; // Progress bar removed
   if(!working){ elProg.style.width='0%'; return; }
   const sat=clauses.reduce((s,c)=>s+(evalClause(c,working)?1:0),0);
   const pct=clauses.length?Math.round(100*sat/clauses.length):0;
@@ -381,13 +402,60 @@ function updateProgressBar(){
 }
 function renderAssignments(){
   elAssignments.innerHTML=''; if(!fixed||!working) return;
-  for(let i=0;i<n;i++){
-    const row=document.createElement('div'); row.className='assignment';
-    const dot=document.createElement('span'); const isMatch=(working[i]===fixed[i]);
-    dot.className='status-dot '+(isMatch?'match':'mismatch'); dot.title=isMatch?'matches fixed':'differs from fixed';
-    const text=document.createElement('span'); text.innerHTML=`x${i+1} = <b>${working[i]?1:0}</b>`;
-    row.appendChild(dot); row.appendChild(text); elAssignments.appendChild(row);
+
+  // Get highlighted variable indices from selected clause
+  const highlightedVars=new Set();
+  if(selectedClauseIndex>=0 && selectedClauseIndex<clauses.length){
+    for(const lit of clauses[selectedClauseIndex]){
+      highlightedVars.add(Math.abs(lit)-1);
+    }
   }
+
+  const table=document.createElement('table');
+
+  // Our solution heading row
+  const headerRow1=document.createElement('tr'); headerRow1.className='label-row';
+  const th1=document.createElement('td'); th1.colSpan=n; th1.textContent='↓ Our solution ↓';
+  headerRow1.appendChild(th1); table.appendChild(headerRow1);
+
+  // Our solution values row
+  const ourRow=document.createElement('tr');
+  for(let i=0;i<n;i++){
+    const td=document.createElement('td');
+    if(highlightedVars.has(i)) td.className='highlighted';
+    td.innerHTML=`x${i} = <b>${working[i]?1:0}</b>`;
+    ourRow.appendChild(td);
+  }
+  table.appendChild(ourRow);
+
+  // Comparison row (checkmarks/crosses)
+  const compRow=document.createElement('tr');
+  for(let i=0;i<n;i++){
+    const td=document.createElement('td');
+    td.className='comparison'+(highlightedVars.has(i)?' highlighted':'');
+    const isMatch=(working[i]===fixed[i]);
+    td.textContent = isMatch ? '✓' : '✗';
+    td.style.color = isMatch ? 'var(--good)' : 'var(--bad)';
+    compRow.appendChild(td);
+  }
+  table.appendChild(compRow);
+
+  // Fixed solution values row
+  const fixedRow=document.createElement('tr');
+  for(let i=0;i<n;i++){
+    const td=document.createElement('td');
+    if(highlightedVars.has(i)) td.className='highlighted';
+    td.innerHTML=`x${i} = <b>${fixed[i]?1:0}</b>`;
+    fixedRow.appendChild(td);
+  }
+  table.appendChild(fixedRow);
+
+  // Fixed solution heading row (below)
+  const headerRow2=document.createElement('tr'); headerRow2.className='label-row';
+  const th2=document.createElement('td'); th2.colSpan=n; th2.textContent='↑ Fixed correct solution ↑';
+  headerRow2.appendChild(th2); table.appendChild(headerRow2);
+
+  elAssignments.appendChild(table);
 }
 function renderClauses(){
   elClauses.innerHTML=''; const unsat=[];
@@ -395,7 +463,7 @@ function renderClauses(){
     const sat=evalClause(clauses[i],working); if(!sat) unsat.push(i);
     const d=document.createElement('div');
     d.className='clause '+(sat?'sat':'unsat')+(i===selectedClauseIndex?' selected':'');
-    d.textContent='(' + clauses[i].map(l=> l>0? `x${l}` : `¬x${-l}`).join(' ∨ ') + ')';
+    d.textContent='(' + clauses[i].map(l=> l>0? `x${l-1}` : `¬x${-l-1}`).join(' ∨ ') + ')';
     elClauses.appendChild(d);
   }
   updateProgressBar(); return unsat;
@@ -470,12 +538,12 @@ function updateProbLabel(k){
 }
 
 /* Walk mechanics */
-function selectUnsatisfiedClause(){ const u=[]; for(let i=0;i<clauses.length;i++) if(!evalClause(clauses[i],working)) u.push(i); if(!u.length) return -1; return u[Math.floor(Math.random()*u.length)]; }
+function selectUnsatisfiedClause(){ for(let i=0;i<clauses.length;i++) if(!evalClause(clauses[i],working)) return i; return -1; }
 function substepSelectClause(){
   selectedClauseIndex=selectUnsatisfiedClause();
   if(selectedClauseIndex===-1){ setStatus('<span class="ok">All clauses satisfied — solution reached.</span>', true); playing=false; btnPlay.textContent='Play'; updateProbLabel(null); return; }
   const clause=clauses[selectedClauseIndex]; let k=0; for(const lit of clause){ const idx=Math.abs(lit)-1; if(working[idx]===fixed[idx]) k++; }
-  updateProbLabel(k); renderClauses();
+  updateProbLabel(k); renderClauses(); renderAssignments();
 }
 function substepFlipVariable(){
   if(selectedClauseIndex<0) return;
