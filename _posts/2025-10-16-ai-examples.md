@@ -25,11 +25,11 @@ Many mathematicians also use AI in their work, but it is typically hard to disen
 
 ## Tightness of a recent paper on 2D tiling
 
-There was a [cool recent paper](https://arxiv.org/pdf/2408.02151) about tiling the plane $\mathbb{R}^2$ with polygonal tiles. One of the results in that paper is that every tiling of the plane with polygonal tiles is _weakly periodic_: it can be partitioned into finitely many pieces, each of them periodic.
+There was a [cool recent paper](https://arxiv.org/pdf/2408.02151) about tiling the plane $\mathbb{R}^2$ with polygonal tiles. One of the results in that paper is that every tiling of the plane with rational polygonal tiles is _weakly periodic_: it can be partitioned into finitely many pieces, each of them singly-periodic.
 
 Can this theorem be improved? Can we prove that every polygonal tiling is simply _periodic_? It turns out that the answer is no. AI can find a specific example of a polygonal tiling that is weakly periodic but not periodic.
 
-[Here's the example](/assets/documents/tiling_solution.pdf) (fully AI written).<footnote>The question asked to the model is the one formulated in the first section of the paper and asks for an example in a slightly different space than $\mathbb{R}^2$, but it extends to $\mathbb{R}^2$.</footnote>
+[Here's the example](/assets/documents/tiling_solution.pdf) (fully AI written).<footnote>The question asked to the model is the one formulated in the first section of the paper and asks for an example in a slightly different space than $\mathbb{R}^2$, but it extends to $\mathbb{R}^2$ via arguments in the original paper.</footnote>
 
 ## A counterexample to a problem about functions
 
