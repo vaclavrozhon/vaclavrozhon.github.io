@@ -5,3 +5,6 @@
 
 # Claude Code settings - contains approved commands which may include passwords
 .claude/settings.local.json
+
+# Node modules
+node_modules/

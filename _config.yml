@@ -100,6 +100,7 @@ exclude:
   - teaching/pagerank/node_modules/
   - teaching/metropolis-demo/
   - teaching/landscape-demo/node_modules/
+  - teaching/markov-chain-demo/node_modules/
   - widgets/node_modules/
   - widgets/src/
   - widgets/package.json
