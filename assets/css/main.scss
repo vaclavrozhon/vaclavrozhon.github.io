@@ -24,3 +24,8 @@ img {
         max-width: 1000px; // 800px * 1.25
     }
 }
+
+// Override theme SVG max-width for widgets
+.stem-pool svg {
+    max-width: 100%;
+}

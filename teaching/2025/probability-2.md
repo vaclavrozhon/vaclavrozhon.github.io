@@ -26,6 +26,7 @@ Check out the [previous run](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/).
 - [PageRank for Wikipedia](/teaching/pagerank/public/)
  - [Random walk on 3SAT (Markov chain)](/teaching/3sat-random-walk/)
  - [Landscape sampling (Metropolis)](/teaching/landscape-demo/build/)
+ - [US Election Model (Bayesian + Metropolis)](/teaching/us-election-demo/build/)
 
 # Lecture Recordings
 

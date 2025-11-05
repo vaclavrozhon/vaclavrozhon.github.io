@@ -5,10 +5,10 @@ import React from 'react';
  * Shows fractions p_men and p_women who watch YouTube STEM videos
  */
 export default function STEMPool() {
-  const totalWidth = 560;
+  const totalWidth = 800;
   const poolHeight = 150;
   const chartTop = 20;
-  const chartHeight = 300;
+  const chartHeight = 240;
   const maleWidth = totalWidth * 0.8;
   const femaleWidth = totalWidth * 0.2;
   const pMen = 0.6; // illustrative share among men
@@ -17,29 +17,35 @@ export default function STEMPool() {
   const maleInnerX = innerPadding;
   const maleInnerWidth = maleWidth - innerPadding * 2;
   const maleInnerHeight = Math.round((poolHeight * 2) / 3);
-  const maleInnerY = chartTop + (poolHeight - maleInnerHeight) / 2;
+  const maleInnerY = chartTop + poolHeight - maleInnerHeight - innerPadding;
   const femaleInnerX = maleWidth + innerPadding;
   const femaleInnerWidth = femaleWidth - innerPadding * 2;
   const femaleInnerHeight = Math.round(poolHeight / 3);
-  const femaleInnerY = chartTop + (poolHeight - femaleInnerHeight) / 2;
+  const femaleInnerY = chartTop + poolHeight - femaleInnerHeight - innerPadding;
 
   return (
-    <div style={{
-      maxWidth: '720px',
-      margin: '1rem auto',
-      padding: '1rem',
-      fontFamily: 'system-ui, -apple-system, sans-serif',
-    }}>
-      <div style={{
-        fontSize: '1.05rem',
-        color: '#666',
-        marginBottom: '1rem',
-        textAlign: 'center',
-      }}>
-        Pool of STEM-loving people (80% men, 20% women)
-      </div>
-
-      <svg width="100%" height={chartHeight} viewBox={`0 0 ${totalWidth} ${chartHeight}`}>
+    <div
+      className="stem-pool"
+      style={{
+        margin: '1.25rem 0',
+        padding: 0,
+        display: 'flow-root',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+      }}
+    >
+      <svg
+        viewBox={`0 0 ${totalWidth} ${chartHeight}`}
+        preserveAspectRatio="xMidYMid meet"
+        style={{
+          width: '100%',
+          maxWidth: '100%',
+          height: 'auto',
+          display: 'block',
+        }}
+        role="img"
+        aria-labelledby="stem-pool-title"
+      >
+        <title id="stem-pool-title">STEM pool by gender</title>
         <defs>
           <linearGradient id="maleGradient" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor="#6fb5ff" stopOpacity="0.9" />
@@ -96,7 +102,7 @@ export default function STEMPool() {
         >
           {"p"}
           <tspan baselineShift="-30%" fontSize="11">men</tspan>
-          {" watch YouTube"}
+          {" × Men"}
         </text>
 
         {/* Women section */}
@@ -145,23 +151,9 @@ export default function STEMPool() {
         >
           {"p"}
           <tspan baselineShift="-30%" fontSize="10.5">women</tspan>
-          {" watch YT"}
+          {" × Women"}
         </text>
       </svg>
-
-      <div style={{
-        fontSize: '1.05rem',
-        color: '#4b5563',
-        marginTop: '1rem',
-        textAlign: 'center',
-      }}>
-        Question: Is
-        {' p'}<span style={{ fontSize: '0.8em', verticalAlign: 'sub' }}>men</span>
-        {' ≈ p'}<span style={{ fontSize: '0.8em', verticalAlign: 'sub' }}>women</span>
-        {', or is p'}<span style={{ fontSize: '0.8em', verticalAlign: 'sub' }}>men</span>
-        {' ≫ p'}<span style={{ fontSize: '0.8em', verticalAlign: 'sub' }}>women</span>
-        {'?'}
-      </div>
     </div>
   );
 }

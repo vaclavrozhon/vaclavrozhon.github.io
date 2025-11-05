@@ -27,7 +27,7 @@ export default function GenderTable({ channels = [] }) {
     tdLast: {
       padding: '0.75rem',
       borderBottom: '1px solid #eee',
-      minWidth: '256px',
+      minWidth: '320px',
     },
     barContainer: {
       width: '100%',
@@ -35,7 +35,7 @@ export default function GenderTable({ channels = [] }) {
       height: '40px',
       background: '#f0f0f0',
       borderRadius: '4px',
-      overflow: 'hidden',
+      overflow: 'visible',
       position: 'relative',
       display: 'flex',
     },
@@ -48,6 +48,8 @@ export default function GenderTable({ channels = [] }) {
       color: 'white',
       fontWeight: 600,
       fontSize: '0.85rem',
+      whiteSpace: 'nowrap',
+      overflow: 'visible',
     },
     barFemale: {
       background: 'linear-gradient(135deg, #e91e63 0%, #c2185b 100%)',
@@ -58,6 +60,8 @@ export default function GenderTable({ channels = [] }) {
       color: 'white',
       fontWeight: 600,
       fontSize: '0.85rem',
+      whiteSpace: 'nowrap',
+      overflow: 'visible',
     },
   };
 
@@ -75,6 +79,8 @@ export default function GenderTable({ channels = [] }) {
         {channels.map((channel, index) => {
           const malePercent = channel.malePercent;
           const femalePercent = 100 - malePercent;
+          // Use smaller font for very small percentages
+          const maleFontSize = malePercent < 20 ? '0.5rem' : '0.85rem';
 
           return (
             <tr key={index}>
@@ -83,7 +89,7 @@ export default function GenderTable({ channels = [] }) {
               <td style={styles.td}>{channel.topic}</td>
               <td style={styles.tdLast}>
                 <div style={styles.barContainer}>
-                  <div style={{ ...styles.barMale, width: `${malePercent}%` }}>
+                  <div style={{ ...styles.barMale, width: `${malePercent}%`, fontSize: maleFontSize }}>
                     {malePercent}% M
                   </div>
                   <div style={{ ...styles.barFemale, width: `${femalePercent}%` }}>

@@ -16,13 +16,15 @@ Polylog is a mid-sized algorithms channel. Riddle: What share of viewers is male
 <div id="gender-guess-root" data-answer="97.5"></div>
 <script type="module" src="/widgets/dist/gender-guess.js"></script>
 
-<div id="revealed-content" style="filter: blur(8px); pointer-events: none; user-select: none; transition: filter 0.5s ease;" markdown="1">
+<div style="margin: 10rem 0; text-align: center; font-size: 1.2rem; color: #666; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">
+⚠️ Spoiler Below ⚠️
+</div>
 
-Yeah. When I started working on Polylog, I had high hopes about videos being a nice way of democratizing computer science (CS) education. This could mean accessibility to people from third-world countries. But also to women: In my experience, many students first encounter math or computer science at math competitions, but these are tailored to boys. "Beat others at math" simply isn't the best motivation for everybody. Maybe videos can do much better! 
+Yeah. When I started working on Polylog, I had high hopes about videos being a nice way of democratizing computer science (CS) education. This could mean accessibility to people from third-world countries. But also to women: In my experience, many students first encounter math or computer science at math competitions, but these are tailored to boys. _Beat others at math_ simply isn't the best motivation for everybody. Maybe videos can do better! 
 
 It seems that I have been mistaken, at least in the gender aspect. 
 
-This post is not about finding mistakes in our work or lamenting on the state of the world. Self-reflection is in order, but first, I would like to understand where this huge discrepancy comes from. Can we break it down into several understandable factors?
+This post is not about eating humble pie or lamenting the state of the world. Self-reflection is in order, but first, I would like to understand where this huge discrepancy comes from. Can we break it down into several understandable factors?
 
 Below is the best answer I got. 
 
@@ -32,13 +34,13 @@ Also, 97.5% corresponds to odds of 39:1. It turns out that $\log_2(39)$ is about
 
 ## Biased baseline
 
-Gender bias in computer science is hard to miss. Let's try to estimate some baseline about the share of women in computer science and STEM in high-income countries. A few data points:
+Gender bias in computer science is hard to miss. Let's try to estimate some baseline share of women in computer science and STEM in high-income countries. A few data points:
 
 - in 2022, the share of women STEM researchers has been around 30% in the US and 40% worldwide.<footnote><a href="https://www.insidehighered.com/news/diversity/sex-gender/2024/06/11/women-make-global-gains-researchers-gaps-persist#:~:text=%E2%80%9CWe%20still%20have%20these%20perceptions,a%20quarter%20of%20mathematics%20researchers">Source</a></footnote>.
 - in 2018, around 20% of AI researchers were women.<footnote><a href="https://www.insidehighered.com/news/diversity/sex-gender/2024/06/11/women-make-global-gains-researchers-gaps-persist#:~:text=%E2%80%9CWe%20still%20have%20these%20perceptions,a%20quarter%20of%20mathematics%20researchers">Source</a></footnote>
 - in the late 2010s, around 20% of CS undergrads/PhD students/CS faculty were female.<footnote><a href="https://womenshistorymonth.cc.gatech.edu/changing-the-landscape/#:~:text=Nationally%2C%2018%20percent%20of%20undergraduate,students%20are%20female">Source</a></footnote>
 
-I take it that the baseline ratio is ~80% male among CS-interested people. That’s ~4:1, i.e., ≈2 bits already found in the 5.3-bit budget.
+I take it that the baseline ratio is ~80% male among CS-interested people. That's ~4:1 which means that we already found ≈2 bits in our 5.3-bit target.
  
 
 
@@ -47,101 +49,77 @@ I take it that the baseline ratio is ~80% male among CS-interested people. That�
 
 It may be that men consume YouTube (or the Internet in general) more than women. I found this:
 
-- Women are slightly more likely to visit YouTube; however, male visitors spend longer per day (men: 54 minutes, women: 40 minutes).<footnote><a href="https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/online-research/online-nation/2024/online-nation-2024-report.pdf?v=386238">Source</a></footnote>
+- In Britain, women are slightly more likely to visit YouTube; however, male visitors spend longer per day (men: 54 minutes, women: 40 minutes).<footnote><a href="https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/online-research/online-nation/2024/online-nation-2024-report.pdf?v=386238">Source</a></footnote>
 
 - 54% of YouTube’s audience is male and 46% female in 2025.<footnote><a href="https://datareportal.com/essential-youtube-stats">DataReportal</a>, <a href="https://www.globalmediainsight.com/blog/youtube-users-statistics/#:~:text=Considering%20user%20gender%2C%20YouTube%20is,popular%20among%20men%20than%20women">Global Media Insight</a></footnote> But only 49% were male in the US in 2023.<footnote><a href="https://blog.hubspot.com/marketing/youtube-demographics#:~:text=,34.%20%28Statista">HubSpot/Statista</a></footnote>
 
-I take it that this can explain a small part of our problem, but only a small part. 
+I take it that this can perhaps explain a small part of our problem, but it's mostly negligible. 
 
 
-## Women in STEM procrastinate differently from men
+## Maybe women have a life?
 
-Imagine the pool of STEM-loving people, split 80-20 in favor of men. Now highlight the fraction $p_{men}$ of men that watch YouTube STEM videos and the analogous $p_{women}$ fraction of women. What's the relation between $p_{men}$ and $p_{women}$?
+Imagine the pool of _STEM-loving people_, split 80-20 in favor of men. This doesn't mean that the share of _STEM-loving people watching YouTube_ will have the same split. In fact, I will now make a guess that it's more like 90-10 or 95-5. 
 
-<div id="stem-pool-root"></div>
-<script type="module" src="/widgets/dist/stem-pool.js"></script>
+Here are two theories why. 
 
-I think $p_{women} \ll p_{men}$. Here are two theories why. 
+First, even if men and women want to spend comparable time on YouTube in general, maybe this is not true for men in STEM versus women in STEM. Thinking of my women friends in STEM, I entertain the hypothesis that they have social lives and hobbies. Also, some have kids. Or perhaps the fact that most large STEM YouTubers are men plays a role. 
 
-First, even if men versus women spend comparable time on YouTube in general, maybe it's not true for men in STEM versus women in STEM. Thinking of my women friends in STEM, I even entertain the hypothesis that they are more likely to have other hobbies, social lives, and kids. Or perhaps the fact that most large STEM YouTubers are male plays a role for reasons that could be both benign and outright sexist (more on this effect in the next section).
+The second suspect is the YouTube algorithm. While it's not public, we can at least reason about the incentives behind it. Imagine the following simple toy model. 
 
-The second hypothesis is the algorithm. This is of course incredibly important for what kind of people get offered your video. Unfortunately, this is extremely opaque and hard to reason about. But we can reason about incentives. Imagine the following simple toy model. 
+Think of a simple game where you keep flipping a biased coin that lands heads 80% of the time. Before each flip, you can predict the outcome and get a dollar if you predict correctly. To win the most money, the right strategy is to predict heads _every_ time, not 80% of the time. 
 
-Imagine a simple game where you keep flipping a biased coin that lands heads 80% of the time. Before each flip, you can predict the outcome and get a dollar if you predict correctly. To win the most money, the right strategy is to predict heads _every_ time, not 80% of the time. 
+Similarly, imagine that you know that most women like videos about cooking, beauty, and animals, while most men like videos about cars, soccer, and computers. With what probability should you suggest a cooking video to a male viewer? Unless there are some other constraints (like aiming for diversity, etc.), the probability is zero. Every pair of a man shown cooking and a woman shown cars is an imperfect situation: swapping them earns money in expectation. 
 
-Similarly, imagine that you know that most women like videos about cooking, beauty, or animals, while most men like videos about cars, soccer, or computers. With what probability should you suggest a cooking video to a male viewer? Unless there are some other constraints (like the viewer wanting some diversity, etc.), the probability is zero; you should stay with cars and sports.
+### Getting an estimate
 
-The fraction $p_{men} / p_{women}$ could in theory be estimated by pooling the data from a few large channels like Veritasium or 3blue1brown and estimating from them. But I could not find data for these large channels. My guess would be that their viewership would be about 85-95% male. 
+Whatever the reason, how do we estimate the proportion of women on STEM Youtube? In theory, we could pool the data from a few large channels like Veritasium or 3blue1brown and estimate it from their viewership. But I could not find data for these large channels. My guess is it could be about 85-95% male, but who knows. 
 
-Another way of estimating this number is to look at the fraction of female/male science hosts and estimate that the fraction of viewers is roughly the same. I found an estimate that 8% of STEM hosts are female.<footnote>[source](https://pubmed.ncbi.nlm.nih.gov/29974815/#:~:text=video%20content,per%20view%2C%20and%20significantly%20higher)</footnote> This would lead to about $p_{men} / p_{women} \approx 3.1$.
+A cheap way of estimating this fraction is to look at the fraction of female/male science hosts and estimate that the fraction of viewers is roughly the same. I found an estimate that 8% of STEM hosts are female.<footnote>[source](https://pubmed.ncbi.nlm.nih.gov/29974815/#:~:text=video%20content,per%20view%2C%20and%20significantly%20higher)</footnote> But literally all large STEM YouTubers I can think of are men. This leads me to my guess that the split is around 90-10 to 95-5, with large uncertainty. 
 
-I.e., I think $p_{men} / p_{women}$ is between $2$ and $4$ and some combination of the two theories thus explains one to two more bits in the $5.3$-bit mystery.
+If this is a reasonable guess, we explained around one or two more bits in the $5.3$-bit mystery.
 
 
 ## Birds of a feather
 
-Here's the male/female ratio for some other YouTube channels, where I could find it, to get some sense of what's going on. <footnote>Sources: <a href="https://www.parrotanalytics.com/insights/amazons-mrbeast-series-is-primed-for-success/#:~:text=Specifically%20the%20demographics%20of%20MrBeast%E2%80%99s,be%20a%20challenge%20but%20also">MrBeast</a>, <a href="https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2021.610920/full">It's Okay to Be Smart, Physics Girl, and Hydraulic Press</a>, <a href="https://www.edisonresearch.com/who-joe-rogan-listeners-are-likely-to-support-in-the-election/#:~:text=Known%20for%20its%20influence%20and,align%20with%20Democrats">Joe Rogan</a>, <a href="https://www.mediamonitors.com/audience-demographic-variations-specific-to-genre/?utm_source=chatgpt.com">Crime Junkie</a>. Generally, the sources were found by GPT and I did not cross-check them.
+Here's the male/female ratio for some large YouTube channels where I could find it. Let's try to use it to make some sense of what's going on. <footnote>Sources: <a href="https://www.parrotanalytics.com/insights/amazons-mrbeast-series-is-primed-for-success/#:~:text=Specifically%20the%20demographics%20of%20MrBeast%E2%80%99s,be%20a%20challenge%20but%20also">MrBeast</a>, <a href="https://www.frontiersin.org/journals/communication/articles/10.3389/fcomm.2021.610920/full">It's Okay to Be Smart, Physics Girl, and Hydraulic Press</a>, <a href="https://www.edisonresearch.com/who-joe-rogan-listeners-are-likely-to-support-in-the-election/#:~:text=Known%20for%20its%20influence%20and,align%20with%20Democrats">Joe Rogan</a>, <a href="https://www.mediamonitors.com/audience-demographic-variations-specific-to-genre/?utm_source=chatgpt.com">Crime Junkie</a>. Generally, the sources were found by GPT and I did not cross-check them.
 </footnote>
 
 <div id="gender-table-root" data-channels='[
-  {"name":"Crime Junkie","host":"Female","topic":"True Crime","malePercent":15},
+  {"name":"Crime Junkie","host":"Female","topic":"Crime","malePercent":15},
   {"name":"MrBeast","host":"Male","topic":"Entertainment","malePercent":74},
   {"name":"Its Okay to Be Smart","host":"Male","topic":"Science","malePercent":75},
   {"name":"Physics Girl","host":"Female","topic":"Science","malePercent":80},
   {"name":"Joe Rogan","host":"Male","topic":"Podcast","malePercent":80},
-  {"name":"Hydraulic Press","host":"Balanced","topic":"Engineering","malePercent":94}
+  {"name":"Hydraulic Press","host":"Balanced","topic":"I think you can guess it","malePercent":94}
 ]'></div>
 <script type="module" src="/widgets/dist/gender-table.js"></script>
 
 
-Here's where I believe we may find one last bit. If you look at the table above, you can see that viewership tends to follow host gender. MrBeast does game shows, which sounds like a gender‑neutral theme, but viewership skews 2:1 male. Joe Rogan does podcasts, which again sounds like a gender‑neutral category, yet they seem to cater more successfully to men than women.
+Here's where I believe we may find one last bit. If you look at the table above, you can see that viewership tends to follow host gender. MrBeast does game shows and Joe Rogan does podcasts; both sound pretty gender‑neutral to me, their audiences skew 3:1 and 4:1 male. On the other hand, Physics Girl has a phenomenal 20% share of women viewers, while our channel has 2.5%—clearly she's doing something different! Also, a woman‑hosted podcast about crime has only 15% male audience, while the general split for this type of content is apparently more balanced, 1:2 male to female.<footnote>[source](https://www.pewresearch.org/short-reads/2023/06/20/true-crime-podcasts-are-popular-in-the-us-particularly-among-women-and-those-with-less-formal-education/?utm_source=chatgpt.com)</footnote>
 
-On the other hand, Physics Girl has a phenomenal 20% women viewers, while our channel has 2.5%—clearly she's doing something different! Also, a woman‑hosted podcast about crime has only 15% male audience, while the general split for this type of content is more balanced, 1:2 male to female.<footnote>[source](https://www.pewresearch.org/short-reads/2023/06/20/true-crime-podcasts-are-popular-in-the-us-particularly-among-women-and-those-with-less-formal-education/?utm_source=chatgpt.com)</footnote>
+Correlation between the gender of the host and the audience doesn't seem too surprising to me. What is not clear to me is how the math works out if the base share of both hosts and audience is already so skewed. 
 
-I don't want to analyze each creator and try to guess the unique factor that makes them more or less friendly to men or women. Something like this simply keeps happening<footnote>And not just for YouTube. I've heard about this also in the context of classroom teaching and found, e.g., this <a href="https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0239766">paper</a>.</footnote> and can be pretty strong because the fraction of women is already slim: for example, imagine a world with 10 STEM viewers and 10 STEM content creators. In both cases there are 9 males and one female. Now imagine that everybody prefers content of their gender. Perhaps our female viewer prefers it greatly and watches male‑created and female‑created content 50% of the time. On the other hand, each male is watching the female creator only about 5% instead of 10%.
+I will need a toy example. Imagine a world with 10 STEM viewers and 10 STEM content creators. In both cases, nine of them are men. At first, we will assume that each creator has the same share of audience. If each viewer watches each creator 10% of time, each creator sees 10% women rate. 
 
-In this model, each creator gets the same rate of views, but the male creators get only approximately 5% female views, not 10%!
+Now let's say that our female content creator is the Physics Girl with 80% male rate. Let's make this happen in our model: we will have to assume that the female viewer actually sends around twice as many views to the Physics Girl than to the rest. This has to be compensated by a smaller male-male bias. Hover over the squares in the widget to see the gender ratio of each creator in this new model with Physics Girl. 
 
 <div id="viewer-creator-root"></div>
 <script type="module" src="/widgets/dist/viewer-creator.js"></script>
 
-That is, the fact that there are few female content creators is not just pushing women out of the field, but also changing the ratio of male creators. Looking at the other channels in the table, I think that 0.5–1 bit could easily be found here, but it's hard to say.
+The female viewer is sending 0.8/9 \approx 9% worth of viewership to the male creators, instead of 10%. That's actually a pretty small difference! The bias that the female viewer can create for the Physics Girl (90%->80%) is just way more impressive than what changes for all the other creators (90%->91%). 
+
+It seems that we can't find that many bits in this effect, even though looking at Joe Rogan and MrBeast data, I thought this was going to be important. 
 
 ## Putting it together
 
 My current guess is something like this:
 
-<div id="bias-breakdown-root-1" data-segments='[
-  {"label":"STEM baseline","value":2,"description":"20% of CS researchers/students are women"},
-  {"label":"YouTube general","value":0.3,"description":"Men spend slightly more time on YouTube"},
-  {"label":"p_men / p_women","value":2,"description":"Women in STEM watch less YouTube STEM content"},
-  {"label":"Birds of a feather","value":1,"description":"Same-gender preference amplifies imbalance"}
-]' data-total="5.3"></div>
-<script type="module" src="/widgets/dist/bias-breakdown.js"></script>
-
-Or maybe something like this?
-
 <div id="bias-breakdown-root-2" data-segments='[
   {"label":"STEM baseline","value":2,"description":"20% of CS researchers/students are women"},
-  {"label":"YouTube general","value":0.3,"description":"Small general gender difference"},
-  {"label":"p_men / p_women","value":1.5,"description":"Women in STEM watch less YouTube STEM content"},
-  {"label":"Birds of a feather","value":0.5,"description":"Same-gender preference"},
-  {"label":"Unique misogyny","value":1,"description":"Channel-specific gender bias"}
+  {"label":"YouTube STEM baseline","value":2,"description":"Women in STEM watch less YouTube STEM content"},
+  {"label":"Birds of a feather","value":0.3,"description":"Same-gender preference"},
+  {"label":"Unique misogyny","value":1,"description":"Channel-specific gender bias?"}
 ]' data-total="5.3"></div>
 <script type="module" src="/widgets/dist/bias-breakdown.js"></script>
 
-Maybe there is something uniquely misogynistic and sexist about our channel and/or our topics?<footnote>I mean beyond baseline misogyny that's already counted in "birds of a feather" argument. </footnote> Hard to say, but I still find it helpful to see how the crazy proportions can arise from a few boring mechanisms amplifying an existing bias. <footnote>I found <a href="https://hci.ucsd.edu/papers/millions_views.pdf#:~:text=For%20example%2C%20C27%2C%20a%20female,male%E2%80%9D">a paper</a> that discusses similar issue and cites some other content creators opinions on it -- I think mostly similar arguments, but also some that I did not mention. </footnote>
-
-</div>
-
-<script>
-  // Listen for the widget submission event
-  window.addEventListener('genderGuessSubmitted', function(event) {
-    const revealedContent = document.getElementById('revealed-content');
-    if (revealedContent) {
-      revealedContent.style.filter = 'blur(0px)';
-      revealedContent.style.pointerEvents = 'auto';
-      revealedContent.style.userSelect = 'auto';
-    }
-  });
-</script>
+There's still one last bit I am missing, and I remain confused. Are we uniquely misogynistic in our channel? Am I underestimating the red bar? <footnote>I found <a href="https://hci.ucsd.edu/papers/millions_views.pdf#:~:text=For%20example%2C%20C27%2C%20a%20female,male%E2%80%9D">a paper</a> that discusses this issue and cites some other content creators opinions on it. Somebody there claims that Veritasium channel is "95, 99% male". I thought it was a hyperbole while reading it, but maybe I am just underestimating how skewed STEM YouTube is by default. </footnote>

@@ -116,6 +116,17 @@ export default function App() {
     const neighborHeights = neighbors.map(([ni, nj]) => (
       ni >= 0 && ni < GRID_SIZE && nj >= 0 && nj < GRID_SIZE ? grid[ni][nj] : null
     ));
+    // Save a snapshot of the full 3x3 neighborhood for display
+    const gridSnapshot = {};
+    for (let di = -1; di <= 1; di++) {
+      for (let dj = -1; dj <= 1; dj++) {
+        const ni = i + di;
+        const nj = j + dj;
+        if (ni >= 0 && ni < GRID_SIZE && nj >= 0 && nj < GRID_SIZE) {
+          gridSnapshot[`${di},${dj}`] = grid[ni][nj];
+        }
+      }
+    }
     const oldTerms = neighborHeights.map(hn => hn == null ? null : Math.pow(grid[i][j] - hn, 2));
     const newTerms = neighborHeights.map(hn => hn == null ? null : Math.pow(newH - hn, 2));
     const sumDiff = newTerms.reduce((s, t, idx) => s + (t == null ? 0 : (t - oldTerms[idx])), 0);
@@ -134,7 +145,7 @@ export default function App() {
       &= ${Number.isFinite(ratio) ? ratio.toFixed(3) : '0.000'} \\\\[6pt]
       \\text{acceptance probability} &= \\min(1, ${Number.isFinite(ratio) ? ratio.toFixed(3) : '0.000'}) = ${accShown.toFixed(3)} ${accepted ? '\\text{ (Accepted ✓)}' : '\\text{ (Rejected ×)}'}
     \\end{aligned}`;
-    setStepDetails({ i, j, oldH, newH, accepted, neighbors, neighborHeights, oldTerms, newTerms, ratio, acceptProb: accShown, latex });
+    setStepDetails({ i, j, oldH, newH, accepted, neighbors, neighborHeights, oldTerms, newTerms, ratio, acceptProb: accShown, latex, gridSnapshot });
     setTimeout(() => setFlash(accepted ? 'accept' : 'reject'), 50);
     setTimeout(() => { setHighlight(null); setFlash(null); }, 300);
   }, [grid, fixedCells, beta]);
@@ -262,11 +273,8 @@ export default function App() {
                     {[-1, 0, 1].map(di => (
                       <div key={di} className="mini-row">
                         {[-1, 0, 1].map(dj => {
-                          const ni = stepDetails.i + di;
-                          const nj = stepDetails.j + dj;
                           const isCenter = di === 0 && dj === 0;
-                          const isValid = ni >= 0 && ni < GRID_SIZE && nj >= 0 && nj < GRID_SIZE;
-                          const hVal = isValid ? (isCenter ? stepDetails.oldH : grid[ni][nj]) : null;
+                          const hVal = isCenter ? stepDetails.oldH : stepDetails.gridSnapshot?.[`${di},${dj}`];
                           return (
                             <div key={dj} className={`mini-cell ${isCenter ? 'center-cell' : ''}`}>
                               {hVal != null ? hVal : ''}
@@ -286,11 +294,8 @@ export default function App() {
                     {[-1, 0, 1].map(di => (
                       <div key={di} className="mini-row">
                         {[-1, 0, 1].map(dj => {
-                          const ni = stepDetails.i + di;
-                          const nj = stepDetails.j + dj;
                           const isCenter = di === 0 && dj === 0;
-                          const isValid = ni >= 0 && ni < GRID_SIZE && nj >= 0 && nj < GRID_SIZE;
-                          const hVal = isValid ? (isCenter ? stepDetails.newH : grid[ni][nj]) : null;
+                          const hVal = isCenter ? stepDetails.newH : stepDetails.gridSnapshot?.[`${di},${dj}`];
                           return (
                             <div key={dj} className={`mini-cell ${isCenter ? 'center-cell' : ''}`}>
                               {hVal != null ? hVal : ''}
