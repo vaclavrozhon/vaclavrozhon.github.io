@@ -214,17 +214,6 @@ export default function USElectionMetropolisSimplified(){
           <h2 className="text-lg font-semibold mb-3">Data</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div>
-              <h3 className="font-semibold mb-2">National polls</h3>
-              <div className="max-h-56 overflow-auto bg-white border rounded-lg p-2">
-                {natPolls.map((p, i)=> (
-                  <div key={i} className="flex justify-between border-b py-1">
-                    <span>#{i+1}</span>
-                    <span className={p.r>=0?"text-blue-600":"text-red-600"}>{p.r>=0?`Dem +${p.r.toFixed(1)}`:`Rep +${Math.abs(p.r).toFixed(1)}`} </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
               <h3 className="font-semibold mb-2">2020 margins (Dem − Rep, ppt)</h3>
               <div className="max-h-56 overflow-auto bg-white border rounded-lg p-2">
                 {STATE_ORDER.map(s=> (
@@ -237,6 +226,17 @@ export default function USElectionMetropolisSimplified(){
               <div className="max-h-56 overflow-auto bg-white border rounded-lg p-2">
                 {statePolls.map((p, i)=> (
                   <div key={i} className="flex justify-between border-b py-1"><span>{p.state}</span><span className={p.r>=0?"text-blue-600":"text-red-600"}>{p.r>=0?`Dem +${p.r.toFixed(1)}`:`Rep +${Math.abs(p.r).toFixed(1)}`}</span><span className="text-gray-500">n={p.n}</span></div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">National polls</h3>
+              <div className="max-h-56 overflow-auto bg-white border rounded-lg p-2">
+                {natPolls.map((p, i)=> (
+                  <div key={i} className="flex justify-between border-b py-1">
+                    <span>#{i+1}</span>
+                    <span className={p.r>=0?"text-blue-600":"text-red-600"}>{p.r>=0?`Dem +${p.r.toFixed(1)}`:`Rep +${Math.abs(p.r).toFixed(1)}`} </span>
+                  </div>
                 ))}
               </div>
             </div>
