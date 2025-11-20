@@ -36,4 +36,5 @@ Check out the [previous run](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/).
 - [Lecture 2025-10-22](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-22.mkv) - Finished section 1 in the lecture notes
 - [Lecture 2025-10-29](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-10-29.mp4) - Beginning of Bayesian statistics (chapter 2 in lecture notes)
 - [Lecture 2025-11-05](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-11-05.mp4) - Beta distributions, decision theory (chapter 2 in lecture notes)
+- [Lecture 2025-11-19](https://kam.mff.cuni.cz/~vasek/video/ZS-2025/prednaska-2025-11-19.mp4) - Comparison of frequentist and Bayesian statistics
 
