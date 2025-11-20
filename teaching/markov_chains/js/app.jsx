@@ -24,7 +24,7 @@ const ChainSelector = ({ chainModules, selectedIndex, onSelect }) => {
     );
 };
 
-const Toolbar = ({ chain, isRunning, numDots, speed, onDotsChange, onSpeedChange, onStep, onRunToggle, onReset, onControlChange, onEditorSave }) => {
+const Toolbar = ({ chain, isRunning, numDots, speed, runSteps, onRunStepsChange, onDotsChange, onSpeedChange, onStep, onRunToggle, onReset, onControlChange, onEditorSave }) => {
     const controls = [];
     if (chain && chain.getCustomControls) {
         const c = chain.getCustomControls();
@@ -38,15 +38,28 @@ const Toolbar = ({ chain, isRunning, numDots, speed, onDotsChange, onSpeedChange
 
     return (
         <div className="controls">
-            <button onClick={onStep} disabled={isRunning}>Step</button>
-            <button onClick={onRunToggle} className={isRunning ? 'danger' : 'secondary'}>
-                {isRunning ? 'Stop' : 'Run'}
-            </button>
-            <button onClick={onReset}>Reset</button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                <button onClick={onStep} disabled={isRunning || numDots === 0}>Step</button>
+                <button onClick={onRunToggle} className={isRunning ? 'danger' : 'secondary'} disabled={numDots === 0 && !isRunning}>
+                    {isRunning ? 'Stop' : 'Run'}
+                </button>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px' }}>
+                    Run steps:
+                    <input
+                        type="number"
+                        min="1"
+                        value={runSteps}
+                        onChange={(e) => onRunStepsChange(e.target.value)}
+                        style={{ width: '70px' }}
+                    />
+                </label>
+                <button onClick={onReset}>Reset</button>
+            </div>
 
             <div className="control-group">
                 <label>Dots:</label>
                 <select value={numDots} onChange={(e) => onDotsChange(parseInt(e.target.value))}>
+                    <option value="0">0 (no dots)</option>
                     <option value="1">1</option>
                     <option value="10">10</option>
                     <option value="100">100</option>
@@ -360,6 +373,7 @@ const MappingEditor = ({ editor, onSave }) => {
 const MarkovChainVisualization = () => {
     const canvasRef = useRef(null);
     const animationRef = useRef(null);
+    const stepsRemainingRef = useRef(0);
     const [selectedChainIndex, setSelectedChainIndex] = useState(0);
     const [chain, setChain] = useState(null);
     const [isRunning, setIsRunning] = useState(false);
@@ -372,6 +386,7 @@ const MarkovChainVisualization = () => {
     const lastPosRef = useRef({ x: 0, y: 0 });
     const [tooltip, setTooltip] = useState(null);
     const [showMatrix, setShowMatrix] = useState(false);
+    const [runSteps, setRunSteps] = useState(100);
 
     useEffect(() => {
         if (chainModules.length > 0) {
@@ -387,6 +402,7 @@ const MarkovChainVisualization = () => {
 
             setChain(newChain);
             setIsRunning(false);
+            stepsRemainingRef.current = 0;
 
             // Set default zoom based on chain type
             if (newChain.name && newChain.name.includes('2-mer')) {
@@ -425,6 +441,22 @@ const MarkovChainVisualization = () => {
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
+        // Set up step completion callback
+        chain.onStepComplete = () => {
+            console.log(`[STEP COMPLETE] stepCount: ${chain.stepCount}`);
+            setUpdateTrigger(prev => prev + 1);
+
+            // If running and steps remaining, start next step
+            if (isRunning && stepsRemainingRef.current > 0) {
+                stepsRemainingRef.current -= 1;
+                console.log(`[STARTING NEXT STEP] remaining: ${stepsRemainingRef.current}`);
+                chain.step();
+            } else if (isRunning && stepsRemainingRef.current <= 0) {
+                console.log(`[RUN COMPLETE] Final stepCount: ${chain.stepCount}`);
+                setIsRunning(false);
+            }
+        };
+
         const draw = (currentTime) => {
             const deltaTime = currentTime - lastTime;
             lastTime = currentTime;
@@ -437,6 +469,7 @@ const MarkovChainVisualization = () => {
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             ctx.clearRect(0, 0, width, height);
 
+            // Animate current step (if any)
             chain.animate(deltaTime);
 
             // Centered zoom + pan
@@ -453,41 +486,58 @@ const MarkovChainVisualization = () => {
         animationRef.current = requestAnimationFrame(draw);
 
         return () => {
+            chain.onStepComplete = null;
             window.removeEventListener('resize', resizeCanvas);
             if (animationRef.current) {
                 cancelAnimationFrame(animationRef.current);
             }
         };
-    }, [chain, zoom, pan]);
+    }, [chain, zoom, pan, isRunning]);
 
     useEffect(() => {
         if (!isRunning || !chain) return;
 
-        const interval = setInterval(() => {
-            chain.step();
-            setUpdateTrigger(prev => prev + 1);
-        }, speed);
+        console.log(`[RUN START] Target steps: ${stepsRemainingRef.current}, Speed: ${speed}ms, Initial stepCount: ${chain.stepCount}`);
 
-        return () => clearInterval(interval);
+        // Start the first step if not already animating
+        if (!chain.stepInProgress && stepsRemainingRef.current > 0) {
+            stepsRemainingRef.current -= 1;
+            console.log(`[STARTING FIRST STEP] remaining: ${stepsRemainingRef.current}`);
+            chain.step();
+        }
+
+        // Subsequent steps are triggered by onStepComplete callback in RAF loop
     }, [isRunning, chain, speed]);
 
     const handleStep = () => {
         if (!chain) return;
+        if (chain.stepInProgress) {
+            console.warn('Step button clicked while animation in progress - ignoring');
+            return;
+        }
         chain.step();
-        setUpdateTrigger(prev => prev + 1);
     };
 
     const handleReset = () => {
         if (!chain) return;
         chain.reset();
         setIsRunning(false);
+        stepsRemainingRef.current = 0;
         setZoom(1.0);
         setPan({ x: 0, y: 0 });
         setUpdateTrigger(prev => prev + 1);
     };
 
     const handleRun = () => {
-        setIsRunning(!isRunning);
+        if (!chain) return;
+        if (isRunning) {
+            setIsRunning(false);
+            stepsRemainingRef.current = 0;
+        } else {
+            const parsed = Math.max(1, parseInt(runSteps, 10) || 1);
+            stepsRemainingRef.current = parsed;
+            setIsRunning(true);
+        }
     };
 
     const handleChainSelect = (index) => {
@@ -497,6 +547,10 @@ const MarkovChainVisualization = () => {
 
 
     const hoverIndexRef = useRef(null);
+    const handleRunStepsChange = (value) => {
+        const parsed = Math.max(1, parseInt(value, 10) || 1);
+        setRunSteps(parsed);
+    };
 
     const getMouseWorldPos = (e) => {
         const canvas = canvasRef.current;
@@ -573,7 +627,7 @@ const MarkovChainVisualization = () => {
 
     return (
         <div className="container">
-            <h1>Interactive Markov Chains Visualization (updated)</h1>
+            <h1>Vibecoded Markov Chain Demo</h1>
 
             <div className="main-content">
                 <ChainSelector chainModules={chainModules} selectedIndex={selectedChainIndex} onSelect={handleChainSelect} />
@@ -591,6 +645,8 @@ const MarkovChainVisualization = () => {
                                 isRunning={isRunning}
                                 numDots={numDots}
                                 speed={speed}
+                                runSteps={runSteps}
+                                onRunStepsChange={handleRunStepsChange}
                                 onDotsChange={(v) => {
                                     setNumDots(v);
                                     setIsRunning(false); // Stop simulation when dots change
@@ -606,6 +662,9 @@ const MarkovChainVisualization = () => {
                                 onControlChange={(ctrl, value) => { ctrl.onChange(value); setUpdateTrigger(p => p + 1); }}
                                 onEditorSave={(map) => { /* editor handles save via its onSave; trigger redraw */ setUpdateTrigger(p => p + 1); }}
                             />
+                            <div style={{ margin: '6px 0', fontWeight: 'bold' }}>
+                                Step: {chain.stepCount}
+                            </div>
 
                             <div className="canvas-container">
                                 <canvas
@@ -639,7 +698,7 @@ const MarkovChainVisualization = () => {
                                     <button
                                         aria-label="Zoom out"
                                         className="zoom-btn"
-                                        onClick={() => setZoom(z => Math.max(0.5, parseFloat((z / 1.1).toFixed(3))))}
+                                        onClick={() => setZoom(z => Math.max(0.1, parseFloat((z / 1.1).toFixed(3))))}
                                         title="Zoom out"
                                     >
                                         -
@@ -685,7 +744,7 @@ const MarkovChainVisualization = () => {
                                                 gap: '6px',
                                                 minHeight: '32px',
                                                 alignItems: 'flex-start',
-                                                maxHeight: '200px',
+                                                maxHeight: '600px',
                                                 overflowY: 'auto',
                                                 border: '1px solid #dee2e6',
                                                 borderRadius: '4px',

@@ -35,6 +35,15 @@ class English2Mer extends MarkovChain {
         return 10;
     }
 
+    getNodeFontSize() {
+        // Much larger font for better readability
+        return 20;
+    }
+
+    getNodeSpacing() {
+        // Larger spacing between nodes for better readability
+        return 60;
+    }
 
     async loadFromCSV() {
         try {
@@ -286,9 +295,9 @@ class English2Mer extends MarkovChain {
     getNodePositions(centerX, centerY, radius, canvasWidth) {
         // Custom layout: <s><s> left, <s>X column, XY matrix, X</s> column, </s></s> right
         const positions = [];
-        // Calculate required dimensions to accommodate 26x26 matrix with 40px spacing (smaller nodes)
-        const minMatrixWidth = 26 * 40; // 1040px minimum for matrix
-        const minMatrixHeight = 26 * 40; // 1040px minimum for matrix
+        // Calculate required dimensions to accommodate 26x26 matrix with 60px spacing for better readability
+        const minMatrixWidth = 26 * 60; // 1560px minimum for matrix
+        const minMatrixHeight = 26 * 60; // 1560px minimum for matrix
         const minTotalWidth = minMatrixWidth + 600; // Add space for columns and margins
         const minTotalHeight = Math.max(minMatrixHeight + 200, 1500); // Add space for margins
 
@@ -299,21 +308,21 @@ class English2Mer extends MarkovChain {
             return positions;
         }
 
-        // The radius parameter seems to be passed incorrectly (240px), so use reasonable value
-        const nodeRadius = 10; // Smaller radius to avoid overlap in dense grid
-        const clearanceGap = 6; // Minimum gap between node edges
-        const minNodeSpacing = nodeRadius * 2 + clearanceGap; // 26px spacing
+        // Use uniform radius from base renderer for consistent spacing
+        const nodeRadius = this._getUniformNodeRadius ? this._getUniformNodeRadius() : 30;
+        const minNodeSpacing = Math.max(this.getNodeSpacing ? this.getNodeSpacing() : 120, nodeRadius * 4);
 
         // console.log(`DEBUG POSITIONING: width=${width}, height=${height}, nodeRadius=${nodeRadius}, minNodeSpacing=${minNodeSpacing}`);
 
         // 1. <s><s> on far left edge (aligned with canvas edge)
+        const startNodeX = nodeRadius + 10;
         positions.push({
-            x: nodeRadius + 5, // Dynamic: just enough to not clip the edge
+            x: startNodeX,
             y: height / 2
         });
 
         // 2. <s>X column (26 states) - vertical column with proper spacing
-        const colX = width * 0.12;
+        const colX = startNodeX + 80; // Fixed distance from <s><s>
         const verticalMargin = nodeRadius + 40; // Dynamic margin based on radius
         const colHeight = height - 2 * verticalMargin;
         const letterSpacing = Math.max(colHeight / 25, minNodeSpacing);
@@ -329,8 +338,10 @@ class English2Mer extends MarkovChain {
         }
 
         // 3. XY matrix (26x26 = 676 states) - arranged in grid with proper spacing
-        const matrixStartX = width * 0.22;
-        const matrixEndX = width * 0.78;
+        const matrixStartX = colX + 1000; // Start after <s>X column with gap
+        const endNodeX = width - nodeRadius - 10;
+        const rightColX = endNodeX + 800; // Fixed distance from </s></s>
+        const matrixEndX = rightColX - 120; // End before X</s> column with gap
         const matrixWidth = matrixEndX - matrixStartX;
         const matrixStartY = verticalMargin; // Use same dynamic margin
         const matrixHeight = height - 2 * verticalMargin;
@@ -361,7 +372,6 @@ class English2Mer extends MarkovChain {
         }
 
         // 4. X</s> column (26 states) - vertical column on right with same spacing as left column
-        const rightColX = width * 0.88;
         for (let i = 0; i < 26; i++) {
             positions.push({
                 x: rightColX,
@@ -371,9 +381,18 @@ class English2Mer extends MarkovChain {
 
         // 5. </s></s> on far right
         positions.push({
-            x: width * 0.95,
+            x: endNodeX,
             y: height / 2
         });
+
+        // Shift X</s> column and end state to the right by 1000px
+        const shiftAmount = 1000;
+        for (let i = positions.length - 27; i < positions.length; i++) {
+            if (positions[i]) {
+                positions[i].x += shiftAmount;
+            }
+        }
+        positions[positions.length-1].x += 1100;
 
         return positions;
     }

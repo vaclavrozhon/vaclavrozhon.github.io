@@ -14,6 +14,13 @@ class MarkovChain {
         this.stepCount = 0;
         this.transitionCount = {};
         this.animationSpeed = 1.0; // Speed multiplier for animations
+
+        // New: step-animation coupling
+        this.stepInProgress = false;
+        this.stepElapsed = 0;
+        this.stepDuration = 500; // Will be set by setAnimationSpeed
+        this.onStepComplete = null; // Callback when step animation finishes
+
         this.initializeDots();
     }
 
@@ -65,11 +72,16 @@ class MarkovChain {
     }
 
     step() {
+        // New implementation: prepareStep()
+        // Decide transitions but don't commit yet
+        if (this.stepInProgress) {
+            console.warn('step() called while step already in progress - ignoring');
+            return;
+        }
+
         const newTransitions = {};
 
         for (let dot of this.dots) {
-            if (dot.isMoving) continue; // Skip dots that are still animating
-
             const currentState = dot.currentState;
             const rand = Math.random();
             let cumSum = 0;
@@ -86,72 +98,94 @@ class MarkovChain {
             const transKey = `${currentState}->${nextState}`;
             newTransitions[transKey] = (newTransitions[transKey] || 0) + 1;
 
-            if (nextState !== currentState) {
-                // Moving to a different state
-                dot.nextState = nextState;
-                dot.isMoving = true;
-                dot.animationProgress = 0;
+            // Store the transition decision
+            dot.nextState = nextState;
+            dot.animationProgress = 0;
+            dot.isMoving = true;
 
-                // Calculate target position in the new state
-                const angle = Math.random() * Math.PI * 2;
-                const radius = Math.random() * 25;
-                dot.targetX = radius * Math.cos(angle);
-                dot.targetY = radius * Math.sin(angle);
-            } else {
-                // Staying in the same state: animate within-state movement and block further steps until done
-                const angle = Math.random() * Math.PI * 2;
-                const radius = Math.random() * 25;
-                dot.targetX = radius * Math.cos(angle);
-                dot.targetY = radius * Math.sin(angle);
-                dot.animationProgress = 0;
-                dot.isMoving = true;
-            }
+            // Calculate target position in the new state
+            const angle = Math.random() * Math.PI * 2;
+            const radius = Math.random() * 25;
+            dot.targetX = radius * Math.cos(angle);
+            dot.targetY = radius * Math.sin(angle);
 
+            // Add to history immediately (decision is made)
             dot.history.push(nextState);
         }
 
         this.transitionCount = newTransitions;
+
+        // Mark step as in progress
+        this.stepInProgress = true;
+        this.stepElapsed = 0;
+
+        // DO NOT increment stepCount here - only when animation completes
+    }
+
+    finishStep() {
+        // Commit the step: update all dot states and increment counter
+        for (let dot of this.dots) {
+            if (dot.nextState !== dot.currentState) {
+                // Update state counts
+                this.stateCount[dot.currentState]--;
+                this.stateCount[dot.nextState]++;
+            }
+
+            // Commit state transition
+            dot.currentState = dot.nextState;
+            dot.x = dot.targetX;
+            dot.y = dot.targetY;
+            dot.isMoving = false;
+
+            // Call arrival callback if it exists
+            if (typeof this.onArrival === 'function') {
+                try {
+                    this.onArrival(this.dots.indexOf(dot), dot.currentState);
+                } catch (e) {
+                    /* ignore */
+                }
+            }
+        }
+
+        // NOW increment step count
         this.stepCount++;
+        this.stepInProgress = false;
+
+        // Notify that step is complete
+        if (typeof this.onStepComplete === 'function') {
+            this.onStepComplete();
+        }
     }
 
     animate(deltaTime = 16) {
-        // Calculate animation speed based on deltaTime (ms since last frame)
-        // Base speed: complete animation in ~500ms, adjusted by speed multiplier
-        const baseAnimationSpeed = 1000 / 500; // animations per second
-        const animationIncrement = (baseAnimationSpeed * this.animationSpeed * deltaTime) / 1000;
+        // New implementation: drives the current step animation
+        if (!this.stepInProgress) return;
 
+        this.stepElapsed += deltaTime;
+        const progress = Math.min(this.stepElapsed / this.stepDuration, 1.0);
+
+        // Animate all dots together
         for (let i = 0; i < this.dots.length; i++) {
             const dot = this.dots[i];
-            if (dot.animationProgress < 1) {
-                dot.animationProgress = Math.min(1, dot.animationProgress + animationIncrement);
+            if (!dot.isMoving) continue;
 
-                if (dot.isMoving && dot.nextState !== dot.currentState) {
-                    // Animate movement between states
-                    const progress = this.easeInOutQuad(dot.animationProgress);
+            dot.animationProgress = progress;
 
-                    if (dot.animationProgress >= 1) {
-                        // Animation complete
-                        this.stateCount[dot.currentState]--;
-                        this.stateCount[dot.nextState]++;
-                        dot.currentState = dot.nextState;
-                        dot.x = dot.targetX;
-                        dot.y = dot.targetY;
-                        dot.isMoving = false;
-                        if (typeof this.onArrival === 'function') {
-                            try { this.onArrival(i, dot.currentState); } catch (e) { /* ignore */ }
-                        }
-                    }
-                } else if (dot.isMoving && dot.targetX !== null && dot.targetY !== null) {
-                    // Animate position change within same state
-                    const progress = this.easeInOutQuad(dot.animationProgress);
-                    dot.x = dot.x + (dot.targetX - dot.x) * progress;
-                    dot.y = dot.y + (dot.targetY - dot.y) * progress;
-
-                    if (dot.animationProgress >= 1) {
-                        dot.isMoving = false;
-                    }
-                }
+            if (dot.nextState !== dot.currentState) {
+                // Moving between states - interpolate between state centers
+                // The actual interpolation happens in draw() using animationProgress
+                // Here we just update the progress value
+            } else {
+                // Moving within same state - interpolate position
+                const eased = this.easeInOutQuad(progress);
+                dot.x = dot.x + (dot.targetX - dot.x) * eased;
+                dot.y = dot.y + (dot.targetY - dot.y) * eased;
             }
+        }
+
+        // When animation reaches 100%, commit the step
+        if (progress >= 1.0 && this.stepInProgress) {
+            this.finishStep();
         }
     }
 
@@ -165,34 +199,7 @@ class MarkovChain {
         // Get initial positions
         let positions = this.getNodePositions ? this.getNodePositions(centerX, centerY, radius, width) : this.getDefaultNodePositions(centerX, centerY, radius);
 
-        // Check if positions fit within canvas bounds and scale if necessary
-        const nodeRadius = this.getNodeRadius();
-        const padding = nodeRadius + 20;
-
-        let minX = Math.min(...positions.map(p => p.x));
-        let maxX = Math.max(...positions.map(p => p.x));
-        let minY = Math.min(...positions.map(p => p.y));
-        let maxY = Math.max(...positions.map(p => p.y));
-
-        // Calculate required space vs available space
-        const requiredWidth = maxX - minX + 2 * padding;
-        const requiredHeight = maxY - minY + 2 * padding;
-
-        // Calculate scale factors (never scale up, only down)
-        const scaleX = requiredWidth > width ? width / requiredWidth : 1.0;
-        const scaleY = requiredHeight > height ? height / requiredHeight : 1.0;
-        const scale = Math.min(scaleX, scaleY);
-
-        if (scale < 1.0) {
-            // Apply uniform scaling to all positions
-            const scaledCenterX = centerX;
-            const scaledCenterY = centerY;
-
-            positions = positions.map(pos => ({
-                x: scaledCenterX + (pos.x - centerX) * scale,
-                y: scaledCenterY + (pos.y - centerY) * scale
-            }));
-        }
+        // No automatic rescaling; rely on UI zoom
 
         // Expose positions for hit-testing
         this._lastPositions = positions;
@@ -226,8 +233,10 @@ class MarkovChain {
         // Draw transitions between different states
         for (let i = 0; i < this.states.length; i++) {
             for (let j = i + 1; j < this.states.length; j++) {
-                const hasForward = this.transitionMatrix[i][j] > 0;
-                const hasBackward = this.transitionMatrix[j][i] > 0;
+                const forwardAllowed = this.shouldDrawEdge(i, j);
+                const backwardAllowed = this.shouldDrawEdge(j, i);
+                const hasForward = forwardAllowed && this.transitionMatrix[i][j] > 0;
+                const hasBackward = backwardAllowed && this.transitionMatrix[j][i] > 0;
 
                 if (!hasForward && !hasBackward) continue;
 
@@ -242,9 +251,8 @@ class MarkovChain {
                     const perpY = dx * 0.15;
 
                     // Forward arrow (curved)
-                    const forwardHighlighted = hoveredIndex === i;
-                    ctx.strokeStyle = forwardHighlighted ? '#ff5722' : '#999';
-                    ctx.lineWidth = forwardHighlighted ? 3 : 2;
+                    const forwardHighlighted = (hoveredIndex === i);
+                    this._applyEdgeStroke(ctx, forwardHighlighted);
                     const cpF = { x: from.x + dx * 0.5 + perpX, y: from.y + dy * 0.5 + perpY };
                     ctx.beginPath();
                     ctx.moveTo(from.x, from.y);
@@ -261,14 +269,13 @@ class MarkovChain {
                     ctx.lineTo(-8, -4);
                     ctx.lineTo(-8, 4);
                     ctx.closePath();
-                    ctx.fillStyle = forwardHighlighted ? '#ff5722' : '#666';
+                    this._applyArrowFill(ctx, forwardHighlighted);
                     ctx.fill();
                     ctx.restore();
 
                     // Backward arrow (curved)
                     const backwardHighlighted = hoveredIndex === j;
-                    ctx.strokeStyle = backwardHighlighted ? '#ff5722' : '#999';
-                    ctx.lineWidth = backwardHighlighted ? 3 : 2;
+                    this._applyEdgeStroke(ctx, backwardHighlighted);
                     const cpB = { x: from.x + dx * 0.5 - perpX, y: from.y + dy * 0.5 - perpY };
                     ctx.beginPath();
                     ctx.moveTo(to.x, to.y);
@@ -284,17 +291,24 @@ class MarkovChain {
                     ctx.lineTo(-8, -4);
                     ctx.lineTo(-8, 4);
                     ctx.closePath();
-                    ctx.fillStyle = backwardHighlighted ? '#ff5722' : '#666';
+                    this._applyArrowFill(ctx, backwardHighlighted);
                     ctx.fill();
                     ctx.restore();
 
                     // Labels
-                    if (this.getRenderConfig().showEdgeLabels) {
-                    ctx.fillStyle = '#666';
-                    ctx.font = '11px Arial';
-                    ctx.textAlign = 'center';
-                    ctx.fillText(this.transitionMatrix[i][j].toFixed(2), cpF.x, cpF.y - 3);
-                    ctx.fillText(this.transitionMatrix[j][i].toFixed(2), cpB.x, cpB.y - 3);
+                    if (this.getRenderConfig().showEdgeLabels && this.shouldDisplayEdgeLabel(i, j)) {
+                        const fontPx = this._getEdgeLabelFontPx();
+                        const midPoint = this._getMidpoint(from, to);
+                        const labelPosF = this._getCurvedLabelPosition(cpF, midPoint);
+                        const textF = this._formatEdgeProbability(this.transitionMatrix[i][j]);
+                        this._drawEdgeLabel(ctx, textF, labelPosF.x, labelPosF.y, forwardHighlighted, fontPx);
+                    }
+                    if (this.getRenderConfig().showEdgeLabels && this.shouldDisplayEdgeLabel(j, i)) {
+                        const fontPx = this._getEdgeLabelFontPx();
+                        const midPoint = this._getMidpoint(from, to);
+                        const labelPosB = this._getCurvedLabelPosition(cpB, midPoint);
+                        const textB = this._formatEdgeProbability(this.transitionMatrix[j][i]);
+                        this._drawEdgeLabel(ctx, textB, labelPosB.x, labelPosB.y, backwardHighlighted, fontPx);
                     }
 
                 } else if (hasForward) {
@@ -306,8 +320,7 @@ class MarkovChain {
                         const perpX = -dy * 0.15;
                         const perpY = dx * 0.15;
                         const highlighted = hoveredIndex === i;
-                        ctx.strokeStyle = highlighted ? '#ff5722' : '#999';
-                        ctx.lineWidth = highlighted ? 3 : 2;
+                        this._applyEdgeStroke(ctx, highlighted);
                         const { r, pad } = this._getNodeRadiusWithPad();
                         const cpF = { x: from.x + dx * 0.5 + perpX, y: from.y + dy * 0.5 + perpY };
                     ctx.beginPath();
@@ -324,21 +337,20 @@ class MarkovChain {
                         ctx.lineTo(-8, -4);
                         ctx.lineTo(-8, 4);
                         ctx.closePath();
-                        ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+                        this._applyArrowFill(ctx, highlighted);
                         ctx.fill();
                         ctx.restore();
 
                         // label near control point
-                        if (this.getRenderConfig().showEdgeLabels) {
-                            ctx.fillStyle = highlighted ? '#ff5722' : '#666';
-                            ctx.font = '12px Arial';
-                            ctx.textAlign = 'center';
-                            ctx.fillText(this.transitionMatrix[i][j].toFixed(2), cpF.x, cpF.y - 5);
+                        if (this.getRenderConfig().showEdgeLabels && this.shouldDisplayEdgeLabel(i, j)) {
+                            const fontPx = this._getEdgeLabelFontPx();
+                            const labelPos = this._getCurvedLabelPosition(cpF, this._getMidpoint(from, to));
+                            const text = this._formatEdgeProbability(this.transitionMatrix[i][j]);
+                            this._drawEdgeLabel(ctx, text, labelPos.x, labelPos.y, highlighted, fontPx);
                         }
                     } else {
                         const highlighted = hoveredIndex === i;
-                        ctx.strokeStyle = highlighted ? '#ff5722' : '#999';
-                        ctx.lineWidth = highlighted ? 3 : 2;
+                        this._applyEdgeStroke(ctx, highlighted);
 
                         const { r, pad } = this._getNodeRadiusWithPad();
                         const seg = this._shrinkSegmentToNodes(from, to, r, r, pad);
@@ -357,18 +369,15 @@ class MarkovChain {
                     ctx.lineTo(-10, -5);
                     ctx.lineTo(-10, 5);
                     ctx.closePath();
-                        ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+                        this._applyArrowFill(ctx, highlighted);
                     ctx.fill();
                     ctx.restore();
 
-                    const midX = (from.x + to.x) / 2;
-                    const midY = (from.y + to.y) / 2;
-
-                        if (this.getRenderConfig().showEdgeLabels) {
-                            ctx.fillStyle = highlighted ? '#ff5722' : '#666';
-                    ctx.font = '12px Arial';
-                    ctx.textAlign = 'center';
-                    ctx.fillText(this.transitionMatrix[i][j].toFixed(2), midX, midY - 5);
+                        if (this.getRenderConfig().showEdgeLabels && this.shouldDisplayEdgeLabel(i, j)) {
+                            const fontPx = this._getEdgeLabelFontPx();
+                            const labelPos = this._getStraightLabelPosition(seg);
+                            const text = this._formatEdgeProbability(this.transitionMatrix[i][j]);
+                            this._drawEdgeLabel(ctx, text, labelPos.x, labelPos.y, highlighted, fontPx);
                         }
                     }
                 } else if (hasBackward) {
@@ -380,8 +389,7 @@ class MarkovChain {
                         const perpX = -dy * 0.15;
                         const perpY = dx * 0.15;
                         const highlighted = hoveredIndex === j;
-                        ctx.strokeStyle = highlighted ? '#ff5722' : '#999';
-                        ctx.lineWidth = highlighted ? 3 : 2;
+                        this._applyEdgeStroke(ctx, highlighted);
                         const { r, pad } = this._getNodeRadiusWithPad();
                         const cpB = { x: from.x + dx * 0.5 - perpX, y: from.y + dy * 0.5 - perpY };
                         ctx.beginPath();
@@ -398,20 +406,19 @@ class MarkovChain {
                         ctx.lineTo(-8, -4);
                         ctx.lineTo(-8, 4);
                         ctx.closePath();
-                        ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+                        this._applyArrowFill(ctx, highlighted);
                         ctx.fill();
                         ctx.restore();
 
-                        if (this.getRenderConfig().showEdgeLabels) {
-                            ctx.fillStyle = highlighted ? '#ff5722' : '#666';
-                            ctx.font = '12px Arial';
-                            ctx.textAlign = 'center';
-                            ctx.fillText(this.transitionMatrix[j][i].toFixed(2), cpB.x, cpB.y - 5);
+                        if (this.getRenderConfig().showEdgeLabels && this.shouldDisplayEdgeLabel(j, i)) {
+                            const fontPx = this._getEdgeLabelFontPx();
+                            const labelPos = this._getCurvedLabelPosition(cpB, this._getMidpoint(from, to));
+                            const text = this._formatEdgeProbability(this.transitionMatrix[j][i]);
+                            this._drawEdgeLabel(ctx, text, labelPos.x, labelPos.y, highlighted, fontPx);
                         }
                     } else {
                         const highlighted = hoveredIndex === j;
-                        ctx.strokeStyle = highlighted ? '#ff5722' : '#999';
-                        ctx.lineWidth = highlighted ? 3 : 2;
+                        this._applyEdgeStroke(ctx, highlighted);
 
                         const { r, pad } = this._getNodeRadiusWithPad();
                         const seg = this._shrinkSegmentToNodes(to, from, r, r, pad);
@@ -430,18 +437,15 @@ class MarkovChain {
                         ctx.lineTo(-10, -5);
                         ctx.lineTo(-10, 5);
                         ctx.closePath();
-                        ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+                        this._applyArrowFill(ctx, highlighted);
                         ctx.fill();
                         ctx.restore();
 
-                        const midX = (from.x + to.x) / 2;
-                        const midY = (from.y + to.y) / 2;
-
-                        if (this.getRenderConfig().showEdgeLabels) {
-                            ctx.fillStyle = highlighted ? '#ff5722' : '#666';
-                            ctx.font = '12px Arial';
-                            ctx.textAlign = 'center';
-                            ctx.fillText(this.transitionMatrix[j][i].toFixed(2), midX, midY - 5);
+                        if (this.getRenderConfig().showEdgeLabels && this.shouldDisplayEdgeLabel(j, i)) {
+                            const fontPx = this._getEdgeLabelFontPx();
+                            const labelPos = this._getStraightLabelPosition(seg);
+                            const text = this._formatEdgeProbability(this.transitionMatrix[j][i]);
+                            this._drawEdgeLabel(ctx, text, labelPos.x, labelPos.y, highlighted, fontPx);
                         }
                     }
                 }
@@ -488,7 +492,8 @@ class MarkovChain {
     }
 
     drawNodes(ctx, positions) {
-        const nodeRadius = this.getNodeRadius();
+        const nodeRadius = this._getUniformNodeRadius();
+        const fontSize = this.getNodeFontSize ? this.getNodeFontSize() : 16;
         for (let i = 0; i < this.states.length; i++) {
             const pos = positions[i];
 
@@ -501,7 +506,7 @@ class MarkovChain {
             ctx.stroke();
 
             ctx.fillStyle = '#333';
-            ctx.font = 'bold 16px Arial';
+            ctx.font = `bold ${fontSize}px Arial`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(this.stateNames[i], pos.x, pos.y);
@@ -510,6 +515,10 @@ class MarkovChain {
 
     getStateProbabilities() {
         return this.stateCount.map(count => count / this.numDots);
+    }
+
+    isAnimating() {
+        return this.dots.some(dot => dot.isMoving);
     }
 
     reset() {
@@ -522,10 +531,9 @@ class MarkovChain {
     }
 
     setAnimationSpeed(stepIntervalMs) {
-        // Convert step interval to animation speed multiplier
-        // Faster stepping (lower interval) = faster animations
-        // Base: 500ms interval = 1.0x speed
-        this.animationSpeed = 500 / stepIntervalMs;
+        // Set the duration for each step animation
+        this.stepDuration = stepIntervalMs;
+        this.animationSpeed = 500 / stepIntervalMs; // Keep for compatibility
     }
 
     updateTransitionMatrix(newMatrix) {
@@ -542,15 +550,24 @@ class MarkovChain {
     }
 
     drawSelfLoop(ctx, position, stateIndex, probability, centerX, centerY, hoveredIndex = null) {
-        // Compute outward and perpendicular directions based on canvas center
-        let ux = position.x - centerX;
-        let uy = position.y - centerY;
-        const len = Math.hypot(ux, uy);
-        if (len < 1e-6) {
-            // Fallback if node is at center
+        // Orientation: 'radial' (default) or 'up' (always above node)
+        const cfg = this.getRenderConfig ? this.getRenderConfig() : null;
+        const orientation = (cfg && cfg.selfLoopOrientation) || 'radial';
+
+        // Compute outward and perpendicular directions
+        let ux, uy;
+        if (orientation === 'up') {
             ux = 0; uy = -1;
         } else {
-            ux /= len; uy /= len;
+            ux = position.x - centerX;
+            uy = position.y - centerY;
+            const len = Math.hypot(ux, uy);
+            if (len < 1e-6) {
+                // Fallback if node is at center
+                ux = 0; uy = -1;
+            } else {
+                ux /= len; uy /= len;
+            }
         }
         const vx = -uy; // rotate (ux,uy) by +90° to get perpendicular
         const vy = ux;
@@ -562,16 +579,16 @@ class MarkovChain {
         });
 
         const { r, pad } = this._getNodeRadiusWithPad();
+        const loopScale = cfg && Number.isFinite(cfg.selfLoopScale) ? cfg.selfLoopScale : 1.2;
 
         // Local control points (scaled with r so loop stays outside node)
-        const p0 = mapLocal(-20, -10);
-        const cp = mapLocal(0, -(r + 70));
-        const p2 = mapLocal(20, -10);
+        const p0 = mapLocal(-20 * loopScale, -10 * loopScale);
+        const cp = mapLocal(0, -(r + 35 * loopScale));
+        const p2 = mapLocal(20 * loopScale, -10 * loopScale);
 
         // Draw loop curve with same style as normal arrows
         const highlighted = hoveredIndex === stateIndex;
-        ctx.strokeStyle = highlighted ? '#ff5722' : '#999';
-        ctx.lineWidth = highlighted ? 3 : 2;
+        this._applyEdgeStroke(ctx, highlighted);
         ctx.beginPath();
         ctx.moveTo(p0.x, p0.y);
         ctx.quadraticCurveTo(cp.x, cp.y, p2.x, p2.y);
@@ -586,16 +603,15 @@ class MarkovChain {
         ctx.lineTo(-8, -4);
         ctx.lineTo(-8, 4);
         ctx.closePath();
-        ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+        this._applyArrowFill(ctx, highlighted);
         ctx.fill();
         ctx.restore();
 
-        // Probability label styled like normal arrows (no box)
-        if (this.getRenderConfig().showEdgeLabels) {
-            ctx.fillStyle = highlighted ? '#ff5722' : '#666';
-            ctx.font = '11px Arial';
-        ctx.textAlign = 'center';
-            ctx.fillText(probability.toFixed(2), cp.x, cp.y - 3);
+        if (this.getRenderConfig().showEdgeLabels && this.shouldDisplaySelfLoopLabel(stateIndex)) {
+            const fontPx = this._getEdgeLabelFontPx();
+            const labelPos = this._getLoopLabelPosition(p0, cp, p2);
+            const text = this._formatEdgeProbability(probability);
+            this._drawEdgeLabel(ctx, text, labelPos.x, labelPos.y, highlighted, fontPx);
         }
     }
 
@@ -708,14 +724,6 @@ class MarkovChain {
         ctx.beginPath();
         ctx.arc(positions[i].x, positions[i].y, 34, 0, 2 * Math.PI);
         ctx.stroke();
-        // targets
-        for (let j = 0; j < this.states.length; j++) {
-            if (this.transitionMatrix[i][j] > 0 && i !== j) {
-                ctx.beginPath();
-                ctx.arc(positions[j].x, positions[j].y, 34, 0, 2 * Math.PI);
-                ctx.stroke();
-            }
-        }
         ctx.restore();
     }
 
@@ -782,7 +790,10 @@ class MarkovChain {
             canvasHeight: 400,
             showStats: true,
             showTransitionMatrix: true,
-            showEdgeLabels: true
+            showEdgeLabels: true,
+            edgePadding: 2,
+            selfLoopScale: 1.2,
+            nodeRadius: 30
         };
     }
 
@@ -803,7 +814,113 @@ class MarkovChain {
 
     // --- Geometry helpers for precise arrow placement ---
     _getNodeRadiusWithPad() {
-        return { r: this.getNodeRadius(), pad: 6 };   // pad = visual gap
+        const cfg = this.getRenderConfig ? this.getRenderConfig() : null;
+        const pad = cfg && Number.isFinite(cfg.edgePadding) ? cfg.edgePadding : 2;
+        const r = this._getUniformNodeRadius();
+        return { r, pad };
+    }
+
+    _getUniformNodeRadius() {
+        const cfg = this.getRenderConfig ? this.getRenderConfig() : null;
+        if (cfg && Number.isFinite(cfg.nodeRadius)) return cfg.nodeRadius;
+        return 30;
+    }
+
+    getNodeSpacing() {
+        return 4 * this._getUniformNodeRadius();
+    }
+
+    _applyEdgeStroke(ctx, highlighted) {
+        ctx.strokeStyle = highlighted ? '#ff5722' : '#999';
+        ctx.lineWidth = highlighted ? 3 : 2;
+    }
+
+    _applyArrowFill(ctx, highlighted) {
+        ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+    }
+
+    _drawEdgeLabel(ctx, text, x, y, highlighted, fontPx) {
+        ctx.fillStyle = highlighted ? '#ff5722' : '#666';
+        ctx.font = (highlighted ? 'bold ' : '') + `${fontPx}px Arial`;
+        ctx.textAlign = 'center';
+        ctx.fillText(text, x, y);
+    }
+
+    _getEdgeLabelFontPx() {
+        return 12;
+    }
+    _getLabelOffsetAmount() {
+        return 8;
+    }
+
+    _formatEdgeProbability(prob) {
+        if (prob <= 0) return '0.00';
+        const fixed = prob.toFixed(2);
+        if (fixed !== '0.00') return fixed;
+        const expStr = prob.toExponential(1); // e.g. "2.0e-6"
+        const [coeffRaw, exponentRaw] = expStr.split('e');
+        const coeff = parseFloat(coeffRaw).toString();
+        const exponent = parseInt(exponentRaw, 10);
+        const expFormatted = exponent >= 0 ? `${exponent}` : `-${Math.abs(exponent)}`;
+        return `${coeff}e^${expFormatted}`;
+    }
+
+    shouldDisplayEdgeLabel(fromIndex, toIndex) {
+        return true;
+    }
+
+    shouldDisplaySelfLoopLabel(stateIndex) {
+        return true;
+    }
+
+    shouldDrawEdge(fromIndex, toIndex) {
+        return true;
+    }
+
+    _getMidpoint(p1, p2) {
+        return { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
+    }
+
+    _getStraightLabelPosition(seg) {
+        const mid = this._getMidpoint(seg.a, seg.b);
+        const dy = seg.b.y - seg.a.y;
+        let sign;
+        if (Math.abs(dy) < 1e-3) {
+            sign = -1; // default above for horizontal edges
+        } else {
+            sign = dy > 0 ? 1 : -1;
+        }
+        const offset = this._getLabelOffsetAmount() * sign;
+        return { x: mid.x, y: mid.y + offset };
+    }
+
+    _getCurvedLabelPosition(anchor, reference) {
+        const offset = this._getLabelOffsetAmount();
+        const dir = { x: anchor.x - reference.x, y: anchor.y - reference.y };
+        const len = Math.hypot(dir.x, dir.y);
+        if (len < 1e-3) {
+            return { x: anchor.x, y: anchor.y - offset };
+        }
+        return {
+            x: anchor.x + (dir.x / len) * offset,
+            y: anchor.y + (dir.y / len) * offset
+        };
+    }
+
+    _getLoopLabelPosition(p0, cp, p2) {
+        const mid = this._quadraticPoint(p0, cp, p2, 0.5);
+        const outward = { x: mid.x - cp.x, y: mid.y - cp.y };
+        let len = Math.hypot(outward.x, outward.y);
+        let dir;
+        if (len < 1e-3) {
+            const tangent = this._quadraticTangent(p0, cp, p2, 0.5);
+            const tlen = Math.hypot(tangent.x, tangent.y) || 1;
+            dir = { x: -tangent.y / tlen, y: tangent.x / tlen };
+        } else {
+            dir = { x: outward.x / len, y: outward.y / len };
+        }
+        const offset = this._getLabelOffsetAmount() * (-2);
+        return { x: mid.x + dir.x * offset, y: mid.y + dir.y * offset };
     }
 
     _shrinkSegmentToNodes(p0, p1, r0, r1, pad) {
@@ -828,12 +945,27 @@ class MarkovChain {
     }
 
     _placeArrowOnQuadratic(p0, cp, p1, target, rTo, pad) {
-        // find t where the curve reaches the target circle boundary
-        const t = this._findBezierBoundaryT(p0, cp, p1, target, rTo + pad);
-        const q  = this._quadraticPoint(p0, cp, p1, t);
-        const dq = this._quadraticTangent(p0, cp, p1, t);
-        const angle = Math.atan2(dq.y, dq.x);
-        return { tip: q, angle };
+        // find t where the curve reaches the target circle boundary; robust with fallback
+        let t = this._findBezierBoundaryT(p0, cp, p1, target, rTo + pad);
+        if (t == null) {
+            // Fallback: pick a near-end t and project tip to the target circle along radial direction
+            t = 0.97;
+            const near = this._quadraticPoint(p0, cp, p1, t);
+            const dirx = near.x - target.x;
+            const diry = near.y - target.y;
+            const L = Math.hypot(dirx, diry) || 1;
+            const nx = dirx / L;
+            const ny = diry / L;
+            const tip = { x: target.x + nx * (rTo + pad), y: target.y + ny * (rTo + pad) };
+            const dq = this._quadraticTangent(p0, cp, p1, t);
+            const angle = Math.atan2(dq.y, dq.x);
+            return { tip, angle };
+        } else {
+            const q  = this._quadraticPoint(p0, cp, p1, t);
+            const dq = this._quadraticTangent(p0, cp, p1, t);
+            const angle = Math.atan2(dq.y, dq.x);
+            return { tip: q, angle };
+        }
     }
 
     // --- Arrowhead helpers (canvas-only, boundary-aware) ---
@@ -853,26 +985,41 @@ class MarkovChain {
     }
 
     _findBezierBoundaryT(p0, cp, p1, target, radiusPlusPad) {
-        // Bisection on t in [0.8, 0.99] to find point near target boundary
-        let lo = 0.8, hi = 0.99;
-        const dist = (t) => {
+        // Try to bracket a sign change for f(t) = dist(bezier(t), center) - (r+pad) near t -> 1, then bisect
+        const f = (t) => {
             const q = this._quadraticPoint(p0, cp, p1, t);
             const dx = q.x - target.x;
             const dy = q.y - target.y;
             return Math.hypot(dx, dy) - radiusPlusPad;
         };
-        let dlo = dist(lo);
-        let dhi = dist(hi);
-        // If signs are the same, fallback to hi
-        if (dlo * dhi > 0) return hi;
-        for (let iter = 0; iter < 18; iter++) {
+        // Descending samples toward 1 to find a bracket
+        const samples = [0.6, 0.75, 0.85, 0.92, 0.96, 0.98, 0.99, 0.995];
+        let lo = null, hi = null, flo = null, fhi = null;
+        // Ensure we look for a sign change (f crosses 0)
+        let prevT = samples[0], prevF = f(prevT);
+        for (let k = 1; k < samples.length; k++) {
+            const t = samples[k];
+            const ft = f(t);
+            if (prevF === 0) { lo = prevT; hi = t; flo = prevF; fhi = ft; break; }
+            if (ft === 0)  { lo = prevT; hi = t; flo = prevF; fhi = ft; break; }
+            if (prevF * ft < 0) {
+                lo = prevT; hi = t; flo = prevF; fhi = ft; break;
+            }
+            prevT = t; prevF = ft;
+        }
+        if (lo == null) {
+            // No bracket found: return null to trigger fallback
+            return null;
+        }
+        // Bisection
+        for (let iter = 0; iter < 22; iter++) {
             const mid = (lo + hi) * 0.5;
-            const dm = dist(mid);
-            if (Math.abs(dm) < 0.5) return mid;
-            if (dlo * dm <= 0) {
-                hi = mid; dhi = dm;
+            const fm = f(mid);
+            if (Math.abs(fm) < 0.25) return mid;
+            if (flo * fm <= 0) {
+                hi = mid; fhi = fm;
             } else {
-                lo = mid; dlo = dm;
+                lo = mid; flo = fm;
             }
         }
         return (lo + hi) * 0.5;
