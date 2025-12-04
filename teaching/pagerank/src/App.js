@@ -11,7 +11,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [availableIterations, setAvailableIterations] = useState([]);
-  const [showBottom, setShowBottom] = useState(false);
+  const [rankingMode, setRankingMode] = useState('pagerank'); // 'pagerank' or 'indegree'
   const [degreeData, setDegreeData] = useState(null);
   const [metadata, setMetadata] = useState(null);
   const [currentYear, setCurrentYear] = useState(null);
@@ -58,7 +58,7 @@ const App = () => {
       }
     } catch (err) {
       console.error('Error loading current year:', err);
-      setCurrentYear(2003); // fallback to 2003
+      setCurrentYear(2003);
     }
   };
 
@@ -128,106 +128,72 @@ const App = () => {
 
   const enrichWithTitles = (data) => {
     const enrichedData = { ...data };
-
-    // Enrich top_results if they exist
     if (enrichedData.top_results) {
       enrichedData.top_results = enrichedData.top_results.map(item => ({
         ...item,
         title: titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`
       }));
     }
-
-    // Enrich bottom_results if they exist
     if (enrichedData.bottom_results) {
       enrichedData.bottom_results = enrichedData.bottom_results.map(item => ({
         ...item,
         title: titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`
       }));
     }
-
-    // Handle old format (results) for backward compatibility
     if (enrichedData.results) {
       enrichedData.results = enrichedData.results.map(item => ({
         ...item,
         title: titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`
       }));
     }
-
     return enrichedData;
   };
 
   const loadAllIterations = async () => {
     setLoading(true);
     setError(null);
-
     console.log('Starting to load PageRank iterations...');
 
     try {
       const iterations = {};
       const available = [];
 
-      // Try to load iterations 0-20 (adjust as needed)
       for (let i = 0; i <= 20; i++) {
         try {
           const filename = `./${currentYear}/pagerank_iter_${i.toString().padStart(2, '0')}.json`;
-          console.log(`Attempting to fetch: ${filename}`);
           const response = await fetch(filename);
-          console.log(`Response for ${filename}: status=${response.status}, ok=${response.ok}`);
 
           if (response.ok) {
-            // First check if it's actually JSON (not HTML)
-            const contentType = response.headers.get('content-type');
-            console.log(`Content-Type for ${filename}: ${contentType}`);
-
             const text = await response.text();
-            console.log(`First 100 chars of ${filename}: ${text.substring(0, 100)}`);
-
-            // Check if response is HTML (error page) instead of JSON
             if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
-              console.log(`✗ Got HTML instead of JSON for iteration ${i}, stopping search`);
-              break; // Stop looking for more files
+              break;
             }
 
             try {
               const data = JSON.parse(text);
-              console.log(`Parsed data for iteration ${i}:`, data);
-              // Handle both old format (results) and new format (top_results/bottom_results)
               if (data.top_results || data.results) {
-                console.log(`✓ Valid data found for iteration ${i}`);
-                // Enrich data with titles
                 const enrichedData = enrichWithTitles(data);
                 iterations[i] = enrichedData;
                 available.push(i);
-              } else {
-                console.log(`✗ No valid results in iteration ${i} data`);
               }
             } catch (parseErr) {
               console.error(`Failed to parse JSON for iteration ${i}:`, parseErr);
             }
           } else if (response.status === 404) {
-            console.log(`✗ File not found for iteration ${i}, stopping search`);
-            break; // Stop looking for more files
+            break;
           }
         } catch (err) {
-          console.error(`Error loading iteration ${i}:`, err);
-          // Network error, continue to next iteration
           continue;
         }
       }
 
-      console.log(`Total iterations loaded: ${available.length}`);
-      console.log('Available iterations:', available);
-      console.log('Iterations data:', iterations);
-
       if (available.length === 0) {
-        console.error('No valid PageRank files found!');
         throw new Error('No PageRank result files found. Please run the C++ program first.');
       }
 
       setIterationData(iterations);
       setAvailableIterations(available);
-      setSelectedIteration(available[0]);
-      console.log('Successfully set state with iterations');
+      setSelectedIteration(available[available.length - 1]); // Default to last iteration
     } catch (err) {
       console.error('Error in loadAllIterations:', err);
       setError(err.message);
@@ -247,11 +213,15 @@ const App = () => {
     return 'rank-row';
   };
 
+  // Data is now embedded directly in the JSON files:
+  // - top_results items have 'indegree' field
+  // - top_by_indegree items have 'pagerank' field
+
   if (loading) {
     return (
       <div className="app">
         <div className="loading">
-          🔍 Loading PageRank results...
+          Loading PageRank results...
         </div>
       </div>
     );
@@ -262,10 +232,10 @@ const App = () => {
       <div className="app">
         <div className="header">
           <h1>PageRank Viewer</h1>
-          <p>English Wikipedia (2010) PageRank Visualization</p>
+          <p>English Wikipedia PageRank Visualization</p>
         </div>
         <div className="error">
-          <h2>❌ Error</h2>
+          <h2>Error</h2>
           <p>{error}</p>
           <p><strong>Instructions:</strong></p>
           <ol style={{textAlign: 'left', marginTop: '1rem'}}>
@@ -287,24 +257,25 @@ const App = () => {
     );
   }
 
+  const maxIteration = availableIterations[availableIterations.length - 1];
+
   return (
     <div className="app">
       <div className="header">
-        <h1>🔍 PageRank Viewer</h1>
+        <h1>PageRank Viewer</h1>
         <p>English Wikipedia ({currentYear || metadata?.year || '2003'}) PageRank Visualization</p>
         {metadata && (
           <p style={{fontSize: '0.9em', opacity: 0.8}}>
-            Dataset: {metadata.dataset} • {metadata.total_nodes.toLocaleString()} nodes • {metadata.total_edges.toLocaleString()} edges
+            Dataset: {metadata.dataset} | {metadata.total_nodes.toLocaleString()} nodes | {metadata.total_edges.toLocaleString()} edges
           </p>
         )}
       </div>
 
-
       <div className="results-container">
-        {/* Global Data Section - Always Shown First */}
+        {/* Global Data Section */}
         {degreeData && (
           <div className="degree-distribution">
-            <h3>📊 Degree Distribution Analysis</h3>
+            <h3>Degree Distribution Analysis</h3>
             <div className="degree-stats">
               <div className="stats-grid">
                 <div className="stat-item">
@@ -323,14 +294,6 @@ const App = () => {
                   <span className="stat-label">Max In-Degree:</span>
                   <span className="stat-value">{degreeData?.stats?.max_in_degree?.toLocaleString() || 'N/A'}</span>
                 </div>
-                <div className="stat-item">
-                  <span className="stat-label">Avg Out-Degree:</span>
-                  <span className="stat-value">{degreeData?.stats?.avg_out_degree?.toFixed(2) || 'N/A'}</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-label">Max Out-Degree:</span>
-                  <span className="stat-value">{degreeData?.stats?.max_out_degree?.toLocaleString() || 'N/A'}</span>
-                </div>
               </div>
             </div>
 
@@ -341,58 +304,30 @@ const App = () => {
                 <div>
                   <h5 style={{color: '#667eea', margin: '0 0 0.5rem 0'}}>In-Degree Chart</h5>
                   <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white', marginBottom: '0.5rem'}}>
-                    <input
-                      type="checkbox"
-                      checked={inDegreeLogX}
-                      onChange={(e) => setInDegreeLogX(e.target.checked)}
-                    />
-                    X-axis (degree) log scale
+                    <input type="checkbox" checked={inDegreeLogX} onChange={(e) => setInDegreeLogX(e.target.checked)} />
+                    X-axis log scale
                   </label>
                   <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white'}}>
-                    <input
-                      type="checkbox"
-                      checked={inDegreeLogY}
-                      onChange={(e) => setInDegreeLogY(e.target.checked)}
-                    />
-                    Y-axis (count) log scale
+                    <input type="checkbox" checked={inDegreeLogY} onChange={(e) => setInDegreeLogY(e.target.checked)} />
+                    Y-axis log scale
                   </label>
                 </div>
                 <div>
                   <h5 style={{color: '#764ba2', margin: '0 0 0.5rem 0'}}>Out-Degree Chart</h5>
                   <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white', marginBottom: '0.5rem'}}>
-                    <input
-                      type="checkbox"
-                      checked={outDegreeLogX}
-                      onChange={(e) => setOutDegreeLogX(e.target.checked)}
-                    />
-                    X-axis (degree) log scale
-                  </label>
-                  <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white', marginBottom: '0.5rem'}}>
-                    <input
-                      type="checkbox"
-                      checked={outDegreeLogY}
-                      onChange={(e) => setOutDegreeLogY(e.target.checked)}
-                    />
-                    Y-axis (count) log scale
+                    <input type="checkbox" checked={outDegreeLogX} onChange={(e) => setOutDegreeLogX(e.target.checked)} />
+                    X-axis log scale
                   </label>
                   <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white'}}>
-                    <input
-                      type="checkbox"
-                      checked={outDegreeFilterGte2}
-                      onChange={(e) => setOutDegreeFilterGte2(e.target.checked)}
-                    />
-                    Show only degree ≥ 2
+                    <input type="checkbox" checked={outDegreeLogY} onChange={(e) => setOutDegreeLogY(e.target.checked)} />
+                    Y-axis log scale
                   </label>
                 </div>
                 <div>
                   <h5 style={{color: '#10b981', margin: '0 0 0.5rem 0'}}>Convergence Chart</h5>
                   <label style={{display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white'}}>
-                    <input
-                      type="checkbox"
-                      checked={convergenceLogY}
-                      onChange={(e) => setConvergenceLogY(e.target.checked)}
-                    />
-                    Y-axis (L1 distance) log scale
+                    <input type="checkbox" checked={convergenceLogY} onChange={(e) => setConvergenceLogY(e.target.checked)} />
+                    Y-axis log scale
                   </label>
                 </div>
               </div>
@@ -400,85 +335,35 @@ const App = () => {
 
             <div className="degree-charts">
               <div className="degree-chart">
-                <h4>📈 In-Degree Distribution {inDegreeLogX && inDegreeLogY ? '(Log-Log)' : inDegreeLogX ? '(Log-X)' : inDegreeLogY ? '(Log-Y)' : ''}</h4>
+                <h4>In-Degree Distribution {inDegreeLogX && inDegreeLogY ? '(Log-Log)' : inDegreeLogX ? '(Log-X)' : inDegreeLogY ? '(Log-Y)' : ''}</h4>
                 {(() => {
                   const data = degreeData?.in_degree_distribution || [];
-
-                  // Filter data based on log scale requirements
                   let filteredData = data;
                   if (inDegreeLogX || inDegreeLogY) {
                     filteredData = data.filter(item => item.degree > 0 && item.count > 0);
                   } else {
                     filteredData = data.filter(item => item.degree <= 50);
                   }
-
-                  if (filteredData.length === 0) {
-                    return <div style={{color: 'white', padding: '20px'}}>No data to display</div>;
-                  }
-
+                  if (filteredData.length === 0) return <div style={{color: 'white', padding: '20px'}}>No data</div>;
                   const isScatter = inDegreeLogX || inDegreeLogY;
-                  const chartData = filteredData.map(item => ({
-                    degree: item.degree,
-                    count: item.count
-                  }));
+                  const chartData = filteredData.map(item => ({ degree: item.degree, count: item.count }));
 
                   return (
                     <ResponsiveContainer width={500} height={300}>
                       {isScatter ? (
                         <ScatterChart data={chartData} margin={{ top: 20, right: 20, bottom: 40, left: 60 }}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                          <XAxis
-                            dataKey="degree"
-                            scale={inDegreeLogX ? "log" : "linear"}
-                            domain={inDegreeLogX ? ['dataMin', 'dataMax'] : ['auto', 'auto']}
-                            type="number"
-                            label={{
-                              value: `In-Degree${inDegreeLogX ? ' (log)' : ''}`,
-                              position: 'insideBottom',
-                              offset: -10,
-                              fill: 'white'
-                            }}
-                            stroke="white"
-                            tick={{ fill: 'white' }}
-                          />
-                          <YAxis
-                            dataKey="count"
-                            scale={inDegreeLogY ? "log" : "linear"}
-                            domain={inDegreeLogY ? ['dataMin', 'dataMax'] : ['auto', 'auto']}
-                            type="number"
-                            label={{
-                              value: `Count${inDegreeLogY ? ' (log)' : ''}`,
-                              angle: -90,
-                              position: 'insideLeft',
-                              fill: 'white'
-                            }}
-                            stroke="white"
-                            tick={{ fill: 'white' }}
-                          />
-                          <Tooltip
-                            formatter={(value) => value.toLocaleString()}
-                            contentStyle={{ backgroundColor: '#333', border: '1px solid #667eea' }}
-                            labelFormatter={(label) => `Degree: ${label}`}
-                          />
+                          <XAxis dataKey="degree" scale={inDegreeLogX ? "log" : "linear"} domain={['dataMin', 'dataMax']} type="number" stroke="white" tick={{ fill: 'white' }} />
+                          <YAxis dataKey="count" scale={inDegreeLogY ? "log" : "linear"} domain={['dataMin', 'dataMax']} type="number" stroke="white" tick={{ fill: 'white' }} />
+                          <Tooltip formatter={(value) => value.toLocaleString()} contentStyle={{ backgroundColor: '#333', border: '1px solid #667eea' }} />
                           <Scatter dataKey="count" fill="#667eea" />
                         </ScatterChart>
                       ) : (
                         <BarChart data={chartData} margin={{ top: 20, right: 20, bottom: 40, left: 60 }}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                          <XAxis
-                            dataKey="degree"
-                            label={{ value: 'In-Degree', position: 'insideBottom', offset: -10, fill: 'white' }}
-                            stroke="white"
-                            tick={{ fill: 'white' }}
-                          />
-                          <YAxis
-                            label={{ value: 'Count', angle: -90, position: 'insideLeft', fill: 'white' }}
-                            stroke="white"
-                            tick={{ fill: 'white' }}
-                          />
-                          <Tooltip
-                            contentStyle={{ backgroundColor: '#333', border: '1px solid #667eea' }}
-                          />
+                          <XAxis dataKey="degree" stroke="white" tick={{ fill: 'white' }} />
+                          <YAxis stroke="white" tick={{ fill: 'white' }} />
+                          <Tooltip contentStyle={{ backgroundColor: '#333', border: '1px solid #667eea' }} />
                           <Bar dataKey="count" fill="#667eea" />
                         </BarChart>
                       )}
@@ -488,90 +373,35 @@ const App = () => {
               </div>
 
               <div className="degree-chart">
-                <h4>📉 Out-Degree Distribution {outDegreeLogX && outDegreeLogY ? '(Log-Log)' : outDegreeLogX ? '(Log-X)' : outDegreeLogY ? '(Log-Y)' : ''} {outDegreeFilterGte2 ? '(≥ 2)' : ''}</h4>
+                <h4>Out-Degree Distribution {outDegreeLogX && outDegreeLogY ? '(Log-Log)' : outDegreeLogX ? '(Log-X)' : outDegreeLogY ? '(Log-Y)' : ''}</h4>
                 {(() => {
                   const data = degreeData?.out_degree_distribution || [];
-
-                  // Apply >= 2 filter if enabled
                   let filteredData = data;
-                  if (outDegreeFilterGte2) {
-                    filteredData = filteredData.filter(item => item.degree >= 2);
-                  }
-
-                  // Filter data based on log scale requirements
                   if (outDegreeLogX || outDegreeLogY) {
-                    filteredData = filteredData.filter(item => item.degree > 0 && item.count > 0);
+                    filteredData = data.filter(item => item.degree > 0 && item.count > 0);
                   } else {
-                    filteredData = filteredData.filter(item => item.degree <= 50);
+                    filteredData = data.filter(item => item.degree <= 50);
                   }
-
-                  if (filteredData.length === 0) {
-                    return <div style={{color: 'white', padding: '20px'}}>No data to display</div>;
-                  }
-
+                  if (filteredData.length === 0) return <div style={{color: 'white', padding: '20px'}}>No data</div>;
                   const isScatter = outDegreeLogX || outDegreeLogY;
-                  const chartData = filteredData.map(item => ({
-                    degree: item.degree,
-                    count: item.count
-                  }));
+                  const chartData = filteredData.map(item => ({ degree: item.degree, count: item.count }));
 
                   return (
                     <ResponsiveContainer width={500} height={300}>
                       {isScatter ? (
                         <ScatterChart data={chartData} margin={{ top: 20, right: 20, bottom: 40, left: 60 }}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                          <XAxis
-                            dataKey="degree"
-                            scale={outDegreeLogX ? "log" : "linear"}
-                            domain={outDegreeLogX ? ['dataMin', 'dataMax'] : ['auto', 'auto']}
-                            type="number"
-                            label={{
-                              value: `Out-Degree${outDegreeLogX ? ' (log)' : ''}`,
-                              position: 'insideBottom',
-                              offset: -10,
-                              fill: 'white'
-                            }}
-                            stroke="white"
-                            tick={{ fill: 'white' }}
-                          />
-                          <YAxis
-                            dataKey="count"
-                            scale={outDegreeLogY ? "log" : "linear"}
-                            domain={outDegreeLogY ? ['dataMin', 'dataMax'] : ['auto', 'auto']}
-                            type="number"
-                            label={{
-                              value: `Count${outDegreeLogY ? ' (log)' : ''}`,
-                              angle: -90,
-                              position: 'insideLeft',
-                              fill: 'white'
-                            }}
-                            stroke="white"
-                            tick={{ fill: 'white' }}
-                          />
-                          <Tooltip
-                            formatter={(value) => value.toLocaleString()}
-                            contentStyle={{ backgroundColor: '#333', border: '1px solid #764ba2' }}
-                            labelFormatter={(label) => `Degree: ${label}`}
-                          />
+                          <XAxis dataKey="degree" scale={outDegreeLogX ? "log" : "linear"} domain={['dataMin', 'dataMax']} type="number" stroke="white" tick={{ fill: 'white' }} />
+                          <YAxis dataKey="count" scale={outDegreeLogY ? "log" : "linear"} domain={['dataMin', 'dataMax']} type="number" stroke="white" tick={{ fill: 'white' }} />
+                          <Tooltip formatter={(value) => value.toLocaleString()} contentStyle={{ backgroundColor: '#333', border: '1px solid #764ba2' }} />
                           <Scatter dataKey="count" fill="#764ba2" />
                         </ScatterChart>
                       ) : (
                         <BarChart data={chartData} margin={{ top: 20, right: 20, bottom: 40, left: 60 }}>
                           <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                          <XAxis
-                            dataKey="degree"
-                            label={{ value: 'Out-Degree', position: 'insideBottom', offset: -10, fill: 'white' }}
-                            stroke="white"
-                            tick={{ fill: 'white' }}
-                          />
-                          <YAxis
-                            label={{ value: 'Count', angle: -90, position: 'insideLeft', fill: 'white' }}
-                            stroke="white"
-                            tick={{ fill: 'white' }}
-                          />
-                          <Tooltip
-                            contentStyle={{ backgroundColor: '#333', border: '1px solid #764ba2' }}
-                          />
+                          <XAxis dataKey="degree" stroke="white" tick={{ fill: 'white' }} />
+                          <YAxis stroke="white" tick={{ fill: 'white' }} />
+                          <Tooltip contentStyle={{ backgroundColor: '#333', border: '1px solid #764ba2' }} />
                           <Bar dataKey="count" fill="#764ba2" />
                         </BarChart>
                       )}
@@ -583,155 +413,88 @@ const App = () => {
           </div>
         )}
 
-        {/* L1 Convergence Graph - Always Shown */}
+        {/* Convergence Graph */}
         <div className="convergence-graph">
-          <h3>📊 Convergence Graph {convergenceLogY ? '(Log Y-axis)' : ''}</h3>
-          <p>L1 distance between consecutive iterations (lower = more converged)</p>
+          <h3>Convergence Graph {convergenceLogY ? '(Log Y-axis)' : ''}</h3>
+          <p>L1 distance between consecutive iterations</p>
           {(() => {
             const convergenceData = (availableIterations || []).slice(1)
               .map(iter => {
                 const data = iterationData[iter];
                 if (!data || data.l1_distance === undefined) return null;
-                return {
-                  iteration: iter,
-                  l1_distance: data.l1_distance,
-                  isSelected: selectedIteration === iter
-                };
+                return { iteration: iter, l1_distance: data.l1_distance };
               })
               .filter(item => item !== null);
 
-            if (convergenceData.length === 0) {
-              return <div style={{color: 'white', padding: '20px'}}>No convergence data available</div>;
-            }
+            if (convergenceData.length === 0) return <div style={{color: 'white', padding: '20px'}}>No convergence data</div>;
 
             return (
               <ResponsiveContainer width={600} height={250}>
-                <LineChart
-                  data={convergenceData}
-                  margin={{ top: 20, right: 30, left: 60, bottom: 40 }}
-                  onClick={(data) => {
-                    if (data && data.activeLabel) {
-                      setSelectedIteration(parseInt(data.activeLabel));
-                    }
-                  }}
-                >
+                <LineChart data={convergenceData} margin={{ top: 20, right: 30, left: 60, bottom: 40 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#444" />
-                  <XAxis
-                    dataKey="iteration"
-                    type="number"
-                    domain={['dataMin', 'dataMax']}
-                    label={{
-                      value: 'Iteration',
-                      position: 'insideBottom',
-                      offset: -10,
-                      fill: 'white'
-                    }}
-                    stroke="white"
-                    tick={{ fill: 'white' }}
-                  />
-                  <YAxis
-                    dataKey="l1_distance"
-                    scale={convergenceLogY ? "log" : "linear"}
-                    domain={convergenceLogY ? ['auto', 'auto'] : [0, 'dataMax']}
-                    label={{
-                      value: `L1 Distance${convergenceLogY ? ' (log)' : ''}`,
-                      angle: -90,
-                      position: 'insideLeft',
-                      fill: 'white'
-                    }}
-                    stroke="white"
-                    tick={{ fill: 'white' }}
-                    tickFormatter={(value) => value.toExponential(1)}
-                  />
-                  <Tooltip
-                    formatter={(value) => [value.toExponential(3), 'L1 Distance']}
-                    labelFormatter={(label) => `Iteration: ${label}`}
-                    contentStyle={{
-                      backgroundColor: '#333',
-                      border: '1px solid #10b981',
-                      borderRadius: '4px'
-                    }}
-                  />
-                  <Line
-                    dataKey="l1_distance"
-                    stroke="#10b981"
-                    strokeWidth={3}
-                    dot={{
-                      fill: '#10b981',
-                      strokeWidth: 2,
-                      r: 5,
-                      stroke: '#fff'
-                    }}
-                    activeDot={{
-                      r: 8,
-                      fill: '#ffd700',
-                      stroke: '#10b981',
-                      strokeWidth: 2
-                    }}
-                  />
+                  <XAxis dataKey="iteration" type="number" domain={['dataMin', 'dataMax']} stroke="white" tick={{ fill: 'white' }} />
+                  <YAxis dataKey="l1_distance" scale={convergenceLogY ? "log" : "linear"} domain={convergenceLogY ? ['auto', 'auto'] : [0, 'dataMax']} stroke="white" tick={{ fill: 'white' }} tickFormatter={(value) => value.toExponential(1)} />
+                  <Tooltip formatter={(value) => [value.toExponential(3), 'L1 Distance']} contentStyle={{ backgroundColor: '#333', border: '1px solid #10b981' }} />
+                  <Line dataKey="l1_distance" stroke="#10b981" strokeWidth={3} dot={{ fill: '#10b981', strokeWidth: 2, r: 5, stroke: '#fff' }} />
                 </LineChart>
               </ResponsiveContainer>
             );
           })()}
         </div>
 
-        {/* Top/Bottom 100 Section - Shown Below Global Data */}
-        <div className="view-controls">
-          <div className="iteration-controls">
-            {availableIterations.map(iter => (
-              <button
-                key={iter}
-                className={`iteration-btn ${selectedIteration === iter ? 'active' : ''}`}
-                onClick={() => setSelectedIteration(iter)}
-              >
-                {iter === 0 ? 'Initial' : `Iter ${iter}`}
-              </button>
-            ))}
-          </div>
-          <div className="ranking-controls">
-            <button
-              className={`view-btn ${!showBottom ? 'active' : ''}`}
-              onClick={() => setShowBottom(false)}
-            >
-              🏆 Top 100
-            </button>
-            <button
-              className={`view-btn ${showBottom ? 'active' : ''}`}
-              onClick={() => setShowBottom(true)}
-            >
-              📉 Bottom 100
-            </button>
-          </div>
-        </div>
-
+        {/* Unified Top 100 Table */}
         <div className="iteration-info">
-          <h2>
-            {selectedIteration === 0 ? '🎯 Initial State' : `📈 Iteration ${selectedIteration}`}
-            {selectedIteration > 0 && iterationData[selectedIteration]?.l1_distance && (
-              <span className="l1-badge">
-                L1Δ: {iterationData[selectedIteration].l1_distance.toExponential(2)}
-              </span>
-            )}
-          </h2>
-          <p>
-            {showBottom ? 'Bottom 100' : 'Top 100'} articles by PageRank score
-            {showBottom && ' (lowest probability)'}
-            {!showBottom && ' (highest probability)'}
-          </p>
+          <h2>Top 100 Articles</h2>
 
-          {currentData.dataset_stats && (
-            <div className="dataset-stats">
-              <h4>📊 Dataset Statistics</h4>
-              <div className="stats-grid">
-                <div className="stat-item">
-                  <span className="stat-label">Articles:</span>
-                  <span className="stat-value">{currentData?.dataset_stats?.total_articles?.toLocaleString() || 'N/A'}</span>
-                </div>
-                <div className="stat-item">
-                  <span className="stat-label">Links:</span>
-                  <span className="stat-value">{currentData?.dataset_stats?.total_edges?.toLocaleString() || 'N/A'}</span>
-                </div>
-              </div>
+          {/* Mode Toggle - Slider style */}
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', margin: '1rem 0'}}>
+            <span style={{color: rankingMode === 'pagerank' ? '#667eea' : '#888', fontWeight: rankingMode === 'pagerank' ? 'bold' : 'normal'}}>
+              By PageRank
+            </span>
+            <label className="switch" style={{position: 'relative', display: 'inline-block', width: '60px', height: '34px'}}>
+              <input
+                type="checkbox"
+                checked={rankingMode === 'indegree'}
+                onChange={(e) => setRankingMode(e.target.checked ? 'indegree' : 'pagerank')}
+                style={{opacity: 0, width: 0, height: 0}}
+              />
+              <span style={{
+                position: 'absolute', cursor: 'pointer', top: 0, left: 0, right: 0, bottom: 0,
+                backgroundColor: rankingMode === 'indegree' ? '#60a5fa' : '#667eea',
+                transition: '.4s', borderRadius: '34px'
+              }}>
+                <span style={{
+                  position: 'absolute', content: '""', height: '26px', width: '26px',
+                  left: rankingMode === 'indegree' ? '30px' : '4px', bottom: '4px',
+                  backgroundColor: 'white', transition: '.4s', borderRadius: '50%'
+                }}></span>
+              </span>
+            </label>
+            <span style={{color: rankingMode === 'indegree' ? '#60a5fa' : '#888', fontWeight: rankingMode === 'indegree' ? 'bold' : 'normal'}}>
+              By Indegree
+            </span>
+          </div>
+
+          {/* Iteration Slider - only show for PageRank mode */}
+          {rankingMode === 'pagerank' && (
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', margin: '1rem 0'}}>
+              <span style={{color: 'white'}}>Iteration:</span>
+              <input
+                type="range"
+                min={availableIterations[0]}
+                max={maxIteration}
+                value={selectedIteration}
+                onChange={(e) => setSelectedIteration(parseInt(e.target.value))}
+                style={{width: '200px'}}
+              />
+              <span style={{color: 'white', minWidth: '80px'}}>
+                {selectedIteration === 0 ? 'Initial' : `Iter ${selectedIteration}`}
+              </span>
+              {selectedIteration > 0 && iterationData[selectedIteration]?.l1_distance && (
+                <span className="l1-badge" style={{fontSize: '0.8em', padding: '2px 8px', background: '#10b981', borderRadius: '4px'}}>
+                  L1: {iterationData[selectedIteration].l1_distance.toExponential(2)}
+                </span>
+              )}
             </div>
           )}
 
@@ -741,22 +504,49 @@ const App = () => {
                 <tr>
                   <th>Rank</th>
                   <th>Article Title</th>
-                  <th>PageRank Score</th>
+                  {rankingMode === 'pagerank' ? (
+                    <>
+                      <th>PageRank Score</th>
+                      <th>Indegree</th>
+                    </>
+                  ) : (
+                    <>
+                      <th>Indegree</th>
+                      <th>PageRank (iter {maxIteration})</th>
+                    </>
+                  )}
                 </tr>
               </thead>
               <tbody>
-                {(showBottom ? currentData.bottom_results || [] : currentData.top_results || currentData.results || []).map((item, index) => (
-                  <tr key={index} className={getRankClass(item.rank)}>
-                    <td className="rank-cell">
-                      #{item.rank}
-                      {!showBottom && item.rank === 1 && ' 🥇'}
-                      {!showBottom && item.rank === 2 && ' 🥈'}
-                      {!showBottom && item.rank === 3 && ' 🥉'}
-                    </td>
-                    <td className="title-cell">{item.title}</td>
-                    <td className="score-cell">{formatScore(item.score)}</td>
-                  </tr>
-                ))}
+                {rankingMode === 'pagerank' ? (
+                  (currentData.top_results || currentData.results || []).map((item, index) => (
+                    <tr key={index} className={getRankClass(item.rank)}>
+                      <td className="rank-cell">
+                        #{item.rank}
+                        {item.rank === 1 && ' 🥇'}
+                        {item.rank === 2 && ' 🥈'}
+                        {item.rank === 3 && ' 🥉'}
+                      </td>
+                      <td className="title-cell">{item.title}</td>
+                      <td className="score-cell">{formatScore(item.score)}</td>
+                      <td className="score-cell">{item.indegree !== undefined ? item.indegree.toLocaleString() : '—'}</td>
+                    </tr>
+                  ))
+                ) : (
+                  (biggestChanges?.top_by_indegree || []).map((item, index) => (
+                    <tr key={index} className={getRankClass(index + 1)}>
+                      <td className="rank-cell">
+                        #{index + 1}
+                        {index === 0 && ' 🥇'}
+                        {index === 1 && ' 🥈'}
+                        {index === 2 && ' 🥉'}
+                      </td>
+                      <td className="title-cell">{titles[item.wiki_id] || `Unknown (ID: ${item.wiki_id})`}</td>
+                      <td className="score-cell">{item.indegree.toLocaleString()}</td>
+                      <td className="score-cell">{item.pagerank !== undefined ? formatScore(item.pagerank) : '—'}</td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
@@ -765,19 +555,15 @@ const App = () => {
         {/* Biggest Changes Section */}
         {biggestChanges && (
           <div className="changes-section" style={{marginTop: '3rem'}}>
-            <h2 style={{textAlign: 'center', marginBottom: '0.5rem'}}>📈 Biggest PageRank Changes</h2>
+            <h2 style={{textAlign: 'center', marginBottom: '0.5rem'}}>Biggest PageRank Changes</h2>
             <p style={{textAlign: 'center', marginBottom: '1.5rem', opacity: 0.8}}>
               Changes between iteration {biggestChanges.analysis.from_iteration} and {biggestChanges.analysis.to_iteration}
-            </p>
-            <p style={{textAlign: 'center', marginTop: '-0.5rem', marginBottom: '1.5rem', opacity: 0.7}}>
-              We highlight articles whose PageRank changed the most between the first and last iteration
-              (ratio of final to initial score).
             </p>
 
             <div style={{display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap'}}>
               {/* Biggest Increases */}
               <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
-                <h3 style={{color: '#4ade80', textAlign: 'center', marginBottom: '1rem'}}>🚀 Top 25 Increases</h3>
+                <h3 style={{color: '#4ade80', textAlign: 'center', marginBottom: '1rem'}}>Top 25 Increases</h3>
                 <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
                   <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
                     <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
@@ -804,7 +590,7 @@ const App = () => {
 
               {/* Biggest Decreases */}
               <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
-                <h3 style={{color: '#f87171', textAlign: 'center', marginBottom: '1rem'}}>📉 Top 25 Decreases</h3>
+                <h3 style={{color: '#f87171', textAlign: 'center', marginBottom: '1rem'}}>Top 25 Decreases</h3>
                 <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
                   <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
                     <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
@@ -830,14 +616,75 @@ const App = () => {
               </div>
             </div>
 
-            {/* Dropped the Indegree vs PageRank Analysis section per request */}
+            {/* Indegree vs PageRank Analysis */}
+            <div style={{marginTop: '2rem'}}>
+              <h3 style={{textAlign: 'center', marginBottom: '1.5rem'}}>Indegree vs PageRank Analysis</h3>
+              <div style={{display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+                {biggestChanges.overperformers && (
+                  <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
+                    <h3 style={{color: '#8b5cf6', textAlign: 'center', marginBottom: '1rem'}}>Top 25 Overperformers</h3>
+                    <p style={{textAlign: 'center', fontSize: '0.8rem', marginBottom: '1rem', opacity: 0.7}}>Low indegree, high PageRank</p>
+                    <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
+                      <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
+                        <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
+                          <tr>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Rank</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Title</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>Indegree</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#8b5cf6'}}>PageRank</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {biggestChanges.overperformers.map((item, index) => (
+                            <tr key={`over-${index}`} style={{borderBottom: '1px solid #374151'}}>
+                              <td style={{padding: '0.5rem', textAlign: 'center'}}>#{item.rank}</td>
+                              <td style={{padding: '0.5rem'}}>{titles[item.wiki_id] || `Unknown`}</td>
+                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{item.indegree}</td>
+                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{formatScore(item.final_score)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
+                {biggestChanges.underperformers && (
+                  <div className="changes-column" style={{flex: '1', minWidth: '400px', maxWidth: '600px'}}>
+                    <h3 style={{color: '#f59e0b', textAlign: 'center', marginBottom: '1rem'}}>Top 25 Underperformers</h3>
+                    <p style={{textAlign: 'center', fontSize: '0.8rem', marginBottom: '1rem', opacity: 0.7}}>High indegree, low PageRank</p>
+                    <div className="changes-table-container" style={{maxHeight: '400px', overflowY: 'auto', border: '1px solid #374151', borderRadius: '8px'}}>
+                      <table className="changes-table" style={{width: '100%', borderCollapse: 'collapse'}}>
+                        <thead style={{position: 'sticky', top: 0, background: '#1f2937', zIndex: 1}}>
+                          <tr>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Rank</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Title</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>Indegree</th>
+                            <th style={{padding: '0.75rem', borderBottom: '1px solid #374151', color: '#f59e0b'}}>PageRank</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {biggestChanges.underperformers.map((item, index) => (
+                            <tr key={`under-${index}`} style={{borderBottom: '1px solid #374151'}}>
+                              <td style={{padding: '0.5rem', textAlign: 'center'}}>#{item.rank}</td>
+                              <td style={{padding: '0.5rem'}}>{titles[item.wiki_id] || `Unknown`}</td>
+                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{item.indegree}</td>
+                              <td style={{padding: '0.5rem', textAlign: 'right'}}>{formatScore(item.final_score)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         )}
 
         <div style={{textAlign: 'center', marginTop: '2rem', opacity: 0.7}}>
           <p>
-            📊 Showing results from English Wikipedia ({currentYear || metadata?.year || '2003'}) PageRank algorithm
-            {availableIterations.length > 1 && ` (${availableIterations.length} iterations available)`}
+            English Wikipedia ({currentYear || '2003'}) PageRank | {availableIterations.length} iterations
           </p>
         </div>
       </div>

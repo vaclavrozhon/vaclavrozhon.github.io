@@ -795,6 +795,32 @@ private:
                 overperformer_count++;
             }
         }
+        file << "\n  ],\n";
+
+        // Top 100 by indegree
+        std::vector<std::pair<int, int>> indegree_sorted; // pair of (our_id, indegree)
+        for (int i = 0; i < N; i++) {
+            indegree_sorted.push_back({i, indegree[i]});
+        }
+        std::partial_sort(indegree_sorted.begin(), indegree_sorted.begin() + std::min(100, N), indegree_sorted.end(),
+                         [](const auto& a, const auto& b) {
+                             return a.second > b.second; // Highest indegree first
+                         });
+
+        file << "  \"top_by_indegree\": [\n";
+        for (int i = 0; i < std::min(100, N); i++) {
+            int our_id = indegree_sorted[i].first;
+            int wiki_id = getWikiIdFromOurId(our_id);
+            int node_indegree = indegree_sorted[i].second;
+            double final_score = probability[our_id];
+
+            needed_wiki_ids.insert(wiki_id); // Track this ID for title lookup
+
+            if (i > 0) file << ",\n";
+            file << "    {\"wiki_id\": " << wiki_id
+                 << ", \"indegree\": " << node_indegree
+                 << ", \"pagerank\": " << std::scientific << std::setprecision(6) << final_score << "}";
+        }
         file << "\n  ]\n}\n";
         file.close();
 
@@ -876,7 +902,8 @@ public:
 
             if (i > 0) file << ",\n";
             file << "    {\"rank\": " << (i + 1) << ", \"wiki_id\": " << wiki_id
-                 << ", \"score\": " << std::scientific << std::setprecision(6) << current_ranks[our_idx] << "}";
+                 << ", \"score\": " << std::scientific << std::setprecision(6) << current_ranks[our_idx]
+                 << ", \"indegree\": " << (indegree.empty() ? 0 : indegree[our_idx]) << "}";
         }
 
         file << "\n  ],\n";
@@ -923,21 +950,162 @@ private:
                       << " Score: " << std::scientific << std::setprecision(6) << probability[our_idx] << std::endl;
         }
     }
+
+public:
+    void investigateIncomingLinks(int target_wiki_id, int year) {
+        std::cout << "🔍 Investigating incoming links to wiki_id " << target_wiki_id << "..." << std::endl;
+
+        // Check if this wiki_id exists in our mapping
+        auto target_it = wiki_id_to_our_id.find(target_wiki_id);
+        if (target_it == wiki_id_to_our_id.end()) {
+            std::cerr << "❌ Wiki ID " << target_wiki_id << " not found in the graph" << std::endl;
+            return;
+        }
+        int target_our_id = target_it->second;
+
+        // Collect all pages that link to this target
+        std::vector<std::tuple<int, int, double, std::string>> incoming_links; // (wiki_id, our_id, pagerank, title)
+
+        std::ifstream file(csv_filename);
+        if (!file.is_open()) {
+            throw std::runtime_error("Cannot open file: " + csv_filename);
+        }
+
+        std::string line;
+        std::getline(file, line); // Skip header
+
+        int processed = 0;
+        auto start_time = std::chrono::high_resolution_clock::now();
+
+        while (std::getline(file, line)) {
+            auto fields = splitTabLine(line);
+            if (fields.size() >= 4) {
+                int from_wiki_id = std::stoi(fields[0]);
+                int to_wiki_id = std::stoi(fields[2]);
+
+                // Skip self-loops
+                if (from_wiki_id != to_wiki_id && to_wiki_id == target_wiki_id) {
+                    auto from_it = wiki_id_to_our_id.find(from_wiki_id);
+                    if (from_it != wiki_id_to_our_id.end()) {
+                        int from_our_id = from_it->second;
+                        std::string title = fields[1]; // page_title_from
+                        std::replace(title.begin(), title.end(), '_', ' ');
+                        incoming_links.push_back({from_wiki_id, from_our_id, probability[from_our_id], title});
+                    }
+                }
+
+                // Also capture the target's title when we see it as a destination
+                if (to_wiki_id == target_wiki_id && wiki_id_to_title.find(target_wiki_id) == wiki_id_to_title.end()) {
+                    std::string target_title = fields[3]; // page_title_to
+                    std::replace(target_title.begin(), target_title.end(), '_', ' ');
+                    wiki_id_to_title[target_wiki_id] = target_title;
+                }
+
+                processed++;
+                if (processed % 5000000 == 0) {
+                    auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(
+                        std::chrono::high_resolution_clock::now() - start_time);
+                    std::cout << "     📊 Processed " << processed << " edges, found " << incoming_links.size()
+                              << " incoming links (elapsed: " << elapsed.count() << "s)" << std::endl;
+                }
+            }
+        }
+        file.close();
+
+        // Sort by pagerank (descending)
+        std::sort(incoming_links.begin(), incoming_links.end(),
+                  [](const auto& a, const auto& b) {
+                      return std::get<2>(a) > std::get<2>(b);
+                  });
+
+        // Get target page info
+        std::string target_title = wiki_id_to_title.count(target_wiki_id) ? wiki_id_to_title[target_wiki_id] : "Unknown";
+        double target_pagerank = probability[target_our_id];
+        int target_indegree = indegree.empty() ? 0 : indegree[target_our_id];
+
+        std::cout << "\n📄 Target page: " << target_title << " (wiki_id: " << target_wiki_id << ")" << std::endl;
+        std::cout << "   PageRank: " << std::scientific << std::setprecision(6) << target_pagerank << std::endl;
+        std::cout << "   In-degree: " << target_indegree << std::endl;
+        std::cout << "   Found " << incoming_links.size() << " incoming links" << std::endl;
+
+        // Save to JSON file
+        std::ostringstream filename;
+        filename << getYearDirectory(year) << "investigate_" << target_wiki_id << ".json";
+
+        std::ofstream outfile(filename.str());
+        outfile << "{\n";
+        outfile << "  \"target\": {\n";
+        outfile << "    \"wiki_id\": " << target_wiki_id << ",\n";
+        outfile << "    \"title\": \"" << escapeJSON(target_title) << "\",\n";
+        outfile << "    \"pagerank\": " << std::scientific << std::setprecision(6) << target_pagerank << ",\n";
+        outfile << "    \"indegree\": " << target_indegree << "\n";
+        outfile << "  },\n";
+        outfile << "  \"incoming_links\": [\n";
+
+        for (size_t i = 0; i < incoming_links.size(); i++) {
+            const auto& link = incoming_links[i];
+            if (i > 0) outfile << ",\n";
+            outfile << "    {\"wiki_id\": " << std::get<0>(link)
+                    << ", \"pagerank\": " << std::scientific << std::setprecision(6) << std::get<2>(link)
+                    << ", \"title\": \"" << escapeJSON(std::get<3>(link)) << "\"}";
+        }
+
+        outfile << "\n  ],\n";
+        outfile << "  \"summary\": {\n";
+        outfile << "    \"total_incoming\": " << incoming_links.size() << ",\n";
+
+        // Calculate total pagerank contribution from incoming links
+        double total_contribution = 0.0;
+        for (const auto& link : incoming_links) {
+            int from_our_id = std::get<1>(link);
+            if (outdegree[from_our_id] > 0) {
+                total_contribution += std::get<2>(link) / outdegree[from_our_id];
+            }
+        }
+        outfile << "    \"total_pagerank_contribution\": " << std::scientific << std::setprecision(6) << total_contribution << "\n";
+        outfile << "  }\n";
+        outfile << "}\n";
+        outfile.close();
+
+        std::cout << "💾 Investigation results saved to " << filename.str() << std::endl;
+
+        // Print top 20 incoming links
+        std::cout << "\n🔗 Top 20 pages linking to this page (by PageRank):" << std::endl;
+        for (size_t i = 0; i < std::min(incoming_links.size(), (size_t)20); i++) {
+            const auto& link = incoming_links[i];
+            std::cout << std::setw(3) << (i + 1) << ". "
+                      << std::scientific << std::setprecision(3) << std::get<2>(link) << " | "
+                      << std::get<3>(link) << " (wiki_id: " << std::get<0>(link) << ")" << std::endl;
+        }
+    }
 };
 
 int main(int argc, char* argv[]) {
     double ALPHA = 0.9;
     int ITERATIONS = DEFAULT_ITERATIONS;
     int YEAR = DEFAULT_YEAR;
+    int investigate_wiki_id = -1;
+    bool update_year = false;
 
-    if (argc > 1) {
-        ALPHA = std::atof(argv[1]);
-    }
-    if (argc > 2) {
-        ITERATIONS = std::atoi(argv[2]);
-    }
-    if (argc > 3) {
-        YEAR = std::atoi(argv[3]);
+    // Parse arguments
+    for (int i = 1; i < argc; i++) {
+        std::string arg = argv[i];
+        if (arg == "--investigate" && i + 1 < argc) {
+            investigate_wiki_id = std::atoi(argv[++i]);
+        } else if (arg == "--update-year") {
+            update_year = true;
+        } else if (arg == "--year" && i + 1 < argc) {
+            YEAR = std::atoi(argv[++i]);
+        } else if (arg == "--alpha" && i + 1 < argc) {
+            ALPHA = std::atof(argv[++i]);
+        } else if (arg == "--iterations" && i + 1 < argc) {
+            ITERATIONS = std::atoi(argv[++i]);
+        } else if (arg[0] != '-') {
+            // Legacy positional arguments: alpha, iterations, year
+            if (i == 1) ALPHA = std::atof(argv[i]);
+            else if (i == 2) ITERATIONS = std::atoi(argv[i]);
+            else if (i == 3) YEAR = std::atoi(argv[i]);
+        }
     }
 
     const std::string ZENODO_BASE = "https://zenodo.org/records/2539424/files";
@@ -947,9 +1115,12 @@ int main(int argc, char* argv[]) {
     try {
         std::cout << "🌐 WikiLinkGraphs English Wikipedia " << YEAR << " PageRank Demo (C++)" << std::endl;
         std::cout << "📥 Dataset: " << FNAME << std::endl;
-        std::cout << "💡 Usage: ./enwiki_pagerank [alpha] [iterations] [year] [--update-year]" << std::endl;
-        std::cout << "   Defaults: alpha=0.9, iterations=" << DEFAULT_ITERATIONS << ", year=" << DEFAULT_YEAR << std::endl;
-        std::cout << "   --update-year: Update public/current_year.txt (default: no)" << std::endl;
+        std::cout << "💡 Usage: ./enwiki_pagerank [options]" << std::endl;
+        std::cout << "   --alpha N        Damping factor (default: 0.9)" << std::endl;
+        std::cout << "   --iterations N   Number of iterations (default: " << DEFAULT_ITERATIONS << ")" << std::endl;
+        std::cout << "   --year N         Wikipedia year (default: " << DEFAULT_YEAR << ")" << std::endl;
+        std::cout << "   --update-year    Update public/current_year.txt" << std::endl;
+        std::cout << "   --investigate ID Investigate incoming links to wiki_id" << std::endl;
 
         auto start = std::chrono::high_resolution_clock::now();
 
@@ -982,13 +1153,18 @@ int main(int argc, char* argv[]) {
 
         // Setup year-specific directory and save degree distributions
         pagerank.ensureYearDirectoryExists(YEAR);
-        if (argc > 4 && std::string(argv[4]) == "--update-year") {
+        if (update_year) {
             pagerank.saveCurrentYear(YEAR);
         }
         pagerank.saveDegreeDistributions(YEAR);
 
         // Run PageRank
         pagerank.runPageRank(ALPHA, ITERATIONS, YEAR);
+
+        // If investigate mode, run investigation after PageRank
+        if (investigate_wiki_id >= 0) {
+            pagerank.investigateIncomingLinks(investigate_wiki_id, YEAR);
+        }
 
         auto end = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start);

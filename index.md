@@ -33,6 +33,8 @@ I wrote a website about information theory behind machine learning. Check it out
 
 ## News
 
+_November 2025:_ Our research on distr. algorithms and descriptive combinatorics has been highlighted by [Quanta Magazine](https://www.quantamagazine.org/a-new-bridge-links-the-strange-math-of-infinity-to-computer-science-20251121/)!
+
 _August 2025:_ Check out our [latest Polylog video](https://www.youtube.com/watch?v=Y95a-8oNqps) about radix sort! More about it [here](polylog/radixsort). 
 
 _March 2025:_ Check out our [latest Polylog video](https://www.youtube.com/watch?v=Otvcbw6k4eo&t=1s) about zero-knowledge proofs!
