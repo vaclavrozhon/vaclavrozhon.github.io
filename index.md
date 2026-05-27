@@ -33,6 +33,10 @@ I wrote a website about information theory behind machine learning. Check it out
 
 ## News
 
+_February 2026:_ I received the [Neuron Prize](https://www.nadaceneuron.cz/) for young scientists in computer science!
+
+_April 2026:_ [An interview about my research for the Charles University Forum magazine (in Czech)](https://www.ukforum.cz/rubriky/veda/9832-vaclav-rozhon-nepise-kody-hleda-principy-na-nichz-stoji-digitalni-svet).
+
 _November 2025:_ Our research on distr. algorithms and descriptive combinatorics has been highlighted by [Quanta Magazine](https://www.quantamagazine.org/a-new-bridge-links-the-strange-math-of-infinity-to-computer-science-20251121/)!
 
 _August 2025:_ Check out our [latest Polylog video](https://www.youtube.com/watch?v=Y95a-8oNqps) about radix sort! More about it [here](polylog/radixsort). 
