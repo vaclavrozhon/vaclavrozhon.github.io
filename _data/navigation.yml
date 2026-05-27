@@ -1,8 +1,8 @@
 main:
   - title: "About me"
     url: "/"
-  - title: "Blog"
-    url: "/blog/"
+  # - title: "Blog"
+  #   url: "/blog/"
   - title: "Polylog"
     url: "/polylog/"
   - title: "Teaching"
