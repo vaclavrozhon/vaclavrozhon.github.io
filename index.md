@@ -25,11 +25,7 @@ I greatly enjoy creating algorithmic videos together with the [amazing Polylog t
 
 ## Bayes, bits & brains
 
-I wrote a website about information theory behind machine learning. Check it out!
-
-[
-![Bayes, bits & brains](/assets/images/bbb_thumb.png "Bayes, bits & brains")
-](https://bayesbitsbrains.github.io/)
+I wrote a website about information theory behind machine learning. [Check it out!](https://bayesbitsbrains.github.io/)
 
 ## News
 
