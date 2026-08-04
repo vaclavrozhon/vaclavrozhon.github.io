@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f3efe7">
+    <meta name="color-scheme" content="light">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Bilance">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="description" content="Osobní počítadlo časové bilance.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
+    <title>Časová bilance</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Osobní počítadlo</p>
+          <h1>Časová bilance</h1>
+        </div>
+        <div class="status-pill" id="status-pill" data-mode="paused">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span id="status-text">Pauza</span>
+        </div>
+      </header>
+
+      <section class="balance-card" aria-labelledby="balance-label">
+        <p id="balance-label">Aktuální bilance</p>
+        <div class="balance" id="balance" aria-live="off" aria-atomic="true">
+          <span id="balance-sign">+</span><span id="balance-time">00:00:00</span>
+        </div>
+        <p class="running-copy" id="running-copy">Spusť přičítání nebo odečítání.</p>
+      </section>
+
+      <section class="totals" aria-label="Souhrn časů">
+        <article class="total-card total-plus">
+          <div class="total-heading">
+            <span class="mini-mark" aria-hidden="true">+</span>
+            <span>Přičteno</span>
+          </div>
+          <strong id="plus-total">00:00:00</strong>
+        </article>
+        <article class="total-card total-minus">
+          <div class="total-heading">
+            <span class="mini-mark" aria-hidden="true">−</span>
+            <span>Odečteno</span>
+          </div>
+          <strong id="minus-total">00:00:00</strong>
+        </article>
+      </section>
+
+      <section class="controls" aria-label="Ovládání časomíry">
+        <div class="direction-grid">
+          <button class="direction-button plus-button" id="plus-button" type="button" aria-pressed="false">
+            <span class="button-mark" aria-hidden="true">+</span>
+            <span class="button-copy">Přičítat</span>
+          </button>
+          <button class="direction-button minus-button" id="minus-button" type="button" aria-pressed="false">
+            <span class="button-mark" aria-hidden="true">−</span>
+            <span class="button-copy">Odečítat</span>
+          </button>
+        </div>
+        <button class="pause-button" id="pause-button" type="button" disabled>
+          <span class="pause-icon" aria-hidden="true"><i></i><i></i></span>
+          <span>Pauza</span>
+        </button>
+      </section>
+
+      <footer class="app-footer">
+        <p class="storage-note">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 1 1 4 0v2h-4V7Zm3 9.73V18h-2v-1.27a2 2 0 1 1 2 0Z"/></svg>
+          Uloženo jen v tomto prohlížeči
+        </p>
+        <div class="utility-actions">
+          <button class="text-button" id="backup-open" type="button">Záloha</button>
+          <span aria-hidden="true">·</span>
+          <button class="text-button danger-text" id="reset-open" type="button">Vynulovat</button>
+        </div>
+      </footer>
+    </main>
+
+    <dialog id="backup-dialog" aria-labelledby="backup-title">
+      <div class="dialog-content">
+        <div class="dialog-heading">
+          <p class="eyebrow">Data v bezpečí</p>
+          <h2 id="backup-title">Záloha bilance</h2>
+        </div>
+        <p>Data žijí jen v tomto prohlížeči. Občas si stáhni malý soubor se zálohou — hodí se při změně telefonu nebo smazání dat prohlížeče.</p>
+        <div class="dialog-actions stacked-actions">
+          <button class="primary-dialog-button" id="export-button" type="button">Stáhnout zálohu</button>
+          <button class="secondary-dialog-button" id="import-button" type="button">Obnovit ze souboru</button>
+          <input id="import-input" type="file" accept="application/json,.json" hidden>
+          <button class="quiet-dialog-button" data-close-dialog="backup-dialog" type="button">Zavřít</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="reset-dialog" aria-labelledby="reset-title">
+      <div class="dialog-content">
+        <div class="dialog-heading">
+          <p class="eyebrow danger-text">Nevratná akce</p>
+          <h2 id="reset-title">Vynulovat vše?</h2>
+        </div>
+        <p>Smaže se přičtený i odečtený čas uložený v tomto prohlížeči.</p>
+        <div class="dialog-actions">
+          <button class="secondary-dialog-button" data-close-dialog="reset-dialog" type="button">Zrušit</button>
+          <button class="danger-dialog-button" id="reset-confirm" type="button">Ano, vynulovat</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <noscript>Pro fungování časomíry je potřeba povolit JavaScript.</noscript>
+  </body>
+</html>
