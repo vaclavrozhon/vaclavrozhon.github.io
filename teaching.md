@@ -8,6 +8,10 @@ header:
 ---
 
 
+# Fall 2026
+
+[Probability 2](/teaching/2026/probability-2)
+
 # Fall 2025
 
 [Seminar in Probability and Algorithms](teaching/2025/probability-algorithms-seminar.md)
