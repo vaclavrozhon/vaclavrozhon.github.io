@@ -1,4 +1,6 @@
 class RandomWalk extends MarkovChain {
+    static meta = {"name": "Random Walk", "description": "1D random walk with absorbing boundaries."};
+
     constructor(p = 0.5, startPos = 4) {
         const q = 1 - p;
         const numStates = 11;
@@ -45,27 +47,13 @@ class RandomWalk extends MarkovChain {
         this.q = q;
         this.startPos = clampedStart;
 
-        // Absorption tracking - TWO absorbing states (0 and 10)
-        this.absorbingStates = [0, numStates - 1]; // States 0 and 10
-        this.dotArrivalSteps = new Array(this.numDots).fill(NaN);
-        this._absorbed = new Array(this.numDots).fill(false);
-        this.absorbedCount = 0;
-        this.onArrival = (dotIndex, state) => {
-            if (this.absorbingStates.includes(state) && !this._absorbed[dotIndex]) {
-                this._absorbed[dotIndex] = true;
-                this.absorbedCount++;
-                const dot = this.dots[dotIndex];
-                const transitions = dot.history ? dot.history.length - 1 : 0;
-                this.dotArrivalSteps[dotIndex] = transitions;
-            }
-        };
+        this.trackAbsorption([0, numStates - 1]);
     }
 
     getNodePositions(centerX, centerY, radius, canvasWidth = 800) {
         // Override to draw nodes in a horizontal line instead of circle
-        // Node radius is 30, so spacing is 4 * radius = 120
-        const nodeRadius = 30;
-        const spacing = 4 * nodeRadius;
+        // Leave space between circles for both transition labels.
+        const spacing = Math.max(100, Math.min(120, (canvasWidth - 180) / (this.states.length - 1)));
         const totalWidth = spacing * (this.states.length - 1);
         const startX = centerX - totalWidth / 2;
 
@@ -172,21 +160,6 @@ class RandomWalk extends MarkovChain {
         // Rebuild initial distribution and reset dots so change takes effect
         this.initialDistribution = new Array(numStates).fill(0);
         this.initialDistribution[clamped] = 1.0;
-        this.reset();
-    }
-
-    reset() {
-        super.reset();
-        this.dotArrivalSteps = new Array(this.numDots).fill(NaN);
-        this._absorbed = new Array(this.numDots).fill(false);
-        this.absorbedCount = 0;
-    }
-
-    setNumDots(num) {
-        super.setNumDots(num);
-        this.dotArrivalSteps = new Array(num).fill(NaN);
-        this._absorbed = new Array(num).fill(false);
-        this.absorbedCount = 0;
     }
 }
 

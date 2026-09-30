@@ -36,37 +36,20 @@ class SnakesAndLadders extends MarkovChain {
         };
         this.rebuildMatrix();
 
-        // Absorption tracking
-        this.absorbingState = this.size; // 100
-        this.dotArrivalSteps = new Array(this.numDots).fill(NaN); // NaN until absorbed
-        this._absorbed = new Array(this.numDots).fill(false);
-        this.absorbedCount = 0;
-        this.onArrival = (dotIndex, state) => {
-            if (state === this.absorbingState && !this._absorbed[dotIndex]) {
-                this._absorbed[dotIndex] = true;
-                this.absorbedCount++;
-                // Count actual transitions, not animation frames
-                const dot = this.dots[dotIndex];
-                const transitions = dot.history ? dot.history.length - 1 : 0;
-                this.dotArrivalSteps[dotIndex] = transitions;
-                console.log(`[S&L] Dot ${dotIndex} reached 100 after ${transitions} transitions`);
-            }
-        };
+        this.trackAbsorption([this.size]);
     }
 
     static buildTransitionMatrix(size, specials) {
-        const n = size + 1;
-        const M = Array.from({ length: n }, () => new Array(n).fill(0));
-        for (let s = 0; s <= size; s++) {
-            if (s === size) { M[s][size] = 1; continue; }
-            for (let d = 1; d <= 6; d++) {
-                let t = s + d;
-                if (t > size) t = size; // overshoot ends at 100
-                if (specials[t] != null) t = specials[t];
-                M[s][t] += 1 / 6;
+        const matrix = Array.from({ length: size + 1 }, () => new Array(size + 1).fill(0));
+        for (let state = 0; state <= size; state++) {
+            if (state === size) { matrix[state][size] = 1; continue; }
+            for (let roll = 1; roll <= 6; roll++) {
+                let target = Math.min(state + roll, size);
+                if (specials[target] != null) target = specials[target];
+                matrix[state][target] += 1 / 6;
             }
         }
-        return M;
+        return matrix;
     }
 
     getNodePositions(centerX, centerY, radius, canvasWidth = 800) {
@@ -153,27 +136,9 @@ class SnakesAndLadders extends MarkovChain {
     }
 
     getHistogramData() {
-        // Ultra simple: just return the raw times array
-        const result = this.dotArrivalSteps ? this.dotArrivalSteps.filter((v) => Number.isFinite(v)) : [];
-        console.log('[S&L] getHistogramData: returning', result.length, 'times:', result.slice(0, 10));
-        return result;
+        return this.dotArrivalSteps.filter(Number.isFinite);
     }
 
-    reset() {
-        // Clear absorption tracking and re-init dots
-        super.reset();
-        this.dotArrivalSteps = new Array(this.numDots).fill(NaN);
-        this._absorbed = new Array(this.numDots).fill(false);
-        this.absorbedCount = 0;
-    }
-
-    setNumDots(num) {
-        super.setNumDots(num);
-        // Reset absorption tracking when number of dots changes
-        this.dotArrivalSteps = new Array(num).fill(NaN);
-        this._absorbed = new Array(num).fill(false);
-        this.absorbedCount = 0;
-    }
 }
 
 chainModules.push(SnakesAndLadders);

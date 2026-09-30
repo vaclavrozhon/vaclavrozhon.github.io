@@ -1,4 +1,6 @@
 class WeatherModel extends MarkovChain {
+    static meta = {"name": "Weather Model", "description": "A simple weather prediction model with three states"};
+
     constructor() {
         const states = [0, 1, 2];
         const stateNames = ['Sunny', 'Cloudy', 'Rainy'];
@@ -26,7 +28,7 @@ class WeatherModel extends MarkovChain {
     }
 
     getTheoreticalSteadyState() {
-        return [0.438, 0.287, 0.275];
+        return [6/13, 4/13, 3/13];
     }
 
     getCustomControls() {
@@ -48,7 +50,6 @@ class WeatherModel extends MarkovChain {
         this.startState = clamped;
         this.initialDistribution = new Array(this.states.length).fill(0);
         this.initialDistribution[clamped] = 1.0;
-        this.reset();
     }
 }
 

@@ -35,12 +35,15 @@ class MarkovChain {
     }
 
     initializeDots() {
+        // A restart cancels even a partially animated transition.
+        this.stepInProgress = false;
+        this.stepElapsed = 0;
         this.dots = [];
         this.stateCount = new Array(this.states.length).fill(0);
         this.stepCount = 0;
         this.transitionCount = {};
 
-        for (let i = 0; i < this.numDots; i++) {
+        for (let i = 0; i < this.numDots && this.states.length > 0; i++) {
             const initialState = this.chooseInitialState();
             const angle = Math.random() * Math.PI * 2;
             const radius = Math.random() * 25;
@@ -56,6 +59,26 @@ class MarkovChain {
                 isMoving: false
             });
             this.stateCount[initialState]++;
+        }
+        this.resetAbsorptionTracking();
+    }
+
+    trackAbsorption(states) {
+        this.absorbingStates = new Set(states);
+        this.resetAbsorptionTracking();
+    }
+
+    resetAbsorptionTracking() {
+        if (!this.absorbingStates) return;
+        this.dotArrivalSteps = new Array(this.numDots).fill(NaN);
+        this.absorbedCount = 0;
+        this.dots.forEach((dot, i) => this.recordAbsorption(i, dot.currentState, 0));
+    }
+
+    recordAbsorption(dotIndex, state, time) {
+        if (this.absorbingStates?.has(state) && !Number.isFinite(this.dotArrivalSteps[dotIndex])) {
+            this.dotArrivalSteps[dotIndex] = time;
+            this.absorbedCount++;
         }
     }
 
@@ -74,10 +97,7 @@ class MarkovChain {
     step() {
         // New implementation: prepareStep()
         // Decide transitions but don't commit yet
-        if (this.stepInProgress) {
-            console.warn('step() called while step already in progress - ignoring');
-            return;
-        }
+        if (this.stepInProgress || this.dots.length === 0) return false;
 
         const newTransitions = {};
 
@@ -102,6 +122,8 @@ class MarkovChain {
             dot.nextState = nextState;
             dot.animationProgress = 0;
             dot.isMoving = true;
+            dot.startX = dot.x;
+            dot.startY = dot.y;
 
             // Calculate target position in the new state
             const angle = Math.random() * Math.PI * 2;
@@ -109,8 +131,6 @@ class MarkovChain {
             dot.targetX = radius * Math.cos(angle);
             dot.targetY = radius * Math.sin(angle);
 
-            // Add to history immediately (decision is made)
-            dot.history.push(nextState);
         }
 
         this.transitionCount = newTransitions;
@@ -119,12 +139,16 @@ class MarkovChain {
         this.stepInProgress = true;
         this.stepElapsed = 0;
 
-        // DO NOT increment stepCount here - only when animation completes
+        return true;
     }
 
     finishStep() {
+        if (!this.stepInProgress) return;
+        this.stepCount++;
         // Commit the step: update all dot states and increment counter
-        for (let dot of this.dots) {
+        for (let i = 0; i < this.dots.length; i++) {
+            const dot = this.dots[i];
+            const previousState = dot.currentState;
             if (dot.nextState !== dot.currentState) {
                 // Update state counts
                 this.stateCount[dot.currentState]--;
@@ -133,22 +157,15 @@ class MarkovChain {
 
             // Commit state transition
             dot.currentState = dot.nextState;
+            dot.history.push(dot.currentState);
             dot.x = dot.targetX;
             dot.y = dot.targetY;
             dot.isMoving = false;
-
-            // Call arrival callback if it exists
-            if (typeof this.onArrival === 'function') {
-                try {
-                    this.onArrival(this.dots.indexOf(dot), dot.currentState);
-                } catch (e) {
-                    /* ignore */
-                }
-            }
+            dot.animationProgress = 1;
+            this.recordAbsorption(i, dot.currentState, this.stepCount);
+            this.onTransition?.(i, previousState, dot.currentState);
         }
 
-        // NOW increment step count
-        this.stepCount++;
         this.stepInProgress = false;
 
         // Notify that step is complete
@@ -178,8 +195,8 @@ class MarkovChain {
             } else {
                 // Moving within same state - interpolate position
                 const eased = this.easeInOutQuad(progress);
-                dot.x = dot.x + (dot.targetX - dot.x) * eased;
-                dot.y = dot.y + (dot.targetY - dot.y) * eased;
+                dot.x = dot.startX + (dot.targetX - dot.startX) * eased;
+                dot.y = dot.startY + (dot.targetY - dot.startY) * eased;
             }
         }
 
@@ -194,12 +211,9 @@ class MarkovChain {
 
         const centerX = width / 2;
         const centerY = height / 2;
-        let radius = Math.min(width, height) * 0.3;
 
         // Get initial positions
-        let positions = this.getNodePositions ? this.getNodePositions(centerX, centerY, radius, width) : this.getDefaultNodePositions(centerX, centerY, radius);
-
-        // No automatic rescaling; rely on UI zoom
+        const positions = this.getLayoutPositions(width, height);
 
         // Expose positions for hit-testing
         this._lastPositions = positions;
@@ -227,6 +241,28 @@ class MarkovChain {
                 y: centerY + radius * Math.sin(angle)
             };
         });
+    }
+
+    getLayoutPositions(width, height) {
+        const radius = Math.min(width, height) * 0.3;
+        return this.getNodePositions
+            ? this.getNodePositions(width / 2, height / 2, radius, width)
+            : this.getDefaultNodePositions(width / 2, height / 2, radius);
+    }
+
+    getFitTransform(width, height) {
+        const positions = this.getLayoutPositions(width, height);
+        if (!positions.length) return { zoom: 1, pan: { x: 0, y: 0 } };
+        // Include node radii, self-loops and their labels in the margin.
+        const margin = this._getUniformNodeRadius() + 55;
+        const xs = positions.map(p => p.x), ys = positions.map(p => p.y);
+        const left = Math.min(...xs) - margin, right = Math.max(...xs) + margin;
+        const top = Math.min(...ys) - margin, bottom = Math.max(...ys) + margin;
+        const zoom = Math.min(1, (width - 32) / (right - left), (height - 32) / (bottom - top));
+        return { zoom, pan: {
+            x: (width / 2 - (left + right) / 2) * zoom,
+            y: (height / 2 - (top + bottom) / 2) * zoom
+        } };
     }
 
     drawTransitions(ctx, positions, hoveredIndex = null) {
@@ -493,7 +529,7 @@ class MarkovChain {
 
     drawNodes(ctx, positions) {
         const nodeRadius = this._getUniformNodeRadius();
-        const fontSize = this.getNodeFontSize ? this.getNodeFontSize() : 16;
+        const fontSize = this.getNodeFontSize ? this.getNodeFontSize() : 18;
         for (let i = 0; i < this.states.length; i++) {
             const pos = positions[i];
 
@@ -514,7 +550,7 @@ class MarkovChain {
     }
 
     getStateProbabilities() {
-        return this.stateCount.map(count => count / this.numDots);
+        return this.stateCount.map(count => this.numDots ? count / this.numDots : 0);
     }
 
     isAnimating() {
@@ -526,8 +562,9 @@ class MarkovChain {
     }
 
     setNumDots(num) {
+        if (!Number.isInteger(num) || num < 0) throw new Error('Dot count must be a nonnegative integer');
         this.numDots = num;
-        this.initializeDots();
+        this.reset();
     }
 
     setAnimationSpeed(stepIntervalMs) {
@@ -537,6 +574,11 @@ class MarkovChain {
     }
 
     updateTransitionMatrix(newMatrix) {
+        const n = this.states.length;
+        if (!Array.isArray(newMatrix) || newMatrix.length !== n || newMatrix.some(row =>
+            !Array.isArray(row) || row.length !== n || row.some(p => !Number.isFinite(p) || p < 0 || p > 1))) {
+            throw new Error('Expected a square matrix of finite probabilities in [0, 1]');
+        }
         // Validate that each row sums to 1 (within tolerance)
         for (let i = 0; i < newMatrix.length; i++) {
             const rowSum = newMatrix[i].reduce((sum, val) => sum + val, 0);
@@ -546,6 +588,7 @@ class MarkovChain {
         }
 
         this.transitionMatrix = newMatrix.map(row => [...row]); // Deep copy
+        this.reset();
         return true;
     }
 
@@ -759,6 +802,10 @@ class MarkovChain {
 
     // Compute distribution evolution over n steps
     getDistributionEvolution(steps = 10) {
+        const cache = this._evolutionCache;
+        if (cache && cache.matrix === this.transitionMatrix && cache.initial === this.initialDistribution && cache.steps === steps) {
+            return cache.evolution;
+        }
         const n = this.states.length;
         const evolution = [];
 
@@ -772,6 +819,7 @@ class MarkovChain {
 
             // Matrix multiplication: nextDist = currentDist * transitionMatrix
             for (let i = 0; i < n; i++) {
+                if (currentDist[i] === 0) continue;
                 for (let j = 0; j < n; j++) {
                     nextDist[j] += currentDist[i] * this.transitionMatrix[i][j];
                 }
@@ -781,6 +829,7 @@ class MarkovChain {
             currentDist = nextDist;
         }
 
+        this._evolutionCache = { matrix: this.transitionMatrix, initial: this.initialDistribution, steps, evolution };
         return evolution;
     }
 
@@ -847,7 +896,7 @@ class MarkovChain {
     }
 
     _getEdgeLabelFontPx() {
-        return 12;
+        return 15;
     }
     _getLabelOffsetAmount() {
         return 8;

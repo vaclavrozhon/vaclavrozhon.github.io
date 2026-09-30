@@ -1,4 +1,4 @@
-const { useState, useEffect, useRef } = React;
+const { useState, useEffect, useRef, useMemo } = React;
 
 const ChainSelector = ({ chainModules, selectedIndex, onSelect }) => {
     return (
@@ -6,15 +6,15 @@ const ChainSelector = ({ chainModules, selectedIndex, onSelect }) => {
             <h2>Select a Chain</h2>
             <ul className="chain-list">
                 {chainModules.map((ChainClass, index) => {
-                    const tempChain = new ChainClass();
+                    const metadata = ChainClass.meta;
                     return (
                         <li key={index}>
                             <button
                                 className={`chain-button ${selectedIndex === index ? 'active' : ''}`}
                                 onClick={() => onSelect(index)}
                             >
-                                <span className="chain-name">{tempChain.name}</span>
-                                <span className="chain-description">{tempChain.description}</span>
+                                <span className="chain-name">{metadata.name}</span>
+                                <span className="chain-description">{metadata.description}</span>
                             </button>
                         </li>
                     );
@@ -39,14 +39,15 @@ const Toolbar = ({ chain, isRunning, numDots, speed, runSteps, onRunStepsChange,
     return (
         <div className="controls">
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                <button onClick={onStep} disabled={isRunning || numDots === 0}>Step</button>
-                <button onClick={onRunToggle} className={isRunning ? 'danger' : 'secondary'} disabled={numDots === 0 && !isRunning}>
+                <button onClick={onStep} disabled={isRunning || chain.stepInProgress || !chain.states.length || numDots === 0}>Step</button>
+                <button onClick={onRunToggle} className={isRunning ? 'danger' : 'secondary'} disabled={!isRunning && (numDots === 0 || !chain.states.length || chain.stepInProgress)}>
                     {isRunning ? 'Stop' : 'Run'}
                 </button>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '12px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '14px' }}>
                     Run steps:
                     <input
                         type="number"
+                        aria-label="Run steps"
                         min="1"
                         value={runSteps}
                         onChange={(e) => onRunStepsChange(e.target.value)}
@@ -58,7 +59,7 @@ const Toolbar = ({ chain, isRunning, numDots, speed, runSteps, onRunStepsChange,
 
             <div className="control-group">
                 <label>Dots:</label>
-                <select value={numDots} onChange={(e) => onDotsChange(parseInt(e.target.value))}>
+                <select aria-label="Dots" value={numDots} onChange={(e) => onDotsChange(parseInt(e.target.value))}>
                     <option value="0">0 (no dots)</option>
                     <option value="1">1</option>
                     <option value="10">10</option>
@@ -72,6 +73,7 @@ const Toolbar = ({ chain, isRunning, numDots, speed, runSteps, onRunStepsChange,
                 <label>Speed:</label>
                 <input
                     type="range"
+                    aria-label="Speed"
                     min="50"
                     max="2000"
                     step="50"
@@ -86,20 +88,21 @@ const Toolbar = ({ chain, isRunning, numDots, speed, runSteps, onRunStepsChange,
                     <label>{ctrl.label}:</label>
                     <input
                         type="range"
+                        aria-label={ctrl.label}
                         min={ctrl.min}
                         max={ctrl.max}
                         step={ctrl.step}
                         value={ctrl.value}
                         onChange={(e) => onControlChange(ctrl, ctrl.step >= 1 ? parseInt(e.target.value) : parseFloat(e.target.value))}
                     />
-                    <span>{Number.isFinite(ctrl.value) ? (ctrl.step >= 1 ? Math.round(ctrl.value) : ctrl.value.toFixed(1)) : ctrl.value}</span>
+                    <span>{Number.isFinite(ctrl.value) ? (ctrl.step >= 1 ? Math.round(ctrl.value) : ctrl.value.toFixed((String(ctrl.step).split('.')[1] || '').length)) : ctrl.value}</span>
                 </div>
             ))}
 
             {editors && editors.length > 0 && (
                 <div className="control-group" style={{gap: '6px'}}>
                     {editors.map((ed, idx) => (
-                        <MappingEditor key={idx} editor={ed} onSave={onEditorSave} />
+                        <MappingEditor key={`${chain.name}-${ed.id || idx}`} editor={ed} onSave={onEditorSave} />
                     ))}
                 </div>
             )}
@@ -107,164 +110,61 @@ const Toolbar = ({ chain, isRunning, numDots, speed, runSteps, onRunStepsChange,
     );
 };
 
-const StatsPanel = ({ chain }) => {
-    if (!chain) return null;
-    const cfg = chain.getRenderConfig ? chain.getRenderConfig() : { showStats: true };
-    if (!cfg.showStats) return null;
-    return (
-        <div className="stats">
-            <div className="stat-card">
-                <div className="stat-label">Steps</div>
-                <div className="stat-value">{chain.stepCount}</div>
-            </div>
-            {chain.stateNames && chain.stateNames.map((name, i) => (
-                <div key={i} className="stat-card">
-                    <div className="stat-label">{name}</div>
-                    <div className="stat-value">
-                        {(chain.getStateProbabilities()[i] * 100).toFixed(1)}%
-                    </div>
-                </div>
-            ))}
-        </div>
-    );
-};
-
-const Histogram = ({ data }) => {
+const Histogram = ({ data, total, step }) => {
     const canvasRef = useRef(null);
     const chartRef = useRef(null);
-
-    console.log('[Histogram] DEBUG: received data:', data);
-
-    // Normalize data shape to an array of times
-    let times = [];
-    if (Array.isArray(data)) {
-        times = data;
-    } else if (data && Array.isArray(data.times)) {
-        times = data.times;
-    }
-
-    // Build points and stats even if empty to keep hooks stable
-    const timeCounts = {};
-    for (const t of times) {
-        timeCounts[t] = (timeCounts[t] || 0) + 1;
-    }
-    const uniqueTimes = Object.keys(timeCounts).map(Number).sort((a, b) => a - b);
-    const total = times.length || 1;
-    const minTime = uniqueTimes.length > 0 ? Math.min(...uniqueTimes) : 0;
-    const maxTime = uniqueTimes.length > 0 ? Math.max(...uniqueTimes) : 0;
-    const points = [];
-    if (uniqueTimes.length > 0) {
-        for (let t = minTime; t <= maxTime; t++) {
-            points.push({ x: t, y: timeCounts[t] ? timeCounts[t] / total : 0 });
-        }
-    }
-    const mean = times.length > 0 ? (times.reduce((a, b) => a + b, 0) / times.length) : 0;
-    const variance = times.length > 0 ? (times.reduce((a, b) => a + (b - mean) * (b - mean), 0) / times.length) : 0;
-    const std = Math.sqrt(variance);
-    const maxFreq = points.length > 0 ? Math.max(...points.map(p => p.y)) : 1;
-    const maxY = (maxFreq || 1) * 1.1;
+    const times = data || [];
+    const mean = times.length ? times.reduce((sum, t) => sum + t, 0) / times.length : null;
+    const std = times.length ? Math.sqrt(times.reduce((sum, t) => sum + (t - mean) ** 2, 0) / times.length) : null;
+    const points = useMemo(() => {
+        const counts = new Map();
+        for (const t of times) counts.set(t, (counts.get(t) || 0) + 1);
+        return [...counts].sort(([a], [b]) => a - b).map(([x, count]) => ({ x, y: count / total }));
+    }, [data, total]);
 
     useEffect(() => {
-        if (!canvasRef.current) return;
-        const ctx = canvasRef.current.getContext('2d');
-
-        // If no data, destroy chart if exists and exit effect
-        if (points.length === 0) {
-            if (chartRef.current) {
-                chartRef.current.destroy();
-                chartRef.current = null;
-            }
-            return;
-        }
-
-        if (chartRef.current) {
-            chartRef.current.data.datasets[0].data = points;
-            chartRef.current.options.scales.y.max = maxY;
-            if (chartRef.current.options.plugins?.annotation?.annotations && mean > 0) {
-                const ann = chartRef.current.options.plugins.annotation.annotations;
-                ann.meanLine.xMin = ann.meanLine.xMax = mean;
-                ann.meanLine.label.content = `μ=${mean.toFixed(1)}`;
-                if (ann.sigmaLeft && std > 0) {
-                    ann.sigmaLeft.xMin = ann.sigmaLeft.xMax = mean - std;
-                }
-                if (ann.sigmaRight && std > 0) {
-                    ann.sigmaRight.xMin = ann.sigmaRight.xMax = mean + std;
-                }
-            }
-            chartRef.current.update();
-            return;
-        }
-
-        // Register annotation plugin if available
-        if (window['chartjs-plugin-annotation']) {
-            Chart.register(window['chartjs-plugin-annotation']);
-        }
-        chartRef.current = new Chart(ctx, {
+        chartRef.current = new Chart(canvasRef.current, {
             type: 'bar',
-            data: {
-                datasets: [{
-                    label: 'Absorption Time Distribution',
-                    data: points,
-                    parsing: { xAxisKey: 'x', yAxisKey: 'y' },
-                    backgroundColor: 'rgba(102, 126, 234, 0.7)',
-                    borderColor: 'rgba(102, 126, 234, 1)',
-                    borderWidth: 1,
-                    barPercentage: 1.0,
-                    categoryPercentage: 1.0
-                }]
-            },
+            data: { datasets: [{ data: [], backgroundColor: '#667eea', barThickness: 12 }] },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                interaction: { mode: 'index', intersect: false },
+                responsive: true, maintainAspectRatio: false, animation: false,
                 scales: {
-                    x: {
-                        title: { display: true, text: 'Absorption Time (steps)' },
-                        type: 'linear', position: 'bottom',
-                        ticks: { stepSize: 1, maxTicksLimit: Math.min(50, points.length), autoSkip: true },
-                        grid: { display: false }
-                    },
-                    y: {
-                        title: { display: true, text: 'Proportion' }, beginAtZero: true, max: maxY,
-                        grid: { color: 'rgba(0,0,0,0.1)' }
-                    }
+                    x: { type: 'linear', min: 0, title: { display: true, text: 'Absorption time T (steps)' }, ticks: { precision: 0 } },
+                    y: { beginAtZero: true, title: { display: true, text: 'Fraction of all dots' } }
                 },
-                plugins: {
-                    legend: { display: false }, tooltip: { enabled: true },
-                    annotation: mean > 0 ? {
-                        annotations: {
-                            meanLine: { type: 'line', xMin: mean, xMax: mean, borderColor: '#f44336', borderWidth: 2,
-                                label: { enabled: true, content: `μ=${mean.toFixed(1)}`, position: 'start', backgroundColor: 'rgba(244,67,54,0.1)', color: '#f44336' } },
-                            sigmaLeft: std > 0 ? { type: 'line', xMin: mean - std, xMax: mean - std, borderColor: '#ff9800', borderWidth: 1, borderDash: [4,4],
-                                label: { enabled: true, content: 'μ-σ', position: 'start', backgroundColor: 'rgba(255,152,0,0.1)', color: '#ff9800' } } : null,
-                            sigmaRight: std > 0 ? { type: 'line', xMin: mean + std, xMax: mean + std, borderColor: '#ff9800', borderWidth: 1, borderDash: [4,4],
-                                label: { enabled: true, content: 'μ+σ', position: 'start', backgroundColor: 'rgba(255,152,0,0.1)', color: '#ff9800' } } : null
-                        }
-                    } : { annotations: {} }
-                }
+                plugins: { legend: { display: false }, annotation: { annotations: {} } }
             }
         });
-        return () => { if (chartRef.current) { chartRef.current.destroy(); chartRef.current = null; } };
-    }, [points.length, mean, std, maxY]);
+        return () => { chartRef.current.destroy(); chartRef.current = null; };
+    }, []);
 
-    if (points.length === 0) return null;
+    useEffect(() => {
+        const chart = chartRef.current;
+        chart.data.datasets[0].data = points;
+        chart.options.plugins.annotation.annotations = mean === null ? {} : {
+            mean: { type: 'line', xMin: mean, xMax: mean, borderColor: '#d32f2f', borderWidth: 2 },
+            ...(std > 0 ? {
+                left: { type: 'line', xMin: Math.max(0, mean - std), xMax: Math.max(0, mean - std), borderColor: '#ad6500', borderWidth: 1, borderDash: [4, 4], display: mean >= std },
+                right: { type: 'line', xMin: mean + std, xMax: mean + std, borderColor: '#ad6500', borderWidth: 1, borderDash: [4, 4] }
+            } : {})
+        };
+        chart.update('none');
+    }, [points, mean, std]);
 
     return (
-        <div className="info-panel">
+        <div className="info-panel histogram">
             <h4>Absorption Time Histogram</h4>
-            <div style={{ height: '220px' }}>
-                <canvas ref={canvasRef} />
-            </div>
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#37474f' }}>
-                <span style={{ marginRight: '12px' }}>μ: {mean > 0 ? mean.toFixed(1) : 'N/A'}</span>
-                <span style={{ marginRight: '12px' }}>σ: {std > 0 ? std.toFixed(1) : 'N/A'}</span>
-                <span>n: {times.length}</span>
-            </div>
+            <p>Completed: <strong>{times.length} / {total}</strong>. Still running (T &gt; {step}): <strong>{total ? ((total - times.length) / total * 100).toFixed(1) : '0.0'}%</strong>.</p>
+            <div style={{ height: '240px' }}><canvas ref={canvasRef} /></div>
+            <p className="histogram-stats">
+                Mean: {mean === null ? '—' : mean.toFixed(1)} · Standard deviation: {std === null ? '—' : std.toFixed(1)}
+                {times.length < total ? ' (completed dots only)' : ' (all dots)'}
+            </p>
         </div>
     );
 };
 
-const DistributionTable = ({ chain }) => {
+const DistributionTable = React.memo(({ chain, matrix, initial, names }) => {
     if (!chain || !chain.getDistributionEvolution) return null;
 
     const evolution = chain.getDistributionEvolution(10);
@@ -272,12 +172,12 @@ const DistributionTable = ({ chain }) => {
 
     return (
         <div className="info-panel" style={{ marginTop: '10px' }}>
-            <h4>Distribution Evolution (Steps 0-10)</h4>
+            <h4>Exact Distribution (Steps 0–10)</h4>
             <div style={{ overflowX: 'auto', maxHeight: '400px', overflowY: 'auto' }}>
-                <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse' }}>
+                <table style={{ width: '100%', fontSize: '14px', borderCollapse: 'collapse' }}>
                     <thead>
                         <tr style={{ backgroundColor: '#f5f5f5' }}>
-                            <th style={{ padding: '8px', textAlign: 'left', position: 'sticky', left: 0, backgroundColor: '#f5f5f5', borderRight: '1px solid #e0e0e0' }}>State</th>
+                            <th style={{ color: '#fff', padding: '8px', textAlign: 'left', position: 'sticky', left: 0, backgroundColor: '#f5f5f5', borderRight: '1px solid #e0e0e0' }}>State</th>
                             {[...Array(11)].map((_, i) => (
                                 <th key={i} style={{ padding: '8px', textAlign: 'center', minWidth: '60px' }}>
                                     t={i}
@@ -319,7 +219,7 @@ const DistributionTable = ({ chain }) => {
             </div>
         </div>
     );
-};
+});
 
 const MappingEditor = ({ editor, onSave }) => {
     const [rows, setRows] = useState(() => {
@@ -327,6 +227,7 @@ const MappingEditor = ({ editor, onSave }) => {
         return Object.keys(map).map(k => ({ from: parseInt(k), to: parseInt(map[k]) }));
     });
     const [open, setOpen] = useState(false);
+    const [error, setError] = useState('');
 
     const addRow = () => setRows(r => [...r, { from: 1, to: 1 }]);
     const removeRow = (idx) => setRows(r => r.filter((_, i) => i !== idx));
@@ -334,11 +235,18 @@ const MappingEditor = ({ editor, onSave }) => {
     const save = () => {
         const out = {};
         for (const { from, to } of rows) {
-            if (!Number.isFinite(from) || !Number.isFinite(to)) continue;
-            if (from < 0 || from > 100 || to < 0 || to > 100) continue;
+            if (!Number.isInteger(from) || !Number.isInteger(to) || from < 1 || from > 99 || to < 1 || to > 99) {
+                setError('Use whole square numbers from 1 to 99.');
+                return;
+            }
+            if (Object.hasOwn(out, from)) {
+                setError(`Square ${from} occurs more than once.`);
+                return;
+            }
             out[from] = to;
         }
-        onSave(out);
+        onSave(editor, out);
+        setError('');
         setOpen(false);
     };
 
@@ -349,17 +257,18 @@ const MappingEditor = ({ editor, onSave }) => {
             </button>
             {open && (
                 <div style={{ background: '#fff', border: '1px solid #e0e0e0', borderRadius: '8px', padding: '10px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)' }}>
-                    <div style={{ fontSize: '12px', color: '#666', marginBottom: '6px' }}>{editor.description}</div>
+                    <div style={{ fontSize: '14px', color: '#666', marginBottom: '6px' }}>{editor.description}</div>
                     <div style={{ display: 'grid', gridTemplateColumns: '80px 16px 80px auto', gap: '6px', alignItems: 'center' }}>
                         {rows.map((row, idx) => (
                             <React.Fragment key={idx}>
-                                <input type="number" value={row.from} min="0" max="100" onChange={(e) => updateRow(idx, 'from', parseInt(e.target.value))} style={{ padding: '4px' }} />
+                                <input type="number" aria-label={`Start square ${idx + 1}`} value={Number.isNaN(row.from) ? '' : row.from} min="1" max="99" onChange={(e) => updateRow(idx, 'from', parseInt(e.target.value))} style={{ padding: '4px' }} />
                                 <span style={{ textAlign: 'center' }}>→</span>
-                                <input type="number" value={row.to} min="0" max="100" onChange={(e) => updateRow(idx, 'to', parseInt(e.target.value))} style={{ padding: '4px' }} />
+                                <input type="number" aria-label={`End square ${idx + 1}`} value={Number.isNaN(row.to) ? '' : row.to} min="1" max="99" onChange={(e) => updateRow(idx, 'to', parseInt(e.target.value))} style={{ padding: '4px' }} />
                                 <button onClick={() => removeRow(idx)} style={{ marginLeft: '6px' }}>Remove</button>
                             </React.Fragment>
                         ))}
                     </div>
+                    {error && <p role="alert" className="error-message">{error}</p>}
                     <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
                         <button onClick={addRow}>Add</button>
                         <button onClick={save}>Save</button>
@@ -370,256 +279,218 @@ const MappingEditor = ({ editor, onSave }) => {
     );
 };
 
+// Bound the DOM size for the 730-state model while keeping every matrix entry accessible.
+const MatrixTable = React.memo(({ matrix, names }) => {
+    const pageSize = 30;
+    const [rowStart, setRowStart] = useState(0);
+    const [colStart, setColStart] = useState(0);
+    const n = names.length;
+    const rows = matrix.slice(rowStart, rowStart + pageSize);
+    const columns = names.slice(colStart, colStart + pageSize);
+    return <div className="transition-matrix">
+        <h3>Transition Matrix</h3>
+        {n > pageSize && <div className="matrix-navigation">
+            <div>
+                <button aria-label="Previous matrix rows" disabled={rowStart === 0} onClick={() => setRowStart(v => v - pageSize)}>←</button>
+                <span>Rows {rowStart + 1}–{Math.min(rowStart + pageSize, n)} of {n}</span>
+                <button aria-label="Next matrix rows" disabled={rowStart + pageSize >= n} onClick={() => setRowStart(v => v + pageSize)}>→</button>
+            </div>
+            <div>
+                <button aria-label="Previous matrix columns" disabled={colStart === 0} onClick={() => setColStart(v => v - pageSize)}>←</button>
+                <span>Columns {colStart + 1}–{Math.min(colStart + pageSize, n)} of {n}</span>
+                <button aria-label="Next matrix columns" disabled={colStart + pageSize >= n} onClick={() => setColStart(v => v + pageSize)}>→</button>
+            </div>
+        </div>}
+        <div style={{ overflow: 'auto', maxHeight: '400px', border: '1px solid #eee' }}>
+            <table>
+                <thead><tr><th>From / To</th>{columns.map((name, i) => <th key={i}>{name}</th>)}</tr></thead>
+                <tbody>{rows.map((row, i) => <tr key={i}>
+                    <th>{names[rowStart + i]}</th>
+                    {row.slice(colStart, colStart + pageSize).map((prob, j) => <td key={j}>{prob > 0 && prob < 0.001 ? prob.toExponential(1) : prob.toFixed(3)}</td>)}
+                </tr>)}</tbody>
+            </table>
+        </div>
+    </div>;
+});
+
 const MarkovChainVisualization = () => {
     const canvasRef = useRef(null);
-    const animationRef = useRef(null);
+    const runningRef = useRef(false);
     const stepsRemainingRef = useRef(0);
+    const hoverIndexRef = useRef(null);
+    const dragRef = useRef(null);
+    const fitRef = useRef(() => {});
+    const revisionRef = useRef(0);
     const [selectedChainIndex, setSelectedChainIndex] = useState(0);
     const [chain, setChain] = useState(null);
     const [isRunning, setIsRunning] = useState(false);
     const [speed, setSpeed] = useState(500);
     const [numDots, setNumDots] = useState(100);
     const [updateTrigger, setUpdateTrigger] = useState(0);
-    const [zoom, setZoom] = useState(1.0);
-    const [pan, setPan] = useState({ x: 0, y: 0 });
+    const [view, setView] = useState({ zoom: 1, pan: { x: 0, y: 0 } });
+    const viewRef = useRef(view);
+    viewRef.current = view;
+    const { zoom, pan } = view;
     const [isPanning, setIsPanning] = useState(false);
-    const lastPosRef = useRef({ x: 0, y: 0 });
     const [tooltip, setTooltip] = useState(null);
     const [showMatrix, setShowMatrix] = useState(false);
     const [runSteps, setRunSteps] = useState(100);
+    const refresh = () => { revisionRef.current++; setUpdateTrigger(v => v + 1); };
+    const stop = () => {
+        runningRef.current = false;
+        stepsRemainingRef.current = 0;
+        setIsRunning(false);
+    };
 
     useEffect(() => {
-        if (chainModules.length > 0) {
-            const ChainClass = chainModules[selectedChainIndex];
-            const newChain = new ChainClass();
-            newChain.setNumDots(numDots);
-            newChain.setAnimationSpeed(speed);
+        const newChain = new chainModules[selectedChainIndex]();
+        newChain.setNumDots(numDots);
+        newChain.setAnimationSpeed(speed);
+        newChain.onDataLoaded = refresh;
+        setChain(newChain);
+        stop();
+        setShowMatrix(false);
+        setTooltip(null);
+        hoverIndexRef.current = null;
+        return () => { newChain.onDataLoaded = null; };
+    }, [selectedChainIndex]);
 
-            // Set up callback to trigger re-render when data loads
-            newChain.onDataLoaded = () => {
-                setUpdateTrigger(prev => prev + 1);
-            };
+    useEffect(() => { chain?.setAnimationSpeed(speed); }, [chain, speed]);
 
-            setChain(newChain);
-            setIsRunning(false);
-            stepsRemainingRef.current = 0;
-
-            // Set default zoom based on chain type
-            if (newChain.name && newChain.name.includes('2-mer')) {
-                setZoom(0.5); // 50% zoom for 2-mer chain - reasonable size
-                setPan({ x: 0, y: 0 }); // Reset pan position
-            } else {
-                setZoom(1.0); // Normal zoom for other chains
-                setPan({ x: 0, y: 0 }); // Reset pan position
-            }
-        }
-    }, [selectedChainIndex, numDots]);
-
-    useEffect(() => {
-        if (chain) {
-            chain.setAnimationSpeed(speed);
-        }
-    }, [chain, speed]);
-
+    const canvasHeight = chain?.getRenderConfig().canvasHeight || 400;
     useEffect(() => {
         if (!chain || !canvasRef.current) return;
-
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        let lastTime = 0;
-
-        const resizeCanvas = () => {
-            const rect = canvas.getBoundingClientRect();
-            const desiredHeightCss = chain && chain.getRenderConfig ? chain.getRenderConfig().canvasHeight : 400;
-            canvas.width = rect.width * window.devicePixelRatio;
-            canvas.height = desiredHeightCss * window.devicePixelRatio;
-            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-            canvas.style.width = rect.width + 'px';
-            canvas.style.height = desiredHeightCss + 'px';
+        let lastTime = null;
+        let frame;
+        let lastView, lastHover, lastRevision = -1;
+        let width = 0, height = canvasHeight;
+        let dpr = window.devicePixelRatio || 1;
+        const fit = () => setView(chain.getFitTransform(width, height));
+        fitRef.current = fit;
+        const resize = () => {
+            const nextWidth = canvas.parentElement.clientWidth;
+            const nextDpr = window.devicePixelRatio || 1;
+            if (width === nextWidth && canvas.height === Math.round(height * nextDpr) && dpr === nextDpr) return;
+            width = nextWidth;
+            dpr = nextDpr;
+            canvas.width = Math.round(width * dpr);
+            canvas.height = Math.round(height * dpr);
+            canvas.style.height = height + 'px';
+            lastRevision = -1;
+            fit();
         };
+        resize();
+        const observer = new ResizeObserver(resize);
+        observer.observe(canvas.parentElement);
+        window.addEventListener('resize', resize);
 
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // Set up step completion callback
         chain.onStepComplete = () => {
-            console.log(`[STEP COMPLETE] stepCount: ${chain.stepCount}`);
-            setUpdateTrigger(prev => prev + 1);
-
-            // If running and steps remaining, start next step
-            if (isRunning && stepsRemainingRef.current > 0) {
-                stepsRemainingRef.current -= 1;
-                console.log(`[STARTING NEXT STEP] remaining: ${stepsRemainingRef.current}`);
+            if (runningRef.current && stepsRemainingRef.current > 0) {
+                stepsRemainingRef.current--;
                 chain.step();
-            } else if (isRunning && stepsRemainingRef.current <= 0) {
-                console.log(`[RUN COMPLETE] Final stepCount: ${chain.stepCount}`);
-                setIsRunning(false);
+            } else {
+                stop();
             }
+            refresh();
         };
-
-        const draw = (currentTime) => {
-            const deltaTime = currentTime - lastTime;
-            lastTime = currentTime;
-
-            const dpr = window.devicePixelRatio || 1;
-            const width = canvas.width / dpr;
-            const height = canvas.height / dpr;
-
-            // Reset transform to handle DPR and clear
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            ctx.clearRect(0, 0, width, height);
-
-            // Animate current step (if any)
-            chain.animate(deltaTime);
-
-            // Centered zoom + pan
-            ctx.save();
-            ctx.translate(width / 2 + pan.x, height / 2 + pan.y);
-            ctx.scale(zoom, zoom);
-            ctx.translate(-width / 2, -height / 2);
-
-            chain.draw(ctx, width, height, { hoveredIndex: hoverIndexRef.current });
-            ctx.restore();
-            animationRef.current = requestAnimationFrame(draw);
+        const draw = (now) => {
+            // Starting/resuming RAF must never create a giant first delta.
+            const delta = lastTime === null ? 0 : Math.min(now - lastTime, 100);
+            lastTime = now;
+            const wasAnimating = chain.stepInProgress;
+            chain.animate(delta);
+            const camera = viewRef.current;
+            if (wasAnimating || camera !== lastView || hoverIndexRef.current !== lastHover || revisionRef.current !== lastRevision) {
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                ctx.clearRect(0, 0, width, height);
+                ctx.save();
+                ctx.translate(width / 2 + camera.pan.x, height / 2 + camera.pan.y);
+                ctx.scale(camera.zoom, camera.zoom);
+                ctx.translate(-width / 2, -height / 2);
+                chain.draw(ctx, width, height, { hoveredIndex: hoverIndexRef.current });
+                ctx.restore();
+                lastView = camera;
+                lastHover = hoverIndexRef.current;
+                lastRevision = revisionRef.current;
+            }
+            frame = requestAnimationFrame(draw);
         };
-
-        animationRef.current = requestAnimationFrame(draw);
-
+        frame = requestAnimationFrame(draw);
         return () => {
             chain.onStepComplete = null;
-            window.removeEventListener('resize', resizeCanvas);
-            if (animationRef.current) {
-                cancelAnimationFrame(animationRef.current);
-            }
+            observer.disconnect();
+            window.removeEventListener('resize', resize);
+            cancelAnimationFrame(frame);
         };
-    }, [chain, zoom, pan, isRunning]);
+    }, [chain, canvasHeight]);
 
-    useEffect(() => {
-        if (!isRunning || !chain) return;
+    // CSV loading and changes to the number of states can change graph bounds.
+    useEffect(() => { fitRef.current(); }, [chain, chain?.states.length, canvasHeight]);
 
-        console.log(`[RUN START] Target steps: ${stepsRemainingRef.current}, Speed: ${speed}ms, Initial stepCount: ${chain.stepCount}`);
-
-        // Start the first step if not already animating
-        if (!chain.stepInProgress && stepsRemainingRef.current > 0) {
-            stepsRemainingRef.current -= 1;
-            console.log(`[STARTING FIRST STEP] remaining: ${stepsRemainingRef.current}`);
-            chain.step();
-        }
-
-        // Subsequent steps are triggered by onStepComplete callback in RAF loop
-    }, [isRunning, chain, speed]);
-
-    const handleStep = () => {
-        if (!chain) return;
-        if (chain.stepInProgress) {
-            console.warn('Step button clicked while animation in progress - ignoring');
-            return;
-        }
-        chain.step();
-    };
-
-    const handleReset = () => {
-        if (!chain) return;
+    const handleStep = () => { if (chain?.step()) refresh(); };
+    const handleReset = () => { stop(); chain.reset(); refresh(); };
+    const changeModel = (change) => {
+        stop();
+        change();
         chain.reset();
-        setIsRunning(false);
-        stepsRemainingRef.current = 0;
-        setZoom(1.0);
-        setPan({ x: 0, y: 0 });
-        setUpdateTrigger(prev => prev + 1);
+        setTooltip(null);
+        hoverIndexRef.current = null;
+        refresh();
     };
-
     const handleRun = () => {
-        if (!chain) return;
-        if (isRunning) {
-            setIsRunning(false);
-            stepsRemainingRef.current = 0;
-        } else {
-            const parsed = Math.max(1, parseInt(runSteps, 10) || 1);
-            stepsRemainingRef.current = parsed;
-            setIsRunning(true);
-        }
+        if (runningRef.current) { stop(); return; }
+        if (!chain || chain.stepInProgress || !chain.dots.length) return;
+        stepsRemainingRef.current = Math.max(1, parseInt(runSteps, 10) || 1) - 1;
+        runningRef.current = true;
+        setIsRunning(true);
+        chain.step();
+        refresh();
     };
-
     const handleChainSelect = (index) => {
-        setSelectedChainIndex(index);
-        setIsRunning(false);
+        stop();
+        if (index === selectedChainIndex && chain?.loadError) {
+            chain.loadError = null;
+            chain.ready = chain.loadFromCSV();
+            refresh();
+        } else setSelectedChainIndex(index);
     };
-
-
-    const hoverIndexRef = useRef(null);
-    const handleRunStepsChange = (value) => {
-        const parsed = Math.max(1, parseInt(value, 10) || 1);
-        setRunSteps(parsed);
-    };
-
-    const getMouseWorldPos = (e) => {
-        const canvas = canvasRef.current;
-        const rect = canvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
-        const width = canvas.width / dpr;
-        const height = canvas.height / dpr;
-        // Inverse of transforms: translate to center+pan, then scale, then back
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const cx = width / 2 + pan.x;
-        const cy = height / 2 + pan.y;
-        const wx = (x - cx) / zoom + width / 2;
-        const wy = (y - cy) / zoom + height / 2;
-        return { x: wx, y: wy, width, height };
-    };
+    const handleRunStepsChange = (value) => setRunSteps(value);
+    const setZoom = (updater) => setView(v => ({ ...v, zoom: typeof updater === 'function' ? updater(v.zoom) : updater }));
 
     const updateHover = (e) => {
         if (!chain) return;
-        const { x, y, width, height } = getMouseWorldPos(e);
-        const positions = chain._lastPositions || chain.getNodePositions?.(width / 2, height / 2, Math.min(width, height) * 0.3, width) || [];
-        let found = null;
-        for (let i = 0; i < positions.length; i++) {
-            const p = positions[i];
-            if (!p) continue;
-            const dx = x - p.x;
-            const dy = y - p.y;
-            if (dx * dx + dy * dy <= 30 * 30) { found = i; break; }
-        }
-        hoverIndexRef.current = found;
-
-        // Update tooltip
-        if (found !== null && chain.stateCount) {
-            const totalDots = chain.dots ? chain.dots.length : 0;
-            const dotsAtState = chain.stateCount[found] || 0;
-            const proportion = totalDots > 0 ? (dotsAtState / totalDots * 100).toFixed(1) : 0;
-            const stateName = chain.stateNames?.[found] || `State ${found}`;
-
-            const rect = canvasRef.current.getBoundingClientRect();
-            setTooltip({
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top,
-                text: `${stateName}: ${dotsAtState}/${totalDots} dots (${proportion}%)`
-            });
-        } else {
-            setTooltip(null);
-        }
+        const rect = canvasRef.current.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2 - pan.x) / zoom + rect.width / 2;
+        const y = (e.clientY - rect.top - rect.height / 2 - pan.y) / zoom + rect.height / 2;
+        const positions = chain._lastPositions || [];
+        const r = chain._getUniformNodeRadius();
+        const found = positions.findIndex(p => (x - p.x) ** 2 + (y - p.y) ** 2 <= r * r);
+        hoverIndexRef.current = found < 0 ? null : found;
+        setTooltip(found < 0 ? null : { x: e.clientX - rect.left, y: e.clientY - rect.top, index: found });
     };
-
-    const onMouseDown = (e) => {
-        if (!canvasRef.current) return;
+    const onPointerDown = (e) => {
+        if (e.button !== 0) return;
+        canvasRef.current.setPointerCapture(e.pointerId);
+        dragRef.current = { x: e.clientX, y: e.clientY };
         setIsPanning(true);
-        lastPosRef.current = { x: e.clientX, y: e.clientY };
     };
-
-    const onMouseMove = (e) => {
-        if (!isPanning) return;
-        const dx = e.clientX - lastPosRef.current.x;
-        const dy = e.clientY - lastPosRef.current.y;
-        lastPosRef.current = { x: e.clientX, y: e.clientY };
-        setPan((p) => ({ x: p.x + dx, y: p.y + dy }));
-        updateHover(e);
+    const onPointerMove = (e) => {
+        if (dragRef.current) {
+            const dx = e.clientX - dragRef.current.x, dy = e.clientY - dragRef.current.y;
+            setView(v => ({ ...v, pan: { x: v.pan.x + dx, y: v.pan.y + dy } }));
+            dragRef.current = { x: e.clientX, y: e.clientY };
+            setTooltip(null);
+        } else updateHover(e);
     };
-
     const endPan = () => {
+        dragRef.current = null;
         setIsPanning(false);
         setTooltip(null);
         hoverIndexRef.current = null;
     };
+    const histData = useMemo(() => chain?.getHistogramData?.(), [chain, updateTrigger]);
 
     if (chainModules.length === 0) {
         return <div className="container">Loading...</div>;
@@ -627,7 +498,7 @@ const MarkovChainVisualization = () => {
 
     return (
         <div className="container">
-            <h1>Vibecoded Markov Chain Demo</h1>
+            <h1>Markov Chain Demo</h1>
 
             <div className="main-content">
                 <ChainSelector chainModules={chainModules} selectedIndex={selectedChainIndex} onSelect={handleChainSelect} />
@@ -648,31 +519,34 @@ const MarkovChainVisualization = () => {
                                 runSteps={runSteps}
                                 onRunStepsChange={handleRunStepsChange}
                                 onDotsChange={(v) => {
+                                    stop();
                                     setNumDots(v);
-                                    setIsRunning(false); // Stop simulation when dots change
-                                    if (chain) {
-                                        chain.setNumDots(v); // This already resets internally
-                                        setUpdateTrigger(prev => prev + 1);
-                                    }
+                                    chain.setNumDots(v);
+                                    refresh();
                                 }}
                                 onSpeedChange={(v) => setSpeed(v)}
                                 onStep={handleStep}
                                 onRunToggle={handleRun}
                                 onReset={handleReset}
-                                onControlChange={(ctrl, value) => { ctrl.onChange(value); setUpdateTrigger(p => p + 1); }}
-                                onEditorSave={(map) => { /* editor handles save via its onSave; trigger redraw */ setUpdateTrigger(p => p + 1); }}
+                                onControlChange={(ctrl, value) => changeModel(() => ctrl.onChange(value))}
+                                onEditorSave={(editor, map) => changeModel(() => editor.onSave(map))}
                             />
-                            <div style={{ margin: '6px 0', fontWeight: 'bold' }}>
+                            <p className="control-note">Changing dots or model parameters restarts at step 0.</p>
+                            {chain.loadError && <p role="alert" className="error-message">{chain.loadError} Select the model again to retry.</p>}
+                            {!chain.states.length && !chain.loadError && <p role="status">Loading language model…</p>}
+                            <div className="step-count" aria-live="polite">
                                 Step: {chain.stepCount}
                             </div>
 
                             <div className="canvas-container">
                                 <canvas
                                     ref={canvasRef}
-                                    onMouseDown={onMouseDown}
-                                    onMouseMove={(e) => { updateHover(e); onMouseMove(e); }}
-                                    onMouseUp={endPan}
-                                    onMouseLeave={endPan}
+                                    aria-label="Markov chain graph"
+                                    onPointerDown={onPointerDown}
+                                    onPointerMove={onPointerMove}
+                                    onPointerUp={endPan}
+                                    onPointerCancel={endPan}
+                                    onPointerLeave={() => { if (!dragRef.current) endPan(); }}
                                     className={isPanning ? 'is-panning' : ''}
                                 />
                                 {tooltip && (
@@ -685,51 +559,48 @@ const MarkovChainVisualization = () => {
                                             color: 'white',
                                             padding: '5px 10px',
                                             borderRadius: '4px',
-                                            fontSize: '12px',
+                                            fontSize: '14px',
                                             pointerEvents: 'none',
                                             whiteSpace: 'nowrap',
                                             zIndex: 10
                                         }}
                                     >
-                                        {tooltip.text}
+                                        {chain.stateNames[tooltip.index]}: {chain.stateCount[tooltip.index] || 0}/{numDots} dots ({numDots ? ((chain.stateCount[tooltip.index] || 0) / numDots * 100).toFixed(1) : '0.0'}%)
                                     </div>
                                 )}
                                 <div className="zoom-controls" style={{userSelect: 'none'}}>
                                     <button
                                         aria-label="Zoom out"
                                         className="zoom-btn"
-                                        onClick={() => setZoom(z => Math.max(0.1, parseFloat((z / 1.1).toFixed(3))))}
+                                        onClick={() => setZoom(z => Math.max(0.05, parseFloat((z / 1.1).toFixed(3))))}
                                         title="Zoom out"
                                     >
                                         -
                                     </button>
                                     <button
-                                        aria-label="Reset zoom"
+                                        aria-label="Fit graph"
                                         className="zoom-btn"
-                                        onClick={() => setZoom(1.0)}
-                                        title="Reset zoom"
+                                        onClick={() => fitRef.current()}
+                                        title="Fit the whole graph"
                                     >
-                                        100%
+                                        Fit
                                     </button>
                                     <button
                                         aria-label="Zoom in"
                                         className="zoom-btn"
-                                        onClick={() => setZoom(z => Math.min(3.0, parseFloat((z * 1.1).toFixed(3))))}
+                                        onClick={() => setZoom(z => Math.min(5.0, parseFloat((z * 1.1).toFixed(3))))}
                                         title="Zoom in"
                                     >
                                         +
                                     </button>
+                                    <span className="zoom-level">{Math.round(zoom * 100)}%</span>
                                 </div>
                             </div>
 
                             {/* Absorption distribution: always show when data is available (all chains) */}
-                            {chain && chain.getHistogramData && (() => {
-                                const histData = chain.getHistogramData();
-                                return <Histogram data={histData} />;
-                            })()}
+                            {histData && <Histogram key={selectedChainIndex} data={histData} total={numDots} step={chain.stepCount} />}
 
-                            {/* Distribution Evolution Table: always shown when chain supports it */}
-                            <DistributionTable chain={chain} />
+                            <DistributionTable chain={chain} matrix={chain.transitionMatrix} initial={chain.initialDistribution} names={chain.stateNames} />
 
                             {/* Generated words display for English chains */}
                             {(chain.name.includes('English') && chain.getGeneratedWords) && (
@@ -759,7 +630,7 @@ const MarkovChainVisualization = () => {
                                                                 color: 'white',
                                                                 padding: '4px 8px',
                                                                 borderRadius: '4px',
-                                                                fontSize: '13px',
+                                                                fontSize: '17px',
                                                                 fontFamily: 'monospace'
                                                             }}
                                                         >
@@ -783,44 +654,7 @@ const MarkovChainVisualization = () => {
                                     {showMatrix ? 'Hide full transition matrix' : 'Show full transition matrix'}
                                 </button>
                             </div>
-                            {showMatrix && chain && (
-                                <div className="transition-matrix">
-                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
-                                        <h3>Transition Matrix</h3>
-                                        {/* Editing disabled */}
-                                    </div>
-                                    {false && matrixError && (
-                                        <div style={{color: '#f44336', marginBottom: '10px', fontSize: '14px'}}>
-                                            {matrixError}
-                                        </div>
-                                    )}
-                                    <div style={{ overflow: 'auto', maxHeight: '400px', border: '1px solid #eee' }}>
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>From \\ To</th>
-                                                    {chain.stateNames.map((name, i) => (
-                                                        <th key={i}>{name}</th>
-                                                    ))}
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {chain.transitionMatrix.map((row, i) => (
-                                                    <tr key={i}>
-                                                        <th>{chain.stateNames[i]}</th>
-                                                        {row.map((prob, j) => (
-                                                            <td key={j}>
-                                                        {prob.toFixed(3)}
-                                                            </td>
-                                                        ))}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    {/* Editing guidance hidden since editing is disabled */}
-                                </div>
-                            )}
+                            {showMatrix && <MatrixTable key={`${selectedChainIndex}-${chain.states.length}`} matrix={chain.transitionMatrix} names={chain.stateNames} />}
                         </>
                     )}
                 </div>

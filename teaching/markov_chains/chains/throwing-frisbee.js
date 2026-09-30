@@ -1,4 +1,6 @@
 class ThrowingFrisbee extends MarkovChain {
+    static meta = {"name": "Throwing Frisbee", "description": "Alice, Bob and Charlie pass a frisbee at random."};
+
     constructor() {
         super({
             name: "Throwing Frisbee",

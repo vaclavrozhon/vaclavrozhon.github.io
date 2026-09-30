@@ -1,4 +1,6 @@
 class CounterDemo extends MarkovChain {
+    static meta = {"name": "Counter (256 nodes)", "description": "Switch between a naive counter and a Morris-style counter."};
+
     constructor() {
         const numStates = 256;
         const states = Array.from({ length: numStates }, (_, i) => i);
@@ -218,4 +220,3 @@ class CounterDemo extends MarkovChain {
 }
 
 chainModules.push(CounterDemo);
-

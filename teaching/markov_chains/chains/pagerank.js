@@ -1,4 +1,6 @@
 class PageRank extends MarkovChain {
+    static meta = {"name": "PageRank", "description": "How links and teleportation affect page importance."};
+
     constructor() {
         // 15 nodes representing web pages:
         // 0: Hub (important page with many incoming links)
@@ -97,10 +99,15 @@ class PageRank extends MarkovChain {
     }
 
     getTheoreticalSteadyState() {
-        // Approximate PageRank values (rough, illustrative only)
-        return [0.24, 0.11, 0.11, 0.09, 0.08,
-                0.035, 0.035, 0.034, 0.034, 0.034, 0.034, 0.034, 0.034,
-                0.042, 0.042];
+        let distribution = this.getUniformDistribution();
+        for (let iteration = 0; iteration < 10000; iteration++) {
+            const next = this.states.map((_, j) => distribution.reduce(
+                (sum, probability, i) => sum + probability * this.transitionMatrix[i][j], 0));
+            const error = Math.max(...next.map((p, i) => Math.abs(p - distribution[i])));
+            distribution = next;
+            if (error < 1e-13) return distribution;
+        }
+        throw new Error('PageRank stationary distribution did not converge');
     }
 
     getCustomControls() {

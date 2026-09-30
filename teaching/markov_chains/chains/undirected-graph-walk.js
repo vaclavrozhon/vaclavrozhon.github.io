@@ -1,4 +1,6 @@
 class UndirectedGraphWalk extends MarkovChain {
+    static meta = {"name": "Random Walk on Undirected Graph", "description": "A random walk on a small undirected graph with 5 edges."};
+
     constructor() {
         // Small undirected graph with 5 edges over 5 nodes
         // Edges: (0-1), (1-2), (2-0) forming a triangle, plus tail (2-3-4)
@@ -77,7 +79,3 @@ class UndirectedGraphWalk extends MarkovChain {
 }
 
 chainModules.push(UndirectedGraphWalk);
-
-
-
-

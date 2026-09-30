@@ -1,4 +1,6 @@
 class CouponCollector2 extends MarkovChain {
+    static meta = {"name": "Coupon Collector", "description": "Collect uniformly sampled coupons."};
+
     constructor(numCoupons = 10) {
         const states = Array.from({ length: numCoupons + 1 }, (_, i) => i);
         const stateNames = states.map(i => `${i}`);
@@ -15,7 +17,7 @@ class CouponCollector2 extends MarkovChain {
 
         this.numCoupons = numCoupons;
         this.absorbingState = numCoupons;
-        this._initAbsorptionTracking(this.numDots);
+        this.trackAbsorption([numCoupons]);
     }
 
     getCustomControls() {
@@ -37,7 +39,7 @@ class CouponCollector2 extends MarkovChain {
         this.transitionMatrix = CouponCollector2._buildTransitionMatrix(n);
         this.initialDistribution = [1, ...Array(n).fill(0)];
         this.description = `Collect ${n} coupons with equal probability.`;
-        this.reset();
+        this.trackAbsorption([n]);
     }
 
     static _buildTransitionMatrix(numCoupons) {
@@ -52,20 +54,6 @@ class CouponCollector2 extends MarkovChain {
             }
             return row;
         });
-    }
-
-    _initAbsorptionTracking(count) {
-        this.dotArrivalSteps = new Array(count).fill(NaN);
-        this._absorbed = new Array(count).fill(false);
-        this.absorbedCount = 0;
-        this.onArrival = (dotIndex, state) => {
-            if (state === this.absorbingState && !this._absorbed[dotIndex]) {
-                this._absorbed[dotIndex] = true;
-                this.absorbedCount++;
-                const dot = this.dots[dotIndex];
-                this.dotArrivalSteps[dotIndex] = dot.history ? dot.history.length - 1 : 0;
-            }
-        };
     }
 
     getNodePositions(centerX, centerY) {
@@ -115,17 +103,6 @@ class CouponCollector2 extends MarkovChain {
     getHistogramData() {
         return this.dotArrivalSteps.filter(v => Number.isFinite(v));
     }
-
-    reset() {
-        super.reset();
-        this._initAbsorptionTracking(this.numDots);
-    }
-
-    setNumDots(num) {
-        super.setNumDots(num);
-        this._initAbsorptionTracking(num);
-    }
 }
 
 chainModules.push(CouponCollector2);
-
