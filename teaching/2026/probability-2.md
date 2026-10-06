@@ -22,4 +22,11 @@ Check out the [previous run](/teaching/2025/probability-2).
 
 # Lectures
 
-- Lecture 2026-09-30 — Markov chain examples and beginning of the lecture notes, up to the definitions of the transition matrix and transition diagram.
+- [Lecture 2026-09-30](https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-09-30/prednaska-2026-09-30.mp4) — Markov chain examples and beginning of the lecture notes, up to the definitions of the transition matrix and transition diagram.
+
+<video controls playsinline preload="metadata" aria-label="Probability 2 lecture, September 30, 2026" style="width: 100%; height: auto;">
+  <source src="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-09-30/prednaska-2026-09-30.mp4" type="video/mp4">
+  <p><a href="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-09-30/prednaska-2026-09-30.mp4">Download the lecture recording (MP4).</a></p>
+</video>
+
+Lectures are recorded, and I will try to publish the recordings on the same day.
