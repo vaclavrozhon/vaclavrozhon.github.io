@@ -29,4 +29,11 @@ Check out the [previous run](/teaching/2025/probability-2).
   <p><a href="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-09-30/prednaska-2026-09-30.mp4">Download the lecture recording (MP4).</a></p>
 </video>
 
+- [Lecture 2026-10-07](https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-07/prednaska-2026-10-07.mp4) — Markov chains: reachability, stationary distributions, irreducibility and periodicity.
+
+<video id="lecture-2026-10-07" controls playsinline preload="metadata" aria-label="Probability 2 lecture, October 7, 2026" style="width: 100%; height: auto;">
+  <source src="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-07/prednaska-2026-10-07.mp4" type="video/mp4">
+  <p><a href="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-07/prednaska-2026-10-07.mp4">Download the lecture recording (MP4).</a></p>
+</video>
+
 Lectures are recorded, and I will try to publish the recordings on the same day.
