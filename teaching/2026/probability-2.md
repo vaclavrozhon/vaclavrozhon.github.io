@@ -19,6 +19,7 @@ Check out the [previous run](/teaching/2025/probability-2).
 
 - [Markov chains](/teaching/markov_chains/)
 - [PageRank for Wikipedia](/teaching/pagerank/public/)
+- [Random walk on 3-SAT](/teaching/3sat-random-walk/)
 
 # Lectures
 

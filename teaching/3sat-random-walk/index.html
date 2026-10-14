@@ -259,7 +259,7 @@ button:active { transform: translateY(1px); box-shadow: 0 1px 0 rgba(0,0,0,.15);
 <div class="three-sat-container">
   <div class="hero">
     <h2>Random Walk for 3SAT</h2>
-    <p>This demo shows Schöning's algorithm that can solve 3-SAT in expected time O(1.34<sup>n</sup>). We will show O(1.74<sup>n</sup>) in the class. At each step: pick a uniformly random variable from an arbitrary unsatisfied clause. Track the Hamming agreement with a fixed satisfying assignment, visualized as a 1-D Markov chain on states <span class="kbd">0..n</span>.</p>
+    <p>This demo illustrates the random-flip step used in Schöning's randomized 3-SAT algorithm. Select an unsatisfied clause, then flip one of its variables uniformly at random. The diagram tracks how many of the <span class="kbd">n</span> variables agree with a fixed satisfying assignment. That count alone need not be a Markov chain: the next-step probabilities also depend on the current assignment and selected clause. The fixed solution is shown for analysis; the random-flip rule does not use it.</p>
   </div>
 
   <!-- Sticky toolbar -->
