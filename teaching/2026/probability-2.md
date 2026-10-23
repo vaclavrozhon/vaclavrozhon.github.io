@@ -37,4 +37,18 @@ Check out the [previous run](/teaching/2025/probability-2).
   <p><a href="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-07/prednaska-2026-10-07.mp4">Download the lecture recording (MP4).</a></p>
 </video>
 
+- [Lecture 2026-10-14](https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-14/prednaska-2026-10-14.mp4) — Markov chains: PageRank, random walks, absorption probabilities and expected absorption times, and a randomized algorithm for 3-SAT.
+
+<video id="lecture-2026-10-14" controls playsinline preload="metadata" aria-label="Probability 2 lecture, October 14, 2026" style="width: 100%; height: auto;">
+  <source src="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-14/prednaska-2026-10-14.mp4" type="video/mp4">
+  <p><a href="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-14/prednaska-2026-10-14.mp4">Download the lecture recording (MP4).</a></p>
+</video>
+
+- [Lecture 2026-10-21](https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-21/prednaska-2026-10-21.mp4) — Markov-chain hitting times and an introduction to Bayesian inference, including discrete and continuous priors, likelihoods and posteriors.
+
+<video id="lecture-2026-10-21" controls playsinline preload="metadata" aria-label="Probability 2 lecture, October 21, 2026" style="width: 100%; height: auto;">
+  <source src="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-21/prednaska-2026-10-21.mp4" type="video/mp4">
+  <p><a href="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-21/prednaska-2026-10-21.mp4">Download the lecture recording (MP4).</a></p>
+</video>
+
 Lectures are recorded, and I will try to publish the recordings on the same day.
