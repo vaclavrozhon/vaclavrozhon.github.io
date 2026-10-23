@@ -10,10 +10,15 @@ katex: true
 More advanced topics in probability theory.
 Check out the [previous run](/teaching/2025/probability-2).
 
+# Course links
+
+- [Robert Šámal's course page](https://iuuk.mff.cuni.cz/~samal/vyuka/PSt2/)
+- [Tutorials — Josef “Pepa” Tkadlec](https://sites.google.com/view/pepa-tkadlec/teaching/pass2627c1)
+- [Tutorials — Michal Katrlík](https://kam.mff.cuni.cz/~katrlikm/past2.html)
+
 # Topics
 
 - [Lecture notes](https://iuuk.mff.cuni.cz/~samal/vyuka/2425/PSt2/LN.pdf)
-- [Robert Šámal's Probability and Statistics 2 course page](https://iuuk.mff.cuni.cz/~samal/vyuka/PSt2/)
 
 # Demos
 
