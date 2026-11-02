@@ -22,6 +22,15 @@ states the precise bounds, cost models, and scope of each result; the
 [public Lean statements](https://github.com/vaclavrozhon/dynamic-optimality/blob/main/DynamicOptimalityResults.lean)
 are the formal entry point.
 
+Write `n` for the number of keys. Further results include an `O(log log log n)`
+competitive bound for **Cha-Cha with Splay auxiliaries**, bounds for **funnel
+counts** and **interleaved nearest-neighbor walks**, an explicit separation
+between lower-bound counters, and an entropy bound in expectation.
+The shared framework also contains a causal conversion
+from online geometric strategies to ordinary BSTs, including a physical
+realization of Greedy. The repository overview states the hypotheses and links
+each result to its Lean theorem and proof guide.
+
 ## Exploring the proofs
 
 The [interactive proof graph](proof-atlas.html) shows the repository's Lean
@@ -31,8 +40,9 @@ declaration to another declaration that occurs in its type or its proof or
 definition body.
 
 Use **Modules** and **Declarations** to switch between source files and individual
-Lean statements. The main algorithm results have star markers and direct buttons
-above the graph; the supporting model-equivalence result has a diamond marker.
+Lean statements. The main results have star markers and direct buttons above
+the graph; supporting structural results and model conversions have diamond
+markers.
 Click a result to inspect its proof neighborhood, or search for any declaration.
 
 Zoom with **− / +** or the scroll wheel, pan by dragging the background, and hover
