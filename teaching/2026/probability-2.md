@@ -58,4 +58,11 @@ Check out the [previous run](/teaching/2025/probability-2).
   <p><a href="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-10-21/prednaska-2026-10-21.mp4">Download the lecture recording (MP4).</a></p>
 </video>
 
+- [Lecture 2026-11-04](https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-11-04/prednaska-2026-11-04.mp4) — Bayesian inference: maximum a posteriori (MAP) and maximum likelihood estimation, learning a coin's bias and posterior prediction, with applications to noisy GPS tracking and election forecasting.
+
+<video id="lecture-2026-11-04" controls playsinline preload="metadata" aria-label="Probability 2 lecture, November 4, 2026" style="width: 100%; height: auto;">
+  <source src="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-11-04/prednaska-2026-11-04.mp4" type="video/mp4">
+  <p><a href="https://github.com/vaclavrozhon/vaclavrozhon.github.io/releases/download/lecture-2026-11-04/prednaska-2026-11-04.mp4">Download the lecture recording (MP4).</a></p>
+</video>
+
 Lectures are recorded, and I will try to publish the recordings on the same day.
