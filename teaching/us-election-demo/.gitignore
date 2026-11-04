@@ -1,3 +1,9 @@
 node_modules
 build
 .DS_Store
+
+# Recreated by npm prebuild/prestart.
+public/house-worker.mjs
+public/house-model.mjs
+public/election-model.mjs
+scripts/__pycache__/

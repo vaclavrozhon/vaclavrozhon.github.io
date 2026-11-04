@@ -33,7 +33,9 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: widgets/package-lock.json
+          cache-dependency-path: |
+            widgets/package-lock.json
+            teaching/us-election-demo/package-lock.json
 
       - name: Install widget dependencies
         run: |
@@ -43,6 +45,12 @@ jobs:
       - name: Build widgets
         run: |
           cd widgets
+          npm run build
+
+      - name: Build House Metropolis demo
+        working-directory: teaching/us-election-demo
+        run: |
+          npm ci
           npm run build
 
       - name: Setup Ruby

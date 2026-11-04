@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Follow a car through Linden Town. Reconstruct its 60-second trip from noisy GPS with a hidden Markov model and Viterbi."
+    />
+    <title>Where is the car? · Linden Town</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235c50db'/%3E%3Cpath d='M15 39V27l7-10h20l7 10v12M15 28h34M21 39v7m22-7v7' stroke='white' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="page-header">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32">
+            <path d="M7 21V14l4-6h10l4 6v7M7 15h18M10 21v4m12-4v4" />
+            <circle cx="11" cy="19" r="1" />
+            <circle cx="21" cy="19" r="1" />
+          </svg>
+        </div>
+        <div>
+          <p class="eyebrow">PST II / HIDDEN MARKOV MODEL</p>
+          <h1>Where is the car?</h1>
+        </div>
+        <a
+          class="course-link"
+          href="https://vaclavrozhon.github.io/teaching/2026/probability-2"
+          >Back to course ↗</a
+        >
+      </header>
+      <p class="intro">
+        One town. One 60-second trip. Each GPS point can change our estimate of
+        the whole route so far.
+      </p>
+
+      <section class="demo" aria-label="Car tracking demo">
+        <div class="toolbar" aria-label="Playback controls">
+          <button id="next" class="primary" title="Next step (→)">
+            ＋ Next step
+          </button>
+          <button id="play" aria-pressed="false">▶ Play</button>
+          <button
+            id="restart"
+            class="quiet"
+            title="Replay the same route and GPS observations"
+          >
+            ↺ Reset
+          </button>
+          <div class="scrubber">
+            <label for="history" class="sr-only">Time in seconds</label>
+            <input
+              id="history"
+              type="range"
+              min="0"
+              max="60"
+              step="1"
+              value="0"
+            />
+            <output id="clock" for="history"
+              ><strong id="time">0</strong> / 60 s</output
+            >
+          </div>
+        </div>
+        <div class="settings">
+          <div class="view-switch" role="group" aria-label="View">
+            <button id="view-map" aria-pressed="true">Map</button>
+            <button id="view-chain" aria-pressed="false">Model</button>
+          </div>
+          <div class="layers" role="group" aria-label="Map layers">
+            <label class="layer gps"
+              ><input id="show-gps" type="checkbox" checked /><span
+                >GPS data</span
+              ></label
+            >
+            <label
+              class="layer truth"
+              title="Drawn slightly right of the direction of travel"
+              ><input id="show-truth" type="checkbox" checked /><span
+                >True path</span
+              ></label
+            >
+            <label
+              class="layer viterbi"
+              title="Drawn left of the direction of travel, farther from the street center"
+              ><input id="show-viterbi" type="checkbox" checked /><span
+                >Viterbi path</span
+              ></label
+            >
+          </div>
+          <div class="noise-control">
+            <label for="sigma">GPS noise</label>
+            <input
+              id="sigma"
+              type="range"
+              min="0.3"
+              max="3"
+              step="0.1"
+              value="2"
+              aria-label="GPS noise standard deviation in grid units"
+            />
+            <output id="sigma-value" for="sigma">σ = 2.0</output>
+          </div>
+        </div>
+        <div id="chain-info" class="chain-info" hidden>
+          <span
+            >93 states · arrows = moves · loops = waiting. Click a state.</span
+          >
+          <strong id="chain-state-info"></strong>
+        </div>
+        <div id="path-factor-info" class="path-factor-info" hidden>
+          <span
+            ><b>Blue path weight:</b> start × transitions<span
+              id="gps-factor-product"
+            >
+              × GPS weights</span
+            >.</span
+          >
+          <span id="gps-factor-legend"
+            >GPS weights: e<sup>−a²</sup>, a = d/(σ√2). Common density factor
+            omitted.</span
+          >
+          <span>Repeated transitions use powers.</span>
+        </div>
+        <div class="map-container">
+          <svg
+            id="map"
+            viewBox="-1 -4.4 19.8 18.3"
+            role="img"
+            aria-label="Linden Town, the true car route, noisy GPS, and the Viterbi estimate"
+          ></svg>
+        </div>
+        <div class="map-caption">
+          <span id="journey-status">Driving to Cafe</span>
+          <span id="pair-status" hidden></span>
+        </div>
+      </section>
+
+      <details class="explanation">
+        <summary>How it works</summary>
+        <p>
+          The hidden state is the car’s position. Each second it can stay or
+          move to a neighboring street position, with equal probability for
+          every available option. There are 93 possible positions; the initial
+          position is uniform.
+        </p>
+        <p>
+          Switch to Model to see the same street positions as nodes. Every
+          street edge has an arrow in each direction, and every state has a
+          waiting loop. Select a node to see its outgoing probabilities; these
+          depend on the number of choices at the source state. Select the same
+          node again to clear its highlight.
+        </p>
+        <p>
+          In the chain view, the blue path starts with probability 1/93. Its
+          transition labels use the number of choices at the source, including
+          waiting; powers count repeated transitions. Each faint connector pairs
+          the GPS observation at time t with the blue estimate at that same
+          time. Its label is e<sup>−a²</sup>, with a = d/(σ√2), where d is the
+          distance from the unshifted model state to that GPS observation.
+          Multiplying these factors gives the path's relative joint weight, not
+          a normalized posterior probability. The Gaussian density factor
+          1/(2πσ²) per observation is common to every candidate path and is
+          omitted from the labels.
+        </p>
+        <p>
+          Hover over an orange GPS point or a blue path point to highlight its
+          same-time counterpart and connector. When the blue path visits the
+          same displayed point more than once, hovering it highlights all
+          corresponding observations. Hidden layers stay hidden.
+        </p>
+        <p>
+          GPS adds independent Gaussian noise to both coordinates, with standard
+          deviation σ. Changing the slider preserves the route and scales the
+          same noise. The map fits all GPS points at the chosen noise level and
+          stays still as you step through the trip.
+        </p>
+        <p>
+          Viterbi finds the most probable complete path using only observations
+          up to the selected time. A new observation can change earlier
+          estimates. The model knows the roads, but not the car’s route or
+          stops.
+        </p>
+        <p>
+          To separate overlapping paths, the true route is drawn slightly to the
+          right of travel and Viterbi farther to the left. These offsets only
+          affect the drawing; model states and GPS coordinates stay the same.
+        </p>
+        <p class="shortcuts">
+          → Next step · ← Previous step · Space Play / pause
+        </p>
+      </details>
+      <noscript>Enable JavaScript to run this interactive demo.</noscript>
+    </main>
+  </body>
+</html>

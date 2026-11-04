@@ -23,6 +23,8 @@ Check out the [previous run](/teaching/2025/probability-2).
 # Demos
 
 - [Markov chains](/teaching/markov_chains/)
+- [Hidden Markov model: a car with noisy GPS](/teaching/hmm-gridworld/)
+- [Metropolis: who will control the 2026 House?](/teaching/us-election-demo/build/#house)
 - [PageRank for Wikipedia](/teaching/pagerank/public/)
 - [Random walk on 3-SAT](/teaching/3sat-random-walk/)
 

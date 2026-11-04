@@ -1,0 +1,32 @@
+pollster,start,end,n,population,dem,rep,margin,partisan,url,source,pollId,ageDays
+Ipsos,2026-10-29,2026-11-02,1212.0,LV,52.0,44.0,8.0,,https://www.ipsos.com/en-us/reutersipsos-early-november-survey,Silver Bulletin,901985,0
+John Zogby Strategies,2026-11-01,2026-11-02,1001.0,LV,53.0,47.0,6.0,,https://johnzogbystrategies.com/democrats-lead-republicans-53-47-in-congressional-generic-ballot-new-john-zogby-strategies-election-day-eve-of-election-poll/,Silver Bulletin,901988,0
+Morning Consult,2026-10-26,2026-11-01,16929.0,LV,51.02,43.09,7.93,,https://pro-assets.morningconsult.com/wp-uploads/2026/09/MCPI-PI-Weekly.html,Silver Bulletin,901983,1
+Focaldata,2026-10-30,2026-11-01,2090.0,LV,52.0,45.0,7.0,,https://www.focaldata.com/blog/democrats-lead-by-7-points-in-final-focaldata-ft-midterms-poll,Silver Bulletin,901986,1
+AtlasIntel,2026-10-28,2026-11-01,3566.0,A,55.5,41.4,14.1,,https://www.atlasintel.org/poll/usa-national-2026-11-01,Silver Bulletin,901980,1
+YouGov,2026-10-27,2026-10-30,3915.0,LV,53.0,44.0,9.0,,https://d3nkl3psvxxpe9.cloudfront.net/documents/national_20261026.pdf,Silver Bulletin,901987,3
+TIPP Insights,2026-10-27,2026-10-30,1158.0,LV,52.0,42.0,10.0,,https://tippinsights.com/trumps-voter-approval-strengthens-but-deep-divisions-among-voters-remain-i-i-tipp-poll/,Silver Bulletin,901981,3
+Hart Research Associates/Public Opinion Strategies,2026-10-28,2026-10-30,1000.0,RV,52.0,45.0,7.0,,https://www.nbcnews.com/politics/2026-election/poll-voters-demand-change-check-trump-fueling-steep-democratic-midterm-rcna606183,Silver Bulletin,901979,3
+Rasmussen Reports,2026-10-22,2026-10-28,1442.0,LV,49.0,43.0,6.0,REP,https://www.rasmussenreports.com/public_content/politics/mood_of_america/generic_congressional_ballot_nov02,Silver Bulletin,901992,5
+Tufts University Public Opinion Lab,2026-10-23,2026-10-27,1000.0,A,52.0,40.0,12.0,,https://tufts-pol.medium.com/tufts-public-opinion-lab-national-pre-election-poll-shows-a-big-lead-for-democrats-in-the-race-for-57656e85c738,Silver Bulletin,901968,6
+Emerson College,2026-10-24,2026-10-26,1000.0,LV,52.4,42.4,10.0,,https://emersoncollegepolling.com/october-2026-national-poll-democrats-hold-10-point-midterm-advantage/,Silver Bulletin,901971,7
+Leger,2026-10-23,2026-10-25,1037.0,A,52.0,45.0,7.0,,https://leger360.com/en/2026-u-s-midterms/,Silver Bulletin,901969,8
+Cygnal,2026-10-23,2026-10-24,1500.0,LV,51.5,43.1,8.4,,https://www.cygn.al/wp-content/uploads/2026/10/Cygnal-National-Late-Oct26-NVT-Deck-Public.pdf,Silver Bulletin,901966,9
+Echelon Insights,2026-10-16,2026-10-23,3644.0,LV,51.0,46.0,5.0,,https://netchoice.org/wp-content/uploads/2026/10/NetChoice-October-2026-Antitrust-Tech-Survey-Topline.pdf,Silver Bulletin,901960,10
+The Argument/Verasight,2026-10-21,2026-10-23,1549.0,LV,55.4,44.6,10.8,,https://www.theargumentmag.com/p/how-republicans-lost-voters-trust,Silver Bulletin,901973,10
+Targoz Market Research,2026-10-20,2026-10-22,1118.0,LV,49.0,46.0,3.0,,https://www.targoz.com/market-matters-blog/2026/10/28/one-in-eight-likely-voters-has-bet-or-plans-to-bet-on-the-midterm-elections,Silver Bulletin,901978,11
+Prolific,2026-10-21,2026-10-22,713.0,LV,52.6,41.9,10.7,,https://www.prolific.com/resources/poll-democrats-lead-by-11-points-here-s-how-we-reached-that-number,Silver Bulletin,901961,11
+Clarity Campaign Labs,2026-10-15,2026-10-21,1016.0,LV,52.0,44.0,8.0,,https://www.claritycampaigns.com/clarity-omnibus-2026-oct,Silver Bulletin,901967,12
+Marist University,2026-10-19,2026-10-20,1289.0,LV,52.0,44.0,8.0,,https://maristpoll.marist.edu/polls/u-s-midterm-elections-october-2026/,Silver Bulletin,901955,13
+The Rainey Center,2026-10-14,2026-10-20,1279.0,RV,52.0,44.0,8.0,,https://www.raineycenter.org/polling/ai-data-centers-energy-and-kids-online,Silver Bulletin,901963,13
+The New York Times/Siena College,2026-10-12,2026-10-19,3494.0,LV,52.0,41.0,11.0,,https://www.nytimes.com/interactive/2026/10/21/polls/times-siena-poll-toplines.html,Silver Bulletin,901935,14
+Verasight,2026-10-13,2026-10-19,1824.0,LV,54.0,42.0,12.0,,https://www.gelliottmorris.com/p/2026-10-21-october-strength-in-numbers-verasight-poll-release,Silver Bulletin,901937,14
+Change Research,2026-10-12,2026-10-18,2240.0,RV,50.0,39.0,11.0,,https://www.youtube.com/watch?v=vZbEeRGWi6A,Silver Bulletin,901984,15
+CNN/SSRS,2026-10-15,2026-10-18,1206.0,RV,49.0,39.0,10.0,,https://edition.cnn.com/2026/10/21/politics/cnn-poll-trump-democrats-republicans-midterms,Silver Bulletin,901936,15
+SurveyMonkey,2026-09-28,2026-10-12,18061.0,RV,55.0,45.0,10.0,,https://www.nbcnews.com/politics/2026-election/poll-americans-anxious-pessimistic-deeply-unhappy-trump-ahead-midterms-rcna603064,Silver Bulletin,901926,21
+Beacon Research/Shaw & Company Research,2026-10-09,2026-10-12,1202.0,RV,54.0,45.0,9.0,,https://www.foxnews.com/politics/fox-news-poll-cost-living-concerns-weigh-gop-midterms,Silver Bulletin,901918,21
+AP-NORC,2026-10-08,2026-10-12,925.0,RV,47.0,38.0,9.0,,https://apnorc.org/projects/ahead-of-the-midterms-most-voters-cite-the-economy-and-cost-of-living-as-top-issues-and-favor-political-change/,Silver Bulletin,901917,21
+NewsNation,2026-10-05,2026-10-09,974.0,LV,49.0,42.0,7.0,,https://thehill.com/homenews/campaign/6143963-democrats-lead-congressional-ballot-ddhq/,Silver Bulletin,901905,24
+Noble Predictive Insights,2026-10-05,2026-10-07,2527.0,RV,47.0,42.0,5.0,,https://www.thecentersquare.com/polls/,Silver Bulletin,901898,26
+Pew Research Center,2026-09-30,2026-10-04,3917.0,RV,44.0,36.0,8.0,,https://www.pewresearch.org/politics/2026/10/08/with-americans-in-a-sour-mood-democratic-voters-are-more-engaged-in-midterms/,Silver Bulletin,901896,29
+Centerline Research,2026-09-26,2026-10-01,930.0,LV,50.0,42.0,8.0,,https://centerliners.com/assets/polls/centerline-national-poll-topline-100626.pdf,Silver Bulletin,901890,32

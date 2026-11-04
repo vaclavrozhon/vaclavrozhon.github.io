@@ -101,6 +101,16 @@ exclude:
   - teaching/metropolis-demo/
   - teaching/landscape-demo/node_modules/
   - teaching/markov-chain-demo/node_modules/
+  - teaching/us-election-demo/node_modules/
+  - teaching/us-election-demo/src/
+  - teaching/us-election-demo/public/
+  - teaching/us-election-demo/scripts/
+  - teaching/us-election-demo/tests/
+  - teaching/us-election-demo/package.json
+  - teaching/us-election-demo/package-lock.json
+  - teaching/us-election-demo/README.md
+  - teaching/hmm-gridworld/tests/
+  - teaching/hmm-gridworld/README.md
   - widgets/node_modules/
   - widgets/src/
   - widgets/package.json

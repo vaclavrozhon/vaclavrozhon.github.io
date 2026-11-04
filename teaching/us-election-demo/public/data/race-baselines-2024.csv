@@ -1,0 +1,36 @@
+state,name,region,heldBy,special,independent,challenger,republican,margin2024,lean
+AL,Alabama,South,R,False,False,Wess,Moore,-30.4714,-28.9995
+AK,Alaska,West,R,False,False,Peltola,Sullivan,-13.1387,-11.6668
+AR,Arkansas,South,R,False,False,Shoffner,Cotton,-30.637,-29.1651
+CO,Colorado,West,D,False,False,Hickenlooper,Baisley,10.9848,12.4568
+DE,Delaware,South,D,False,False,Democratic candidate,Republican candidate,14.7017,16.1737
+FL,Florida,South,R,True,False,Nixon,Moody,-13.1001,-11.6281
+GA,Georgia,South,D,False,False,Ossoff,Collins,-2.192,-0.7201
+ID,Idaho,West,R,False,True,Achilles,Risch,-36.4921,-35.0202
+IL,Illinois,Midwest,D,False,False,Democratic candidate,Republican candidate,10.8956,12.3675
+IA,Iowa,Midwest,R,False,False,Turek,Hinson,-13.2095,-11.7376
+KS,Kansas,Midwest,R,False,False,Hamilton,Marshall,-16.1156,-14.6437
+KY,Kentucky,South,R,False,False,Democratic candidate,Republican candidate,-30.5347,-29.0628
+LA,Louisiana,South,R,False,False,Davis,Letlow,-22.005,-20.5331
+ME,Maine,Northeast,R,False,False,Jackson,Collins,6.9373,8.4092
+MA,Massachusetts,Northeast,D,False,False,Markey,Deaton,25.1957,26.6676
+MI,Michigan,Midwest,D,False,False,El-Sayed,Rogers,-1.4142,0.0577
+MN,Minnesota,Midwest,D,False,False,Flanagan,Tafoya,4.2394,5.7113
+MS,Mississippi,South,R,False,False,Colom,Hyde-Smith,-22.8888,-21.4169
+MT,Montana,West,R,False,True,Bodnar,Alme,-19.9295,-18.4576
+NE,Nebraska,Midwest,R,False,True,Osborn,Ricketts,-20.4605,-18.9886
+NH,New Hampshire,Northeast,D,False,False,Pappas,Sununu,2.7796,4.2515
+NJ,New Jersey,Northeast,D,False,False,Democratic candidate,Republican candidate,5.9095,7.3814
+NM,New Mexico,West,D,False,False,Luján,Marker,6.0007,7.4726
+NC,North Carolina,South,R,False,False,Cooper,Whatley,-3.2119,-1.7399
+OH,Ohio,Midwest,R,True,False,Brown,Husted,-11.2074,-9.7355
+OK,Oklahoma,South,R,False,False,Democratic candidate,Republican candidate,-34.2628,-32.7908
+OR,Oregon,West,D,False,False,Democratic candidate,Republican candidate,14.307,15.7789
+RI,Rhode Island,Northeast,D,False,False,Reed,McKay,13.7811,15.253
+SC,South Carolina,South,R,False,False,Andrews,Graham,-17.8677,-16.3958
+SD,South Dakota,Midwest,R,False,True,Bengs,Rounds,-29.1946,-27.7227
+TN,Tennessee,South,R,False,False,Democratic candidate,Republican candidate,-29.7199,-28.248
+TX,Texas,South,R,False,False,Talarico,Paxton,-13.6833,-12.2114
+VA,Virginia,South,D,False,False,Democratic candidate,Republican candidate,5.7665,7.2384
+WV,West Virginia,South,R,False,False,Democratic candidate,Republican candidate,-41.864,-40.392
+WY,Wyoming,West,R,False,False,Democratic candidate,Republican candidate,-45.7561,-44.2842

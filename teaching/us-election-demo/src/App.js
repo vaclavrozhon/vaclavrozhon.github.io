@@ -1,399 +1,1020 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import Papa from "papaparse";
+import React, { useEffect, useRef, useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import usStates from "us-atlas/states-10m.json";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-import 'katex/dist/katex.min.css';
-import { BlockMath, InlineMath } from 'react-katex';
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  ReferenceLine,
+  LineChart,
+  Line,
+  CartesianGrid,
+} from "recharts";
+import "katex/dist/katex.min.css";
+import { BlockMath } from "react-katex";
+import data from "./data/snapshot2026.json";
+import {
+  buildModel,
+  Sampler,
+  scores,
+  seatTally,
+  DEFAULTS,
+  BURN_IN,
+  THIN,
+} from "./model.mjs";
 
-/***********************
- * SIMPLE METROPOLIS DEMO
- * - No national shift parameter (no μ₀)
- * - Latents are state margins μ_i (ppt)
- * - Prior: Laplace on swing from 2020 (μ_i - prev_i ~ Laplace(s*, b))
- * - Likelihoods: Gaussian for state polls and national polls
- * - National margin = weighted average of state margins: μ_nat = Σ w_i μ_i
- * - Weights default to Electoral Vote (quick proxy); change WEIGHTS if desired
- ***********************/
-
-/********** constants (hard-coded for clarity) **********/
-const SIGMA_BIAS = 2.0;     // extra poll noise (ppt)
-const NAT_DEFAULT_N = 1000; // pretend national polls have n=1000 when unknown
-const LAPLACE_B = 3.0;      // Laplace scale b (ppt)
-const LAPLACE_MEAN = 0.0;   // mean swing s*
-const PROPOSAL_SD = 0.5;    // MH proposal sd for each μ_i (ppt)
-
-/********** utilities **********/
-const clamp = (x, lo, hi) => Math.max(lo, Math.min(hi, x));
-function gaussian01(){ let u=0,v=0; while(!u) u=Math.random(); while(!v) v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
-function marginToColor(m){ // blue ↔ red gradient within ±12ppt
-  const x = clamp(m, -12, 12); const t=(x+12)/24; const c0=[0xd7,0x30,0x27], c1=[0x45,0x75,0xb4];
-  const c=[0,1,2].map(i=>Math.round(c0[i]*(1-t)+c1[i]*t)); return `rgb(${c[0]},${c[1]},${c[2]})`;
+const FIPS = {
+  "01": "AL",
+  "02": "AK",
+  "04": "AZ",
+  "05": "AR",
+  "06": "CA",
+  "08": "CO",
+  "09": "CT",
+  10: "DE",
+  11: "DC",
+  12: "FL",
+  13: "GA",
+  15: "HI",
+  16: "ID",
+  17: "IL",
+  18: "IN",
+  19: "IA",
+  20: "KS",
+  21: "KY",
+  22: "LA",
+  23: "ME",
+  24: "MD",
+  25: "MA",
+  26: "MI",
+  27: "MN",
+  28: "MS",
+  29: "MO",
+  30: "MT",
+  31: "NE",
+  32: "NV",
+  33: "NH",
+  34: "NJ",
+  35: "NM",
+  36: "NY",
+  37: "NC",
+  38: "ND",
+  39: "OH",
+  40: "OK",
+  41: "OR",
+  42: "PA",
+  44: "RI",
+  45: "SC",
+  46: "SD",
+  47: "TN",
+  48: "TX",
+  49: "UT",
+  50: "VT",
+  51: "VA",
+  53: "WA",
+  54: "WV",
+  55: "WI",
+  56: "WY",
+};
+const fmt = (n, digits = 1) =>
+  n.toLocaleString("en-US", {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  });
+const signed = (n) => `${n >= 0 ? "+" : "−"}${fmt(Math.abs(n))}`;
+const percent = (n, total) => (total ? `${fmt((100 * n) / total)}%` : "—");
+const stateIndex = Object.fromEntries(data.races.map((r, i) => [r.state, i]));
+const snapshotDate = new Date(`${data.asOf}T12:00:00Z`).toLocaleDateString(
+  "en-US",
+  { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" },
+);
+const blank = "#e5e8ef";
+function color(margin, independent = false) {
+  const positive = independent ? [188, 137, 34] : [65, 101, 200];
+  const target = margin >= 0 ? positive : [204, 83, 91];
+  const strength = Math.min(1, Math.abs(margin) / 12);
+  return `rgb(${target.map((v, i) => Math.round([240, 240, 246][i] * (1 - strength) + v * strength)).join(",")})`;
 }
-function normalSeFromN(n){ return 100/Math.sqrt(Math.max(1,n)); } // ppt approximation
-function sigmaFromN(n){ const s = normalSeFromN(n); return Math.sqrt(s*s + SIGMA_BIAS*SIGMA_BIAS); }
-function logNormPdf(x, m, sd){ const z=(x-m)/sd; return -0.5*(z*z) - Math.log(sd) - 0.5*Math.log(2*Math.PI); }
-function logLaplacePdf(x, m, b){ return -Math.log(2*b) - Math.abs(x-m)/b; }
+const external = { target: "_blank", rel: "noreferrer" };
 
-/********** metadata **********/
-const STATE_ORDER = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
-const STATE_NAME = { AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming" };
-const EV_2016 = { AL:9,AK:3,AZ:11,AR:6,CA:55,CO:9,CT:7,DE:3,FL:29,GA:16,HI:4,ID:4,IL:20,IN:11,IA:6,KS:6,KY:8,LA:8,ME:4,MD:10,MA:11,MI:16,MN:10,MS:6,MO:10,MT:3,NE:5,NV:6,NH:4,NJ:14,NM:5,NY:29,NC:15,ND:3,OH:18,OK:7,OR:7,PA:20,RI:4,SC:9,SD:3,TN:11,TX:38,UT:6,VT:3,VA:13,WA:12,WV:5,WI:10,WY:3 };
-const FIPS_TO_CODE = {"01":"AL","02":"AK","04":"AZ","05":"AR","06":"CA","08":"CO","09":"CT","10":"DE","12":"FL","13":"GA","15":"HI","16":"ID","17":"IL","18":"IN","19":"IA","20":"KS","21":"KY","22":"LA","23":"ME","24":"MD","25":"MA","26":"MI","27":"MN","28":"MS","29":"MO","30":"MT","31":"NE","32":"NV","33":"NH","34":"NJ","35":"NM","36":"NY","37":"NC","38":"ND","39":"OH","40":"OK","41":"OR","42":"PA","44":"RI","45":"SC","46":"SD","47":"TN","48":"TX","49":"UT","50":"VT","51":"VA","53":"WA","54":"WV","55":"WI","56":"WY"};
-
-// Default 2020 margins (ppt, Dem-Rep). Realistic values (subset shown earlier); full list included here.
-const DEFAULT_2020 = {"AL":-25.46,"AK":-10.06,"AZ":0.31,"AR":-27.63,"CA":29.15,"CO":13.49,"CT":20.25,"DE":19.00,"FL":-3.36,"GA":0.23,"HI":29.46,"ID":-30.69,"IL":16.98,"IN":-16.06,"IA":-8.20,"KS":-14.65,"KY":-25.91,"LA":-18.63,"ME":9.07,"MD":33.21,"MA":33.46,"MI":2.78,"MN":7.12,"MS":-16.55,"MO":-15.39,"MT":-16.36,"NE":-19.13,"NV":2.39,"NH":7.35,"NJ":15.94,"NM":10.79,"NY":23.12,"NC":-1.34,"ND":-33.37,"OH":-8.03,"OK":-33.08,"OR":16.13,"PA":1.16,"RI":20.80,"SC":-11.68,"SD":-26.23,"TN":-23.16,"TX":-5.58,"UT":-20.49,"VT":35.41,"VA":10.11,"WA":19.20,"WV":-38.93,"WI":0.63,"WY":-43.38};
-
-// Default 2024 state polls (subset; you can upload your broader CSV to replace)
-const DEFAULT_STATE_POLLS = [
-  ["AZ",1468,47.0,49.0],["AZ",875,47.0,52.0],["AZ",1090,47.0,49.0],
-  ["PA",2103,51.0,46.0],["PA",1840,49.0,50.0],["PA",1089,47.0,48.0],
-  ["NV",1125,48.0,48.0],["NV",707,47.0,50.0],["NV",792,49.0,50.0],
-  ["MI",1668,48.0,48.0],["MI",1113,48.0,50.0],["MI",450,49.0,47.0],
-  ["WI",1549,47.0,47.0],["WI",869,48.0,49.0],
-  ["NC",1600,48.0,49.0],["NC",1219,48.0,50.0],
-  ["GA",1659,47.0,49.0],["GA",1112,48.0,50.0],
-];
-
-// Default national polls (margins in ppt; if n missing we will use NAT_DEFAULT_N)
-const DEFAULT_NAT_POLLS = [
-  { n: 973,  dem: 50.0, rep: 48.0 },
-  { n: 1297, dem: 51.0, rep: 47.0 },
-  { n: 1000, dem: 49.0, rep: 49.0 },
-  { n: 2463, dem: 48.0, rep: 50.0 },
-  { n: null, dem: 51.0, rep: 49.0 }, // will fallback to NAT_DEFAULT_N
-];
-
-// Will be populated from CSV on load (defaults to equal weights)
-let WEIGHTS = Object.fromEntries(STATE_ORDER.map(s=>[s, 1.0/STATE_ORDER.length]));
-
-/********** main component **********/
-export default function USElectionMetropolisSimplified(){
-  // Data state (can be replaced via CSV uploads)
-  const [prevMargins, setPrevMargins] = useState(DEFAULT_2020); // {state: ppt}
-  const [statePolls, setStatePolls]   = useState(()=> toStatePollRows(DEFAULT_STATE_POLLS)); // [{state, r, n}]
-  const [natPolls, setNatPolls]       = useState(()=> toNatPollRows(DEFAULT_NAT_POLLS));     // [{r, n}]
-
-  // Latents: μ_i for each state (ppt)
-  const [mu, setMu] = useState(()=> STATE_ORDER.map(()=> 0)); // start neutral everywhere
-
-  // MH bookkeeping
-  const [iter, setIter] = useState(0);
-  const [acceptRate, setAcceptRate] = useState(0);
-  const acceptRef = useRef(0); const triedRef = useRef(0);
-  const [running, setRunning] = useState(false);
-  const [evSamples, setEvSamples] = useState([]);
-  const [showLatents, setShowLatents] = useState(false);
-
-  // Load CSV files on mount
-  useEffect(() => {
-    // Load 2020 margins
-    fetch('/data/state_margins_2020_all_states.csv')
-      .then(res => res.text())
-      .then(csv => {
-        Papa.parse(csv, { header: true, dynamicTyping: true, complete: res => {
-          const map = {};
-          for (const row of res.data) {
-            if (!row) continue;
-            const s = (row.state || "").toString().trim().toUpperCase();
-            const m = Number(row.margin_dem_minus_rep_2020_pp);
-            if (STATE_ORDER.includes(s) && Number.isFinite(m)) map[s] = m;
-          }
-          setPrevMargins(map);
-        }});
-      });
-
-    // Load state polls
-    fetch('/data/state_polls_2024_broader.csv')
-      .then(res => res.text())
-      .then(csv => {
-        Papa.parse(csv, { header: true, dynamicTyping: true, complete: res => {
-          const rows = [];
-          for (const r of res.data) {
-            if (!r) continue;
-            const s = (r.state || "").toString().trim().toUpperCase();
-            if (!STATE_ORDER.includes(s)) continue;
-            const n = Number(r.sample_size);
-            const margin = Number(r.margin_harris_minus_trump_pp);
-            if (Number.isFinite(n) && Number.isFinite(margin)) {
-              rows.push({ state: s, r: margin, n: n });
-            }
-          }
-          if (rows.length > 0) setStatePolls(rows);
-        }});
-      });
-
-    // Load national polls
-    fetch('/data/national_polls_2024.csv')
-      .then(res => res.text())
-      .then(csv => {
-        Papa.parse(csv, { header: true, dynamicTyping: true, complete: res => {
-          const rows = [];
-          for (const r of res.data) {
-            if (!r) continue;
-            const margin = Number(r.margin_harris_minus_trump_pp);
-            if (Number.isFinite(margin)) {
-              rows.push({ r: margin, n: null }); // n is null for national polls
-            }
-          }
-          if (rows.length > 0) setNatPolls(rows);
-        }});
-      });
-
-    // Load population shares (for national poll weights)
-    fetch('/data/state_population_share.csv')
-      .then(res => res.text())
-      .then(csv => {
-        Papa.parse(csv, { header: true, dynamicTyping: true, complete: res => {
-          const map = {};
-          for (const row of res.data) {
-            if (!row) continue;
-            const s = (row.state || "").toString().trim().toUpperCase();
-            const pop = Number(row.population_share_pct);
-            if (STATE_ORDER.includes(s) && Number.isFinite(pop)) map[s] = pop;
-          }
-          // Normalize to sum to 1
-          const total = Object.values(map).reduce((acc, v) => acc + v, 0);
-          if (total > 0) {
-            for (const s in map) map[s] /= total;
-            WEIGHTS = map;
-          }
-        }});
-      });
-  }, []);
-
-  // Derived quantities
-  const muNat = useMemo(()=> sumProduct(mu, STATE_ORDER.map(s=>WEIGHTS[s])), [mu]);
-  const marginByState = useMemo(()=> Object.fromEntries(STATE_ORDER.map((s,i)=>[s, mu[i]])), [mu]);
-  const evNow = useMemo(()=> currentEV(mu), [mu]);
-
-  // MH loop
-  useEffect(()=>{
-    if(!running) return; let canceled=false;
-    const stepper=()=>{
-      if(canceled) return;
-      const CHUNK=200; let curMu = mu.slice(); let curLogPost = logPosterior(curMu, prevMargins, statePolls, natPolls);
-      for(let t=0;t<CHUNK;t++){
-        const prop = curMu.map(m=> m + PROPOSAL_SD*gaussian01());
-        const lp = logPosterior(prop, prevMargins, statePolls, natPolls);
-        const a = Math.exp(Math.max(-50, Math.min(50, lp - curLogPost)));
-        triedRef.current += 1;
-        if(Math.random() < a){ curMu = prop; curLogPost = lp; acceptRef.current += 1; }
-      }
-      setMu(curMu);
-      setIter(x=>x+CHUNK);
-      setAcceptRate(acceptRef.current/Math.max(1,triedRef.current));
-      // record EV
-      const ev = currentEV(curMu);
-      setEvSamples(arr => [...arr, ev]);
-      requestAnimationFrame(stepper);
-    };
-    requestAnimationFrame(stepper);
-    return ()=>{ canceled=true; };
-  }, [running, mu, prevMargins, statePolls, natPolls]);
-
-  // Histogram data
-  const histData = useMemo(()=>{
-    const min=80,max=480,bin=10; const bins=new Map(); for(let x=min;x<=max;x+=bin) bins.set(x,0);
-    evSamples.forEach(v=>{ const b=Math.floor(v/bin)*bin; if(bins.has(b)) bins.set(b, bins.get(b)+1); });
-    return Array.from(bins.entries()).map(([x,count])=>({x,count}));
-  }, [evSamples]);
-
-  const geography = usStates;
-
+function PollTable({ national = false }) {
+  const polls = national ? data.nationalPolls : data.statePolls;
   return (
-    <div className="w-full min-h-screen bg-white text-gray-900">
-      <header className="max-w-7xl mx-auto px-4 pt-6 pb-2">
-        <h1 className="text-2xl font-bold">US Election — Metropolis Sampler (Simplified)</h1>
-        <p className="text-sm text-gray-600">Latents are state margins (ppt). Prior says states usually stay near 2020. State and national polls are noisy measurements. We sample a map with Metropolis.</p>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
-        {/* DATA COLUMNS */}
-        <section className="p-4 rounded-2xl shadow bg-gray-50">
-          <h2 className="text-lg font-semibold mb-3">Data</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div>
-              <h3 className="font-semibold mb-2">2020 margins (Dem − Rep, ppt)</h3>
-              <div className="max-h-56 overflow-auto bg-white border rounded-lg p-2">
-                {STATE_ORDER.map(s=> (
-                  <div key={s} className="flex justify-between border-b py-1"><span>{s}</span><span className={prevMargins[s]>=0?"text-blue-600":"text-red-600"}>{(prevMargins[s]??0).toFixed(1)}</span></div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">State polls</h3>
-              <div className="max-h-56 overflow-auto bg-white border rounded-lg p-2">
-                {statePolls.map((p, i)=> (
-                  <div key={i} className="flex justify-between border-b py-1"><span>{p.state}</span><span className={p.r>=0?"text-blue-600":"text-red-600"}>{p.r>=0?`Dem +${p.r.toFixed(1)}`:`Rep +${Math.abs(p.r).toFixed(1)}`}</span><span className="text-gray-500">n={p.n}</span></div>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">National polls</h3>
-              <div className="max-h-56 overflow-auto bg-white border rounded-lg p-2">
-                {natPolls.map((p, i)=> (
-                  <div key={i} className="flex justify-between border-b py-1">
-                    <span>#{i+1}</span>
-                    <span className={p.r>=0?"text-blue-600":"text-red-600"}>{p.r>=0?`Dem +${p.r.toFixed(1)}`:`Rep +${Math.abs(p.r).toFixed(1)}`} </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* MODEL EXPLANATION */}
-        <section className="p-4 rounded-2xl shadow bg-gray-50 text-sm">
-          <h2 className="text-lg font-semibold mb-2">Model</h2>
-          <div className="space-y-3">
-            <div>
-              <b>1. Latent variables:</b> For each state <InlineMath math="i" />, we have margin <InlineMath math="\mu_i" /> (in ppt, Dem − Rep).
-            </div>
-
-            <div>
-              <b>2. Prior:</b> Each state usually stays near its 2020 result:
-              <div className="ml-4 my-1"><BlockMath math={`\\mu_i - m^{2020}_i \\sim \\mathrm{Laplace}(0, ${LAPLACE_B})`} /></div>
-              (Laplace distribution: <InlineMath math={`p(x) = \\frac{1}{2b} \\exp\\left(-\\frac{|x|}{b}\\right)`} />, where <InlineMath math={`b = ${LAPLACE_B}`} /> ppt)
-            </div>
-
-            <div>
-              <b>3. State polls evidence:</b> Poll <InlineMath math="j" /> in state <InlineMath math="i" /> measures <InlineMath math="\mu_i" /> with noise:
-              <div className="ml-4 my-1"><BlockMath math={`y_j \\sim \\mathcal{N}\\left(\\mu_i, \\;\\sigma_j\\right), \\quad \\sigma_j = \\sqrt{\\left(\\frac{100}{\\sqrt{n_j}}\\right)^2 + ${SIGMA_BIAS}^2}`} /></div>
-              (<InlineMath math="n_j" /> = sample size, {SIGMA_BIAS} ppt = extra poll noise; the 100 converts sampling noise from proportions [0,1] to percentage points [0,100])
-            </div>
-
-            <div>
-              <b>4. National polls evidence:</b> Poll <InlineMath math="k" /> measures the national popular vote margin <InlineMath math="\mu_0" /> with noise, where:
-              <div className="ml-4 my-1"><BlockMath math="\mu_0 = \sum_i w_i \mu_i" /></div>
-              where <InlineMath math="w_i" /> = population share of state <InlineMath math="i" /> (normalized to sum to 1). The poll:
-              <div className="ml-4 my-1"><BlockMath math={`z_k \\sim \\mathcal{N}\\left(\\mu_0, \\;\\sigma_k\\right), \\quad \\sigma_k = \\sqrt{\\left(\\frac{100}{\\sqrt{n_k}}\\right)^2 + ${SIGMA_BIAS}^2}`} /></div>
-              (if <InlineMath math="n_k" /> unknown, use <InlineMath math={`n_k = ${NAT_DEFAULT_N}`}/>)
-            </div>
-
-            <div>
-              <b>5. Posterior:</b>
-              <div className="ml-4 my-1"><BlockMath math="p(\mu_1, \ldots, \mu_{50} \mid y, z) \;\propto\; \prod_i p(\mu_i - m^{2020}_i) \times \prod_j p(y_j \mid \mu_i) \times \prod_k p(z_k \mid \mu_0)" /></div>
-            </div>
-          </div>
-        </section>
-
-        {/* CONTROLS + SCORES */}
-        <section className="p-4 rounded-2xl shadow bg-gray-50">
-          <div className="flex flex-wrap items-center gap-2">
-            <button className={`px-3 py-2 rounded-xl shadow ${running?"bg-red-600 text-white":"bg-blue-600 text-white"}`} onClick={()=>setRunning(r=>!r)}>{running?"Stop":"Start"} Metropolis</button>
-            <button className="px-3 py-2 rounded-xl shadow bg-gray-200" onClick={()=>{
-              const CHUNK=500; let cur=mu.slice(); let lp=logPosterior(cur, prevMargins, statePolls, natPolls);
-              for(let t=0;t<CHUNK;t++){
-                const prop = cur.map(m=> m + PROPOSAL_SD*gaussian01());
-                const lq = logPosterior(prop, prevMargins, statePolls, natPolls);
-                const a = Math.exp(Math.max(-50, Math.min(50, lq-lp))); triedRef.current+=1; if(Math.random()<a){ cur=prop; lp=lq; acceptRef.current+=1; }
-              }
-              setMu(cur); setIter(x=>x+CHUNK); setAcceptRate(acceptRef.current/Math.max(1,triedRef.current));
-              const ev=currentEV(cur); setEvSamples(arr=>[...arr, ev]);
-            }}>Step ×500</button>
-            <button className="px-3 py-2 rounded-xl shadow bg-gray-200" onClick={()=>{ setMu(STATE_ORDER.map(()=>0)); setIter(0); setEvSamples([]); acceptRef.current=0; triedRef.current=0; setAcceptRate(0); }}>Reset</button>
-            <button className="px-3 py-2 rounded-xl shadow bg-gray-200" onClick={()=>setShowLatents(s=>!s)}>{showLatents?"Hide":"Show"} current latents</button>
-            <div className="text-sm text-gray-700 ml-2">Iter: <b>{iter.toLocaleString()}</b> · Accept: <b>{(acceptRate*100).toFixed(1)}%</b> · μ₀ (popular vote): <b>{muNat.toFixed(2)} ppt</b> · EV now: <b>{evNow}</b></div>
-          </div>
-          {showLatents && (
-            <div className="mt-4 p-3 bg-white border rounded-lg">
-              <h3 className="text-sm font-semibold mb-2">Current latent variables (state margins μ_i, ppt)</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-2 text-xs">
-                {STATE_ORDER.map((s, i) => (
-                  <div key={s} className="flex justify-between border-b py-1">
-                    <span className="font-medium">{s}</span>
-                    <span className={mu[i]>=0?"text-blue-600":"text-red-600"}>{mu[i].toFixed(2)}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-
-        {/* MAP + HISTOGRAM */}
-        <section className="p-4 rounded-2xl shadow bg-gray-50">
-          <h2 className="text-lg font-semibold mb-3">Map — current state numbers (ppt)</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-            <div className="lg:col-span-2">
-              <ComposableMap projection="geoAlbersUsa" width={820} height={500}>
-                <Geographies geography={geography}>
-                  {({ geographies }) => geographies.map(geo => {
-                    const fips=String(geo.id).padStart(2,"0"); const abbr=FIPS_TO_CODE[fips]; if(!abbr) return null;
-                    const m = marginByState[abbr] ?? 0; const fill = marginToColor(m);
-                    return <Geography key={geo.rsmKey} geography={geo} fill={fill} stroke="#fff" strokeWidth={0.5} />;
-                  })}
-                </Geographies>
-              </ComposableMap>
-            </div>
-            <div>
-              <div className="h-72">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={histData}>
-                    <XAxis dataKey="x" label={{ value:"EV (Dem)", position:"insideBottom", offset:-2 }} />
-                    <YAxis allowDecimals={false} />
-                    <Tooltip />
-                    <Bar dataKey="count" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-              <p className="text-xs text-gray-700 mt-2">Electoral College from all draws (winner-take-all; ME/NE not split in this demo).</p>
-            </div>
-          </div>
-        </section>
-      </main>
+    <div className="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            {!national && <th>Race</th>}
+            <th>Pollster / source</th>
+            <th>Field dates</th>
+            <th>Sample</th>
+            <th>{national ? "D − R" : "D / I − R"}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {polls.map((p, i) => (
+            <tr key={i}>
+              {!national && (
+                <td>
+                  <b>{p.state}</b>
+                  {data.races[stateIndex[p.state]].independent && (
+                    <span className="ind-badge">I</span>
+                  )}
+                </td>
+              )}
+              <td>
+                <a href={p.url} {...external}>
+                  {p.pollster} ↗
+                </a>
+                {p.partisan && <small>Partisan sponsor: {p.partisan}</small>}
+              </td>
+              <td className="date-cell">
+                {p.start} → {p.end}
+              </td>
+              <td>
+                {fmt(p.n, 0)} <small className="inline">{p.population}</small>
+              </td>
+              <td className={p.margin >= 0 ? "dem-text" : "rep-text"}>
+                {signed(p.margin)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-/********** scoring & posterior **********/
-function computeScores(mu, prevMargins, statePolls, natPolls){
-  let prior=0, state=0, national=0;
-  // Prior: Laplace on swings
-  for(let i=0;i<STATE_ORDER.length;i++){
-    const s = mu[i] - (prevMargins[STATE_ORDER[i]] ?? 0);
-    prior += logLaplacePdf(s, LAPLACE_MEAN, LAPLACE_B);
-  }
-  // State polls
-  for(const p of statePolls){ const sd=sigmaFromN(p.n); state += logNormPdf(p.r, mu[STATE_ORDER.indexOf(p.state)], sd); }
-  // National polls
-  const wVec = STATE_ORDER.map(s=>WEIGHTS[s]); const muNat = sumProduct(mu, wVec);
-  for(const q of natPolls){ const nEff = q.n ?? NAT_DEFAULT_N; const sd = sigmaFromN(nEff); national += logNormPdf(q.r, muNat, sd); }
-  return { prior, state, national };
-}
-function logPosterior(mu, prevMargins, statePolls, natPolls){
-  const sc = computeScores(mu, prevMargins, statePolls, natPolls);
-  return sc.prior + sc.state + sc.national;
-}
+export default function App() {
+  const [config, setConfig] = useState(DEFAULTS);
+  const [caucus, setCaucus] = useState("unaligned");
+  const [running, setRunning] = useState(false);
+  const [tick, setTick] = useState(0);
+  const [scale, setScale] = useState(1);
+  const [selected, setSelected] = useState("TX");
+  const [mapMode, setMapMode] = useState("draw");
+  const [showLatents, setShowLatents] = useState(false);
+  const sampler = useRef(null);
+  if (!sampler.current) sampler.current = new Sampler(buildModel(data));
+  const s = sampler.current;
+  const model = s.model;
+  const count = s.retained;
+  const seats = seatTally(data, s.x, caucus);
+  const selectedIndex = stateIndex[selected];
+  const race = data.races[selectedIndex];
+  const racePolls = data.statePolls.filter((p) => p.state === selected);
+  const components = scores(model, s.x);
+  const histogram = Array.from({ length: 36 }, (_, i) => ({
+    seats: i + 34,
+    count: s.histogram[i + 34],
+  }));
+  const last = s.last;
+  void tick;
 
-/********** helpers **********/
-function toStatePollRows(rows){
-  // rows: [state, n, demPct, repPct] or objects with same info
-  const out=[]; for(const r of rows){
-    if(Array.isArray(r)){
-      const [s, n, dem, rep] = r; if(!STATE_ORDER.includes(s)) continue;
-      const margin = Number(dem) - Number(rep);
-      out.push({ state:s, n:Number(n), r:margin });
-    } else { // object
-      const s = (r.state||"").toString().trim().toUpperCase(); if(!STATE_ORDER.includes(s)) continue;
-      const n = Number(r.sample_size||r.n); let m=null;
-      if(r.margin_dem_minus_rep_pp!=null) m = Number(r.margin_dem_minus_rep_pp);
-      else if(r.dem_pct!=null && r.rep_pct!=null) m = Number(r.dem_pct) - Number(r.rep_pct);
-      if(Number.isFinite(n) && Number.isFinite(m)) out.push({ state:s, n, r:m });
-    }
-  } return out;
-}
-function toNatPollRows(rows){
-  const out=[]; for(const r of rows){ if(Array.isArray(r)){ const [n, dem, rep] = r; out.push({ r: Number(dem)-Number(rep), n: Number.isFinite(Number(n))? Number(n): null }); } else { const n=r.sample_size??r.n; const dem=r.dem_pct, rep=r.rep_pct; if(dem!=null && rep!=null){ out.push({ r:Number(dem)-Number(rep), n: Number.isFinite(Number(n))? Number(n): null }); } else if(r.margin_dem_minus_rep_pp!=null){ out.push({ r:Number(r.margin_dem_minus_rep_pp), n: Number.isFinite(Number(n))? Number(n): null }); } } } return out; }
-function sumProduct(a, b){ let s=0; for(let i=0;i<a.length;i++) s += a[i]*(b[i]??0); return s; }
-function currentEV(mu){ let ev=0; for(let i=0;i<STATE_ORDER.length;i++){ if(mu[i]>0) ev += EV_2016[STATE_ORDER[i]]; } return ev; }
+  const reset = (nextConfig = config, nextCaucus = caucus) => {
+    setRunning(false);
+    sampler.current = new Sampler(buildModel(data, nextConfig), {
+      independentCaucus: nextCaucus,
+    });
+    setTick((t) => t + 1);
+  };
+  const changeConfig = (next) => {
+    setConfig(next);
+    reset(next);
+  };
+  const step = (steps) => {
+    sampler.current.run(steps, scale);
+    setTick((t) => t + 1);
+  };
+  useEffect(() => {
+    if (!running) return;
+    const timer = setInterval(() => {
+      sampler.current.run(2500, scale);
+      setTick((t) => t + 1);
+    }, 100);
+    return () => clearInterval(timer);
+  }, [running, scale]);
+  useEffect(() => {
+    const pause = () => {
+      if (document.hidden) setRunning(false);
+    };
+    document.addEventListener("visibilitychange", pause);
+    return () => document.removeEventListener("visibilitychange", pause);
+  }, []);
 
-// Small UI component
-function ScoreBox({ label, value }){
   return (
-    <div className="bg-white border rounded-xl p-3">
-      <div className="text-xs text-gray-500">{label}</div>
-      <div className="text-base font-semibold">{value.toFixed(1)}</div>
+    <div className="app-shell">
+      <header className="page-header">
+        <div className="logo" aria-hidden="true">
+          M<span>↗</span>
+        </div>
+        <div>
+          <p className="eyebrow">
+            PST II <span>/</span> METROPOLIS LAB
+          </p>
+          <h1>Who will control the Senate?</h1>
+        </div>
+        <a
+          className="back-link"
+          href="https://vaclavrozhon.github.io/teaching/2026/probability-2"
+        >
+          Back to course ↗
+        </a>
+      </header>
+      <div className="intro-row">
+        <p>
+          35 elections. One national mood. A tangled posterior.
+          <br />
+          <strong>
+            Sample possible 2026 Senate maps, one Metropolis move at a time.
+          </strong>
+        </p>
+        <a className="chamber-preview-link" href="#house">
+          House preview · 435 districts ↗
+        </a>
+        <span className="snapshot-badge">
+          POLL SNAPSHOT · {snapshotDate.toUpperCase()}
+        </span>
+      </div>
+
+      <section
+        className="outcomes"
+        aria-label="Estimated Senate control probabilities"
+      >
+        <div className="outcome dem">
+          <span>Democratic control</span>
+          <strong data-testid="dem-probability">
+            {percent(s.counts.dem, count)}
+          </strong>
+          <small>51+ seats in the Democratic caucus</small>
+        </div>
+        <div className="outcome rep">
+          <span>Republican control</span>
+          <strong data-testid="rep-probability">
+            {percent(s.counts.rep, count)}
+          </strong>
+          <small>50+ Republican seats; VP breaks ties</small>
+        </div>
+        <div className="outcome ind">
+          <span>Independents pivotal</span>
+          <strong data-testid="pivotal-probability">
+            {percent(s.counts.pivotal, count)}
+          </strong>
+          <small>Neither party reaches its control threshold</small>
+        </div>
+        <div className="sampling-status">
+          <p className="eyebrow">MONTE CARLO ESTIMATE</p>
+          <b data-testid="retained">{fmt(count, 0)} retained draws</b>
+          <p>
+            {count
+              ? "Draws are correlated. Run longer and restart to check stability."
+              : "Run the chain to fill these estimates. Warm-up draws are excluded."}
+          </p>
+          <small>Teaching model · not a calibrated forecast</small>
+        </div>
+      </section>
+
+      <section className="controls-card" aria-label="Metropolis controls">
+        <div className="buttons">
+          <button
+            className="primary"
+            id="run"
+            onClick={() => setRunning((v) => !v)}
+            aria-pressed={running}
+          >
+            {running ? "Ⅱ Pause" : "▶ Run Metropolis"}
+          </button>
+          <button id="step" disabled={running} onClick={() => step(1)}>
+            One proposal
+          </button>
+          <button id="batch" disabled={running} onClick={() => step(20000)}>
+            +20,000 proposals
+          </button>
+          <button className="quiet" id="reset" onClick={() => reset()}>
+            ↺ Reset chain
+          </button>
+          <label className="proposal-control">
+            Proposal step <output>{fmt(scale)} pp</output>
+            <input
+              aria-label="Proposal standard deviation"
+              type="range"
+              min="0.1"
+              max="5"
+              step="0.1"
+              value={scale}
+              onChange={(e) => setScale(Number(e.target.value))}
+            />
+          </label>
+        </div>
+        <div className="chain-status">
+          <span>
+            Proposals <b data-testid="iterations">{fmt(s.iter, 0)}</b>
+          </span>
+          <span>
+            Accepted <b>{s.iter ? percent(s.accepted, s.iter) : "—"}</b>
+          </span>
+          <span>
+            Warm-up{" "}
+            <b>
+              {fmt(Math.min(s.iter, BURN_IN), 0)} / {fmt(BURN_IN, 0)}
+            </b>
+          </span>
+          <span>
+            Retain every <b>{THIN}th move</b>
+          </span>
+          <span className="dimensions">
+            <b>{model.variables.length}</b> latent variables
+          </span>
+        </div>
+        <div
+          className={`proposal-result ${last ? (last.accepted ? "accepted" : "rejected") : ""}`}
+          aria-live="polite"
+        >
+          {last ? (
+            <>
+              <span className="decision">
+                {last.accepted ? "ACCEPTED" : "REJECTED"}
+              </span>
+              <span>
+                {last.label}: <b>{signed(last.delta)} pp</b>
+              </span>
+              <span>
+                Δ log p = <b>{fmt(last.difference, 3)}</b>
+              </span>
+              <span>
+                α = <b>{fmt(last.probability, 3)}</b>, u = {fmt(last.u, 3)}
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="decision">READY</span>
+              <span>
+                Propose a change, compare posterior density, accept or stay.
+                Rejected moves count too.
+              </span>
+            </>
+          )}
+        </div>
+      </section>
+
+      <div className="main-grid">
+        <section className="card map-card">
+          <div className="card-title">
+            <div>
+              <p className="eyebrow">A POSSIBLE ELECTION</p>
+              <h2>
+                {mapMode === "draw"
+                  ? "The current sampled map"
+                  : "Estimated challenger win probability"}
+              </h2>
+            </div>
+            <div className="segmented">
+              <button
+                aria-pressed={mapMode === "draw"}
+                onClick={() => setMapMode("draw")}
+              >
+                Current draw
+              </button>
+              <button
+                aria-pressed={mapMode === "probability"}
+                onClick={() => setMapMode("probability")}
+              >
+                Win probability
+              </button>
+            </div>
+          </div>
+          <div className="map-legend">
+            <span>
+              <i className="swatch blue" />
+              Democrat
+            </span>
+            <span>
+              <i className="swatch red" />
+              Republican
+            </span>
+            <span>
+              <i className="swatch gold" />
+              Independent
+            </span>
+            <span>
+              <i className="swatch gray" />
+              No election
+              {!count && mapMode === "probability" ? " / no samples yet" : ""}
+            </span>
+          </div>
+          <div className="us-map">
+            <ComposableMap
+              projection="geoAlbersUsa"
+              width={820}
+              height={490}
+              role="img"
+              aria-label="2026 Senate races. Gray states have no Senate election."
+            >
+              <Geographies geography={usStates}>
+                {({ geographies }) =>
+                  geographies.map((geo) => {
+                    const code = FIPS[String(geo.id).padStart(2, "0")];
+                    const i = stateIndex[code];
+                    const r = data.races[i];
+                    const m = r ? s.x[i] : 0;
+                    const display =
+                      mapMode === "draw"
+                        ? m
+                        : count
+                          ? (s.winCounts[i] / count - 0.5) * 24
+                          : 0;
+                    const fill =
+                      !r || (mapMode === "probability" && !count)
+                        ? blank
+                        : color(display, r.independent);
+                    const label = r
+                      ? mapMode === "draw"
+                        ? `${r.name}: ${r.independent ? "Independent" : "Democratic"} challenger ${signed(m)} pp versus Republican`
+                        : `${r.name}: ${r.independent ? "Independent" : "Democratic"} challenger win estimate ${percent(s.winCounts[i], count)}`
+                      : `${geo.properties.name}: no Senate election in 2026`;
+                    return (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        fill={fill}
+                        stroke={code === selected ? "#6554d9" : "#fff"}
+                        strokeWidth={code === selected ? 2 : 0.7}
+                        onClick={r ? () => setSelected(code) : undefined}
+                        onKeyDown={
+                          r
+                            ? (e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                  e.preventDefault();
+                                  setSelected(code);
+                                }
+                              }
+                            : undefined
+                        }
+                        tabIndex={r ? 0 : undefined}
+                        role={r ? "button" : undefined}
+                        aria-label={label}
+                        style={{
+                          default: { outline: "none" },
+                          hover: {
+                            outline: "none",
+                            fill: r ? "#bcb0ee" : blank,
+                            cursor: r ? "pointer" : "default",
+                          },
+                          pressed: { outline: "none" },
+                        }}
+                      >
+                        <title>{label}</title>
+                      </Geography>
+                    );
+                  })
+                }
+              </Geographies>
+            </ComposableMap>
+          </div>
+          <div className="seat-labels">
+            <b className="dem-text">D caucus {seats.d}</b>
+            <span>
+              {seats.independent
+                ? `Independent ${seats.independent}`
+                : "100 seats"}
+            </span>
+            <b className="rep-text">R {seats.r}</b>
+          </div>
+          <div
+            className="seat-strip"
+            role="img"
+            aria-label={`Current draw: ${seats.d} Democratic caucus, ${seats.r} Republican, ${seats.independent} unaligned independent seats`}
+          >
+            {Array.from({ length: 100 }, (_, i) => (
+              <i
+                key={i}
+                className={
+                  i < seats.d
+                    ? "blue"
+                    : i < seats.d + seats.independent
+                      ? "gold"
+                      : "red"
+                }
+              />
+            ))}
+          </div>
+          <p className="map-note">
+            65 seats are not on the ballot:{" "}
+            <b>34 Democratic-caucus + 31 Republican</b>. Each of the 35 races
+            adds one seat. The two existing independent senators are included in
+            the Democratic caucus.
+          </p>
+          <div className="race-inspector">
+            <div className="race-heading">
+              <label htmlFor="selected-race">Inspect a race</label>
+              <select
+                id="selected-race"
+                value={selected}
+                onChange={(e) => setSelected(e.target.value)}
+              >
+                {data.races.map((r) => (
+                  <option key={r.state} value={r.state}>
+                    {r.name}
+                    {r.special ? " (special)" : ""}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <p>
+              <b>
+                {race.challenger} ({race.independent ? "I" : "D"})
+              </b>{" "}
+              vs. <b>{race.republican} (R)</b>
+              {race.special && (
+                <span className="ind-badge">Special election</span>
+              )}
+            </p>
+            <div className="race-stats">
+              <div>
+                <small>Current margin</small>
+                <b>{signed(s.x[selectedIndex])} pp</b>
+              </div>
+              <div>
+                <small>Challenger win estimate</small>
+                <b>{percent(s.winCounts[selectedIndex], count)}</b>
+              </div>
+              <div>
+                <small>2024 relative lean</small>
+                <b>{signed(race.lean)} pp</b>
+              </div>
+              <div>
+                <small>State polls in snapshot</small>
+                <b>{racePolls.length || "Prior only"}</b>
+              </div>
+            </div>
+            {!racePolls.length && (
+              <p className="small-copy">
+                No qualifying poll in this selected source and date window. This
+                race borrows information from the national environment, regional
+                swing, and its 2024 lean.
+              </p>
+            )}
+            {race.independent && (
+              <p className="small-copy">
+                This challenger is an independent, not a Democrat. The caucus
+                scenario below determines how a win is counted.
+              </p>
+            )}
+          </div>
+        </section>
+
+        <aside className="settings">
+          <section className="card">
+            <p className="eyebrow">GAUSSIAN PRIOR</p>
+            <div className="setting-heading">
+              <h2>How much can a state move?</h2>
+              <output>
+                {fmt(config.priorSD)}
+                <small>pp standard deviation</small>
+              </output>
+            </div>
+            <input
+              id="prior-sd"
+              aria-label="State prior standard deviation"
+              type="range"
+              min="2"
+              max="10"
+              step="0.5"
+              value={config.priorSD}
+              onChange={(e) =>
+                changeConfig({ ...config, priorSD: Number(e.target.value) })
+              }
+            />
+            <div className="range-labels">
+              <span>Stronger pooling</span>
+              <span>More freedom</span>
+            </div>
+            <p className="small-copy">
+              State margins vary around their 2024 relative lean + national
+              environment + regional swing. Default σ = 5 pp; variance = 25.
+            </p>
+          </section>
+          <section className="card">
+            <p className="eyebrow">WHY THE POSTERIOR IS TANGLED</p>
+            <h2>Shared sources of uncertainty</h2>
+            <label className="feature">
+              <input
+                type="checkbox"
+                checked={config.sharedError}
+                onChange={(e) =>
+                  changeConfig({ ...config, sharedError: e.target.checked })
+                }
+              />
+              <span>
+                <b>Shared polling error</b>
+                <small>
+                  b ∼ N(0, 2.5²). Every poll can miss in the same direction.
+                </small>
+              </span>
+            </label>
+            <label className="feature">
+              <input
+                type="checkbox"
+                checked={config.regions}
+                onChange={(e) =>
+                  changeConfig({ ...config, regions: e.target.checked })
+                }
+              />
+              <span>
+                <b>Four regional swings</b>
+                <small>r ∼ N(0, 2²). Nearby races can move together.</small>
+              </span>
+            </label>
+            <label className="feature">
+              <input
+                type="checkbox"
+                checked={config.houseEffects}
+                onChange={(e) =>
+                  changeConfig({ ...config, houseEffects: e.target.checked })
+                }
+              />
+              <span>
+                <b>Pollster house effects</b>
+                <small>
+                  h ∼ N(0, 1.5²). One agency shares its bias across surveys.
+                </small>
+              </span>
+            </label>
+            <p className="setting-note">
+              Changing the model clears the chain and its estimates.
+            </p>
+          </section>
+          <section className="card">
+            <p className="eyebrow">CAUCUS SCENARIO</p>
+            <label className="select-label" htmlFor="caucus">
+              If new independents win…
+            </label>
+            <select
+              id="caucus"
+              value={caucus}
+              onChange={(e) => {
+                setCaucus(e.target.value);
+                reset(config, e.target.value);
+              }}
+            >
+              <option value="unaligned">Keep them unaligned</option>
+              <option value="dem">Assume they support Democrats</option>
+              <option value="rep">Assume they support Republicans</option>
+            </select>
+            <p className="small-copy">
+              ID, MT, NE and SD have independent challengers in this model.
+              Caucus choices are assumptions, not inferred from vote polls.
+              Unaligned wins may leave control unresolved.
+            </p>
+          </section>
+          <section className="card density-card">
+            <p className="eyebrow">CURRENT LOG DENSITY</p>
+            {[
+              ["Prior", components.prior],
+              ["State polls", components.state],
+              ["National polls", components.national],
+            ].map(([label, value]) => (
+              <div className="density-row" key={label}>
+                <span>{label}</span>
+                <b>{fmt(value, 1)}</b>
+              </div>
+            ))}
+            <div className="density-total">
+              <span>Total log p + constant</span>
+              <b>{fmt(s.logPost, 1)}</b>
+            </div>
+            <p className="small-copy">
+              Metropolis needs density ratios. The unknown posterior normalizer
+              cancels.
+            </p>
+          </section>
+        </aside>
+      </div>
+
+      <section className="charts-grid">
+        <div className="card">
+          <p className="eyebrow">POSTERIOR OVER CHAMBER COMPOSITION</p>
+          <h2>How many Democratic-caucus seats?</h2>
+          <div className="chart histogram">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={histogram}
+                margin={{ top: 25, right: 15, left: 0, bottom: 20 }}
+              >
+                <CartesianGrid vertical={false} stroke="#eef0f5" />
+                <XAxis
+                  dataKey="seats"
+                  interval={3}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis
+                  allowDecimals={false}
+                  width={35}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <Tooltip
+                  cursor={{ fill: "#f4f2fa" }}
+                  labelFormatter={(v) => `${v} Democratic-caucus seats`}
+                />
+                <ReferenceLine
+                  x={51}
+                  stroke="#6554d9"
+                  strokeDasharray="4 3"
+                  label={{
+                    value: "51 to control",
+                    position: "top",
+                    fontSize: 11,
+                    fill: "#6554d9",
+                  }}
+                />
+                <Bar
+                  dataKey="count"
+                  name="Retained draws"
+                  isAnimationActive={false}
+                  radius={[3, 3, 0, 0]}
+                >
+                  {histogram.map((b) => (
+                    <Cell
+                      key={b.seats}
+                      fill={b.seats >= 51 ? "#637bca" : "#d2a1a7"}
+                    />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+          <p className="small-copy">
+            Only post-warm-up draws. A rejected proposal leaves the current map
+            in the chain. Independent seats follow the selected caucus scenario.
+          </p>
+        </div>
+        <div className="card">
+          <p className="eyebrow">TRACE · RECENT PROPOSALS</p>
+          <h2>National mood and shared polling error</h2>
+          <div className="trace-key">
+            <span className="dem-text">— National environment g</span>
+            <span className="ind-text">— Shared error b</span>
+          </div>
+          <div className="chart trace">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart
+                data={s.trace}
+                margin={{ top: 8, right: 15, left: 0, bottom: 20 }}
+              >
+                <CartesianGrid vertical={false} stroke="#eef0f5" />
+                <XAxis
+                  dataKey="iteration"
+                  tickFormatter={(v) => `${v / 1000}k`}
+                  minTickGap={35}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis width={35} tickLine={false} axisLine={false} />
+                <Tooltip formatter={(v) => `${fmt(v, 2)} pp`} />
+                <Line
+                  type="linear"
+                  dataKey="g"
+                  name="National environment"
+                  stroke="#637bca"
+                  strokeWidth={1.7}
+                  dot={false}
+                  isAnimationActive={false}
+                />
+                <Line
+                  type="linear"
+                  dataKey="b"
+                  name="Shared polling error"
+                  stroke="#bc8922"
+                  strokeWidth={1.5}
+                  dot={false}
+                  isAnimationActive={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+          <p className="small-copy">
+            Polls constrain g + b. A more Democratic environment can be offset
+            by a more Republican polling error: a correlated ridge to explore.
+          </p>
+        </div>
+      </section>
+
+      <section className="card model-card">
+        <div className="card-title">
+          <div>
+            <p className="eyebrow">UNDER THE HOOD</p>
+            <h2>A hierarchical Gaussian model</h2>
+          </div>
+          <span className="snapshot-badge">
+            {model.variables.length} DIMENSIONS
+          </span>
+        </div>
+        <p>
+          All numbers are percentage points. Positive margins favor the
+          Democratic challenger (or the named independent). N(m, σ²) uses
+          variance as its second parameter.
+        </p>
+        <div className="equations">
+          <div>
+            <h3>01 · Prior and partial pooling</h3>
+            <BlockMath
+              math={String.raw`\mu_i \mid g,r \sim \mathcal N(\ell_i+g+r_{k(i)},\;${config.priorSD}^2)`}
+            />
+            <p>
+              ℓᵢ = state’s 2024 presidential D − R margin minus the national
+              2024 margin ({signed(data.baselineNationalMargin)} pp). g ∼ N(0,
+              8²); regional rₖ ∼ N(0, 2²). For independent challengers, this is
+              a rough opposition-lean proxy.
+            </p>
+          </div>
+          <div>
+            <h3>02 · State and national evidence</h3>
+            <BlockMath
+              math={String.raw`y_j\sim\mathcal N(\mu_{s(j)}+b+h_{p(j)},\sigma_j^2)`}
+            />
+            <BlockMath
+              math={String.raw`z_j\sim\mathcal N(g+b+h_{p(j)},\sigma_j^2)`}
+            />
+            <p>
+              b ∼ N(0, 2.5²), hₚ ∼ N(0, 1.5²). Positive bias means polls
+              overstate the challenger. Generic-ballot polls measure the
+              national environment, not a population-weighted average of the
+              Senate races.
+            </p>
+          </div>
+          <div>
+            <h3>03 · Noise and age</h3>
+            <BlockMath
+              math={String.raw`\sigma_j^2=\frac{10000/n_j+2^2}{2^{-a_j/21}}`}
+            />
+            <p>
+              nⱼ is the published sample size; aⱼ is days from the poll’s end to
+              the snapshot. The 2 pp noise floor and 21-day half-life are
+              teaching assumptions. Disabled effects are fixed at zero.
+            </p>
+          </div>
+          <div>
+            <h3>04 · Metropolis</h3>
+            <BlockMath
+              math={String.raw`\alpha=\min\{1,\exp[\log p(x'\mid y,z)-\log p(x\mid y,z)]\}`}
+            />
+            <p>
+              Symmetric Gaussian proposals update one variable, a whole region,
+              or all races with g and an opposing shift in b. With every term
+              Gaussian, the latent posterior is multivariate Gaussian;
+              converting margins into seats makes the quantity we care about
+              nonlinear.
+            </p>
+          </div>
+        </div>
+        <details>
+          <summary>Assumptions and what these probabilities mean</summary>
+          <p>
+            This is a teaching model, not Silver Bulletin’s forecast. It uses
+            published poll margins, not Silver Bulletin’s adjusted averages or
+            win probabilities. National polls and state polls share b and agency
+            effects; races share g and regional effects. Polls with the same
+            fieldwork are not intentionally counted as separate national/state
+            evidence for the same question.
+          </p>
+          <p>
+            One recent survey per pollster per race limits repeated tracking
+            polls. Respondent overlap, turnout, undecided-voter allocation,
+            candidate quality, and all other poll correlations are not fully
+            modeled. LV, RV, and adult polls use their reported samples without
+            a likely-voter correction. Alaska ranked-choice transfers,
+            third-place candidates, and possible runoffs are approximated as a
+            contest between the two named leading candidates.
+          </p>
+          <p>
+            Only 25 of the 35 races have qualifying state polls in this source
+            window; the others use the hierarchical prior. New independents are
+            unaligned by default. A Democratic caucus needs 51 seats; 50
+            Republican seats suffice with the Republican vice president.
+            “Independents pivotal” means the selected caucus assumption has not
+            resolved control.
+          </p>
+          <p>
+            The first {fmt(BURN_IN, 0)} proposals are discarded and every {THIN}
+            th state is retained, including repeats after rejection. Thinning
+            does not guarantee independent draws or convergence. A single
+            chain’s proportions may drift: run longer, reset, and compare.
+          </p>
+        </details>
+        <button
+          className="latent-toggle"
+          aria-expanded={showLatents}
+          onClick={() => setShowLatents((v) => !v)}
+        >
+          {showLatents ? "Hide" : "Show"} all current latent variables
+        </button>
+        {showLatents && (
+          <div className="latent-grid">
+            {model.variables.map((v, i) => (
+              <div key={v.name}>
+                <span>{v.name}</span>
+                <b>{signed(s.x[i])}</b>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="card data-card">
+        <p className="eyebrow">THE EVIDENCE</p>
+        <h2>Real polls. A frozen, inspectable snapshot.</h2>
+        <p>
+          {data.statePolls.length} state polls + {data.nationalPolls.length}{" "}
+          generic-ballot polls, ending October 1 – November 2, 2026. Downloaded
+          November 3. These are pre-election inputs, not election results.
+        </p>
+        <p className="small-copy">{data.selection}</p>
+        <details>
+          <summary>
+            State Senate polls{" "}
+            <span>{data.statePolls.length} polls · 25 states</span>
+          </summary>
+          <PollTable />
+          <a className="download" href="./data/senate-polls-2026.csv" download>
+            ↓ Download state polls CSV
+          </a>
+        </details>
+        <details>
+          <summary>
+            National generic-ballot polls{" "}
+            <span>{data.nationalPolls.length} polls</span>
+          </summary>
+          <PollTable national />
+          <a
+            className="download"
+            href="./data/national-polls-2026.csv"
+            download
+          >
+            ↓ Download national polls CSV
+          </a>
+        </details>
+        <details>
+          <summary>2024 baseline and all 35 races</summary>
+          <div className="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>State</th>
+                  <th>Held by</th>
+                  <th>2024 D − R</th>
+                  <th>Relative lean ℓᵢ</th>
+                  <th>State polls</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.races.map((r) => (
+                  <tr key={r.state}>
+                    <td>
+                      {r.name}
+                      {r.special ? " (special)" : ""}
+                    </td>
+                    <td>{r.heldBy}</td>
+                    <td>{signed(r.margin2024)}</td>
+                    <td>{signed(r.lean)}</td>
+                    <td>
+                      {data.statePolls.filter((p) => p.state === r.state)
+                        .length || "Prior only"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <a
+            className="download"
+            href="./data/race-baselines-2024.csv"
+            download
+          >
+            ↓ Download baselines CSV
+          </a>
+        </details>
+        <div className="sources">
+          <h3>Sources</h3>
+          {data.sources.map((source) => (
+            <a key={source.url} href={source.url} {...external}>
+              {source.label} ↗
+            </a>
+          ))}
+        </div>
+      </section>
+      <footer>
+        <span>METROPOLIS LAB · 2026 SENATE</span>
+        <span>
+          Data snapshot: {snapshotDate} · All model spreads are standard
+          deviations.
+        </span>
+      </footer>
     </div>
   );
 }

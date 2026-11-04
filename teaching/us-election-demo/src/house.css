@@ -1,0 +1,468 @@
+/* House view: current map, seat histogram, and three sampler controls. */
+.house-app {
+  max-width: 1440px;
+  padding: 26px 32px;
+}
+.house-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.house-header .eyebrow {
+  margin-bottom: 7px;
+}
+.house-senate-link {
+  font-size: 11px;
+  white-space: nowrap;
+}
+.house-intro {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 16px 0 22px;
+}
+.house-panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 19px 22px;
+  margin-bottom: 17px;
+}
+.house-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+}
+.house-stats {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.house-stats b {
+  color: #414864;
+}
+.house-stats > span {
+  padding: 0 6px;
+}
+.house-progress {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 13px;
+}
+.house-visuals {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 285px;
+  gap: 25px;
+  align-items: start;
+}
+.house-map-area {
+  min-width: 0;
+}
+.house-map-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.house-seat-label {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.house-seat-label b {
+  font-size: 17px;
+}
+.house-seat-label small {
+  font-size: 10px;
+}
+.house-dem {
+  color: #4566c6;
+}
+.house-rep {
+  color: #cc535b;
+}
+.house-ind {
+  color: #b88a2e;
+}
+.house-map-note {
+  margin-top: 12px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.house-histogram {
+  padding-top: 2px;
+  min-width: 0;
+}
+.house-chart {
+  height: 250px;
+  margin: 16px 0 7px;
+}
+.house-control-probabilities > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  padding: 7px 0;
+  border-bottom: 1px solid #edf0f6;
+}
+.house-control-probabilities b {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+.house-sampling-note {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.7;
+  margin-top: 13px;
+}
+.house-details > summary {
+  cursor: pointer;
+  color: #4f5674;
+  font-size: 12px;
+  font-weight: 600;
+}
+.house-details > summary span {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 15px;
+}
+.house-detail-intro {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 16px 0;
+}
+.house-latent-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+  max-height: 300px;
+  overflow: auto;
+  padding: 3px;
+}
+.house-latent-grid button {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 9px;
+  font-size: 10px;
+  font-weight: 400;
+  border-radius: 5px;
+}
+.house-latent-grid [aria-pressed="true"] {
+  outline: 2px solid #b6a8ef;
+  outline-offset: 0;
+}
+.house-model-copy {
+  max-width: 930px;
+  font-size: 12px;
+  line-height: 1.85;
+  color: #656c85;
+  margin-top: 19px;
+}
+.house-model-copy p {
+  margin: 17px 0;
+}
+.house-model-copy strong {
+  color: #3d435f;
+}
+.house-model-copy .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 8px 0;
+  font-size: 0.95em;
+}
+.house-data-columns {
+  display: grid;
+  grid-template-columns: 0.8fr 1.25fr 1.25fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+.house-data-scroll {
+  max-height: 260px;
+  overflow: auto;
+  margin-top: 10px;
+}
+.house-data-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+}
+.house-data-scroll th {
+  text-align: left;
+  color: #7b8298;
+  font-weight: 500;
+}
+.house-data-scroll td,
+.house-data-scroll th {
+  padding: 5px 7px;
+  border-bottom: 1px solid #edf0f7;
+}
+.house-data-scroll small {
+  display: block;
+  font-size: 9px;
+}
+.house-sources,
+.house-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 20px;
+  font-size: 10px;
+  margin-top: 14px;
+}
+.house-error {
+  color: #a2404a;
+  border: 1px solid #e8b8bd;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 18px;
+}
+.district-map-wrap {
+  position: relative;
+  background: linear-gradient(180deg, #f9fbff44, #f1f6fb88);
+  border: 1px solid #edf0f7;
+  border-radius: 10px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+.district-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+.district-map.dragging {
+  cursor: grabbing;
+}
+.district-map path[role="button"] {
+  outline: none;
+  cursor: pointer;
+}
+.district-map path[role="button"]:focus-visible {
+  stroke: #2c2050;
+  stroke-width: 3;
+}
+.district-map-tools {
+  position: absolute;
+  right: 11px;
+  top: 11px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.district-map-tools button {
+  padding: 5px 9px;
+  background: #fffffff2;
+  font-size: 10px;
+  box-shadow: 0 2px 6px #23213c05;
+}
+.district-map-tools button:first-child,
+.district-map-tools button:nth-child(2) {
+  font-size: 15px;
+  line-height: 1.2;
+}
+.district-map-tools span {
+  font-size: 9px;
+  color: var(--muted);
+  margin-left: 4px;
+  min-width: 25px;
+}
+.map-hover-card {
+  position: absolute;
+  left: 13px;
+  bottom: 41px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: calc(100% - 26px);
+  padding: 6px 9px;
+  background: #fffffff2;
+  border: 1px solid #dce2f0;
+  border-radius: 6px;
+  pointer-events: none;
+}
+.map-hover-card b {
+  font-size: 12px;
+  color: #4e587c;
+  white-space: nowrap;
+}
+.map-hover-card span {
+  font-size: 9px;
+  color: var(--muted);
+}
+.district-map-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 8px;
+  color: #9ba3b5;
+  padding: 8px 12px;
+  background: #fff;
+  border-top: 1px solid #edf0f7;
+}
+
+@media (max-width: 1100px) {
+  .house-stats {
+    margin: 6px 0 0;
+    flex-basis: 100%;
+  }
+  .house-visuals {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 18px;
+  }
+  .house-chart {
+    height: 220px;
+  }
+  .house-seat-label {
+    gap: 8px;
+  }
+}
+@media (max-width: 850px) {
+  .house-app {
+    padding: 22px;
+  }
+  .house-visuals {
+    grid-template-columns: 1fr;
+  }
+  .house-histogram {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 10px 24px;
+  }
+  .house-histogram h2 {
+    grid-column: 1/-1;
+  }
+  .house-chart {
+    grid-row: 2/5;
+    height: 230px;
+    margin: 0;
+  }
+  .house-sampling-note {
+    margin-top: 0;
+  }
+  .house-latent-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .house-data-columns {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .house-app {
+    padding: 18px 12px;
+  }
+  .house-header {
+    align-items: flex-start;
+    gap: 9px;
+  }
+  .house-header h1 {
+    font-size: 24px;
+  }
+  .house-header .eyebrow {
+    font-size: 8px;
+  }
+  .house-senate-link {
+    font-size: 9px;
+  }
+  .house-intro {
+    font-size: 11px;
+    margin: 14px 0 17px;
+  }
+  .house-panel {
+    padding: 14px;
+    margin-bottom: 13px;
+  }
+  .house-buttons {
+    gap: 7px;
+  }
+  .house-buttons button {
+    font-size: 10px;
+    padding: 9px 10px;
+  }
+  .house-stats {
+    font-size: 9px;
+  }
+  .house-stats > span {
+    padding: 0 3px;
+  }
+  .house-progress {
+    font-size: 9px;
+  }
+  .house-map-heading h2 {
+    font-size: 14px;
+  }
+  .house-seat-label b {
+    font-size: 15px;
+  }
+  .house-seat-label small {
+    font-size: 9px;
+  }
+  .house-histogram {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .house-chart {
+    grid-row: auto;
+    height: 210px;
+  }
+  .house-histogram h2 {
+    grid-column: auto;
+  }
+  .house-sampling-note {
+    font-size: 9px;
+  }
+  .house-map-note {
+    font-size: 9px;
+  }
+  .house-details > summary span {
+    display: block;
+    margin: 3px 0 0 15px;
+  }
+  .house-latent-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .house-model-copy {
+    font-size: 11px;
+  }
+  .district-map-tools {
+    right: 6px;
+    top: 6px;
+    gap: 3px;
+  }
+  .district-map-tools button {
+    padding: 3px 6px;
+    font-size: 8px;
+  }
+  .district-map-tools span {
+    font-size: 8px;
+  }
+  .map-hover-card {
+    left: 6px;
+    bottom: 36px;
+    padding: 4px 6px;
+    gap: 5px;
+  }
+  .map-hover-card b {
+    font-size: 9px;
+  }
+  .map-hover-card span {
+    font-size: 7px;
+  }
+  .district-map-caption {
+    font-size: 6px;
+    padding: 6px;
+  }
+}
