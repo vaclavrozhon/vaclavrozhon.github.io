@@ -1,75 +1,21 @@
-many people would tell you that the Riemann hypothesis was the final boss of mathematics. Some of the best mathematicians of the past century had a go at it. But Riemann’s hypothesis resisted. Until last month, when OpenAI landed a hit with a weaker version of the hypothesis. Then on Friday, Levent Alpöge and Claude landed the knockout.
+For a long time, the Riemann hypothesis was considered the holy grail of mathematics. It’s a super important problem, and generations of mathematicians tried and failed to prove it. And then last month, OpenAI landed a hit with a weaker version of the hypothesis. And on Friday, Levent Alpöge and Claude landed the knockout.
 
-So did we win now? Not so fast.
+And that means one thing. The final boss of mathematics is now P versus NP. Until Monday, that boss was basically untouched. Then Anthropic and OpenAI both released proofs of VP ≠ VNP, the arithmetic cousin of P versus NP.
 
-Riemann has a rival for the title of the final boss — P vs NP. And as we began to chip away at riemann, the complete lack of progress on P vs NP only made it look stronger.
+So what does that mean? And how close are we to solving P versus NP? I talked about it with Amir Shpilka, one of the leading experts on this question.
 
-Until Monday when Anthropic and OpenAI both released proofs of VP ≠ VNP, the arithmetic cousin of P vs NP.
+*[Amir]*
 
-So how hard was that first blow to P vs NP? And what does vp vs vnp mean anyway? I asked Amir Shpilka, who’s a leading expert on this question.
+*[Polylogo cuts off halfway through]*
 
-Let’s try to
+Ok cut. VP!=VNP happened on Monday, we did the video on Tuesday. Now it’s wednesday, and the video is already out of date. So here’s the short version of what happened today. 
 
-In computer science, we believe a lot of problems are hard, there are no fast algorithms for them. Take cryptographic hash functions. They’re simple to implement, but if I give you a hash, can you find an input that matches it? A lot of cryptography relies on the assumption that some functions easy to compute and hard to undo. And that assumption is P ≠ NP. (*almost)
+The background is — P vs NP problem is so important because it’s about proving that some problems don’t have fast algorithms. You should think about it as a milestone - if we can solve it, we should hopefully be able to pinpoint the complexity of million other problems. 
 
-but how do we prove that? over the years people came up with two main lines of attack. first one is classical complexity theory.
+Now VP vs VNP is like P vs NP but for arithmetic problems — you should think about matrix multiplication, Fourier transform, this kind of stuff. And guess what. VP vs VNP was solved and today, openai announced new results that pinpoint the arithmetic complexity of matrix multiplication, Fourier transform, and bunch of other stuff. 
 
-In complexity theory, we are mostly not even trying to prove P≠NP, just understand what it would imply. For example: take the Hamiltonian cycle problem. Imagine a map with a bunch of cities, some connected by roads. Is there a route that visits each city exactly once and gets you back where you started? The problem sounds innocent but complexity theory tells us that a fast algorithm for finding one is equivalent to P = NP.
+So what we hoped to happen with normal algorithms just happened with arithmetic algorithms — we solved this abstract problem that’s like P vs NP and suddenly we are cooking and we can understand all the concrete important problems we really care about. 
 
-Second line of attack is called circuit lower bounds. A circuit is just a different way of writing down algorithms. The input comes in on wires, goes through some gates, and out comes the answer. A lower bound tells you how many gates any circuit solving a given problem needs. If we could prove that Hamiltonian cycle can’t be solved with polynomially many gates, we’d have proved P ≠ NP.
+Another insane thing — a few days ago, the vibe was that AI can solve problems but can’t develop theories. Well, guess what — not only GPT developed a theory, the theory solves the biggest questions of an entire field that was considered hopelessly hard. VP vs VNP is The kind of stuff we never expected to understand in our lifetimes. 
 
-The problem is that right now this goal seems to be very far for us. Say the input is n bits long. Even proving you need n² gates would be a huge progress.
-
-We simply have no idea how to prove that some problems require large circuits. And that’s why people in circuit complexity mostly study restricted models of computation. One of the most important ones is arithmetic circuits.
-
-You see, ordinary Boolean circuits are built from AND, OR and NOT gates. You can think of these as arithmetic operations on bits. NOT x is 1 − x. x AND y is like x times y. and similar for or.
-
-Now imagine running the same circuit with the symbols x and y on the input wires, instead of their values. When x and y enter multiplication gate, the result is the expression xy and we pass that on.
-
-And this is an arithmetic circuit. Every wire carries a polynomial, and I mean the formal polynomial itself as an expression, coefficients and all. Say this input wire holds x and that one holds y. A multiplication gate turns them into the polynomial xy. We also get a plus gate that adds two polynomials.
-
-So what’s the difference between normal circuits and arithmetic circuits? Here’s an example. Take a wire with x, duplicate it and put it into the AND gate. What’s on the outgoing wire? Well, still x, ANDing with yourself does nothing.
-
-Now try that in an arithmetic circuit. Multiply by x again and you get a different polynomial, x².
-
-So why do we care about these weird circuits? Well, most arithmetic algorithms can be written as arithmetic circuits. Take a problem like multiplying two matrices. The usual cubic algorithm is an arithmetic circuit: Just give each entry its own variable. Multiply the right entries in pairs, add the products, and voila, we got an arithmetic circuit for matrix multiplication.
-
-So, if circuits correspond to any algorithms, arithmetic circuits correspond to reasonable algorithms for algebraic problems. And that could make them easier to understand.
-
-Now what’s VP and VNP? It’s more or less the equivalent of P and NP for arithmetic circuits, the V in front is for Leslie Valiant who came up with this.
-
-So, more concretely, VP is all the polynomials we can build with polynomial-sized arithmetic circuits. (*The degree has to grow at most polynomially, too) For example, the entries of our matrix product fit the bill are in VP.
-
-Similarly, VNP is like NP. And just as P ≠ NP can be proven by showing theres no fast algorithm for hamiltnonian cycle, vp≠Vnp can be proven by showing that hamiltonian cycle polynomial is not in VP. Heres what the hamiltonian cycle polynomial is. Think of a complete graph on n cities and label each edge with its own variable. Each tour visiting all vertices now gives you a product of the variables on the edges it uses. Add up those products and you’ve got the Hamiltonian cycle polynomial.
-
-So the VP versus VNP question is just equivalent to: For any n, can this polynomial be computed with a small arithmetic circuit?
-
-VP vs VNP is a special case of the P vs NP question. That’s because if you proved that there is a general way of building the hamiltonian cycle polynomial, then you also have a fast algorithm to know if any concrete graph contains a hamilton cycle. You just plug in zero or one for each edge variable, depending on if the edge exists in the graph, then you compute the arithmetic circuit, this time with integers instead of variables, and finally you just check if the anwer is larger than zero.
-
-So how did claude and gpt prove it? We will go through Claude’s proof. The main idea there is very natural. It is to find some measure of how complicated a polynomial is.
-
-So far, so good. We want to prove that the measure starts small, doesn’t grow much when we add a few gates, but it is huge for our Hamiltonian cycle polynomial. This would mean there can’t be a small circuit computing the Hamiltonian cycle polynomial, exactly as we want. But how do we find such a measure in the first place?
-
-A lot of work in arithmetic complexity has been about finding these measures. One that keeps poping up is similar to the rank of a matrix. Think about a polynomial with a bunch of x variables and a bunch of y variables. Suppose you can write it as a horribly complicated polynomial in the x’s times a horribly complicated polynomial in the y’s. This polynomial is in some sense simple because the interaction between xes and ys is simple, a bit like how rank-1 matrices work.
-
-Look at this matrix. Even though it has n×n entries, it can be written as the outer product of two vectors. So, in some sense, it is pretty simple, because it can be represented with just 2n numbers. Similarly, this polynomial has a lot of terms, but notice what happens when we color the variables red and blue and rearrange. We have sort of split into a product of two independent polynomials. So, it is pretty simple, too. Capturing this notion of simplicity is what the rank method is about.
-
-If we want to prove something as powerful as vp ≠ vnp, we need some measure that talks about lots of different splits at once. And that’s the direction in which Claude went. It used a more general idea called a spectral point. I won’t define it, but its a clever general way of how you can measure the complexity of a polynomial. The only problem is that we kinda don’t know if they exist. We have a few special examples that mostly come from rank, but as I said these special cases are not powerful enough for what we need.
-
-and So, Claude used the most powerful mathematical technique — optimism. It simply assumed that there are many spectral points with whatever special properties are needed. And it worked. Under those assumptions, Claude proved that VP ≠ VNP.
-
-But that is just the beginning of the proof. You see even claude is not infinitely powerful, and it was unable to prove whether the special spectral points exist or not. That’s a bummer, and 99.99% of human researchers would just stop here, write the paper, and collect the awards.
-
-But Claude instead did something really crazy — it continued working. And ultimately, it proved that if the existence of special spectral points fails, the failure itself gives you a completely different way to prove the same lower bound. So the lower bound is settled, using the concept of spectral points, even though we still don’t know whether they exist.
-
-Yeah. Wow.
-
-few months ago I said that, yes, the AI results were great, but the models doing this research were still “barely superhuman.” I think this November we can drop the word “barely.” The proof that Claude came up with is a stuff from legends. And yes, we can still understand the proof. But it doesn’t feel human to me anymore. It’s a bit too clever, too creative. And yet, it’s just the beginning.
-
-So where does this leave us?
-
-But even though this is really big, it is still unclear how closer we got to P vs NP because after all this is just arithmetic circuits, not the general circuits.
-
-So when do we solve P vs NP? Hard to say. Look at the Millennium Prize Problems. Lately they’ve been dropping like flies. Fit a sigmoid to the six problems that were still open when AI came along, and the curve hits 95% of the points around XX. Then there’s the list Michal Koucký and I put together, our pick of the 500 biggest problems in theoretical computer science. Again, if you fit sigmoid, most of that list hsould be solved in the next few months, including p vs np.
-
-So I think we are in this weird situation where P vs NP still feels absolutely hopeless, we still havent made almost any progress on it, and yet, I am kind of expecting it to be solved in the next few months. Isnt it crazy? Either way, we’ll be back soon, with the next round of new, awesome results.
+Ok, lets see the video now
